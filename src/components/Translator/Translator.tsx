@@ -33,12 +33,12 @@ export const Translator: FC<TranslatorProps> = (props) => {
       <fieldset className="flex gap-5">
         <legend className="sr-only">入力する言語</legend>
 
-        <Radio name="direction" value="ain2ja" defaultChecked>
-          アイヌ語から日本語
+        <Radio name="direction" value="ja2ain" defaultChecked>
+          日本語からアイヌ語
         </Radio>
 
-        <Radio name="direction" value="ja2ain">
-          日本語からアイヌ語
+        <Radio name="direction" value="ain2ja">
+          アイヌ語から日本語
         </Radio>
       </fieldset>
 
