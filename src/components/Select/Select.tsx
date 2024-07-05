@@ -17,14 +17,14 @@ export const Select: FC<SelectProps> = (props) => {
       )}
     >
       <span className="text-xs block text-zinc-700 dark:text-zinc-300 pl-2">
-        {label}
+        {label}:&nbsp;
       </span>
 
       <select
         className={clsx(
           "text-end p-2 pl-0 cursor-pointer",
-          "outline-blue-400 outline-2 group-focus:outline outline-offset-4 cursor-pointer",
-          "bg-transparent"
+          "outline-blue-400 outline-2 focus:outline outline-offset-4 cursor-pointer",
+          "appearance-none bg-transparent"
         )}
         {...rest}
       >

@@ -29,11 +29,11 @@ export const Translator: FC<TranslatorProps> = (props) => {
       <legend className="sr-only">入力する言語</legend>
 
       <Radio name="direction" value="ain2ja" defaultChecked>
-        アイヌ語
+        アイヌ語から日本語
       </Radio>
 
       <Radio name="direction" value="ja2ain">
-        日本語
+        日本語からアイヌ語
       </Radio>
     </fieldset>
 
