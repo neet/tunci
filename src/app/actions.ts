@@ -83,7 +83,7 @@ export async function translate(_prevData: unknown, formData: FormData): Promise
 
     return {
       type: "error",
-      message: "翻訳に失敗しました。サーバーが再起動中の場合がありますので、しばらく待ってから再度お試しください。"
+      message: "翻訳に失敗しました。サーバーが再起動中の場合がありますので、２〜３分ほど待ってから再度お試しください。"
     }
   }
 }

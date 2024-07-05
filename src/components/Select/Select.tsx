@@ -1,5 +1,7 @@
+"use client";
+
 import clsx from "clsx";
-import { ComponentProps, FC, ReactNode } from "react";
+import { ComponentProps, FC, ReactNode, useId } from "react";
 
 export type SelectProps = ComponentProps<"select"> & {
   label: string;
@@ -9,18 +11,21 @@ export type SelectProps = ComponentProps<"select"> & {
 export const Select: FC<SelectProps> = (props) => {
   const { children, label, ...rest } = props;
 
+  const selectId = useId();
+
   return (
-    <label
+    <div
       className={clsx(
         "flex items-center",
         "bg-white h-full border border-zinc-300 dark:bg-black dark:border-zinc-700 rounded-md"
       )}
     >
-      <span className="text-xs block text-zinc-700 dark:text-zinc-300 pl-2">
-        {label}:&nbsp;
-      </span>
+      <label className="text-xs block text-zinc-700 dark:text-zinc-300 pl-2 mr-2" htmlFor={selectId}>
+        {label}
+      </label>
 
       <select
+        id={selectId}
         className={clsx(
           "text-end p-2 pl-0 cursor-pointer",
           "outline-blue-400 outline-2 focus:outline outline-offset-4 cursor-pointer",
@@ -30,6 +35,6 @@ export const Select: FC<SelectProps> = (props) => {
       >
         {children}
       </select>
-    </label>
+    </div>
   );
 };
