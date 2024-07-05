@@ -43,9 +43,9 @@ export async function translate(
 
   let prompt: string = "";
   if (direction === "ja2ain") {
-    prompt = `translate: Japanese to Ainu (${dialect}, ${pronoun}): ${text}`;
+    prompt = `translate Japanese to Ainu (${dialect}, ${pronoun}): ${text}`;
   } else {
-    prompt = `translate: Ainu (${dialect}, ${pronoun}) to Japanese: ${text}`;
+    prompt = `translate Ainu (${dialect}, ${pronoun}) to Japanese: ${text}`;
   }
 
   try {
