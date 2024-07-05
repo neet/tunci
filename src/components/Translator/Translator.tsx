@@ -72,7 +72,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex flex-col gap-2 justify-between md:flex-row">
         <div className="flex-1">
           {error != null && (
             <div

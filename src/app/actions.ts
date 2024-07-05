@@ -18,13 +18,6 @@ export async function translate(_prevData: unknown, formData: FormData): Promise
   const pronoun = formData.get("pronoun") ?? "first";
   const dialect = formData.get("dialect") ?? "沙流"
 
-  console.info({
-    text,
-    direction,
-    pronoun,
-    dialect,
-  })
-
   if (typeof text !== "string" || text.length === 0) {
     return {
       type: "error",
@@ -32,7 +25,7 @@ export async function translate(_prevData: unknown, formData: FormData): Promise
     };
   }
 
-  const MAX_LENGTH = 512;
+  const MAX_LENGTH = 128;
   if (text.length > MAX_LENGTH) {
     return {
       type: "error",
@@ -53,8 +46,6 @@ export async function translate(_prevData: unknown, formData: FormData): Promise
   } else {
     prompt = `translate: Ainu (${dialect}, ${pronoun}) to Japanese: ${text}`
   }
-
-  console.info(prompt)
 
   try {
     const result = await inference.request({
@@ -80,7 +71,6 @@ export async function translate(_prevData: unknown, formData: FormData): Promise
     }
   } catch (error) {
     console.error(error)
-
     return {
       type: "error",
       message: "翻訳に失敗しました。サーバーが再起動中の場合がありますので、２〜３分ほど待ってから再度お試しください。"
