@@ -11,6 +11,7 @@ export const Button: FC<ComponentProps<"button">> = (props) => {
         "outline-blue-400 outline-2 focus:outline outline-offset-4",
         "hover:bg-blue-600",
         "disabled:opacity-70 disabled:cursor-not-allowed",
+        "forced-colors:border forced-colors:border-[ButtonBorder]",
         "transition",
         className
       )}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import clsx from "clsx";
 import { Roboto, Yeseva_One } from "next/font/google";
+import { Banner } from "../components/Banner";
 import { ContentInfo } from "../components/ContentInfo";
 
 const yesevaOne = Yeseva_One({
@@ -37,6 +38,8 @@ export default function RootLayout({
           "antialiased"
         )}
       >
+        <Banner />
+
         {children}
 
         <ContentInfo />

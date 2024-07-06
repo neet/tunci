@@ -51,7 +51,14 @@ export const Translator: FC<TranslatorProps> = (props) => {
           <textarea
             id="text"
             name="text"
-            className="w-full h-full text-lg p-2 rounded min-h-64 border bg-white border-zinc-300 dark:bg-black dark:border-zinc-700 outline-blue-400 outline-2 focus:outline outline-offset-4"
+            className={clsx(
+              "w-full min-h-48 md:min-h-64 lg:h-full",
+              "p-3 rounded",
+              "text-xl",
+              "border bg-white border-zinc-300",
+              "dark:bg-black dark:border-zinc-700",
+              "outline-blue-400 outline-2 focus:outline outline-offset-4"
+            )}
             spellCheck={false}
             autoComplete="off"
             autoCorrect="off"
@@ -65,7 +72,13 @@ export const Translator: FC<TranslatorProps> = (props) => {
         <div className="flex-1">
           <div
             role="status"
-            className="w-full h-full text-lg p-2 min-h-64  bg-zinc-100 border-zinc-300 rounded border dark:bg-zinc-900 dark:border-zinc-700"
+            className={clsx(
+              "w-full min-h-48 md:min-h-64 lg:h-full",
+              "p-3 rounded",
+              "text-xl",
+              "bg-zinc-100 border-zinc-300 border",
+              "dark:bg-zinc-900 dark:border-zinc-700"
+            )}
           >
             {translation}
           </div>
