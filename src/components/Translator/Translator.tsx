@@ -6,8 +6,10 @@ import { Select } from "@/components/Select";
 
 import { FC } from "react";
 import { useFormState } from "react-dom";
-import { TranslatorSubmit } from "./TranslatorSubmit";
 import clsx from "clsx";
+
+import { TranslatorText } from "./TranslatorText";
+import { TranslatorSubmit } from "./TranslatorSubmit";
 
 export type TranslatorProps = {
   className?: string;
@@ -17,7 +19,7 @@ export type TranslatorProps = {
 export const Translator: FC<TranslatorProps> = (props) => {
   const { action, className } = props;
 
-  const [state, submitAction] = useFormState(action, {
+  const [state, submitAction, pending] = useFormState(action, {
     type: "ok",
     text: "",
   });
@@ -80,7 +82,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
               "dark:bg-zinc-900 dark:border-zinc-700"
             )}
           >
-            {translation}
+            <TranslatorText>{translation}</TranslatorText>
           </div>
         </div>
       </div>
@@ -98,7 +100,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
           )}
         </div>
 
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-end gap-2">
           <Select label="言葉遣い" name="pronoun">
             <option value="first">日常会話</option>
             <option value="fourth">物語</option>

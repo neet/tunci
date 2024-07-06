@@ -7,7 +7,7 @@ export const ContentInfo: FC = () => {
         運営者情報
       </h2>
 
-      <p className="dark:text-zinc-500 text-center text-sm">
+      <p className="text-zinc-600 dark:text-zinc-400 text-center text-sm">
         Copyright © 2024 Ryô Igarashi, All rights reserved.
       </p>
     </footer>
