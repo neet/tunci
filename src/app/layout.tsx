@@ -18,8 +18,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Tunci",
-  description: "Neural machine translator for the Ainu language",
+  title: "Tunci - アイヌ語翻訳",
+  description: "ニューラル機械翻訳によるアイヌ語翻訳ツール",
 };
 
 export default function RootLayout({
