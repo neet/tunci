@@ -2,14 +2,16 @@
 
 import { Result } from "@/app/actions";
 import { Radio } from "@/components/Radio";
-import { Select } from "@/components/Select";
 
-import { FC } from "react";
+import { FC, MouseEventHandler } from "react";
 import { useFormState } from "react-dom";
 import clsx from "clsx";
 
 import { TranslatorText } from "./TranslatorText";
 import { TranslatorSubmit } from "./TranslatorSubmit";
+import { TranslatorDialect } from "./TranslatorDialect";
+import { TranslatorPronoun } from "./TranslatorPronoun";
+import { ClipboardIcon } from "@heroicons/react/24/outline";
 
 export type TranslatorProps = {
   className?: string;
@@ -19,13 +21,21 @@ export type TranslatorProps = {
 export const Translator: FC<TranslatorProps> = (props) => {
   const { action, className } = props;
 
-  const [state, submitAction, pending] = useFormState(action, {
+  const [state, submitAction] = useFormState(action, {
     type: "ok",
     text: "",
   });
 
   const error = state.type === "error" ? state.message : null;
   const translation = state.type === "ok" ? state.text : null;
+
+  const handleCopy: MouseEventHandler = (e) => {
+    e.preventDefault();
+    if (translation != null) {
+      navigator.clipboard.writeText(translation);
+    }
+    window.alert("コピーしました");
+  }
 
   return (
     <form
@@ -71,7 +81,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
           />
         </div>
 
-        <div className="flex-1">
+        <div className="flex-1 relative">
           <div
             role="status"
             className={clsx(
@@ -84,6 +94,19 @@ export const Translator: FC<TranslatorProps> = (props) => {
           >
             <TranslatorText>{translation}</TranslatorText>
           </div>
+
+          <button
+            className={clsx(
+              "absolute bottom-0 right-0 p-2 m-1 rounded-full",
+              "text-zinc-600 dark:text-zinc-400",
+              "hover:bg-zinc-200 dark:hover:bg-zinc-800",
+              "transition",
+            )}
+            aria-label="クリップボードにコピー"
+            onClick={handleCopy}
+          >
+            <ClipboardIcon className="size-6" aria-hidden />
+          </button>
         </div>
       </div>
 
@@ -101,30 +124,8 @@ export const Translator: FC<TranslatorProps> = (props) => {
         </div>
 
         <div className="flex justify-end gap-2">
-          <Select label="言葉遣い" name="pronoun">
-            <option value="first">日常会話</option>
-            <option value="fourth">物語</option>
-          </Select>
-
-          <Select label="方言" name="dialect">
-            <optgroup label="北海道・南西">
-              <option value="沙流">沙流</option>
-              <option value="千歳">千歳</option>
-              <option value="鵡川">鵡川</option>
-              <option value="幌別">幌別</option>
-            </optgroup>
-
-            <optgroup label="北海道・北東">
-              <option value="静内">静内</option>
-              <option value="十勝">十勝</option>
-              <option value="釧路">釧路</option>
-              <option value="様似">様似</option>
-              <option value="美幌">美幌</option>
-              <option value="石狩">石狩</option>
-              <option value="阿寒">阿寒</option>
-            </optgroup>
-          </Select>
-
+          <TranslatorPronoun />
+          <TranslatorDialect />
           <TranslatorSubmit />
         </div>
       </div>

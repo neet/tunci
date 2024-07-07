@@ -1,6 +1,7 @@
 import { FC } from "react";
 import clsx from "clsx";
 import Link from "next/link";
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 export const Banner: FC = () => {
   return (
@@ -18,6 +19,7 @@ export const Banner: FC = () => {
       </h1>
 
       <Link href="/about" className="text-blue-600 dark:text-blue-400 underline">
+        <InformationCircleIcon className="size-5 mr-0.5 inline-block" />
         このサイトについて
       </Link>
     </header>
