@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { FC } from "react";
 
 export const metadata: Metadata = {
-  title: "このサイトについて - Tunci",
+  title: "このサイトについて - tunci",
   description:
     "このサイトは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。",
 };

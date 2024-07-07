@@ -18,7 +18,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Tunci - アイヌ語翻訳",
+  title: "tunci - アイヌ語翻訳",
   description: "ニューラル機械翻訳によるアイヌ語翻訳ツール",
 };
 
