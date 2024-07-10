@@ -1,5 +1,12 @@
+import { Metadata } from "next";
+
+import { Translator } from "@/components/Translator";
+
 import { translate } from "./actions";
-import { Translator } from "@/components/Translator/Translator";
+
+export const metadata: Metadata = {
+  title: "tunci - アイヌ語と日本語を双方向に翻訳",
+};
 
 export default function Home() {
   return (

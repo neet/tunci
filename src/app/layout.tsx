@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
 import "./globals.css";
+
 import clsx from "clsx";
+import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
+
 import { Banner } from "../components/Banner";
 import { ContentInfo } from "../components/ContentInfo";
 
@@ -18,8 +20,14 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "tunci - アイヌ語翻訳",
-  description: "ニューラル機械翻訳によるアイヌ語翻訳ツール",
+  title: {
+    template: "%s | tunci",
+    default: "tunci",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -35,7 +43,7 @@ export default function RootLayout({
           "px-3 box-border",
           "text-black bg-zinc-50 heropattern-banknote-zinc-100",
           "dark:text-white dark:bg-zinc-900 dark:heropattern-banknote-zinc-950",
-          "antialiased"
+          "antialiased",
         )}
       >
         <Banner />

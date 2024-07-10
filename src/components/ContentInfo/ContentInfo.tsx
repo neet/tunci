@@ -8,9 +8,12 @@ export const ContentInfo: FC = () => {
       </h2>
 
       <p className="text-zinc-600 dark:text-zinc-400 text-center text-sm">
-        Copyright © 2024 Ryô Igarashi, All rights reserved.
+        Copyright
+        <span className="mx-1.5" aria-hidden>
+          ©
+        </span>
+        2024 Ryô Igarashi, All rights reserved.
       </p>
     </footer>
-  )
-
-}
+  );
+};

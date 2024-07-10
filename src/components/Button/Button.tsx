@@ -13,7 +13,7 @@ export const Button: FC<ComponentProps<"button">> = (props) => {
         "disabled:opacity-70 disabled:cursor-not-allowed",
         "forced-colors:border forced-colors:border-[ButtonBorder]",
         "transition",
-        className
+        className,
       )}
       {...rest}
     >

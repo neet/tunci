@@ -15,8 +15,10 @@ export const TranslatorText: FC<TranslatorTextProps> = (props) => {
   }
 
   if (!children || children === "") {
-    return <p className="text-zinc-500 dark:text-zinc-400">テキストを翻訳する</p>;
+    return (
+      <p className="text-zinc-500 dark:text-zinc-400">テキストを翻訳する</p>
+    );
   }
 
   return <p>{children}</p>;
-}
+};

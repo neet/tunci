@@ -1,12 +1,12 @@
-import clsx from "clsx"
-import { ComponentProps, FC, ReactNode } from "react"
+import clsx from "clsx";
+import { ComponentProps, FC, ReactNode } from "react";
 
 export type RadioProps = ComponentProps<"input"> & {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export const Radio: FC<RadioProps> = (props) => {
-  const { children, className, ...inputProps } = props
+  const { children, className, ...inputProps } = props;
 
   return (
     <label className="cursor-pointer">
@@ -15,10 +15,8 @@ export const Radio: FC<RadioProps> = (props) => {
         className={clsx("mr-0.5 peer", className)}
         {...inputProps}
       />
-      
-      <span>
-        {children} 
-      </span>
+
+      <span>{children}</span>
     </label>
-  )
-}
+  );
+};

@@ -1,17 +1,17 @@
 "use client";
 
+import { ClipboardIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
+import { FC, MouseEventHandler } from "react";
+import { useFormState } from "react-dom";
+
 import { Result } from "@/app/actions";
 import { Radio } from "@/components/Radio";
 
-import { FC, MouseEventHandler } from "react";
-import { useFormState } from "react-dom";
-import clsx from "clsx";
-
-import { TranslatorText } from "./TranslatorText";
-import { TranslatorSubmit } from "./TranslatorSubmit";
 import { TranslatorDialect } from "./TranslatorDialect";
 import { TranslatorPronoun } from "./TranslatorPronoun";
-import { ClipboardIcon } from "@heroicons/react/24/outline";
+import { TranslatorSubmit } from "./TranslatorSubmit";
+import { TranslatorText } from "./TranslatorText";
 
 export type TranslatorProps = {
   className?: string;
@@ -35,7 +35,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
       navigator.clipboard.writeText(translation);
     }
     window.alert("コピーしました");
-  }
+  };
 
   return (
     <form
@@ -69,7 +69,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
               "text-xl",
               "border bg-white border-zinc-300",
               "dark:bg-black dark:border-zinc-700",
-              "outline-blue-400 outline-2 focus:outline outline-offset-4"
+              "outline-blue-400 outline-2 focus:outline outline-offset-4",
             )}
             spellCheck={false}
             autoComplete="off"
@@ -77,6 +77,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
             autoCapitalize="off"
             aria-invalid={error != null}
             aria-errormessage="error-message"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             style={{ fieldSizing: "content" } as any}
           />
         </div>
@@ -89,7 +90,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
               "p-3 rounded",
               "text-xl",
               "bg-zinc-100 border-zinc-300 border",
-              "dark:bg-zinc-900 dark:border-zinc-700"
+              "dark:bg-zinc-900 dark:border-zinc-700",
             )}
           >
             <TranslatorText>{translation}</TranslatorText>
