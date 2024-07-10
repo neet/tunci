@@ -1,5 +1,7 @@
 "use server";
 
+import assert from "assert";
+
 export type Result =
   | {
       type: "error";
@@ -12,7 +14,7 @@ export type Result =
 
 export async function translate(
   _prevData: unknown,
-  formData: FormData
+  formData: FormData,
 ): Promise<Result> {
   const text = formData.get("text");
   const direction = formData.get("direction");
@@ -49,7 +51,10 @@ export async function translate(
   }
 
   try {
-    const response = await fetch(process.env.HF_ENDPOINT!, {
+    assert(process.env.HF_ENDPOINT, "HF_ENDPOINT is not set");
+    assert(process.env.HF_TOKEN, "HF_TOKEN is not set");
+
+    const response = await fetch(process.env.HF_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

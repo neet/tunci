@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "このサイトについて - tunci",
+  title: "このサイトについて",
   description:
     "このサイトは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。",
 };
@@ -13,7 +13,7 @@ export default function AboutPage() {
       className={clsx(
         "bg-white dark:bg-black",
         "p-4 rounded mx-auto",
-        "prose prose-zinc prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400"
+        "prose prose-zinc prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400",
       )}
     >
       <h2>このサイトについて</h2>

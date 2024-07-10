@@ -5,6 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./.storybook/decorator.tsx",
   ],
   theme: {
     extend: {
@@ -17,7 +18,7 @@ const config: Config = {
   },
   plugins: [
     require("tailwindcss-hero-patterns"),
-    require('@tailwindcss/typography')
+    require("@tailwindcss/typography"),
   ],
 };
 export default config;
