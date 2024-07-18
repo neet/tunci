@@ -44,6 +44,7 @@ export default function RootLayout({
           "text-black bg-zinc-50 heropattern-banknote-zinc-100",
           "dark:text-white dark:bg-zinc-900 dark:heropattern-banknote-zinc-950",
           "antialiased",
+          "md:px-6",
         )}
       >
         <Banner />
