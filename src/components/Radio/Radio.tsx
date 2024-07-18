@@ -9,7 +9,7 @@ export const Radio: FC<RadioProps> = (props) => {
   const { children, className, ...inputProps } = props;
 
   return (
-    <label className="cursor-pointer">
+    <label>
       <input
         type="radio"
         className={clsx("mr-0.5 peer", className)}

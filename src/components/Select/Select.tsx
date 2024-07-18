@@ -17,7 +17,7 @@ export const Select: FC<SelectProps> = (props) => {
     <div
       className={clsx(
         "flex items-center",
-        "focus-within:outline outline-blue-400 outline-2 outline-offset-4 cursor-pointer",
+        "focus-within:outline outline-blue-400 outline-2 outline-offset-4",
         "bg-white h-full border border-zinc-300 dark:bg-black dark:border-zinc-700 rounded-md",
       )}
     >
@@ -31,7 +31,7 @@ export const Select: FC<SelectProps> = (props) => {
       <select
         id={selectId}
         className={clsx(
-          "text-end p-2 pl-0 cursor-pointer",
+          "text-end p-2 pl-0",
           "focus:outline-none",
           "appearance-none bg-transparent",
         )}
