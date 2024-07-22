@@ -13,13 +13,16 @@ export default function AboutPage() {
       className={clsx(
         "bg-white dark:bg-black",
         "p-4 rounded mx-auto",
-        "prose prose-zinc prose-a:text-blue-600 dark:prose-invert dark:prose-a:text-blue-400",
+        "prose prose-zinc prose-a:text-blue-600 prose-a:font-normal dark:prose-invert dark:prose-a:text-blue-400",
       )}
     >
       <h2>このサイトについて</h2>
 
       <p>
-        このサイトは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。
+        <ruby>
+          tunci<rt>トゥンチ</rt>
+        </ruby>
+        は、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。
       </p>
 
       <p>
@@ -65,13 +68,13 @@ export default function AboutPage() {
           <tr>
             <td>日本語</td>
             <td>アイヌ語</td>
-            <td>35.57</td>
+            <td>37.02</td>
           </tr>
 
           <tr>
             <td>アイヌ語</td>
             <td>日本語</td>
-            <td>16.27</td>
+            <td>20.41</td>
           </tr>
         </tbody>
       </table>
