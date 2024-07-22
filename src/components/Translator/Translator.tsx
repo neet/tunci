@@ -65,10 +65,10 @@ export const Translator: FC<TranslatorProps> = (props) => {
             name="text"
             className={clsx(
               "w-full min-h-48 md:min-h-64 lg:h-full",
-              "p-3 rounded",
+              "p-3 rounded-lg",
               "text-xl",
               "border bg-white border-zinc-300",
-              "dark:bg-black dark:border-zinc-700",
+              "dark:bg-black dark:border-zinc-600",
               "outline-blue-400 outline-2 focus:outline outline-offset-4",
             )}
             spellCheck={false}
@@ -87,10 +87,10 @@ export const Translator: FC<TranslatorProps> = (props) => {
             role="status"
             className={clsx(
               "w-full min-h-48 md:min-h-64 lg:h-full",
-              "p-3 rounded",
+              "p-3 rounded-lg",
               "text-xl",
               "bg-zinc-100 border-zinc-300 border",
-              "dark:bg-zinc-900 dark:border-zinc-700",
+              "dark:bg-zinc-900 dark:border-zinc-600",
             )}
           >
             <TranslatorText>{translation}</TranslatorText>
@@ -124,7 +124,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
           )}
         </div>
 
-        <div className="flex justify-end gap-2">
+        <div className="flex flex-wrap justify-end gap-2">
           <TranslatorPronoun />
           <TranslatorDialect />
           <TranslatorSubmit />
