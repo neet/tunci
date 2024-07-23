@@ -1,17 +1,17 @@
 "use client";
 
-import { ClipboardIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import { FC, MouseEventHandler } from "react";
+import { FC } from "react";
 import { useFormState } from "react-dom";
 
 import { Result } from "@/app/actions";
-import { Radio } from "@/components/Radio";
 
+import { Radio } from "../Radio";
 import { TranslatorDialect } from "./TranslatorDialect";
 import { TranslatorPronoun } from "./TranslatorPronoun";
 import { TranslatorSubmit } from "./TranslatorSubmit";
-import { TranslatorText } from "./TranslatorText";
+import { TranslatorTextField } from "./TranslatorTextField";
+import { TranslatorTranslation } from "./TranslatorTranslation/TranslatorTranslation";
 
 export type TranslatorProps = {
   className?: string;
@@ -24,13 +24,13 @@ export const Translator: FC<TranslatorProps> = (props) => {
   const [state, submitAction] = useFormState(action, {
     type: "ok",
     text: "",
+    bridged: false,
   });
 
   const error = state.type === "error" ? state.message : null;
   const translation = state.type === "ok" ? state.text : null;
 
-  const handleCopy: MouseEventHandler = (e) => {
-    e.preventDefault();
+  const handleCopy = () => {
     if (translation != null) {
       navigator.clipboard.writeText(translation);
     }
@@ -42,73 +42,55 @@ export const Translator: FC<TranslatorProps> = (props) => {
       className={clsx("flex flex-col gap-4", className)}
       action={submitAction}
     >
-      <fieldset className="flex gap-5">
-        <legend className="sr-only">入力する言語</legend>
+      <div className="flex">
+        <fieldset className="flex-1 flex gap-5">
+          <legend>翻訳元</legend>
 
-        <Radio name="direction" value="ja2ain" defaultChecked>
-          日本語からアイヌ語
-        </Radio>
+          <Radio name="source_language" value="ja" defaultChecked>
+            日本語
+          </Radio>
 
-        <Radio name="direction" value="ain2ja">
-          アイヌ語から日本語
-        </Radio>
-      </fieldset>
+          <Radio name="source_language" value="ain">
+            アイヌ語
+          </Radio>
+
+          <Radio name="source_language" value="en">
+            英語
+          </Radio>
+        </fieldset>
+
+        <fieldset className="flex-1 flex gap-5">
+          <legend>翻訳先</legend>
+
+          <Radio name="target_language" value="ja" defaultChecked>
+            日本語
+          </Radio>
+
+          <Radio name="target_language" value="ain">
+            アイヌ語
+          </Radio>
+
+          <Radio name="target_language" value="en">
+            英語
+          </Radio>
+        </fieldset>
+      </div>
 
       <div className="flex flex-col w-full gap-2 lg:flex-row">
-        <div className="flex-1">
-          <label className="sr-only" htmlFor="text">
-            翻訳したいテキストを入力
-          </label>
+        <TranslatorTextField
+          className="flex-1"
+          name="text"
+          error={error}
+          aria-errormessage="error-message"
+        />
 
-          <textarea
-            id="text"
-            name="text"
-            className={clsx(
-              "w-full min-h-48 md:min-h-64 lg:h-full",
-              "p-3 rounded-lg",
-              "text-xl",
-              "border bg-white border-zinc-300",
-              "dark:bg-black dark:border-zinc-600",
-              "outline-blue-400 outline-2 focus:outline outline-offset-4",
-            )}
-            spellCheck={false}
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            aria-invalid={error != null}
-            aria-errormessage="error-message"
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            style={{ fieldSizing: "content" } as any}
-          />
-        </div>
-
-        <div className="flex-1 relative">
-          <div
-            role="status"
-            className={clsx(
-              "w-full min-h-48 md:min-h-64 lg:h-full",
-              "p-3 rounded-lg",
-              "text-xl",
-              "bg-zinc-100 border-zinc-300 border",
-              "dark:bg-zinc-900 dark:border-zinc-600",
-            )}
-          >
-            <TranslatorText>{translation}</TranslatorText>
-          </div>
-
-          <button
-            className={clsx(
-              "absolute bottom-0 right-0 p-2 m-1 rounded-full",
-              "text-zinc-600 dark:text-zinc-400",
-              "hover:bg-zinc-200 dark:hover:bg-zinc-800",
-              "transition",
-            )}
-            aria-label="クリップボードにコピー"
-            onClick={handleCopy}
-          >
-            <ClipboardIcon className="size-6" aria-hidden />
-          </button>
-        </div>
+        <TranslatorTranslation
+          className="flex-1"
+          bridged={state.type === "ok" && state.bridged}
+          onCopy={handleCopy}
+        >
+          {translation}
+        </TranslatorTranslation>
       </div>
 
       <div className="flex flex-col gap-2 justify-between md:flex-row">

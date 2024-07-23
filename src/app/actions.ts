@@ -10,6 +10,7 @@ export type Result =
   | {
       type: "ok";
       text: string;
+      bridged: boolean;
     };
 
 export async function translate(
@@ -17,9 +18,38 @@ export async function translate(
   formData: FormData,
 ): Promise<Result> {
   const text = formData.get("text");
-  const direction = formData.get("direction");
+  const sourceLanguage = formData.get("source_language");
+  const targetLanguage = formData.get("target_language");
   const pronoun = formData.get("pronoun") ?? "first";
   const dialect = formData.get("dialect") ?? "沙流";
+
+  if (typeof sourceLanguage !== "string") {
+    return {
+      type: "error",
+      message: "翻訳元言語が不正です。",
+    };
+  }
+
+  if (typeof targetLanguage !== "string") {
+    return {
+      type: "error",
+      message: "翻訳先言語が不正です。",
+    };
+  }
+
+  if (sourceLanguage === targetLanguage) {
+    return {
+      type: "error",
+      message: "翻訳元と翻訳先が同じです。",
+    };
+  }
+
+  if (sourceLanguage !== "ain" && targetLanguage !== "ain") {
+    return {
+      type: "error",
+      message: "アイヌ語以外の翻訳はサポートしていません。",
+    };
+  }
 
   if (typeof text !== "string" || text.length === 0) {
     return {
@@ -36,19 +66,50 @@ export async function translate(
     };
   }
 
-  if (typeof direction !== "string") {
+  let bridgedText = text;
+
+  try {
+    if (sourceLanguage !== "ja") {
+      assert(process.env.DEEPL_API_KEY, "DEEPL_API_KEY is not set");
+
+      const response = await fetch("https://api-free.deepl.com/v2/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `DeepL-Auth-Key ${process.env.DEEPL_API_KEY}`,
+        },
+        body: JSON.stringify({
+          text: [text],
+          source_lang: sourceLanguage.toUpperCase(),
+          target_lang: "JA",
+          formality: "more",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch", { cause: response });
+      }
+
+      const data = await response.json();
+
+      bridgedText = data?.translations?.[0]?.text;
+    }
+  } catch (error) {
+    console.error(error);
+
     return {
       type: "error",
-      message: "翻訳方向が不正です。",
+      message:
+        "DeepL API に接続できませんでした。日本語・アイヌ語間の翻訳をお使いください。",
     };
   }
 
-  let prompt: string = "";
-  if (direction === "ja2ain") {
-    prompt = `translate Japanese to Ainu (${dialect}, ${pronoun}): ${text}`;
-  } else {
-    prompt = `translate Ainu (${dialect}, ${pronoun}) to Japanese: ${text}`;
-  }
+  const prompt =
+    sourceLanguage === "ain"
+      ? `translate Ainu (${dialect}, ${pronoun}) to Japanese: ${bridgedText}`
+      : `translate Japanese to Ainu (${dialect}, ${pronoun}): ${bridgedText}`;
+
+  console.debug("Prompt:", prompt);
 
   try {
     assert(process.env.HF_ENDPOINT, "HF_ENDPOINT is not set");
@@ -79,6 +140,7 @@ export async function translate(
     return {
       type: "ok",
       text: data?.[0]?.["translation_text"],
+      bridged: sourceLanguage !== "ja" && targetLanguage !== "ja",
     };
   } catch (error) {
     console.error(error);

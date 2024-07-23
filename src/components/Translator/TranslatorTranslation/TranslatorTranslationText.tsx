@@ -1,11 +1,13 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 
-export type TranslatorTextProps = {
-  children?: string | null;
+export type TranslatorTranslationTextProps = {
+  children: ReactNode;
 };
 
-export const TranslatorText: FC<TranslatorTextProps> = (props) => {
+export const TranslatorTranslationText: FC<TranslatorTranslationTextProps> = (
+  props,
+) => {
   const { children } = props;
 
   const { pending } = useFormStatus();
