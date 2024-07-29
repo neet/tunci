@@ -12,7 +12,11 @@ export const Radio: FC<RadioProps> = (props) => {
     <label>
       <input
         type="radio"
-        className={clsx("mr-0.5 peer", className)}
+        className={clsx(
+          "mr-0.5 peer accent-violet-500",
+          "outline-violet-400 outline-2 focus:outline outline-offset-4",
+          className,
+        )}
         {...inputProps}
       />
 

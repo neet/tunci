@@ -2,10 +2,11 @@
 
 import { ClipboardIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { FC, MouseEventHandler } from "react";
 import { useFormState } from "react-dom";
 
-import { Result } from "@/app/actions";
+import { Result } from "@/app/[locale]/actions";
 import { Radio } from "@/components/Radio";
 
 import { TranslatorDialect } from "./TranslatorDialect";
@@ -21,6 +22,8 @@ export type TranslatorProps = {
 export const Translator: FC<TranslatorProps> = (props) => {
   const { action, className } = props;
 
+  const t = useTranslations("Translator");
+
   const [state, submitAction] = useFormState(action, {
     type: "ok",
     text: "",
@@ -34,7 +37,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     if (translation != null) {
       navigator.clipboard.writeText(translation);
     }
-    window.alert("コピーしました");
+    window.alert(t("copied"));
   };
 
   return (
@@ -43,21 +46,21 @@ export const Translator: FC<TranslatorProps> = (props) => {
       action={submitAction}
     >
       <fieldset className="flex gap-5">
-        <legend className="sr-only">入力する言語</legend>
+        <legend className="sr-only">{t("sourceLanguage")}</legend>
 
         <Radio name="direction" value="ja2ain" defaultChecked>
-          日本語からアイヌ語
+          {t("japaneseToAinu")}
         </Radio>
 
         <Radio name="direction" value="ain2ja">
-          アイヌ語から日本語
+          {t("ainuToJapanese")}
         </Radio>
       </fieldset>
 
       <div className="flex flex-col w-full gap-2 lg:flex-row">
         <div className="flex-1">
           <label className="sr-only" htmlFor="text">
-            翻訳したいテキストを入力
+            {t("prompt")}
           </label>
 
           <textarea
@@ -69,7 +72,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
               "text-xl",
               "border bg-white border-zinc-300",
               "dark:bg-black dark:border-zinc-600",
-              "outline-blue-400 outline-2 focus:outline outline-offset-4",
+              "outline-violet-400 outline-2 focus:outline outline-offset-4",
             )}
             spellCheck={false}
             autoComplete="off"
@@ -103,7 +106,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
               "hover:bg-zinc-200 dark:hover:bg-zinc-800",
               "transition",
             )}
-            aria-label="クリップボードにコピー"
+            aria-label={t("copy")}
             onClick={handleCopy}
           >
             <ClipboardIcon className="size-6" aria-hidden />

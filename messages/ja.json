@@ -1,0 +1,52 @@
+{
+  "AboutPage": {
+    "title": "このサイトについて",
+    "description": "このサイトは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。"
+  },
+  "Home": {
+    "title": "tunci - アイヌ語と日本語を翻訳",
+    "description": "tunciは、アイヌ語と日本語を翻訳するWebアプリです。アイヌ語学習者に向けて試験的に公開しています。"
+  },
+  "Banner": {
+    "about": "このサイトについて"
+  },
+  "Translator": {
+    "sourceLanguage": "入力する言語",
+    "japaneseToAinu": "日本語からアイヌ語",
+    "ainuToJapanese": "アイヌ語から日本語",
+    "prompt": "翻訳する言語を入力",
+    "copy": "クリップボードにコピー",
+    "copied": "コピーしました"
+  },
+  "TranslatorDialect": {
+    "dialect": "方言",
+    "southwestHokkaido": "道南西",
+    "northeastHokkaido": "道北東",
+    "saru": "沙流",
+    "chitose": "千歳",
+    "mukawa": "鵡川",
+    "horobetsu": "幌別",
+    "shizunai": "静内",
+    "tokachi": "十勝",
+    "kushiro": "釧路",
+    "samani": "様似",
+    "bihoro": "美幌",
+    "ishikari": "石狩",
+    "akan": "阿寒"
+  },
+  "TranslatorPronoun": {
+    "vocaburary": "語彙",
+    "conversation": "会話",
+    "story": "物語"
+  },
+  "TranslatorSubmit": {
+    "translate": "翻訳"
+  },
+  "TranslatorText": {
+    "ready": "翻訳する文章を入力",
+    "translating": "翻訳中..."
+  },
+  "ContentInfo": {
+    "title": "運営者情報"
+  }
+}

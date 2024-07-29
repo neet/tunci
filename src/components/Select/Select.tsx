@@ -9,7 +9,7 @@ export type SelectProps = ComponentProps<"select"> & {
 };
 
 export const Select: FC<SelectProps> = (props) => {
-  const { children, label, ...rest } = props;
+  const { children, label, className, ...rest } = props;
 
   const selectId = useId();
 
@@ -20,8 +20,7 @@ export const Select: FC<SelectProps> = (props) => {
         "rounded-lg overflow-hidden",
         "bg-white h-full border border-zinc-300",
         "dark:bg-black dark:border-zinc-600",
-        // "text-sm md:text-base",
-        "focus-within:outline outline-blue-400 outline-2 outline-offset-4",
+        "focus-within:outline outline-violet-400 outline-2 outline-offset-4",
       )}
     >
       <div
@@ -41,6 +40,7 @@ export const Select: FC<SelectProps> = (props) => {
           "text-end",
           "focus:outline-none",
           "appearance-none bg-transparent",
+          className,
         )}
         {...rest}
       >
