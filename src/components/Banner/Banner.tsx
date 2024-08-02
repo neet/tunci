@@ -1,9 +1,13 @@
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 
-export const Banner: FC = () => {
+import { Link } from "@/navigation";
+
+export const Banner: FC = async () => {
+  const t = await getTranslations();
+
   return (
     <header
       className={clsx(
@@ -20,10 +24,10 @@ export const Banner: FC = () => {
 
       <Link
         href="/about"
-        className="text-blue-600 dark:text-blue-400 underline"
+        className="text-violet-600 dark:text-violet-400 underline"
       >
         <InformationCircleIcon className="size-5 mr-0.5 inline-block" />
-        このサイトについて
+        {t("Banner.about")}
       </Link>
     </header>
   );

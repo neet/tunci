@@ -12,6 +12,8 @@ export type Result =
       text: string;
     };
 
+const MAX_LENGTH = 200;
+
 export async function translate(
   _prevData: unknown,
   formData: FormData,
@@ -28,7 +30,6 @@ export async function translate(
     };
   }
 
-  const MAX_LENGTH = 128;
   if (text.length > MAX_LENGTH) {
     return {
       type: "error",

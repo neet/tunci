@@ -3,9 +3,11 @@ import "./globals.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
-import { Banner } from "../components/Banner";
-import { ContentInfo } from "../components/ContentInfo";
+import { Banner } from "../../components/Banner";
+import { ContentInfo } from "../../components/ContentInfo";
 
 const yesevaOne = Yeseva_One({
   subsets: ["latin"],
@@ -30,13 +32,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type RootLayoutProps = {
   children: React.ReactNode;
-}>) {
+  params: {
+    locale: string;
+  };
+};
+
+export default async function RootLayout(props: RootLayoutProps) {
+  const {
+    children,
+    params: { locale },
+  } = props;
+
+  const messages = await getMessages();
+
   return (
-    <html lang="ja" className={clsx(roboto.variable, yesevaOne.variable)}>
+    <html lang={locale} className={clsx(roboto.variable, yesevaOne.variable)}>
       <body
         className={clsx(
           "flex flex-col",
@@ -47,11 +59,11 @@ export default function RootLayout({
           "md:px-6",
         )}
       >
-        <Banner />
-
-        {children}
-
-        <ContentInfo />
+        <NextIntlClientProvider messages={messages}>
+          <Banner />
+          {children}
+          <ContentInfo />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

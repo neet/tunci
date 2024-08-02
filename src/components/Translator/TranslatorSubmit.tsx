@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { useFormStatus } from "react-dom";
 
 import { Button } from "../Button";
@@ -5,9 +6,11 @@ import { Button } from "../Button";
 export const TranslatorSubmit = () => {
   const { pending } = useFormStatus();
 
+  const t = useTranslations("TranslatorSubmit");
+
   return (
     <Button type="submit" disabled={pending}>
-      翻訳する
+      {t("translate")}
     </Button>
   );
 };

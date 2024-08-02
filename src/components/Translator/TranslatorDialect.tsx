@@ -1,25 +1,28 @@
+import { useTranslations } from "next-intl";
 import { FC } from "react";
 
 import { Select } from "../Select";
 
 export const TranslatorDialect: FC = () => {
+  const t = useTranslations("TranslatorDialect");
+
   return (
-    <Select label="方言" name="dialect">
-      <optgroup label="北海道・南西">
-        <option value="沙流">沙流</option>
-        <option value="千歳">千歳</option>
-        <option value="鵡川">鵡川</option>
-        <option value="幌別">幌別</option>
+    <Select label={t("dialect")} name="dialect" className="max-w-[64px]">
+      <optgroup label={t("southwestHokkaido")}>
+        <option value="沙流">{t("saru")}</option>
+        <option value="千歳">{t("chitose")}</option>
+        <option value="鵡川">{t("mukawa")}</option>
+        <option value="幌別">{t("horobetsu")}</option>
       </optgroup>
 
-      <optgroup label="北海道・北東">
-        <option value="静内">静内</option>
-        <option value="十勝">十勝</option>
-        <option value="釧路">釧路</option>
-        <option value="様似">様似</option>
-        <option value="美幌">美幌</option>
-        <option value="石狩">石狩</option>
-        <option value="阿寒">阿寒</option>
+      <optgroup label={t("northeastHokkaido")}>
+        <option value="静内">{t("shizunai")}</option>
+        <option value="十勝">{t("tokachi")}</option>
+        <option value="釧路">{t("kushiro")}</option>
+        <option value="様似">{t("samani")}</option>
+        <option value="美幌">{t("bihoro")}</option>
+        <option value="石狩">{t("ishikari")}</option>
+        <option value="阿寒">{t("akan")}</option>
       </optgroup>
     </Select>
   );
