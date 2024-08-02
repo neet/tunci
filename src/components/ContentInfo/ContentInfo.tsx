@@ -18,7 +18,7 @@ export const ContentInfo: FC = async () => {
             rel="alternate"
             href="/ain"
             hrefLang="ain"
-            className="text-violet-600 dark:text-violet-400 underline "
+            className="text-blue-600 dark:text-blue-400 underline "
           >
             aynu itak
           </Link>
@@ -29,7 +29,7 @@ export const ContentInfo: FC = async () => {
             rel="alternate"
             href="/ja"
             hrefLang="ja"
-            className="text-violet-600 dark:text-violet-400 underline"
+            className="text-blue-600 dark:text-blue-400 underline"
           >
             日本語
           </Link>

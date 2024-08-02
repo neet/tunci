@@ -24,7 +24,7 @@ export const Banner: FC = async () => {
 
       <Link
         href="/about"
-        className="text-violet-600 dark:text-violet-400 underline"
+        className="text-blue-600 dark:text-blue-400 underline"
       >
         <InformationCircleIcon className="size-5 mr-0.5 inline-block" />
         {t("Banner.about")}

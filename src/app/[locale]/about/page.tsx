@@ -28,7 +28,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         "bg-white dark:bg-black",
         "p-4 rounded mx-auto",
         "prose-headings:font-serif",
-        "prose prose-zinc prose-a:text-violet-600 prose-a:font-normal dark:prose-invert dark:prose-a:text-violet-400",
+        "prose prose-zinc prose-a:text-blue-600 prose-a:font-normal dark:prose-invert dark:prose-a:text-blue-400",
       )}
     >
       <Content />

@@ -20,7 +20,7 @@ export const Select: FC<SelectProps> = (props) => {
         "rounded-lg overflow-hidden",
         "bg-white h-full border border-zinc-300",
         "dark:bg-black dark:border-zinc-600",
-        "focus-within:outline outline-violet-400 outline-2 outline-offset-4",
+        "focus-within:outline outline-blue-400 outline-2 outline-offset-4",
       )}
     >
       <div

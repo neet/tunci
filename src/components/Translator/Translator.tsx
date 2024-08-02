@@ -72,7 +72,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
               "text-xl",
               "border bg-white border-zinc-300",
               "dark:bg-black dark:border-zinc-600",
-              "outline-violet-400 outline-2 focus:outline outline-offset-4",
+              "outline-blue-400 outline-2 focus:outline outline-offset-4",
             )}
             spellCheck={false}
             autoComplete="off"
