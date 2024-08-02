@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { FC, MouseEventHandler } from "react";
 import { useFormState } from "react-dom";
 
-import { Result } from "@/app/[locale]/actions";
+import { Result } from "@/app/[locale]/translate/actions";
 import { Radio } from "@/components/Radio";
 
 import { TranslatorDialect } from "./TranslatorDialect";
