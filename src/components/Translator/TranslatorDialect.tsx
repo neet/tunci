@@ -4,7 +4,7 @@ import { FC } from "react";
 import { Select } from "../Select";
 
 export const TranslatorDialect: FC = () => {
-  const t = useTranslations("TranslatorDialect");
+  const t = useTranslations("components.TranslatorDialect");
 
   return (
     <Select label={t("dialect")} name="dialect" className="max-w-[64px]">

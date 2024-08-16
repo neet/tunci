@@ -4,7 +4,7 @@ import { FC } from "react";
 import { Select } from "../Select";
 
 export const TranslatorPronoun: FC = () => {
-  const t = useTranslations("TranslatorPronoun");
+  const t = useTranslations("components.TranslatorPronoun");
 
   return (
     <Select label={t("vocaburary")} name="pronoun">

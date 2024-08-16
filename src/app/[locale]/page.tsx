@@ -15,8 +15,8 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
   });
 
   return {
-    title: t("Home.title"),
-    description: t("Home.description"),
+    title: t("app.Home.title"),
+    description: t("app.Home.description"),
   };
 }
 

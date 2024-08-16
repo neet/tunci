@@ -1,0 +1,13 @@
+# https://github.com/ixartz/Next-js-Boilerplate/blob/main/.vscode/i18n-ally-custom-framework.yml
+languageIds:
+  - javascript
+  - typescript
+  - javascriptreact
+  - typescriptreact
+
+usageMatchRegex:
+  - "[^\\w\\d]t\\(['\"`]({key})['\"`]"
+
+scopeRangeRegex: "(?:useTranslations\\(|getTranslations\\(|namespace:)\\s*['\"`](.*?)['\"`]"
+
+monopoly: true
