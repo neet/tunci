@@ -1,4 +1,4 @@
-import "../src/app/globals.css";
+import "../src/app/[locale]/globals.css";
 
 import type { Preview } from "@storybook/react";
 import { withFonts } from "./decorator";

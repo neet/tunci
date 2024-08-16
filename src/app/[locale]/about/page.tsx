@@ -14,8 +14,8 @@ export async function generateMetadata(
   });
 
   return {
-    title: t("AboutPage.title"),
-    description: t("AboutPage.description"),
+    title: t("app.AboutPage.title"),
+    description: t("app.AboutPage.description"),
   };
 }
 

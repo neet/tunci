@@ -3,13 +3,13 @@ import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 
 export const ContentInfo: FC = async () => {
-  const t = await getTranslations();
+  const t = await getTranslations("components.ContentInfo");
   const titleId = "contentinfo-title";
 
   return (
     <footer aria-labelledby={titleId} className="py-8">
       <h2 id={titleId} className="sr-only">
-        {t("ContentInfo.title")}
+        {t("title")}
       </h2>
 
       <ul className="mx-auto flex gap-4 flex-wrap justify-center">

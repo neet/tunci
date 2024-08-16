@@ -10,7 +10,7 @@ export const TranslatorText: FC<TranslatorTextProps> = (props) => {
   const { children } = props;
 
   const { pending } = useFormStatus();
-  const t = useTranslations("TranslatorText");
+  const t = useTranslations("components.TranslatorText");
 
   if (pending) {
     return (

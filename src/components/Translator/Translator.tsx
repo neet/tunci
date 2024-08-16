@@ -1,10 +1,10 @@
 "use client";
 
-import { ClipboardIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { FC, MouseEventHandler } from "react";
 import { useFormState } from "react-dom";
+import { BsClipboard, BsCopy } from "react-icons/bs";
 
 import { Result } from "@/app/[locale]/actions";
 import { Radio } from "@/components/Radio";
@@ -22,7 +22,7 @@ export type TranslatorProps = {
 export const Translator: FC<TranslatorProps> = (props) => {
   const { action, className } = props;
 
-  const t = useTranslations("Translator");
+  const t = useTranslations("components.Translator");
 
   const [state, submitAction] = useFormState(action, {
     type: "ok",
@@ -32,11 +32,28 @@ export const Translator: FC<TranslatorProps> = (props) => {
   const error = state.type === "error" ? state.message : null;
   const translation = state.type === "ok" ? state.text : null;
 
+  const handlePaste: MouseEventHandler = async (e) => {
+    e.preventDefault();
+
+    const text = await navigator.clipboard.readText();
+    const textarea = document.getElementById("text");
+
+    if (!(textarea instanceof HTMLTextAreaElement)) {
+      return;
+    }
+
+    textarea.value = text.trim();
+    textarea?.focus();
+  };
+
   const handleCopy: MouseEventHandler = (e) => {
     e.preventDefault();
-    if (translation != null) {
-      navigator.clipboard.writeText(translation);
+
+    if (translation == null) {
+      return;
     }
+
+    navigator.clipboard.writeText(translation);
     window.alert(t("copied"));
   };
 
@@ -58,7 +75,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
       </fieldset>
 
       <div className="flex flex-col w-full gap-2 lg:flex-row">
-        <div className="flex-1">
+        <div className="flex-1 relative">
           <label className="sr-only" htmlFor="text">
             {t("prompt")}
           </label>
@@ -83,6 +100,19 @@ export const Translator: FC<TranslatorProps> = (props) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             style={{ fieldSizing: "content" } as any}
           />
+
+          <button
+            className={clsx(
+              "absolute bottom-0 right-0 p-2 m-1 rounded-full",
+              "text-zinc-600 dark:text-zinc-400",
+              "hover:bg-zinc-200 dark:hover:bg-zinc-800",
+              "transition",
+            )}
+            aria-label={t("paste")}
+            onClick={handlePaste}
+          >
+            <BsClipboard className="size-5" aria-hidden />
+          </button>
         </div>
 
         <div className="flex-1 relative">
@@ -109,7 +139,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
             aria-label={t("copy")}
             onClick={handleCopy}
           >
-            <ClipboardIcon className="size-6" aria-hidden />
+            <BsCopy className="size-5" aria-hidden />
           </button>
         </div>
       </div>
