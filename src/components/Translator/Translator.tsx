@@ -2,17 +2,17 @@
 
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import { FC, MouseEventHandler } from "react";
+import { FC } from "react";
 import { useFormState } from "react-dom";
-import { BsClipboard, BsCopy } from "react-icons/bs";
 
 import { Result } from "@/app/[locale]/actions";
 import { Radio } from "@/components/Radio";
 
 import { TranslatorDialect } from "./TranslatorDialect";
+import { TranslatorInput } from "./TranslatorInput";
+import { TranslatorOutput } from "./TranslatorOutput";
 import { TranslatorPronoun } from "./TranslatorPronoun";
 import { TranslatorSubmit } from "./TranslatorSubmit";
-import { TranslatorText } from "./TranslatorText";
 
 export type TranslatorProps = {
   className?: string;
@@ -26,15 +26,21 @@ export const Translator: FC<TranslatorProps> = (props) => {
 
   const [state, submitAction] = useFormState(action, {
     type: "ok",
-    text: "",
+    input: {
+      alt: "",
+    },
+    output: {
+      text: "",
+      alt: "",
+    },
   });
 
-  const error = state.type === "error" ? state.message : null;
-  const translation = state.type === "ok" ? state.text : null;
+  const error = state.type === "error" ? state.message : undefined;
+  const translation = state.type === "ok" ? state.output.text : undefined;
+  const inputAlt = state.type === "ok" ? state.input.alt : undefined;
+  const outputAlt = state.type === "ok" ? state.output?.alt : undefined;
 
-  const handlePaste: MouseEventHandler = async (e) => {
-    e.preventDefault();
-
+  const handlePaste = async () => {
     const text = await navigator.clipboard.readText();
     const textarea = document.getElementById("text");
 
@@ -46,9 +52,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     textarea?.focus();
   };
 
-  const handleCopy: MouseEventHandler = (e) => {
-    e.preventDefault();
-
+  const handleCopy = () => {
     if (translation == null) {
       return;
     }
@@ -74,73 +78,21 @@ export const Translator: FC<TranslatorProps> = (props) => {
         </Radio>
       </fieldset>
 
-      <div className="flex flex-col w-full gap-2 lg:flex-row">
-        <div className="flex-1 relative">
-          <label className="sr-only" htmlFor="text">
-            {t("prompt")}
-          </label>
-
-          <textarea
-            id="text"
-            name="text"
-            className={clsx(
-              "w-full min-h-48 md:min-h-64 lg:h-full",
-              "p-3 rounded-lg",
-              "text-xl",
-              "border bg-white border-zinc-300",
-              "dark:bg-black dark:border-zinc-600",
-              "outline-blue-400 outline-2 focus:outline outline-offset-4",
-            )}
-            spellCheck={false}
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            aria-invalid={error != null}
-            aria-errormessage="error-message"
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            style={{ fieldSizing: "content" } as any}
+      <div className="flex flex-col gap-2 lg:flex-row">
+        <div className="flex-1">
+          <TranslatorInput
+            error={error}
+            inputAlt={inputAlt}
+            handlePaste={handlePaste}
           />
-
-          <button
-            className={clsx(
-              "absolute bottom-0 right-0 p-2 m-1 rounded-full",
-              "text-zinc-600 dark:text-zinc-400",
-              "hover:bg-zinc-200 dark:hover:bg-zinc-800",
-              "transition",
-            )}
-            aria-label={t("paste")}
-            onClick={handlePaste}
-          >
-            <BsClipboard className="size-5" aria-hidden />
-          </button>
         </div>
 
-        <div className="flex-1 relative">
-          <div
-            role="status"
-            className={clsx(
-              "w-full min-h-48 md:min-h-64 lg:h-full",
-              "p-3 rounded-lg",
-              "text-xl",
-              "bg-zinc-100 border-zinc-300 border",
-              "dark:bg-zinc-900 dark:border-zinc-600",
-            )}
-          >
-            <TranslatorText>{translation}</TranslatorText>
-          </div>
-
-          <button
-            className={clsx(
-              "absolute bottom-0 right-0 p-2 m-1 rounded-full",
-              "text-zinc-600 dark:text-zinc-400",
-              "hover:bg-zinc-200 dark:hover:bg-zinc-800",
-              "transition",
-            )}
-            aria-label={t("copy")}
-            onClick={handleCopy}
-          >
-            <BsCopy className="size-5" aria-hidden />
-          </button>
+        <div className="flex-1">
+          <TranslatorOutput
+            value={translation}
+            alt={outputAlt}
+            onCopy={handleCopy}
+          />
         </div>
       </div>
 

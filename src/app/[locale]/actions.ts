@@ -1,6 +1,9 @@
 "use server";
 
-import assert from "assert";
+import { to_kana } from "ainu-utils";
+
+import { convertKanaToLatin } from "@/api/convertKanaToLatin";
+import { translateText } from "@/api/translateText";
 
 export type Result =
   | {
@@ -9,10 +12,19 @@ export type Result =
     }
   | {
       type: "ok";
-      text: string;
+      input: {
+        alt?: string;
+      };
+      output: {
+        text: string;
+        alt?: string;
+      };
     };
 
+const KANA_PATTERN = /[ア-ン゛゜ァ-ォャ-ョー]/;
 const MAX_LENGTH = 200;
+
+const isKana = (text: string): boolean => KANA_PATTERN.test(text);
 
 export async function translate(
   _prevData: unknown,
@@ -30,13 +42,6 @@ export async function translate(
     };
   }
 
-  if (text.length > MAX_LENGTH) {
-    return {
-      type: "error",
-      message: `テキストの長さが制限を超えています。${MAX_LENGTH}文字以内にしてください。`,
-    };
-  }
-
   if (typeof direction !== "string") {
     return {
       type: "error",
@@ -44,49 +49,69 @@ export async function translate(
     };
   }
 
-  let prompt: string = "";
-  if (direction === "ja2ain") {
-    prompt = `translate Japanese to Ainu (${dialect}, ${pronoun}): ${text}`;
-  } else {
-    prompt = `translate Ainu (${dialect}, ${pronoun}) to Japanese: ${text}`;
+  if (typeof dialect !== "string") {
+    return {
+      type: "error",
+      message: "方言が不正です。",
+    };
+  }
+
+  if (typeof pronoun !== "string") {
+    return {
+      type: "error",
+      message: "人称が不正です。",
+    };
+  }
+
+  if (text.length > MAX_LENGTH) {
+    return {
+      type: "error",
+      message: `テキストの長さが制限を超えています。${MAX_LENGTH}文字以内にしてください。`,
+    };
   }
 
   try {
-    assert(process.env.HF_ENDPOINT, "HF_ENDPOINT is not set");
-    assert(process.env.HF_TOKEN, "HF_TOKEN is not set");
+    const textLatin = isKana(text) ? await convertKanaToLatin(text) : text;
+    const translationSource = textLatin.replace(/\n/g, " ").trim();
 
-    const response = await fetch(process.env.HF_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.HF_TOKEN}`,
-      },
-      body: JSON.stringify({
-        model: "aynumosir/mt5-small-ainu",
-        inputs: [prompt],
-        parameters: {
-          max_length: 128,
-          early_stopping: true,
-        },
-      }),
+    const translation = await translateText(translationSource, {
+      direction,
+      dialect,
+      pronoun,
     });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch", { cause: response });
-    }
-
-    const data = await response.json();
 
     return {
       type: "ok",
-      text: data?.[0]?.["translation_text"],
+      input: {
+        alt:
+          direction === "ain2ja"
+            ? isKana(text)
+              ? translationSource
+              : to_kana(text)
+            : undefined,
+      },
+      output: {
+        text: translation,
+        alt: direction === "ja2ain" ? to_kana(translation) : undefined,
+      },
     };
   } catch (error) {
-    console.error(error);
-    return {
-      type: "error",
-      message:
-        "サーバーを起動していますので、１〜２分待ってから再度お試しください。費用を削減するため、夜間など利用者が少ない時間帯には自動的に停止しています。",
-    };
+    if (
+      error instanceof Error &&
+      error.cause instanceof Response &&
+      error.cause.status === 503
+    ) {
+      return {
+        type: "error",
+        message:
+          "サーバーを起動していますので、１〜２分待ってから再度お試しください。費用を削減するため、夜間など利用者が少ない時間帯には自動的に停止しています。",
+      };
+    } else {
+      console.error(error);
+      return {
+        type: "error",
+        message: "エラーが発生しました。しばらく待ってから再度お試しください。",
+      };
+    }
   }
 }
