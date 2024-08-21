@@ -28,7 +28,9 @@ export const TranslatorOutput: FC<TranslatorOutputProps> = (props) => {
         className,
       )}
     >
-      <div className={clsx("p-3", "text-xl", "min-h-[5lh] w-full")}>
+      <div
+        className={clsx("p-3", "text-xl", "min-h-[5lh] w-full lg:min-h-[7lh]")}
+      >
         <TranslatorText>{value}</TranslatorText>
       </div>
 

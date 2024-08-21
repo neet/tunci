@@ -33,7 +33,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         name="text"
         className={clsx(
           "block",
-          "min-h-[5lh] w-full",
+          "min-h-[5lh] w-full lg:min-h-[7lh]",
           "p-3",
           "text-xl",
           "bg-transparent",
