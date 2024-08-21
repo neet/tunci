@@ -3,14 +3,18 @@ import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { BsClipboard } from "react-icons/bs";
 
+import { Transcription } from "@/app/[locale]/actions";
+
+import { TranslatorTranscription } from "./TranslatorTranscription";
+
 export type TranslatorInputProps = {
   error?: string;
-  inputAlt?: string;
+  transcription?: Transcription;
   handlePaste: () => void | Promise<void>;
 };
 
 export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
-  const { error, inputAlt, handlePaste } = props;
+  const { error, transcription, handlePaste } = props;
 
   const t = useTranslations("components.Translator");
 
@@ -52,7 +56,9 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
       <div
         className={clsx("flex justify-between items-end gap-2", "px-3 pb-3")}
       >
-        <p className="text-zinc-500 text-sm">{inputAlt}</p>
+        <div className="flex-1">
+          {transcription && <TranslatorTranscription value={transcription} />}
+        </div>
 
         <div className="-mx-3 -mb-3">
           <button

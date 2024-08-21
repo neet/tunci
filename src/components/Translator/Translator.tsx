@@ -26,19 +26,16 @@ export const Translator: FC<TranslatorProps> = (props) => {
 
   const [state, submitAction] = useFormState(action, {
     type: "ok",
-    input: {
-      alt: "",
-    },
-    output: {
-      text: "",
-      alt: "",
-    },
+    translation: "",
+    transcriptions: {},
   });
 
   const error = state.type === "error" ? state.message : undefined;
-  const translation = state.type === "ok" ? state.output.text : undefined;
-  const inputAlt = state.type === "ok" ? state.input.alt : undefined;
-  const outputAlt = state.type === "ok" ? state.output?.alt : undefined;
+  const translation = state.type === "ok" ? state.translation : undefined;
+  const inputTranscription =
+    state.type === "ok" ? state.transcriptions?.input : undefined;
+  const outputTranscription =
+    state.type === "ok" ? state.transcriptions?.output : undefined;
 
   const handlePaste = async () => {
     const text = await navigator.clipboard.readText();
@@ -81,16 +78,16 @@ export const Translator: FC<TranslatorProps> = (props) => {
       <div className="flex flex-col gap-2 lg:flex-row">
         <div className="flex-1">
           <TranslatorInput
+            transcription={inputTranscription}
             error={error}
-            inputAlt={inputAlt}
             handlePaste={handlePaste}
           />
         </div>
 
         <div className="flex-1">
           <TranslatorOutput
+            transcription={outputTranscription}
             value={translation}
-            alt={outputAlt}
             onCopy={handleCopy}
           />
         </div>

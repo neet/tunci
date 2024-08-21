@@ -4,17 +4,20 @@ import { FC } from "react";
 import { useFormStatus } from "react-dom";
 import { BsCopy } from "react-icons/bs";
 
+import { Transcription } from "@/app/[locale]/actions";
+
 import { TranslatorText } from "./TranslatorText";
+import { TranslatorTranscription } from "./TranslatorTranscription";
 
 export type TranslatorOutputProps = {
   value?: string;
-  alt?: string;
   className?: string;
+  transcription?: Transcription;
   onCopy?: () => void;
 };
 
 export const TranslatorOutput: FC<TranslatorOutputProps> = (props) => {
-  const { value, alt, className, onCopy } = props;
+  const { value, transcription, className, onCopy } = props;
 
   const t = useTranslations("components.Translator");
   const { pending } = useFormStatus();
@@ -41,7 +44,9 @@ export const TranslatorOutput: FC<TranslatorOutputProps> = (props) => {
           pending && "invisible",
         )}
       >
-        <p className="text-zinc-500 text-sm">{alt}</p>
+        <div className="flex-1">
+          {transcription && <TranslatorTranscription value={transcription} />}
+        </div>
 
         <div className={clsx("-mx-3 -mb-3")}>
           <button
