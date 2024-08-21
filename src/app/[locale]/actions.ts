@@ -5,6 +5,11 @@ import { to_kana } from "ainu-utils";
 import { convertKanaToLatin } from "@/api/convertKanaToLatin";
 import { translateText } from "@/api/translateText";
 
+export type Transcription = {
+  type: "kana" | "latin";
+  text: string;
+};
+
 export type Result =
   | {
       type: "error";
@@ -12,12 +17,10 @@ export type Result =
     }
   | {
       type: "ok";
-      input: {
-        alt?: string;
-      };
-      output: {
-        text: string;
-        alt?: string;
+      translation: string;
+      transcriptions: {
+        input?: Transcription;
+        output?: Transcription;
       };
     };
 
@@ -80,21 +83,34 @@ export async function translate(
       pronoun,
     });
 
-    return {
+    const result: Result = {
       type: "ok",
-      input: {
-        alt:
-          direction === "ain2ja"
-            ? isKana(text)
-              ? translationSource
-              : to_kana(text)
-            : undefined,
-      },
-      output: {
-        text: translation,
-        alt: direction === "ja2ain" ? to_kana(translation) : undefined,
-      },
+      translation,
+      transcriptions: {},
     };
+
+    if (direction === "ja2ain") {
+      result.transcriptions.output = {
+        type: "kana",
+        text: to_kana(translation),
+      };
+    }
+
+    if (direction === "ain2ja") {
+      if (isKana(text)) {
+        result.transcriptions.input = {
+          type: "latin",
+          text: translationSource,
+        };
+      } else {
+        result.transcriptions.input = {
+          type: "kana",
+          text: to_kana(translationSource),
+        };
+      }
+    }
+
+    return result;
   } catch (error) {
     if (
       error instanceof Error &&
