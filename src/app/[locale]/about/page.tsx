@@ -27,6 +27,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
       className={clsx(
         "bg-white dark:bg-black",
         "p-4 rounded mx-auto",
+        "border border-zinc-300 dark:border-zinc-700 rounded-lg",
         "prose-headings:font-serif",
         "prose prose-zinc prose-a:text-blue-600 prose-a:font-normal dark:prose-invert dark:prose-a:text-blue-400",
       )}

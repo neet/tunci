@@ -26,6 +26,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         "border bg-white border-zinc-300",
         "dark:bg-black dark:border-zinc-600",
         "outline-blue-400 outline-2 focus-within:outline outline-offset-4",
+        "forced-colors:outline-[Highlight]",
       )}
     >
       <label className="sr-only" htmlFor="text">
@@ -42,6 +43,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
           "text-xl",
           "bg-transparent",
           "outline-none resize-none",
+          "forced-colors:outline-0",
         )}
         spellCheck={false}
         autoComplete="off"

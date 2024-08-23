@@ -17,16 +17,16 @@ export const Select: FC<SelectProps> = (props) => {
     <div
       className={clsx(
         "flex items-center",
-        "rounded-lg overflow-hidden",
-        "bg-white h-full border border-zinc-300",
+        // "rounded-lg",
+        "bg-white h-full",
         "dark:bg-black dark:border-zinc-600",
-        "focus-within:outline outline-blue-400 outline-2 outline-offset-4",
       )}
     >
       <div
         className={clsx(
           "px-2.5 py-1.5",
-          "bg-zinc-100 text-zinc-500 border-r border-zinc-300",
+          "bg-zinc-100 text-zinc-500 border border-zinc-300",
+          "rounded-lg rounded-r-none",
           "dark:text-zinc-300 dark:bg-zinc-900 dark:border-zinc-600",
         )}
       >
@@ -37,8 +37,11 @@ export const Select: FC<SelectProps> = (props) => {
         id={selectId}
         className={clsx(
           "px-2.5 py-1.5",
+          "rounded-lg rounded-l-none",
           "text-end",
-          "focus:outline-none",
+          "border border-l-0 border-zinc-300",
+          "dark:border-zinc-600",
+          "focus:outline outline-blue-400 outline-2 outline-offset-4",
           "appearance-none bg-transparent",
           className,
         )}

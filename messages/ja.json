@@ -17,7 +17,7 @@
       "sourceLanguage": "入力する言語",
       "japaneseToAinu": "日本語からアイヌ語",
       "ainuToJapanese": "アイヌ語から日本語",
-      "prompt": "翻訳する言語を入力",
+      "prompt": "翻訳したい文章",
       "copy": "クリップボードにコピー",
       "copied": "コピーしました",
       "paste": "貼り付け"
