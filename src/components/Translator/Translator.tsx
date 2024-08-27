@@ -8,6 +8,7 @@ import { useFormState } from "react-dom";
 import { Result } from "@/app/[locale]/actions";
 import { Radio } from "@/components/Radio";
 
+import { Alert } from "../Alert";
 import { TranslatorDialect } from "./TranslatorDialect";
 import { TranslatorInput } from "./TranslatorInput";
 import { TranslatorOutput } from "./TranslatorOutput";
@@ -63,6 +64,12 @@ export const Translator: FC<TranslatorProps> = (props) => {
       className={clsx("flex flex-col gap-4", className)}
       action={submitAction}
     >
+      {error != null && (
+        <Alert id="error-message" role="alert">
+          {error}
+        </Alert>
+      )}
+
       <fieldset className="flex gap-5">
         <legend className="sr-only">{t("sourceLanguage")}</legend>
 
@@ -93,24 +100,10 @@ export const Translator: FC<TranslatorProps> = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 justify-between md:flex-row">
-        <div className="flex-1">
-          {error != null && (
-            <div
-              id="error-message"
-              role="alert"
-              className="text-red-600 dark:text-red-400"
-            >
-              {error}
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-wrap justify-end gap-2">
-          <TranslatorPronoun />
-          <TranslatorDialect />
-          <TranslatorSubmit />
-        </div>
+      <div className="flex flex-row flex-wrap gap-2 justify-end">
+        <TranslatorPronoun />
+        <TranslatorDialect />
+        <TranslatorSubmit />
       </div>
     </form>
   );
