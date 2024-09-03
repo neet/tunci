@@ -29,6 +29,16 @@ const MAX_LENGTH = 200;
 
 const isKana = (text: string): boolean => KANA_PATTERN.test(text);
 
+const normalize = async (text: string, direction: string): Promise<string> => {
+  if (direction === "ain2ja" && isKana(text)) {
+    text = await convertKanaToLatin(text);
+  }
+
+  text = text.replace(/\n/g, " ").trim();
+
+  return text;
+};
+
 export async function translate(
   _prevData: unknown,
   formData: FormData,
@@ -74,8 +84,7 @@ export async function translate(
   }
 
   try {
-    const textLatin = isKana(text) ? await convertKanaToLatin(text) : text;
-    const translationSource = textLatin.replace(/\n/g, " ").trim();
+    const translationSource = await normalize(text, direction);
 
     const translation = await translateText(translationSource, {
       direction,
