@@ -1,6 +1,6 @@
 import assert from "assert";
 
-export async function convertKanaToLatin(input: string): Promise<string> {
+export async function romanize(input: string): Promise<string> {
   assert(process.env.HF_KANA_ENDPOINT, "HF_KANA_ENDPOINT is not set");
   assert(process.env.HF_TOKEN, "HF_TOKEN is not set");
 

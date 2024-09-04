@@ -2,8 +2,7 @@
 
 import { to_kana } from "ainu-utils";
 
-import { convertKanaToLatin } from "@/api/convertKanaToLatin";
-import { translateText } from "@/api/translateText";
+import * as api from "@/api";
 
 export type Transcription = {
   type: "kana" | "latin";
@@ -31,7 +30,7 @@ const isKana = (text: string): boolean => KANA_PATTERN.test(text);
 
 const normalize = async (text: string, direction: string): Promise<string> => {
   if (direction === "ain2ja" && isKana(text)) {
-    text = await convertKanaToLatin(text);
+    text = await api.romanize(text);
   }
 
   text = text.replace(/\n/g, " ").trim();
@@ -86,7 +85,7 @@ export async function translate(
   try {
     const translationSource = await normalize(text, direction);
 
-    const translation = await translateText(translationSource, {
+    const translation = await api.translate(translationSource, {
       direction,
       dialect,
       pronoun,

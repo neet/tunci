@@ -6,7 +6,7 @@ export type TranslateParams = {
   pronoun: string;
 };
 
-export async function translateText(
+export async function translate(
   input: string,
   params: TranslateParams,
 ): Promise<string> {
