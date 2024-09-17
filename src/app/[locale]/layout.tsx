@@ -52,7 +52,7 @@ export default async function RootLayout(props: RootLayoutProps) {
       <body
         className={clsx(
           "flex flex-col",
-          "px-3 box-border",
+          "px-4 box-border",
           "text-black bg-zinc-50 heropattern-banknote-zinc-100",
           "dark:text-white dark:bg-zinc-900 dark:heropattern-banknote-zinc-950",
           "antialiased",
