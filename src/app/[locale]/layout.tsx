@@ -1,13 +1,12 @@
 import "./globals.css";
 
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 
-import { Hotjar } from "@/components/Hotjar";
 import { routing } from "@/i18n/routing";
 
 import { Banner } from "../../components/Banner";
@@ -75,8 +74,6 @@ export default async function RootLayout(props: RootLayoutProps) {
         </NextIntlClientProvider>
       </body>
       <GoogleAnalytics gaId="G-XZXN0DQWT7" />
-      <GoogleTagManager gtmId="GTM-PFP67VMC" />
-      <Hotjar />
     </html>
   );
 }
