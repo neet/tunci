@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
@@ -72,6 +73,8 @@ export default async function RootLayout(props: RootLayoutProps) {
           <ContentInfo />
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics gaId="G-XZXN0DQWT7" />
+      <GoogleTagManager gtmId="GTM-PFP67VMC" />
     </html>
   );
 }
