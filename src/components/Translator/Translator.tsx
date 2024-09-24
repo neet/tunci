@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, FormEventHandler } from "react";
 import { useFormState } from "react-dom";
 
 import { Result } from "@/app/[locale]/actions";
@@ -48,6 +48,10 @@ export const Translator: FC<TranslatorProps> = (props) => {
 
     textarea.value = text.trim();
     textarea?.focus();
+
+    gtag("event", "Translator::paste", {
+      text,
+    });
   };
 
   const handleCopy = () => {
@@ -56,13 +60,30 @@ export const Translator: FC<TranslatorProps> = (props) => {
     }
 
     navigator.clipboard.writeText(translation);
+
+    gtag("event", "Translator::copy", {
+      text: translation,
+    });
+
     window.alert(t("copied"));
+  };
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    const formData = new FormData(event.currentTarget);
+
+    gtag("event", "Translator::translate", {
+      text: formData.get("text"),
+      direction: formData.get("direction"),
+      pronoun: formData.get("pronoun"),
+      dialect: formData.get("dialect"),
+    });
   };
 
   return (
     <form
       className={clsx("flex flex-col gap-4", className)}
       action={submitAction}
+      onSubmitCapture={handleSubmit}
     >
       {error != null && (
         <Alert id="error-message" role="alert">
