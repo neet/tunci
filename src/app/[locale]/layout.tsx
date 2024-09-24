@@ -4,7 +4,9 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+
+import { routing } from "@/i18n/routing";
 
 import { Banner } from "../../components/Banner";
 import { ContentInfo } from "../../components/ContentInfo";
@@ -20,6 +22,10 @@ const roboto = Roboto({
   weight: ["300", "400", "500"],
   variable: "--font-roboto",
 });
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const metadata: Metadata = {
   title: {
@@ -45,6 +51,7 @@ export default async function RootLayout(props: RootLayoutProps) {
     params: { locale },
   } = props;
 
+  unstable_setRequestLocale(locale);
   const messages = await getMessages();
 
   return (

@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 import { BsInfoCircle } from "react-icons/bs";
 
-import { Link } from "@/navigation";
+import { Link } from "@/i18n/routing";
 
 export const Banner: FC = async () => {
   const t = await getTranslations("components.Banner");
