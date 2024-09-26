@@ -1,32 +1,39 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
-import { BsClipboard } from "react-icons/bs";
+import { BsClipboard, BsMic, BsVolumeUp } from "react-icons/bs";
 
 import { Transcription } from "@/app/[locale]/actions";
 
+import { IconButton } from "./IconButton";
 import { TranslatorTranscription } from "./TranslatorTranscription";
 
 export type TranslatorInputProps = {
+  className?: string;
   error?: string;
   transcription?: Transcription;
-  handlePaste: () => void | Promise<void>;
+  onPaste: () => void | Promise<void>;
+  onRecgonize: () => void | Promise<void>;
+  onPlay: () => void | Promise<void>;
 };
 
 export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
-  const { error, transcription, handlePaste } = props;
+  const { className, error, transcription, onPaste, onRecgonize, onPlay } =
+    props;
 
   const t = useTranslations("components.Translator");
 
   return (
     <div
       className={clsx(
+        "flex flex-col",
         "rounded-lg",
         "overflow-clip",
         "border bg-white border-zinc-300",
         "dark:bg-black dark:border-zinc-600",
         "outline-blue-400 outline-2 focus-within:outline outline-offset-4",
         "forced-colors:outline-[Highlight]",
+        className,
       )}
     >
       <label className="sr-only" htmlFor="text">
@@ -37,6 +44,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         id="text"
         name="text"
         className={clsx(
+          "flex-1",
           "block",
           "min-h-[5lh] w-full lg:min-h-[7lh]",
           "p-3",
@@ -55,27 +63,27 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         style={{ fieldSizing: "content" } as any}
       />
 
-      <div
-        className={clsx("flex justify-between items-end gap-2", "px-3 pb-3")}
-      >
-        <div className="flex-1">
-          {transcription && <TranslatorTranscription value={transcription} />}
-        </div>
+      <div>
+        {transcription && (
+          <TranslatorTranscription value={transcription} className="mx-3" />
+        )}
 
-        <div className="-mx-3 -mb-3">
-          <button
-            className={clsx(
-              "p-2 rounded-full",
-              "text-zinc-600 dark:text-zinc-400",
-              "hover:bg-zinc-200 dark:hover:bg-zinc-800",
-              "transition",
-            )}
-            type="button"
-            aria-label={t("paste")}
-            onClick={handlePaste}
-          >
-            <BsClipboard className="size-5" aria-hidden />
-          </button>
+        <div className="flex p-1">
+          <div className="flex justify-start flex-1">
+            <IconButton aria-label={t("recognize")} onClick={onRecgonize}>
+              <BsMic className="size-5" aria-hidden />
+            </IconButton>
+
+            <IconButton aria-label={t("play")} onClick={onPlay}>
+              <BsVolumeUp className="size-5" aria-hidden />
+            </IconButton>
+          </div>
+
+          <div className="flex jsutify-end">
+            <IconButton aria-label={t("paste")} onClick={onPaste}>
+              <BsClipboard className="size-5" aria-hidden />
+            </IconButton>
+          </div>
         </div>
       </div>
     </div>

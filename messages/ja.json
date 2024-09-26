@@ -20,7 +20,9 @@
       "prompt": "翻訳したい文章",
       "copy": "クリップボードにコピー",
       "copied": "コピーしました",
-      "paste": "貼り付け"
+      "paste": "貼り付け",
+      "recognize": "音声入力",
+      "play": "読み上げる"
     },
     "TranslatorDialect": {
       "dialect": "方言",

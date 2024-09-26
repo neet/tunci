@@ -8,6 +8,7 @@ export const Mixpanel: FC = () => {
     mixpanel.init("c4e076ff3ac1a7b9f1322efe06874e84", {
       debug: true,
       track_pageview: true,
+      ignore_dnt: true,
       persistence: "localStorage",
     });
   }, []);

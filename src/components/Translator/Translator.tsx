@@ -69,6 +69,21 @@ export const Translator: FC<TranslatorProps> = (props) => {
     window.alert(t("copied"));
   };
 
+  const handleRecgonize = () => {
+    mixpanel.track("Translator::recognize");
+    window.alert("この機能は現在準備中です。");
+  };
+
+  const handlePlayInput = () => {
+    mixpanel.track("Translator::play_input");
+    window.alert("この機能は現在準備中です。");
+  };
+
+  const handlePlayOutput = () => {
+    mixpanel.track("Translator::play_output");
+    window.alert("この機能は現在準備中です。");
+  };
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     const formData = new FormData(event.currentTarget);
 
@@ -107,17 +122,22 @@ export const Translator: FC<TranslatorProps> = (props) => {
       <div className="flex flex-col gap-2 lg:flex-row">
         <div className="flex-1">
           <TranslatorInput
+            className="h-full"
             transcription={inputTranscription}
             error={error}
-            handlePaste={handlePaste}
+            onPaste={handlePaste}
+            onPlay={handlePlayInput}
+            onRecgonize={handleRecgonize}
           />
         </div>
 
         <div className="flex-1">
           <TranslatorOutput
+            className="h-full"
             transcription={outputTranscription}
             value={translation}
             onCopy={handleCopy}
+            onPlay={handlePlayOutput}
           />
         </div>
       </div>
