@@ -3,15 +3,19 @@
 import mixpanel from "mixpanel-browser";
 import { FC, useEffect } from "react";
 
-export const Mixpanel: FC = () => {
+export type MixpanelProps = {
+  token: string;
+};
+
+export const Mixpanel: FC<MixpanelProps> = ({ token }) => {
   useEffect(() => {
-    mixpanel.init("c4e076ff3ac1a7b9f1322efe06874e84", {
-      debug: true,
+    mixpanel.init(token, {
       track_pageview: true,
       ignore_dnt: true,
       persistence: "localStorage",
+      debug: process.env.NODE_ENV === "development",
     });
-  }, []);
+  }, [token]);
 
   return null;
 };

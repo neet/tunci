@@ -75,7 +75,7 @@ export default async function RootLayout(props: RootLayoutProps) {
         </NextIntlClientProvider>
       </body>
       <GoogleAnalytics gaId="G-XZXN0DQWT7" />
-      <Mixpanel />
+      <Mixpanel token="c4e076ff3ac1a7b9f1322efe06874e84" />
     </html>
   );
 }
