@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import mixpanel from "mixpanel-browser";
 import { useTranslations } from "next-intl";
 import { FC, FormEventHandler } from "react";
 import { useFormState } from "react-dom";
@@ -49,7 +50,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     textarea.value = text.trim();
     textarea?.focus();
 
-    gtag("event", "Translator::paste", {
+    mixpanel.track("Translator::paste", {
       text,
     });
   };
@@ -61,17 +62,32 @@ export const Translator: FC<TranslatorProps> = (props) => {
 
     navigator.clipboard.writeText(translation);
 
-    gtag("event", "Translator::copy", {
+    mixpanel.track("Translator::copy", {
       text: translation,
     });
 
     window.alert(t("copied"));
   };
 
+  const handleRecgonize = () => {
+    mixpanel.track("Translator::recognize");
+    window.alert("この機能は現在準備中です。");
+  };
+
+  const handlePlayInput = () => {
+    mixpanel.track("Translator::play_input");
+    window.alert("この機能は現在準備中です。");
+  };
+
+  const handlePlayOutput = () => {
+    mixpanel.track("Translator::play_output");
+    window.alert("この機能は現在準備中です。");
+  };
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     const formData = new FormData(event.currentTarget);
 
-    gtag("event", "Translator::translate", {
+    mixpanel.track("Translator::translate", {
       text: formData.get("text"),
       direction: formData.get("direction"),
       pronoun: formData.get("pronoun"),
@@ -106,17 +122,22 @@ export const Translator: FC<TranslatorProps> = (props) => {
       <div className="flex flex-col gap-2 lg:flex-row">
         <div className="flex-1">
           <TranslatorInput
+            className="h-full"
             transcription={inputTranscription}
             error={error}
-            handlePaste={handlePaste}
+            onPaste={handlePaste}
+            onPlay={handlePlayInput}
+            onRecgonize={handleRecgonize}
           />
         </div>
 
         <div className="flex-1">
           <TranslatorOutput
+            className="h-full"
             transcription={outputTranscription}
             value={translation}
             onCopy={handleCopy}
+            onPlay={handlePlayOutput}
           />
         </div>
       </div>

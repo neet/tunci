@@ -11,16 +11,16 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@hotjar/browser": "^1.0.9",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.5",
     "@next/third-parties": "^14.2.13",
     "@tailwindcss/typography": "^0.5.13",
-    "@types/gtag.js": "^0.0.20",
     "@types/mdx": "^2.0.13",
+    "@types/mixpanel-browser": "^2.50.0",
     "ainu-utils": "^0.3.2",
     "clsx": "^2.1.1",
+    "mixpanel-browser": "^2.55.1",
     "next": "14.2.4",
     "next-intl": "^3.19.4",
     "react": "^18",

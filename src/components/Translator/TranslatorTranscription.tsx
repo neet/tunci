@@ -3,8 +3,6 @@ import { FC } from "react";
 
 import { Transcription } from "@/app/[locale]/actions";
 
-import { Badge } from "../Badge";
-
 export type TranslatorTranscriptionProps = {
   value: Transcription;
   className?: string;
@@ -17,8 +15,8 @@ export const TranslatorTranscription: FC<TranslatorTranscriptionProps> = (
   const { type, text } = value;
 
   return (
-    <div className={clsx("flex gap-2 items-center", className)}>
-      <Badge className="shrink-0">{type === "kana" ? "カナ" : "ABC"}</Badge>
+    <div className={clsx(className)}>
+      <span className="sr-only">{type === "kana" ? "カナ" : "ローマ字"}</span>
       <div className="flex-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-1">
         {text}
       </div>

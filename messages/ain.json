@@ -20,7 +20,9 @@
       "prompt": "itaktupte rusuy itak nuye yan",
       "copy": "KOPI",
       "copied": "KOPI e=ki a",
-      "paste": "PESUTO"
+      "paste": "PESUTO",
+      "recognize": "itak",
+      "play": "inu"
     },
     "TranslatorDialect": {
       "dialect": "iporse",

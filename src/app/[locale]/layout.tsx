@@ -11,6 +11,7 @@ import { routing } from "@/i18n/routing";
 
 import { Banner } from "../../components/Banner";
 import { ContentInfo } from "../../components/ContentInfo";
+import { Mixpanel } from "./_mixpanel";
 
 const yesevaOne = Yeseva_One({
   subsets: ["latin"],
@@ -74,6 +75,7 @@ export default async function RootLayout(props: RootLayoutProps) {
         </NextIntlClientProvider>
       </body>
       <GoogleAnalytics gaId="G-XZXN0DQWT7" />
+      <Mixpanel token="c4e076ff3ac1a7b9f1322efe06874e84" />
     </html>
   );
 }
