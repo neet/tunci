@@ -16,7 +16,6 @@
     "@next/mdx": "^14.2.5",
     "@next/third-parties": "^14.2.13",
     "@tailwindcss/typography": "^0.5.13",
-    "@types/gtag.js": "^0.0.20",
     "@types/mdx": "^2.0.13",
     "@types/mixpanel-browser": "^2.50.0",
     "ainu-utils": "^0.3.2",

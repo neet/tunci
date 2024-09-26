@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import mixpanel from "mixpanel-browser";
 import { useTranslations } from "next-intl";
 import { FC, FormEventHandler } from "react";
 import { useFormState } from "react-dom";
@@ -49,7 +50,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     textarea.value = text.trim();
     textarea?.focus();
 
-    gtag("event", "Translator::paste", {
+    mixpanel.track("Translator::paste", {
       text,
     });
   };
@@ -61,7 +62,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
 
     navigator.clipboard.writeText(translation);
 
-    gtag("event", "Translator::copy", {
+    mixpanel.track("Translator::copy", {
       text: translation,
     });
 
@@ -71,7 +72,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     const formData = new FormData(event.currentTarget);
 
-    gtag("event", "Translator::translate", {
+    mixpanel.track("Translator::translate", {
       text: formData.get("text"),
       direction: formData.get("direction"),
       pronoun: formData.get("pronoun"),
