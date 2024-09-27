@@ -46,9 +46,8 @@ export default async function Home(props: HomeProps) {
   }
 
   return (
-    <main className="w-full max-w-screen-xl mx-auto">
+    <main className="w-full max-w-screen-xl mx-auto p-4">
       <Translator
-        className="mt-4"
         text={text}
         textTranscription={
           result?.type === "ok" ? result.transcriptions.text : undefined

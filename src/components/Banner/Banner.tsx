@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { getTranslations } from "next-intl/server";
 import { FC } from "react";
-import { FiInfo } from "react-icons/fi";
 
 import { Link } from "@/i18n/routing";
 
@@ -11,24 +10,33 @@ export const Banner: FC = async () => {
   return (
     <header
       className={clsx(
-        "w-full max-w-screen-xl mx-auto",
-        "flex items-center justify-between",
-        "mt-4",
+        "sticky top-0",
+        "backdrop-blur",
+        "bg-white/80",
+        "dark:bg-black/80",
+        "shadow-sm",
+        "dark:shadow-none dark:border-b dark:border-zinc-700",
+        "z-50",
       )}
     >
-      <h1 className="font-serif text-4xl leading-relaxed">
-        <Link href="/" className="text-black dark:text-white no-underline">
-          tunci
-        </Link>
-      </h1>
-
-      <Link
-        href="/about"
-        className="text-blue-600 dark:text-blue-400 underline"
+      <div
+        className={clsx(
+          "flex",
+          "box-border",
+          "p-4",
+          "lg:max-w-screen-xl mx-auto",
+        )}
       >
-        <FiInfo className="size-4 mr-1 inline-block" aria-hidden />
-        {t("about")}
-      </Link>
+        <div className="flex flex-1">
+          <Link href="/">
+            <h1 className="text-lg font-bold hover:underline">アイヌ語翻訳</h1>
+          </Link>
+        </div>
+
+        <div className="flex justify-end text-blue-600 dark:text-blue-400 underline">
+          <Link href="/about">{t("about")}</Link>
+        </div>
+      </div>
     </header>
   );
 };
