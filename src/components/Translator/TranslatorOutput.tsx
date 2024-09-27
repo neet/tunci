@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
-import { useFormStatus } from "react-dom";
 import { BsCopy, BsVolumeUp } from "react-icons/bs";
 
 import { Transcription } from "@/app/[locale]/actions";
@@ -22,7 +21,6 @@ export const TranslatorOutput: FC<TranslatorOutputProps> = (props) => {
   const { value, transcription, className, onCopy, onPlay } = props;
 
   const t = useTranslations("components.Translator");
-  const { pending } = useFormStatus();
 
   return (
     <div
@@ -46,7 +44,7 @@ export const TranslatorOutput: FC<TranslatorOutputProps> = (props) => {
         <TranslatorText>{value}</TranslatorText>
       </div>
 
-      <div className={clsx(pending && "invisible")}>
+      <div className={clsx(!value && "invisible")}>
         {transcription && (
           <TranslatorTranscription value={transcription} className="mx-3" />
         )}

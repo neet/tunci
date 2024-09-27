@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { ChangeEventHandler, FC, useState } from "react";
 import { BsClipboard, BsMic, BsVolumeUp } from "react-icons/bs";
 
 import { Transcription } from "@/app/[locale]/actions";
@@ -21,7 +21,13 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
   const { className, error, transcription, onPaste, onRecgonize, onPlay } =
     props;
 
+  const [value, setValue] = useState("");
   const t = useTranslations("components.Translator");
+  const dirty = value.trim() !== "";
+
+  const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+    setValue(event.target.value);
+  };
 
   return (
     <div
@@ -61,6 +67,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         aria-errormessage="error-message"
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         style={{ fieldSizing: "content" } as any}
+        onChange={handleChange}
       />
 
       <div>
@@ -74,9 +81,11 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
               <BsMic className="size-5" aria-hidden />
             </IconButton>
 
-            <IconButton aria-label={t("play")} onClick={onPlay}>
-              <BsVolumeUp className="size-5" aria-hidden />
-            </IconButton>
+            {dirty && (
+              <IconButton aria-label={t("play")} onClick={onPlay}>
+                <BsVolumeUp className="size-5" aria-hidden />
+              </IconButton>
+            )}
           </div>
 
           <div className="flex jsutify-end">
