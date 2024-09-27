@@ -1,15 +1,14 @@
 import { useTranslations } from "next-intl";
 import { FC } from "react";
-import { useFormStatus } from "react-dom";
 
 export type TranslatorTextProps = {
+  pending: boolean;
   children?: string | null;
 };
 
 export const TranslatorText: FC<TranslatorTextProps> = (props) => {
-  const { children } = props;
+  const { pending, children } = props;
 
-  const { pending } = useFormStatus();
   const t = useTranslations("components.TranslatorText");
 
   if (pending) {

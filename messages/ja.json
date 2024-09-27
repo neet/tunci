@@ -22,7 +22,8 @@
       "copied": "コピーしました",
       "paste": "貼り付け",
       "recognize": "音声入力",
-      "play": "読み上げる"
+      "play": "読み上げる",
+      "share": "共有"
     },
     "TranslatorDialect": {
       "dialect": "方言",

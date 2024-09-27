@@ -1,11 +1,14 @@
 import { useTranslations } from "next-intl";
-import { useFormStatus } from "react-dom";
+import { FC } from "react";
 
 import { Button } from "../Button";
 
-export const TranslatorSubmit = () => {
-  const { pending } = useFormStatus();
+export type TranslatorSubmitProps = {
+  pending?: boolean;
+};
 
+export const TranslatorSubmit: FC<TranslatorSubmitProps> = (props) => {
+  const { pending } = props;
   const t = useTranslations("components.TranslatorSubmit");
 
   return (

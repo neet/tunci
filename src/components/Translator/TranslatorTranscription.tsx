@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { FC } from "react";
 
-import { Transcription } from "@/app/[locale]/actions";
+import { Transcription } from "@/models/transcription";
 
 export type TranslatorTranscriptionProps = {
   value: Transcription;
