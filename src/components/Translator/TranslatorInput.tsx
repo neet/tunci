@@ -60,7 +60,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         className={clsx(
           "flex-1",
           "block",
-          "min-h-[5lh] w-full lg:min-h-[7lh]",
+          "min-h-[5lh] w-full lg:min-h-[6lh]",
           "p-3",
           "text-xl",
           "bg-transparent",
@@ -98,7 +98,18 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
             )}
           </div>
 
-          <div className="flex jsutify-end">
+          <div className="flex jsutify-end items-center gap-1">
+            <div
+              className={clsx(
+                "tabular-nums text-sm leading-none",
+                value.length > 200
+                  ? "text-red-600 dark:text-red-400"
+                  : "text-zinc-600 dark:text-zinc-400",
+              )}
+            >
+              {value.length}/200
+            </div>
+
             <IconButton aria-label={t("paste")} onClick={onPaste}>
               <FiClipboard className="size-5" aria-hidden />
             </IconButton>
