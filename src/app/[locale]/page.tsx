@@ -32,9 +32,9 @@ export default async function Home(props: HomeProps) {
   const { searchParams } = props;
 
   const text = searchParams?.text;
-  const direction = searchParams?.direction;
-  const dialect = searchParams?.dialect;
-  const pronoun = searchParams?.pronoun;
+  const direction = searchParams?.direction ?? "ja2ain";
+  const dialect = searchParams?.dialect ?? "沙流";
+  const pronoun = searchParams?.pronoun ?? "first";
 
   let result: Result | undefined;
   if (text) {
