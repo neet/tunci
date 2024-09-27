@@ -2,12 +2,12 @@
 
 import clsx from "clsx";
 import mixpanel from "mixpanel-browser";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { FC, FormEventHandler } from "react";
-import { useFormState } from "react-dom";
+import { FC, FormEventHandler, useTransition } from "react";
 
-import { Result } from "@/app/[locale]/actions";
 import { Radio } from "@/components/Radio";
+import { Transcription } from "@/models/transcription";
 
 import { Alert } from "../Alert";
 import { TranslatorDialect } from "./TranslatorDialect";
@@ -18,26 +18,33 @@ import { TranslatorSubmit } from "./TranslatorSubmit";
 
 export type TranslatorProps = {
   className?: string;
-  action: (prevState: unknown, formData: FormData) => Promise<Result>;
+
+  text?: string;
+  translation?: string;
+  errorMessage?: string;
+  textTranscription?: Transcription;
+  translationTranscription?: Transcription;
+  direction?: string;
+  dialect?: string;
+  pronoun?: string;
 };
 
 export const Translator: FC<TranslatorProps> = (props) => {
-  const { action, className } = props;
+  const {
+    text,
+    translation,
+    errorMessage,
+    textTranscription,
+    translationTranscription,
+    direction,
+    dialect,
+    pronoun,
+    className,
+  } = props;
 
   const t = useTranslations("components.Translator");
-
-  const [state, submitAction] = useFormState(action, {
-    type: "ok",
-    translation: "",
-    transcriptions: {},
-  });
-
-  const error = state.type === "error" ? state.message : undefined;
-  const translation = state.type === "ok" ? state.translation : undefined;
-  const inputTranscription =
-    state.type === "ok" ? state.transcriptions?.input : undefined;
-  const outputTranscription =
-    state.type === "ok" ? state.transcriptions?.output : undefined;
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
 
   const handlePaste = async () => {
     const text = await navigator.clipboard.readText();
@@ -84,37 +91,73 @@ export const Translator: FC<TranslatorProps> = (props) => {
     window.alert("この機能は現在準備中です。");
   };
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
-    const formData = new FormData(event.currentTarget);
+  const handleShare = () => {
+    navigator.share({
+      url: window.location.href,
+    });
 
-    mixpanel.track("Translator::translate", {
-      text: formData.get("text"),
-      direction: formData.get("direction"),
-      pronoun: formData.get("pronoun"),
-      dialect: formData.get("dialect"),
+    mixpanel.track("Translator::share", {
+      text: translation,
+    });
+  };
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    startTransition(() => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const searchParams = new URLSearchParams();
+
+      for (const [key, value] of Array.from(formData)) {
+        if (value) {
+          searchParams.append(key, value as string);
+        }
+      }
+
+      const url = new URL(form.action);
+      url.search = searchParams.toString();
+
+      mixpanel.track("Translator::translate", {
+        text: formData.get("text"),
+        direction: formData.get("direction"),
+        pronoun: formData.get("pronoun"),
+        dialect: formData.get("dialect"),
+      });
+
+      router.push(url.toString());
     });
   };
 
   return (
     <form
       className={clsx("flex flex-col gap-4", className)}
-      action={submitAction}
+      action="/"
+      method="GET"
       onSubmitCapture={handleSubmit}
     >
-      {error != null && (
+      {errorMessage != null && (
         <Alert id="error-message" role="alert">
-          {error}
+          {errorMessage}
         </Alert>
       )}
 
       <fieldset className="flex gap-5">
         <legend className="sr-only">{t("sourceLanguage")}</legend>
 
-        <Radio name="direction" value="ja2ain" defaultChecked>
+        <Radio
+          name="direction"
+          value="ja2ain"
+          defaultChecked={direction === "ja2ain"}
+        >
           {t("japaneseToAinu")}
         </Radio>
 
-        <Radio name="direction" value="ain2ja">
+        <Radio
+          name="direction"
+          value="ain2ja"
+          defaultChecked={direction === "ain2ja"}
+        >
           {t("ainuToJapanese")}
         </Radio>
       </fieldset>
@@ -123,8 +166,9 @@ export const Translator: FC<TranslatorProps> = (props) => {
         <div className="flex-1">
           <TranslatorInput
             className="h-full"
-            transcription={inputTranscription}
-            error={error}
+            transcription={textTranscription}
+            defaultValue={text}
+            error={errorMessage}
             onPaste={handlePaste}
             onPlay={handlePlayInput}
             onRecgonize={handleRecgonize}
@@ -134,8 +178,10 @@ export const Translator: FC<TranslatorProps> = (props) => {
         <div className="flex-1">
           <TranslatorOutput
             className="h-full"
-            transcription={outputTranscription}
+            transcription={translationTranscription}
             value={translation}
+            pending={pending}
+            onShare={handleShare}
             onCopy={handleCopy}
             onPlay={handlePlayOutput}
           />
@@ -143,9 +189,9 @@ export const Translator: FC<TranslatorProps> = (props) => {
       </div>
 
       <div className="flex flex-row flex-wrap gap-2 justify-end">
-        <TranslatorPronoun />
-        <TranslatorDialect />
-        <TranslatorSubmit />
+        <TranslatorPronoun defaultValue={pronoun} />
+        <TranslatorDialect defaultValue={dialect} />
+        <TranslatorSubmit pending={pending} />
       </div>
     </form>
   );

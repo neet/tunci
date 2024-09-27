@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { getTranslations } from "next-intl/server";
 import { FC } from "react";
-import { BsInfoCircle } from "react-icons/bs";
+import { FiInfo } from "react-icons/fi";
 
 import { Link } from "@/i18n/routing";
 
@@ -26,7 +26,7 @@ export const Banner: FC = async () => {
         href="/about"
         className="text-blue-600 dark:text-blue-400 underline"
       >
-        <BsInfoCircle className="size-4 mr-1 inline-block" aria-hidden />
+        <FiInfo className="size-4 mr-1 inline-block" aria-hidden />
         {t("about")}
       </Link>
     </header>

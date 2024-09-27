@@ -3,11 +3,21 @@ import { FC } from "react";
 
 import { Select } from "../Select";
 
-export const TranslatorDialect: FC = () => {
+export type TranslatorDialectProps = {
+  defaultValue?: string;
+};
+
+export const TranslatorDialect: FC<TranslatorDialectProps> = (props) => {
+  const { defaultValue } = props;
   const t = useTranslations("components.TranslatorDialect");
 
   return (
-    <Select label={t("dialect")} name="dialect" className="max-w-[64px]">
+    <Select
+      label={t("dialect")}
+      name="dialect"
+      className="max-w-[64px]"
+      defaultValue={defaultValue}
+    >
       <optgroup label={t("southwestHokkaido")}>
         <option value="沙流">{t("saru")}</option>
         <option value="千歳">{t("chitose")}</option>

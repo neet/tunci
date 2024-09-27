@@ -3,10 +3,16 @@ import { getTranslations } from "next-intl/server";
 
 import { Translator } from "@/components/Translator";
 
-import { translate } from "./actions";
+import { Result, translate } from "./_server";
 
 type HomeProps = {
   params: { locale: string };
+  searchParams?: {
+    text?: string;
+    direction?: string;
+    dialect?: string;
+    pronoun?: string;
+  };
 };
 
 export async function generateMetadata(props: HomeProps): Promise<Metadata> {
@@ -20,10 +26,42 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
   };
 }
 
-export default function Home() {
+export const revalidate = 86_400;
+
+export default async function Home(props: HomeProps) {
+  const { searchParams } = props;
+
+  const text = searchParams?.text;
+  const direction = searchParams?.direction;
+  const dialect = searchParams?.dialect;
+  const pronoun = searchParams?.pronoun;
+
+  let result: Result | undefined;
+  if (text) {
+    result = await translate(text, {
+      direction,
+      dialect,
+      pronoun,
+    });
+  }
+
   return (
-    <main className="grow w-full max-w-screen-xl mx-auto">
-      <Translator action={translate} className="mt-4" />
+    <main className="w-full max-w-screen-xl mx-auto">
+      <Translator
+        className="mt-4"
+        text={text}
+        textTranscription={
+          result?.type === "ok" ? result.transcriptions.text : undefined
+        }
+        translation={result?.type === "ok" ? result.translation : undefined}
+        translationTranscription={
+          result?.type === "ok" ? result.transcriptions.translation : undefined
+        }
+        errorMessage={result?.type === "error" ? result.message : undefined}
+        direction={direction}
+        dialect={dialect}
+        pronoun={pronoun}
+      />
     </main>
   );
 }

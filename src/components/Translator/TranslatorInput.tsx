@@ -1,15 +1,16 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { ChangeEventHandler, FC, useState } from "react";
-import { BsClipboard, BsMic, BsVolumeUp } from "react-icons/bs";
+import { FiClipboard, FiMic, FiVolume2 } from "react-icons/fi";
 
-import { Transcription } from "@/app/[locale]/actions";
+import { Transcription } from "@/models/transcription";
 
 import { IconButton } from "./IconButton";
 import { TranslatorTranscription } from "./TranslatorTranscription";
 
 export type TranslatorInputProps = {
   className?: string;
+  defaultValue?: string;
   error?: string;
   transcription?: Transcription;
   onPaste: () => void | Promise<void>;
@@ -18,8 +19,15 @@ export type TranslatorInputProps = {
 };
 
 export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
-  const { className, error, transcription, onPaste, onRecgonize, onPlay } =
-    props;
+  const {
+    className,
+    defaultValue,
+    error,
+    transcription,
+    onPaste,
+    onRecgonize,
+    onPlay,
+  } = props;
 
   const [value, setValue] = useState("");
   const t = useTranslations("components.Translator");
@@ -59,6 +67,8 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
           "outline-none resize-none",
           "forced-colors:outline-0",
         )}
+        defaultValue={defaultValue}
+        required
         spellCheck={false}
         autoComplete="off"
         autoCorrect="off"
@@ -76,21 +86,21 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
         )}
 
         <div className="flex p-1">
-          <div className="flex justify-start flex-1">
+          <div className="flex justify-start flex-1 gap-1">
             <IconButton aria-label={t("recognize")} onClick={onRecgonize}>
-              <BsMic className="size-5" aria-hidden />
+              <FiMic className="size-5" aria-hidden />
             </IconButton>
 
             {dirty && (
               <IconButton aria-label={t("play")} onClick={onPlay}>
-                <BsVolumeUp className="size-5" aria-hidden />
+                <FiVolume2 className="size-5" aria-hidden />
               </IconButton>
             )}
           </div>
 
           <div className="flex jsutify-end">
             <IconButton aria-label={t("paste")} onClick={onPaste}>
-              <BsClipboard className="size-5" aria-hidden />
+              <FiClipboard className="size-5" aria-hidden />
             </IconButton>
           </div>
         </div>

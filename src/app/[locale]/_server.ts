@@ -1,12 +1,12 @@
-"use server";
-
 import { to_kana } from "ainu-utils";
 
 import * as api from "@/api";
+import { Transcription } from "@/models/transcription";
 
-export type Transcription = {
-  type: "kana" | "latin";
-  text: string;
+export type TranslationParams = {
+  direction?: string;
+  dialect?: string;
+  pronoun?: string;
 };
 
 export type Result =
@@ -18,8 +18,8 @@ export type Result =
       type: "ok";
       translation: string;
       transcriptions: {
-        input?: Transcription;
-        output?: Transcription;
+        text?: Transcription;
+        translation?: Transcription;
       };
     };
 
@@ -39,13 +39,10 @@ const normalize = async (text: string, direction: string): Promise<string> => {
 };
 
 export async function translate(
-  _prevData: unknown,
-  formData: FormData,
+  text: string,
+  params: TranslationParams,
 ): Promise<Result> {
-  const text = formData.get("text");
-  const direction = formData.get("direction");
-  const pronoun = formData.get("pronoun") ?? "first";
-  const dialect = formData.get("dialect") ?? "沙流";
+  const { direction, dialect, pronoun } = params;
 
   if (typeof text !== "string" || text.length === 0) {
     return {
@@ -98,7 +95,7 @@ export async function translate(
     };
 
     if (direction === "ja2ain") {
-      result.transcriptions.output = {
+      result.transcriptions.translation = {
         type: "kana",
         text: to_kana(translation),
       };
@@ -106,12 +103,12 @@ export async function translate(
 
     if (direction === "ain2ja") {
       if (isKana(text)) {
-        result.transcriptions.input = {
+        result.transcriptions.text = {
           type: "latin",
           text: translationSource,
         };
       } else {
-        result.transcriptions.input = {
+        result.transcriptions.text = {
           type: "kana",
           text: to_kana(translationSource),
         };

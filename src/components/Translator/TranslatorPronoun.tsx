@@ -3,11 +3,16 @@ import { FC } from "react";
 
 import { Select } from "../Select";
 
-export const TranslatorPronoun: FC = () => {
+export type TranslatorPronounProps = {
+  defaultValue?: string;
+};
+
+export const TranslatorPronoun: FC<TranslatorPronounProps> = (props) => {
+  const { defaultValue } = props;
   const t = useTranslations("components.TranslatorPronoun");
 
   return (
-    <Select label={t("vocaburary")} name="pronoun">
+    <Select label={t("vocaburary")} name="pronoun" defaultValue={defaultValue}>
       <option value="first">{t("conversation")}</option>
       <option value="fourth">{t("story")}</option>
     </Select>
