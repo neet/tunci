@@ -33,6 +33,12 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
   const t = useTranslations("components.Translator");
   const dirty = value.trim() !== "";
 
+  const handlePaste = async () => {
+    const text = await navigator.clipboard.readText();
+    setValue(text);
+    onPaste();
+  };
+
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     setValue(event.target.value);
   };
@@ -110,7 +116,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
               {value.length}/200
             </div>
 
-            <IconButton aria-label={t("paste")} onClick={onPaste}>
+            <IconButton aria-label={t("paste")} onClick={handlePaste}>
               <FiClipboard className="size-5" aria-hidden />
             </IconButton>
           </div>

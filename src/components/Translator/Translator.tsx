@@ -46,17 +46,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
-  const handlePaste = async () => {
-    const text = await navigator.clipboard.readText();
-    const textarea = document.getElementById("text");
-
-    if (!(textarea instanceof HTMLTextAreaElement)) {
-      return;
-    }
-
-    textarea.value = text.trim();
-    textarea?.focus();
-
+  const handlePaste = () => {
     mixpanel.track("Translator::paste", {
       text,
     });
@@ -115,7 +105,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
         }
       }
 
-      const url = new URL(form.action);
+      const url = new URL(form.action, window.location.origin);
       url.search = searchParams.toString();
 
       mixpanel.track("Translator::translate", {
