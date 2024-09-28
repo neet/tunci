@@ -3,7 +3,7 @@ import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Yeseva_One } from "next/font/google";
+import { Roboto, Yeseva_One } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 
@@ -12,6 +12,12 @@ import { routing } from "@/i18n/routing";
 import { Banner } from "../../components/Banner";
 import { ContentInfo } from "../../components/ContentInfo";
 import { Mixpanel } from "./_mixpanel";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-roboto",
+});
 
 const yesevaOne = Yeseva_One({
   subsets: ["latin"],
@@ -51,7 +57,7 @@ export default async function RootLayout(props: RootLayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={clsx(yesevaOne.variable)}>
+    <html lang={locale} className={clsx(roboto.variable, yesevaOne.variable)}>
       <body
         className={clsx(
           "box-border",
