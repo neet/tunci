@@ -11,8 +11,7 @@ const config: Config = {
     extend: {
       // https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#with-tailwind-css
       fontFamily: {
-        sans: ["var(--font-roboto)"],
-        serif: ["var(--font-yeseva-one)"],
+        yeseva: ["var(--font-yeseva-one)"],
       },
     },
   },
