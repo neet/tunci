@@ -29,7 +29,7 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
 export const revalidate = 86_400;
 
 export default async function Home(props: HomeProps) {
-  const { searchParams } = props;
+  const { params, searchParams } = props;
 
   const text = searchParams?.text;
   const direction = searchParams?.direction ?? "ja2ain";
@@ -48,6 +48,7 @@ export default async function Home(props: HomeProps) {
   return (
     <main className="w-full max-w-screen-xl mx-auto p-4">
       <Translator
+        action={`/${params.locale}`}
         text={text}
         textTranscription={
           result?.type === "ok" ? result.transcriptions.text : undefined

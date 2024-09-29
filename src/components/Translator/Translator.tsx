@@ -18,6 +18,7 @@ import { TranslatorSubmit } from "./TranslatorSubmit";
 
 export type TranslatorProps = {
   className?: string;
+  action: string;
 
   text?: string;
   translation?: string;
@@ -39,6 +40,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     direction,
     dialect,
     pronoun,
+    action,
     className,
   } = props;
 
@@ -97,6 +99,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
 
       const form = event.currentTarget;
       const formData = new FormData(form);
+      const url = new URL(form.action);
       const searchParams = new URLSearchParams();
 
       for (const [key, value] of Array.from(formData)) {
@@ -104,8 +107,6 @@ export const Translator: FC<TranslatorProps> = (props) => {
           searchParams.append(key, value as string);
         }
       }
-
-      const url = new URL(form.action, window.location.origin);
       url.search = searchParams.toString();
 
       mixpanel.track("Translator::translate", {
@@ -122,7 +123,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
   return (
     <form
       className={clsx("flex flex-col gap-4", className)}
-      action="/"
+      action={action}
       method="GET"
       onSubmitCapture={handleSubmit}
     >
