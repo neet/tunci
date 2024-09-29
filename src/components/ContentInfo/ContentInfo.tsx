@@ -36,7 +36,7 @@ export const ContentInfo: FC = async () => {
         </li>
       </ul>
 
-      <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-center">
+      <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-center text-sm">
         Copyright
         <span className="mx-1.5" aria-hidden>
           ©
