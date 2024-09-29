@@ -72,12 +72,12 @@ export const Translator: FC<TranslatorProps> = (props) => {
   };
 
   const handlePlayInput = () => {
-    mixpanel.track("Translator::play_input");
+    mixpanel.track("Translator::play::input");
     window.alert("この機能は現在準備中です。");
   };
 
   const handlePlayOutput = () => {
-    mixpanel.track("Translator::play_output");
+    mixpanel.track("Translator::play::output");
     window.alert("この機能は現在準備中です。");
   };
 
