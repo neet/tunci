@@ -10,6 +10,7 @@ import { Radio } from "@/components/Radio";
 import { Transcription } from "@/models/transcription";
 
 import { Alert } from "../Alert";
+import { TranslatorAlternatives } from "./TranslatorAlternatives";
 import { TranslatorDialect } from "./TranslatorDialect";
 import { TranslatorInput } from "./TranslatorInput";
 import { TranslatorOutput } from "./TranslatorOutput";
@@ -28,6 +29,8 @@ export type TranslatorProps = {
   direction?: string;
   dialect?: string;
   pronoun?: string;
+
+  translationsPromise?: Promise<string[]>;
 };
 
 export const Translator: FC<TranslatorProps> = (props) => {
@@ -42,6 +45,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     pronoun,
     action,
     className,
+    translationsPromise,
   } = props;
 
   const t = useTranslations("components.Translator");
@@ -68,7 +72,7 @@ export const Translator: FC<TranslatorProps> = (props) => {
     window.alert(t("copied"));
   };
 
-  const handleRecgonize = () => {
+  const handleRecognize = () => {
     mixpanel.track("Translator::recognize");
     window.alert("この機能は現在準備中です。");
   };
@@ -153,30 +157,32 @@ export const Translator: FC<TranslatorProps> = (props) => {
         </Radio>
       </fieldset>
 
-      <div className="flex flex-col gap-2 lg:flex-row">
-        <div className="flex-1">
-          <TranslatorInput
-            className="h-full"
-            transcription={textTranscription}
-            defaultValue={text}
-            error={errorMessage}
-            onPaste={handlePaste}
-            onPlay={handlePlayInput}
-            onRecgonize={handleRecgonize}
-          />
-        </div>
+      <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
+        <TranslatorInput
+          transcription={textTranscription}
+          defaultValue={text}
+          error={errorMessage}
+          onPaste={handlePaste}
+          onPlay={handlePlayInput}
+          onRecognize={handleRecognize}
+        />
 
-        <div className="flex-1">
-          <TranslatorOutput
-            className="h-full"
-            transcription={translationTranscription}
-            value={translation}
-            pending={pending}
-            onShare={handleShare}
-            onCopy={handleCopy}
-            onPlay={handlePlayOutput}
+        <TranslatorOutput
+          transcription={translationTranscription}
+          value={translation}
+          pending={pending}
+          onShare={handleShare}
+          onCopy={handleCopy}
+          onPlay={handlePlayOutput}
+        />
+
+        {translationsPromise && text && (
+          <TranslatorAlternatives
+            className="lg:col-start-2"
+            text={text}
+            translationsPromise={translationsPromise}
           />
-        </div>
+        )}
       </div>
 
       <div className="flex flex-row flex-wrap gap-2 justify-end">

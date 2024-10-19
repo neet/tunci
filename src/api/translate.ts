@@ -1,16 +1,40 @@
 import assert from "assert";
 
-export type TranslateParams = {
-  direction: string; // "ja2ain" | "ain2ja";
-  dialect: string;
-  pronoun: string;
+const dedupe = <T>(arr: T[]): T[] => Array.from(new Set(arr));
+
+export type BaseTranslateParams = {
+  readonly direction: string; // "ja2ain" | "ain2ja";
+  readonly dialect: string;
+  readonly pronoun: string;
+};
+
+export type SingleTranslateParams = BaseTranslateParams & {
+  readonly numReturnSequences?: 1;
+};
+
+export type MultiTranslateParams = BaseTranslateParams & {
+  readonly numReturnSequences: number;
+};
+
+export type TranslateParams = SingleTranslateParams | MultiTranslateParams;
+
+type Inference = {
+  readonly translation_text: string;
 };
 
 export async function translate(
   input: string,
+  params: SingleTranslateParams,
+): Promise<string>;
+export async function translate(
+  input: string,
+  params: MultiTranslateParams,
+): Promise<string[]>;
+export async function translate(
+  input: string,
   params: TranslateParams,
-): Promise<string> {
-  const { direction, dialect, pronoun } = params;
+): Promise<string | string[]> {
+  const { direction, dialect, pronoun, numReturnSequences = 1 } = params;
 
   let prompt: string = "";
   if (direction === "ja2ain") {
@@ -33,6 +57,8 @@ export async function translate(
       parameters: {
         max_length: 128,
         early_stopping: true,
+        num_return_sequences: numReturnSequences,
+        do_sample: true,
       },
     }),
   });
@@ -41,8 +67,11 @@ export async function translate(
     throw new Error("Failed to fetch", { cause: response });
   }
 
-  const data = await response.json();
-  const translation = data?.[0]?.["translation_text"];
-
-  return translation;
+  if (numReturnSequences === 1) {
+    const results = (await response.json()) as Inference[];
+    return results[0].translation_text;
+  } else {
+    const results = (await response.json()) as Inference[][];
+    return dedupe(results[0].map((r) => r.translation_text));
+  }
 }

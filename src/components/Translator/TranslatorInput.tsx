@@ -14,7 +14,7 @@ export type TranslatorInputProps = {
   error?: string;
   transcription?: Transcription;
   onPaste: () => void | Promise<void>;
-  onRecgonize: () => void | Promise<void>;
+  onRecognize: () => void | Promise<void>;
   onPlay: () => void | Promise<void>;
 };
 
@@ -25,7 +25,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
     error,
     transcription,
     onPaste,
-    onRecgonize,
+    onRecognize,
     onPlay,
   } = props;
 
@@ -93,7 +93,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
 
         <div className="flex p-1">
           <div className="flex justify-start flex-1 gap-1">
-            <IconButton aria-label={t("recognize")} onClick={onRecgonize}>
+            <IconButton aria-label={t("recognize")} onClick={onRecognize}>
               <FiMic className="size-5" aria-hidden />
             </IconButton>
 

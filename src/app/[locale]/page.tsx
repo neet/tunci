@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { Translator } from "@/components/Translator";
 
+import * as api from "../../api";
 import { Result, translate } from "./_server";
 
 type HomeProps = {
@@ -45,6 +46,16 @@ export default async function Home(props: HomeProps) {
     });
   }
 
+  let translationsPromise: Promise<string[]> | undefined;
+  if (text) {
+    translationsPromise = api.translate(text, {
+      direction,
+      dialect,
+      pronoun,
+      numReturnSequences: 5,
+    });
+  }
+
   return (
     <main className="w-full max-w-screen-xl mx-auto p-4">
       <Translator
@@ -61,6 +72,7 @@ export default async function Home(props: HomeProps) {
         direction={direction}
         dialect={dialect}
         pronoun={pronoun}
+        translationsPromise={translationsPromise}
       />
     </main>
   );

@@ -55,6 +55,9 @@
     },
     "ContentInfo": {
       "title": "運営者情報"
+    },
+    "TranslatorAlternatives": {
+      "alternatives": "その他の翻訳"
     }
   }
 }
