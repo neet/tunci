@@ -29,7 +29,6 @@ export async function translate(
       Authorization: `Bearer ${process.env.HF_TOKEN}`,
     },
     body: JSON.stringify({
-      model: "aynumosir/mt5-small-ainu",
       inputs: [prompt],
       parameters: {
         max_length: 128,

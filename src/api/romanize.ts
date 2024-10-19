@@ -11,7 +11,6 @@ export async function romanize(input: string): Promise<string> {
       Authorization: `Bearer ${process.env.HF_TOKEN}`,
     },
     body: JSON.stringify({
-      model: "aynumosir/mt5-base-ainu-kana",
       inputs: [input],
       parameters: {
         max_length: 128,
