@@ -48,12 +48,14 @@ export default async function Home(props: HomeProps) {
 
   let translationsPromise: Promise<string[]> | undefined;
   if (text) {
-    translationsPromise = api.translate(text, {
-      direction,
-      dialect,
-      pronoun,
-      numReturnSequences: 5,
-    });
+    translationsPromise = api
+      .translate(text, {
+        direction,
+        dialect,
+        pronoun,
+        numReturnSequences: 5,
+      })
+      .catch(() => []);
   }
 
   return (
