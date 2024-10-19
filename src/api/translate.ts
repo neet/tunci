@@ -2,6 +2,8 @@ import assert from "assert";
 
 const dedupe = <T>(arr: T[]): T[] => Array.from(new Set(arr));
 
+const normalize = (text: string): string => text.toLowerCase();
+
 export type BaseTranslateParams = {
   readonly direction: string; // "ja2ain" | "ain2ja";
   readonly dialect: string;
@@ -67,11 +69,12 @@ export async function translate(
     throw new Error("Failed to fetch", { cause: response });
   }
 
+  // TODO: refactor
   if (numReturnSequences === 1) {
     const results = (await response.json()) as Inference[];
-    return results[0].translation_text;
+    return normalize(results[0].translation_text);
   } else {
     const results = (await response.json()) as Inference[][];
-    return dedupe(results[0].map((r) => r.translation_text));
+    return dedupe(results[0].map((r) => normalize(r.translation_text)));
   }
 }

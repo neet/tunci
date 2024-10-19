@@ -4,13 +4,16 @@ import clsx from "clsx";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { FC, FormEventHandler, useTransition } from "react";
+import { FC, FormEventHandler, Suspense, useTransition } from "react";
 
 import { Radio } from "@/components/Radio";
 import { Transcription } from "@/models/transcription";
 
 import { Alert } from "../Alert";
-import { TranslatorAlternatives } from "./TranslatorAlternatives";
+import {
+  TranslatorAlternatives,
+  TranslatorAlternativesSkeleton,
+} from "./TranslatorAlternatives";
 import { TranslatorDialect } from "./TranslatorDialect";
 import { TranslatorInput } from "./TranslatorInput";
 import { TranslatorOutput } from "./TranslatorOutput";
@@ -177,11 +180,14 @@ export const Translator: FC<TranslatorProps> = (props) => {
         />
 
         {translationsPromise && text && (
-          <TranslatorAlternatives
-            className="lg:col-start-2"
-            text={text}
-            translationsPromise={translationsPromise}
-          />
+          <div className="lg:col-start-2">
+            <Suspense fallback={<TranslatorAlternativesSkeleton />}>
+              <TranslatorAlternatives
+                text={text}
+                translationsPromise={translationsPromise}
+              />
+            </Suspense>
+          </div>
         )}
       </div>
 

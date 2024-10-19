@@ -58,7 +58,7 @@
     },
     "TranslatorAlternatives": {
       "alternatives": "その他の翻訳",
-      "expand": "全て表示",
+      "expand": "残り{count}件を表示",
       "collapse": "閉じる"
     }
   }

@@ -47,7 +47,7 @@ export default async function Home(props: HomeProps) {
   }
 
   let translationsPromise: Promise<string[]> | undefined;
-  if (text) {
+  if (text && result?.type === "ok") {
     translationsPromise = api
       .translate(text, {
         direction,
@@ -55,7 +55,11 @@ export default async function Home(props: HomeProps) {
         pronoun,
         numReturnSequences: 5,
       })
-      .catch(() => []);
+      .then((translations) => {
+        return translations.filter(
+          (translation) => translation !== result.translation,
+        );
+      });
   }
 
   return (
