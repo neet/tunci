@@ -17,12 +17,14 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   variable: "--font-roboto",
+  display: "swap",
 });
 
 const yesevaOne = Yeseva_One({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-yeseva-one",
+  display: "swap",
 });
 
 export function generateStaticParams() {
