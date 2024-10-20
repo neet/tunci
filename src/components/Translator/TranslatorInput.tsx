@@ -29,7 +29,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
     onPlay,
   } = props;
 
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue ?? "");
   const t = useTranslations("components.Translator");
   const dirty = value.trim() !== "";
 
@@ -73,7 +73,7 @@ export const TranslatorInput: FC<TranslatorInputProps> = (props) => {
           "outline-none resize-none",
           "forced-colors:outline-0",
         )}
-        defaultValue={defaultValue}
+        value={value}
         required
         spellCheck={false}
         autoComplete="off"
