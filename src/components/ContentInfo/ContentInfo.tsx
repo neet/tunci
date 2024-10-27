@@ -18,7 +18,7 @@ export const ContentInfo: FC = async () => {
             rel="alternate"
             href="/ain"
             hrefLang="ain"
-            className="text-blue-600 dark:text-blue-400 underline "
+            className="text-indigo-600 dark:text-indigo-400 underline "
           >
             aynu itak
           </Link>
@@ -29,14 +29,14 @@ export const ContentInfo: FC = async () => {
             rel="alternate"
             href="/ja"
             hrefLang="ja"
-            className="text-blue-600 dark:text-blue-400 underline"
+            className="text-indigo-600 dark:text-indigo-400 underline"
           >
             日本語
           </Link>
         </li>
       </ul>
 
-      <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-center text-sm">
+      <p className="mt-4 text-gray-600 dark:text-zinc-400 text-center text-sm">
         Copyright
         <span className="mx-1.5" aria-hidden>
           ©

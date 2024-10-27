@@ -14,8 +14,8 @@ export const IconButton: FC<IconButtonProps> = (props) => {
     <button
       className={clsx(
         "p-2 rounded-full",
-        "text-zinc-600 dark:text-zinc-400",
-        "hover:bg-zinc-200 dark:hover:bg-zinc-800",
+        "text-gray-600 dark:text-zinc-400",
+        "hover:bg-gray-200 dark:hover:bg-zinc-800",
         "transition",
       )}
       type="button"

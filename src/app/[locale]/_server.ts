@@ -2,6 +2,9 @@ import { to_kana } from "ainu-utils";
 
 import * as api from "@/api";
 import { Transcription } from "@/models/transcription";
+import { isKana, normalize } from "@/utils";
+
+const MAX_LENGTH = 200;
 
 export type TranslationParams = {
   direction?: string;
@@ -9,34 +12,21 @@ export type TranslationParams = {
   pronoun?: string;
 };
 
-export type Result =
-  | {
-      type: "error";
-      message: string;
-    }
-  | {
-      type: "ok";
-      translation: string;
-      transcriptions: {
-        text?: Transcription;
-        translation?: Transcription;
-      };
-    };
-
-const KANA_PATTERN = /[ア-ン゛゜ァ-ォャ-ョー]/;
-const MAX_LENGTH = 200;
-
-const isKana = (text: string): boolean => KANA_PATTERN.test(text);
-
-const normalize = async (text: string, direction: string): Promise<string> => {
-  if (direction === "ain2ja" && isKana(text)) {
-    text = await api.romanize(text);
-  }
-
-  text = text.replace(/\n/g, " ").trim();
-
-  return text;
+type ResultError = {
+  type: "error";
+  message: string;
 };
+
+type ResultOk = {
+  type: "ok";
+  translation: string;
+  transcriptions: {
+    text?: Transcription;
+    translation?: Transcription;
+  };
+};
+
+export type Result = ResultError | ResultOk;
 
 export async function translate(
   text: string,
@@ -135,4 +125,37 @@ export async function translate(
       };
     }
   }
+}
+
+/*---------------------------------*/
+
+export async function fetchAlternativeTranslations(
+  text: string,
+  result: Result,
+  direction: string,
+  dialect: string,
+  pronoun: string,
+): Promise<string[]> {
+  if (result.type === "error") {
+    return [];
+  }
+
+  const genMax = 5;
+  const max = 3;
+
+  text =
+    result.transcriptions.text && result.transcriptions.text.type === "latin"
+      ? result.transcriptions.text.text
+      : text;
+
+  const translations = await api.translate(text, {
+    direction,
+    dialect,
+    pronoun,
+    numReturnSequences: genMax,
+  });
+
+  return translations
+    .filter((translation) => translation !== result.translation)
+    .splice(0, max);
 }

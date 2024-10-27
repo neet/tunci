@@ -15,8 +15,8 @@ export const Alert: FC<AlertProps> = (props) => {
       className={clsx(
         "p-4",
         "rounded-lg",
-        "bg-red-50 border border-red-400 text-red-800",
-        "dark:bg-red-950 dark:border-red-600 dark:text-red-200",
+        "bg-red-50 text-red-800",
+        "dark:bg-red-950 dark:text-red-200",
         className,
       )}
       {...rest}

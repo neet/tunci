@@ -4,6 +4,8 @@ import { FC } from "react";
 
 import { Link } from "@/i18n/routing";
 
+import { Logo } from "./Logo";
+
 export const Banner: FC = async () => {
   const t = await getTranslations("components.Banner");
 
@@ -23,19 +25,26 @@ export const Banner: FC = async () => {
         className={clsx(
           "flex",
           "box-border",
+          "items-center",
           "p-4",
-          "lg:max-w-screen-xl mx-auto",
+          "max-w-screen-xl mx-auto",
         )}
       >
-        <div className="flex flex-1">
+        <div className="flex flex-1 items-center gap-2.5">
+          <Logo className="size-7" />
           <Link href="/">
-            <h1 className="text-lg font-bold hover:underline">アイヌ語翻訳</h1>
+            <h1 className="text-3xl hover:underline font-yeseva text-black dark:text-white">
+              tunci
+            </h1>
           </Link>
         </div>
 
-        <div className="flex justify-end text-blue-600 dark:text-blue-400 underline">
-          <Link href="/about">{t("about")}</Link>
-        </div>
+        <Link
+          href="/about"
+          className="text-indigo-600 dark:text-indigo-400 underline"
+        >
+          {t("about")}
+        </Link>
       </div>
     </header>
   );
