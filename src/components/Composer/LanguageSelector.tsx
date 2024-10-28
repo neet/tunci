@@ -9,11 +9,12 @@ type LanguageSelectorProps = {
   value: string;
   legend: ReactNode;
   className?: string;
+  defaultValue?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
-  const { name, value, legend, className, onChange } = props;
+  const { name, value, legend, defaultValue, className, onChange } = props;
 
   const t = useTranslations("components.LanguageSelector");
 
@@ -30,6 +31,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
         name={name}
         value="ja"
         checked={value === "ja"}
+        defaultChecked={defaultValue === "ja"}
         onChange={onChange}
       >
         {t("japanese")}
@@ -39,6 +41,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
         name={name}
         value="ain"
         checked={value === "ain"}
+        defaultChecked={defaultValue === "ain"}
         onChange={onChange}
       >
         {t("ainu")}

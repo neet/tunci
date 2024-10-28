@@ -5,6 +5,7 @@ export type LanguageSelectorOptionProps = {
   name: string;
   value: string;
   checked: boolean;
+  defaultChecked?: boolean;
   children: ReactNode;
   onChange: ChangeEventHandler;
 };
@@ -12,7 +13,7 @@ export type LanguageSelectorOptionProps = {
 export const LanguageSelectorOption: FC<LanguageSelectorOptionProps> = (
   props,
 ) => {
-  const { name, value, checked, children, onChange } = props;
+  const { name, value, checked, defaultChecked, children, onChange } = props;
 
   return (
     <label
@@ -28,6 +29,7 @@ export const LanguageSelectorOption: FC<LanguageSelectorOptionProps> = (
         name={name}
         value={value}
         checked={checked}
+        defaultChecked={defaultChecked}
         className="peer sr-only focus-visible:mr-2 focus-visible:not-sr-only accent-indigo-500"
         onChange={onChange}
       />

@@ -198,6 +198,7 @@ export const Composer: FC<ComposerProps> = (props) => {
           name="source"
           value={source}
           legend={t("source")}
+          defaultValue={defaultValues.source}
           onChange={handleChangeSource}
         />
 
@@ -273,6 +274,7 @@ export const Composer: FC<ComposerProps> = (props) => {
           value={target}
           legend={t("target")}
           className="border-gray-200 [&&&]:dark:border-zinc-800"
+          defaultValue={defaultValues.target}
           onChange={handleChangeTarget}
         />
 
