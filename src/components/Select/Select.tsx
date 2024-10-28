@@ -25,9 +25,9 @@ export const Select: FC<SelectProps> = (props) => {
       <div
         className={clsx(
           "px-2.5 py-1.5",
-          "bg-zinc-100 text-zinc-500 border border-zinc-300",
+          "bg-gray-100 text-gray-600 border border-gray-300",
           "rounded-lg rounded-r-none",
-          "dark:text-zinc-300 dark:bg-zinc-900 dark:border-zinc-600",
+          "dark:text-zinc-400 dark:bg-zinc-900 dark:border-zinc-600",
         )}
       >
         <label htmlFor={selectId}>{label}</label>
@@ -39,9 +39,9 @@ export const Select: FC<SelectProps> = (props) => {
           "px-2.5 py-1.5",
           "rounded-lg rounded-l-none",
           "text-end",
-          "border border-l-0 border-zinc-300",
+          "border border-l-0 border-gray-300",
           "dark:border-zinc-600",
-          "focus:outline outline-blue-400 outline-2 outline-offset-4",
+          "focus:outline outline-indigo-400 outline-2 outline-offset-4",
           "appearance-none bg-transparent",
           className,
         )}

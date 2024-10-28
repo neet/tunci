@@ -13,19 +13,7 @@
     "Banner": {
       "about": "tanpe hemanta an?"
     },
-    "Translator": {
-      "sourceLanguage": "e=nuye itak",
-      "japaneseToAinu": "sisam itak or wa aynu itak",
-      "ainuToJapanese": "aynu itak or wa sisam itak",
-      "prompt": "itaktupte rusuy itak nuye yan",
-      "copy": "KOPI",
-      "copied": "KOPI e=ki a",
-      "paste": "PESUTO",
-      "recognize": "itak",
-      "play": "inu",
-      "share": "ukokor"
-    },
-    "TranslatorDialect": {
+    "DialectSelector": {
       "dialect": "iporse",
       "southwestHokkaido": "sum",
       "northeastHokkaido": "menas",
@@ -38,26 +26,36 @@
       "kushiro": "kusir",
       "samani": "samani",
       "bihoro": "peporo",
-      "ishikari": "iskar",
-      "akan": "akan"
+      "ishikari": "iskar"
     },
-    "TranslatorPronoun": {
+    "PronounSelector": {
       "vocaburary": "itakpo",
       "conversation": "ukoytak",
       "story": "yukar"
     },
-    "TranslatorSubmit": {
-      "translate": "tupte"
+    "Composer": {
+      "source": "nuye itak",
+      "recognize": "hawe ani nuye",
+      "play": "nu",
+      "paste": "kotukka",
+      "target": "nukar itak",
+      "share": "ukokor",
+      "copy": "KOPI",
+      "translate": "tupte",
+      "copied": "KOPI e=ki wa okere",
+      "alternativeTranslations": "mosma itak"
     },
-    "TranslatorText": {
-      "ready": "nep ne yakka en=kowepekennu yan!",
-      "translating": "a=tupte kor an=an..."
+    "ExampleSentences": {
+      "exampleSentences": "ne itak eywanke wa oka oruspe",
+      "source": "or wa:",
+      "dialect": "iporse"
+    },
+    "LanguageSelector": {
+      "ainu": "aynu itak",
+      "japanese": "sisam itak"
     },
     "ContentInfo": {
       "title": "tan sait kar kur oruspe"
-    },
-    "TranslatorAlternatives": {
-      "alternatives": "mosma itak"
     }
   }
 }

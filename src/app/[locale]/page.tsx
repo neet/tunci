@@ -1,16 +1,19 @@
+import { SearchResponse } from "algoliasearch";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-import { Translator } from "@/components/Translator";
+import { searchClient } from "@/api/search";
+import { Composer } from "@/components/Composer";
+import { SearchEntry } from "@/models/entry";
 
-import * as api from "../../api";
-import { Result, translate } from "./_server";
+import { fetchAlternativeTranslations, Result, translate } from "./_server";
 
 type HomeProps = {
   params: { locale: string };
   searchParams?: {
     text?: string;
-    direction?: string;
+    source?: string;
+    target?: string;
     dialect?: string;
     pronoun?: string;
   };
@@ -27,13 +30,18 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
   };
 }
 
-export const revalidate = 86_400;
+// export const revalidate = 86_400;
 
 export default async function Home(props: HomeProps) {
   const { params, searchParams } = props;
 
+  unstable_setRequestLocale(params.locale);
+
   const text = searchParams?.text;
-  const direction = searchParams?.direction ?? "ja2ain";
+  const direction =
+    searchParams?.source && searchParams?.target
+      ? `${searchParams.source}2${searchParams.target}`
+      : "ja2ain";
   const dialect = searchParams?.dialect ?? "沙流";
   const pronoun = searchParams?.pronoun ?? "first";
 
@@ -46,39 +54,56 @@ export default async function Home(props: HomeProps) {
     });
   }
 
-  let translationsPromise: Promise<string[]> | undefined;
+  let alternativeTranslationsPromise: Promise<string[]> | undefined;
+  if (text && result) {
+    alternativeTranslationsPromise = fetchAlternativeTranslations(
+      text,
+      result,
+      direction,
+      dialect,
+      pronoun,
+    );
+  }
+
+  let exampleSentences: Promise<SearchResponse<SearchEntry>> | undefined;
   if (text && result?.type === "ok") {
-    translationsPromise = api
-      .translate(text, {
-        direction,
-        dialect,
-        pronoun,
-        numReturnSequences: 5,
-      })
-      .then((translations) => {
-        return translations.filter(
-          (translation) => translation !== result.translation,
-        );
-      });
+    exampleSentences = searchClient.searchSingleIndex<SearchEntry>({
+      indexName: "entries",
+      searchParams: {
+        query: direction === "ja2ain" ? result.translation : text,
+        hitsPerPage: 3,
+        attributesToHighlight: ["text", "translation"],
+        facetFilters: [
+          "book:-ニューエクスプレスプラス アイヌ語",
+          "book:-アイヌ語鵡川方言日本語‐アイヌ語辞典",
+          "book:-アイヌ語會話字典",
+        ],
+      },
+    });
   }
 
   return (
-    <main className="w-full max-w-screen-xl mx-auto p-4">
-      <Translator
+    <main className="w-full max-w-screen-xl mx-auto">
+      <Composer
+        method="GET"
         action={`/${params.locale}`}
-        text={text}
+        defaultValues={{
+          text: text ?? "",
+          source: searchParams?.source ?? "ja",
+          target: searchParams?.target ?? "ain",
+          dialect,
+          pronoun,
+        }}
+        translation={result?.type === "ok" ? result.translation : undefined}
         textTranscription={
           result?.type === "ok" ? result.transcriptions.text : undefined
         }
-        translation={result?.type === "ok" ? result.translation : undefined}
         translationTranscription={
           result?.type === "ok" ? result.transcriptions.translation : undefined
         }
+        alternativeTranslationsPromise={alternativeTranslationsPromise}
+        exampleSentencesPromise={exampleSentences}
         errorMessage={result?.type === "error" ? result.message : undefined}
-        direction={direction}
-        dialect={dialect}
-        pronoun={pronoun}
-        translationsPromise={translationsPromise}
       />
     </main>
   );

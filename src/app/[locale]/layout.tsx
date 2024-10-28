@@ -63,8 +63,8 @@ export default async function RootLayout(props: RootLayoutProps) {
       <body
         className={clsx(
           "box-border",
-          "text-black bg-zinc-50 heropattern-banknote-zinc-100",
-          "dark:text-white dark:bg-zinc-900 dark:heropattern-banknote-zinc-950",
+          "text-black bg-white",
+          "dark:text-white dark:bg-black",
           "antialiased",
           "grid grid-rows-[auto,1fr,auto] grid-cols-[100%] min-h-[100svh]",
         )}

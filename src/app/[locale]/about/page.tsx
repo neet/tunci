@@ -26,7 +26,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const Content = (await import(`./${params.locale}.mdx`)).default;
 
   return (
-    <main>
+    <main className="w-full">
       <header
         className={clsx(
           "max-w-screen-lg mx-auto my-12",
@@ -37,8 +37,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
         <h2 className="block text-2xl font-bold">{t("title")}</h2>
       </header>
 
-      <article className="bg-white dark:bg-black border-y border-zinc-300 dark:border-zinc-700">
-        <div className="max-w-screen-sm mx-auto p-4 prose prose-zinc dark:prose-invert prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:font-normal">
+      <article className="bg-white dark:bg-black">
+        <div className="max-w-screen-sm mx-auto p-4 prose prose-gray dark:prose-invert prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:font-normal overflow-clip">
           <Content />
         </div>
       </article>

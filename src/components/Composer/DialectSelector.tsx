@@ -3,13 +3,13 @@ import { FC } from "react";
 
 import { Select } from "../Select";
 
-export type TranslatorDialectProps = {
+export type DialectSelectorProps = {
   defaultValue?: string;
 };
 
-export const TranslatorDialect: FC<TranslatorDialectProps> = (props) => {
+export const DialectSelector: FC<DialectSelectorProps> = (props) => {
   const { defaultValue } = props;
-  const t = useTranslations("components.TranslatorDialect");
+  const t = useTranslations("components.DialectSelector");
 
   return (
     <Select
@@ -27,12 +27,11 @@ export const TranslatorDialect: FC<TranslatorDialectProps> = (props) => {
 
       <optgroup label={t("northeastHokkaido")}>
         <option value="静内">{t("shizunai")}</option>
+        <option value="様似">{t("samani")}</option>
         <option value="十勝">{t("tokachi")}</option>
         <option value="釧路">{t("kushiro")}</option>
-        <option value="様似">{t("samani")}</option>
         <option value="美幌">{t("bihoro")}</option>
         <option value="石狩">{t("ishikari")}</option>
-        <option value="阿寒">{t("akan")}</option>
       </optgroup>
     </Select>
   );
