@@ -30,7 +30,7 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
   };
 }
 
-// export const revalidate = 86_400;
+export const revalidate = 86_400;
 
 export default async function Home(props: HomeProps) {
   const { params, searchParams } = props;
