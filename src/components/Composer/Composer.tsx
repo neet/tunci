@@ -231,12 +231,11 @@ export const Composer: FC<ComposerProps> = (props) => {
 
             <TextareaAutosize
               id="text"
-              minRows={3}
               name="text"
               ref={textareaRef}
               value={text}
               className={clsx(
-                "w-full h-full text-2xl resize-none",
+                "w-full h-full text-2xl min-h-[3lh] resize-none",
                 "bg-white dark:bg-black",
               )}
               required
