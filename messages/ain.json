@@ -43,7 +43,15 @@
       "copy": "KOPI",
       "translate": "tupte",
       "copied": "KOPI e=ki wa okere",
-      "alternativeTranslations": "mosma itak"
+      "alternativeTranslations": "mosma itak",
+      "translation": {
+        "empty": "itaktupte p",
+        "loading": "a=tupte kor an=an..."
+      },
+      "text": "e=tupte rusuy itak",
+      "char_max": "{max} mozi or ta {current} mozi e=eywanke wa e=an.",
+      "translateForm": "itaktupte fomu",
+      "translationResult": "a=tupte itak"
     },
     "ExampleSentences": {
       "exampleSentences": "ne itak eywanke wa oka oruspe",
