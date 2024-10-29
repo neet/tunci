@@ -43,7 +43,7 @@ const AlternativeTranslationsWrapper: FC<
   const t = useTranslations("components.Composer");
 
   return (
-    <Disclosure open={true} summary={<h2>{t("alternativeTranslations")}</h2>}>
+    <Disclosure open={true} summary={<h3>{t("alternativeTranslations")}</h3>}>
       {children}
     </Disclosure>
   );

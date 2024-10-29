@@ -46,7 +46,15 @@
       "copy": "コピー",
       "translate": "翻訳",
       "copied": "コピーしました",
-      "alternativeTranslations": "その他の翻訳"
+      "alternativeTranslations": "その他の翻訳",
+      "translation": {
+        "empty": "翻訳",
+        "loading": "翻訳中..."
+      },
+      "text": "翻訳したい文章",
+      "char_max": "{max}文字中、{current}文字を入力中。",
+      "translateForm": "翻訳フォーム",
+      "translationResult": "翻訳結果"
     },
     "ExampleSentences": {
       "exampleSentences": "用例",

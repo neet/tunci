@@ -5,7 +5,7 @@ import clsx from "clsx";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { FC, useEffect, useRef, useState, useTransition } from "react";
+import { FC, useEffect, useId, useRef, useState, useTransition } from "react";
 import { FiClipboard, FiCopy, FiMic, FiShare, FiVolume2 } from "react-icons/fi";
 import TextareaAutosize from "react-textarea-autosize";
 
@@ -21,6 +21,7 @@ import { IconButton } from "./IconButton";
 import { IconButtonGroup } from "./IconButtonGroup";
 import { LanguageSelector } from "./LanguageSelector";
 import { PronounSelector } from "./PronounSelector";
+import { Translation } from "./Translation";
 
 export type ComposerProps = {
   method: string;
@@ -54,8 +55,10 @@ export const Composer: FC<ComposerProps> = (props) => {
     errorMessage,
   } = props;
 
+  const headingId = useId();
   const [translation, setTranslation] = useState(props.translation);
   const t = useTranslations("components.Composer");
+  const submitted = useRef(false);
   const router = useRouter();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [pending, startTransition] = useTransition();
@@ -63,6 +66,12 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [text, setText] = useState(defaultValues.text);
   const [source, setSource] = useState(defaultValues.source);
   const [target, setTarget] = useState(defaultValues.target);
+
+  useEffect(() => {
+    if (submitted.current) {
+      document.getElementById("translation")?.focus();
+    }
+  }, [props.translation]);
 
   useEffect(() => {
     if (props.translation) {
@@ -183,6 +192,7 @@ export const Composer: FC<ComposerProps> = (props) => {
       });
 
       router.push(url.toString());
+      submitted.current = true;
     });
   };
 
@@ -191,8 +201,13 @@ export const Composer: FC<ComposerProps> = (props) => {
       method={method}
       action={action}
       className="grid w-full grid-cols-1 md:grid-cols-2"
+      aria-labelledby={headingId}
       onSubmit={handleSubmit}
     >
+      <h2 id={headingId} className="sr-only">
+        {t("translateForm")}
+      </h2>
+
       {errorMessage && (
         <Alert role="alert" className="col-span-full m-4 xl:mx-0">
           {errorMessage}
@@ -210,7 +225,12 @@ export const Composer: FC<ComposerProps> = (props) => {
 
         <div>
           <div className="p-4">
+            <label htmlFor="text" className="sr-only">
+              {t("text")}
+            </label>
+
             <TextareaAutosize
+              id="text"
               minRows={3}
               name="text"
               ref={textareaRef}
@@ -263,7 +283,10 @@ export const Composer: FC<ComposerProps> = (props) => {
                       : "text-gray-600 dark:text-zinc-400",
                   )}
                 >
-                  {text.length}/200
+                  <span aria-hidden>{text.length}/200</span>
+                  <span className="sr-only">
+                    {t("char_max", { current: text.length, max: 200 })}
+                  </span>
                 </div>
 
                 <IconButton aria-label={t("paste")} onClick={handlePaste}>
@@ -287,8 +310,14 @@ export const Composer: FC<ComposerProps> = (props) => {
 
         <div className="divide-y-2 divide-gray-200 dark:divide-zinc-800">
           <div>
+            <h3 id="translation" tabIndex={-1} className="sr-only">
+              {t("translationResult")}
+            </h3>
+
             <div className="p-4">
-              <p className="text-2xl min-h-[3lh]">{translation}</p>
+              <p className="text-2xl min-h-[3lh]">
+                <Translation value={translation} pending={pending} />
+              </p>
 
               {translation && translationTranscription && (
                 <p className="mt-1 text-gray-600 dark:text-zinc-400">
