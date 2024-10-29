@@ -32,6 +32,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tunci.aynu.io"),
   title: {
     template: "%s | tunci",
     default: "tunci",

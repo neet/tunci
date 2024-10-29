@@ -48,6 +48,16 @@ export async function translate(
   assert(process.env.HF_MT_ENDPOINT, "HF_ENDPOINT is not set");
   assert(process.env.HF_TOKEN, "HF_TOKEN is not set");
 
+  const parameters: Record<string, unknown> = {
+    max_length: 128,
+    early_stopping: true,
+  };
+
+  if (numReturnSequences > 1) {
+    parameters.num_return_sequences = numReturnSequences;
+    parameters.do_sample = true;
+  }
+
   const response = await fetch(process.env.HF_MT_ENDPOINT, {
     method: "POST",
     headers: {
@@ -56,12 +66,7 @@ export async function translate(
     },
     body: JSON.stringify({
       inputs: [prompt],
-      parameters: {
-        max_length: 128,
-        early_stopping: true,
-        num_return_sequences: numReturnSequences,
-        do_sample: true,
-      },
+      parameters,
     }),
   });
 
