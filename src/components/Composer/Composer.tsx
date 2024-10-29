@@ -15,6 +15,7 @@ import { Transcription } from "@/models/transcription";
 import { Alert } from "../Alert";
 import { Button } from "../Button";
 import { AlternativeTranslations } from "./AlternativeTranslations";
+import { CharCount } from "./CharCount";
 import { DialectSelector } from "./DialectSelector";
 import { ExampleSentences } from "./ExampleSentences";
 import { IconButton } from "./IconButton";
@@ -219,7 +220,6 @@ export const Composer: FC<ComposerProps> = (props) => {
           name="source"
           value={source}
           legend={t("source")}
-          defaultValue={defaultValues.source}
           onChange={handleChangeSource}
         />
 
@@ -243,8 +243,6 @@ export const Composer: FC<ComposerProps> = (props) => {
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="off"
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              style={{ fieldSizing: "content" } as any}
               onChange={handleChangeText}
             />
 
@@ -274,19 +272,7 @@ export const Composer: FC<ComposerProps> = (props) => {
             }
             end={
               <>
-                <div
-                  className={clsx(
-                    "tabular-nums text-sm leading-none",
-                    text.length > 200
-                      ? "text-red-600 dark:text-red-400"
-                      : "text-gray-600 dark:text-zinc-400",
-                  )}
-                >
-                  <span aria-hidden>{text.length}/200</span>
-                  <span className="sr-only">
-                    {t("char_max", { current: text.length, max: 200 })}
-                  </span>
-                </div>
+                <CharCount count={text.length} limit={200} />
 
                 <IconButton aria-label={t("paste")} onClick={handlePaste}>
                   <FiClipboard className="size-5" aria-hidden />
@@ -303,7 +289,6 @@ export const Composer: FC<ComposerProps> = (props) => {
           value={target}
           legend={t("target")}
           className="border-gray-200 [&&&]:dark:border-zinc-800"
-          defaultValue={defaultValues.target}
           onChange={handleChangeTarget}
         />
 
