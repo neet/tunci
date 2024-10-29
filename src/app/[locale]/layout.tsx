@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  openGraph: {
+    images: "/cover.png",
+  },
 };
 
 type RootLayoutProps = {
