@@ -6,6 +6,7 @@ import { FC, Suspense, use } from "react";
 
 import { SearchEntry } from "@/models/entry";
 
+import { Disclosure } from "./Disclosure";
 import { ExampleSentencesEntry } from "./ExampleSentencesEntry";
 
 export type ExampleSentencesProps = {
@@ -46,12 +47,9 @@ export const ExampleSentencesWrapper: FC<ExampleSentencesWrapperProps> = (
   const t = useTranslations("components.ExampleSentences");
 
   return (
-    <section className="p-4">
-      <h2 className="font-bold text-gray-700 dark:text-zinc-300">
-        {t("exampleSentences")}
-      </h2>
+    <Disclosure open={true} summary={<h2>{t("exampleSentences")}</h2>}>
       {children}
-    </section>
+    </Disclosure>
   );
 };
 

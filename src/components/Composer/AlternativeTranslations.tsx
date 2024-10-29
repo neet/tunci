@@ -2,6 +2,8 @@ import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FC, ReactNode, Suspense, use } from "react";
 
+import { Disclosure } from "./Disclosure";
+
 type AlternativeTranslationsProps = {
   alternativeTranslationsPromise?: Promise<string[]>;
 };
@@ -41,12 +43,9 @@ const AlternativeTranslationsWrapper: FC<
   const t = useTranslations("components.Composer");
 
   return (
-    <section className="p-4">
-      <h2 className="font-bold text-gray-700 dark:text-zinc-300">
-        {t("alternativeTranslations")}
-      </h2>
+    <Disclosure open={true} summary={<h2>{t("alternativeTranslations")}</h2>}>
       {children}
-    </section>
+    </Disclosure>
   );
 };
 

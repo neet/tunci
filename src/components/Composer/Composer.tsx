@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FC, useEffect, useRef, useState, useTransition } from "react";
 import { FiClipboard, FiCopy, FiMic, FiShare, FiVolume2 } from "react-icons/fi";
+import TextareaAutosize from "react-textarea-autosize";
 
 import { SearchEntry } from "@/models/entry";
 import { Transcription } from "@/models/transcription";
@@ -108,7 +109,12 @@ export const Composer: FC<ComposerProps> = (props) => {
     });
   };
 
-  const handlePaste = (): void => {
+  const handlePaste = async (): Promise<void> => {
+    const text = await navigator.clipboard.readText();
+
+    setText(text);
+    setTranslation("");
+
     mixpanel.track("Translator::paste", {
       text,
     });
@@ -188,7 +194,7 @@ export const Composer: FC<ComposerProps> = (props) => {
       onSubmit={handleSubmit}
     >
       {errorMessage && (
-        <Alert role="alert" className="col-span-full my-4">
+        <Alert role="alert" className="col-span-full m-4 xl:mx-0">
           {errorMessage}
         </Alert>
       )}
@@ -204,12 +210,13 @@ export const Composer: FC<ComposerProps> = (props) => {
 
         <div>
           <div className="p-4">
-            <textarea
+            <TextareaAutosize
+              minRows={3}
               name="text"
               ref={textareaRef}
               value={text}
               className={clsx(
-                "w-full h-full text-2xl min-h-[3lh] resize-none",
+                "w-full h-full text-2xl resize-none",
                 "bg-white dark:bg-black",
               )}
               required
@@ -330,7 +337,7 @@ export const Composer: FC<ComposerProps> = (props) => {
         </div>
       </div>
 
-      <div className="col-span-full flex justify-end mt-4 gap-2">
+      <div className="col-span-full flex mx-4 justify-end mt-4 gap-2 xl:mx-0">
         <PronounSelector defaultValue={defaultValues.pronoun} />
 
         <DialectSelector defaultValue={defaultValues.dialect} />
