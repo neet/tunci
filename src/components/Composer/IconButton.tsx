@@ -16,6 +16,7 @@ export const IconButton: FC<IconButtonProps> = (props) => {
         "p-2 rounded-full",
         "text-gray-600 dark:text-zinc-400",
         "hover:bg-gray-200 dark:hover:bg-zinc-800",
+        "outline-indigo-400 outline-2 focus:outline",
         "transition",
       )}
       type="button"
