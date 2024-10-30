@@ -223,8 +223,8 @@ export const Composer: FC<ComposerProps> = (props) => {
           onChange={handleChangeSource}
         />
 
-        <div>
-          <div className="p-4">
+        <div className="p-4">
+          <div>
             <label htmlFor="text" className="sr-only">
               {t("text")}
             </label>
@@ -237,6 +237,7 @@ export const Composer: FC<ComposerProps> = (props) => {
               className={clsx(
                 "w-full h-full text-2xl min-h-[3lh] resize-none",
                 "bg-white dark:bg-black",
+                "focus:outline-none",
               )}
               required
               spellCheck={false}
@@ -254,6 +255,7 @@ export const Composer: FC<ComposerProps> = (props) => {
           </div>
 
           <IconButtonGroup
+            className="-mx-4 -mb-4 p-2"
             start={
               <>
                 <IconButton
@@ -293,12 +295,12 @@ export const Composer: FC<ComposerProps> = (props) => {
         />
 
         <div className="divide-y-2 divide-gray-200 dark:divide-zinc-800">
-          <div>
+          <div className="p-4">
             <h3 id="translation" tabIndex={-1} className="sr-only">
               {t("translationResult")}
             </h3>
 
-            <div className="p-4">
+            <div>
               <p className="text-2xl min-h-[3lh]">
                 <Translation value={translation} pending={pending} />
               </p>
@@ -311,6 +313,7 @@ export const Composer: FC<ComposerProps> = (props) => {
             </div>
 
             <IconButtonGroup
+              className="-mx-4 -mb-4 p-2"
               start={
                 translation && (
                   <IconButton aria-label={t("play")} onClick={handlePlayOutput}>
