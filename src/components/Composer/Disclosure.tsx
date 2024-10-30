@@ -12,7 +12,7 @@ export const Disclosure: FC<DisclosureProps> = (props) => {
 
   return (
     <details className="group p-4" open={open}>
-      <summary className="flex justify-between items-center list-none">
+      <summary className="flex justify-between items-center list-none [&::-webkit-details-marker]:hidden">
         <div className="font-bold text-gray-700 dark:text-zinc-300">
           {summary}
         </div>
