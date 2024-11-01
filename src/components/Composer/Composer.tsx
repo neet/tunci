@@ -156,17 +156,17 @@ export const Composer: FC<ComposerProps> = (props) => {
 
   const handleRecognize = (): void => {
     mixpanel.track("Translator::recognize");
-    window.alert("この機能は現在準備中です。");
+    window.alert(t("wip"));
   };
 
   const handlePlayInput = (): void => {
     mixpanel.track("Translator::play::input");
-    window.alert("この機能は現在準備中です。");
+    window.alert(t("wip"));
   };
 
   const handlePlayOutput = (): void => {
     mixpanel.track("Translator::play::output");
-    window.alert("この機能は現在準備中です。");
+    window.alert(t("wip"));
   };
 
   const handleShare = (): void => {

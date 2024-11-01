@@ -51,11 +51,12 @@
       "text": "e=tupte rusuy itak",
       "char_max": "{max} monci or ta {current} monci e=eywanke wa e=an.",
       "translateForm": "itaktupte fomu",
-      "translationResult": "a=tupte itak"
+      "translationResult": "a=tupte itak",
+      "wip": "naa ci=kar kor oka=as hontom ne ruwe ne."
     },
     "ExampleSentences": {
       "exampleSentences": "ne itak eywanke wa oka oruspe",
-      "source": "or wa:",
+      "source": "motoho:",
       "dialect": "iporse"
     },
     "LanguageSelector": {
