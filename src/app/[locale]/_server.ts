@@ -140,7 +140,7 @@ export async function fetchAlternativeTranslations(
     return [];
   }
 
-  const genMax = 5;
+  const genMax = 20;
   const max = 3;
 
   text =
