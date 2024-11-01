@@ -45,11 +45,11 @@
       "copied": "KOPI e=ki wa okere",
       "alternativeTranslations": "mosma itak",
       "translation": {
-        "empty": "itaktupte p",
+        "empty": "cituptep",
         "loading": "a=tupte kor an=an..."
       },
       "text": "e=tupte rusuy itak",
-      "char_max": "{max} mozi or ta {current} mozi e=eywanke wa e=an.",
+      "char_max": "{max} monci or ta {current} monci e=eywanke wa e=an.",
       "translateForm": "itaktupte fomu",
       "translationResult": "a=tupte itak"
     },
