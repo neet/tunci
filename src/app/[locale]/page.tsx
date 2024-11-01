@@ -30,7 +30,7 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
   };
 }
 
-export const revalidate = 86_400;
+// export const revalidate = 86_400;
 
 export default async function Home(props: HomeProps) {
   const { params, searchParams } = props;
@@ -70,7 +70,7 @@ export default async function Home(props: HomeProps) {
     exampleSentences = searchClient.searchSingleIndex<SearchEntry>({
       indexName: "entries",
       searchParams: {
-        query: direction === "ja2ain" ? result.translation : text,
+        query: `${result.translation} ${text}`,
         hitsPerPage: 3,
         attributesToHighlight: ["text", "translation"],
         facetFilters: [
