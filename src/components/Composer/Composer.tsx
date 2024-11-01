@@ -2,15 +2,24 @@
 
 import { SearchResponse } from "algoliasearch";
 import clsx from "clsx";
+import debounce from "lodash-es/debounce";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { FC, useEffect, useId, useRef, useState, useTransition } from "react";
+import {
+  FC,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import { FiClipboard, FiCopy, FiMic, FiShare, FiVolume2 } from "react-icons/fi";
 import TextareaAutosize from "react-textarea-autosize";
 
 import { SearchEntry } from "@/models/entry";
-import { Transcription } from "@/models/transcription";
+import * as t from "@/models/transcription";
 
 import { Alert } from "../Alert";
 import { Button } from "../Button";
@@ -22,6 +31,7 @@ import { IconButton } from "./IconButton";
 import { IconButtonGroup } from "./IconButtonGroup";
 import { LanguageSelector } from "./LanguageSelector";
 import { PronounSelector } from "./PronounSelector";
+import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
 
 export type ComposerProps = {
@@ -37,8 +47,8 @@ export type ComposerProps = {
   };
 
   translation?: string;
-  textTranscription?: Transcription;
-  translationTranscription?: Transcription;
+  textTranscription?: t.Transcription;
+  translationTranscription?: t.Transcription;
 
   alternativeTranslationsPromise?: Promise<string[]>;
   exampleSentencesPromise?: Promise<SearchResponse<SearchEntry>>;
@@ -51,20 +61,22 @@ export const Composer: FC<ComposerProps> = (props) => {
     method,
     action,
     defaultValues,
+    translation,
     textTranscription,
     translationTranscription,
     errorMessage,
   } = props;
 
-  const headingId = useId();
-  const [translation, setTranslation] = useState(props.translation);
   const t = useTranslations("components.Composer");
-  const submitted = useRef(false);
   const router = useRouter();
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [pending, startTransition] = useTransition();
 
-  const [text, setText] = useState(defaultValues.text);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const submitted = useRef(false);
+  const headingId = useId();
+
+  const [dirty, setDirty] = useState(false);
+  const [count, setCount] = useState<number>(defaultValues.text.length);
   const [source, setSource] = useState(defaultValues.source);
   const [target, setTarget] = useState(defaultValues.target);
 
@@ -74,19 +86,17 @@ export const Composer: FC<ComposerProps> = (props) => {
     }
   }, [props.translation]);
 
-  useEffect(() => {
-    if (props.translation) {
-      setTranslation(props.translation);
-    }
-  }, [props.translation]);
-
-  const dirty = text.trim() !== "";
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const setCountDebounced = useCallback(
+    debounce((count: number) => setCount(count), 1000),
+    [],
+  );
 
   const handleChangeText = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLTextAreaElement>,
   ): void => {
-    setText(event.target.value);
-    setTranslation("");
+    setDirty(true);
+    setCountDebounced(e.target.value.length);
   };
 
   const handleChangeSource = (
@@ -98,8 +108,7 @@ export const Composer: FC<ComposerProps> = (props) => {
 
       if (translation && textareaRef.current) {
         textareaRef.current.value = translation;
-        setText(translation);
-        setTranslation("");
+        setDirty(true);
       }
     });
   };
@@ -113,8 +122,7 @@ export const Composer: FC<ComposerProps> = (props) => {
 
       if (translation && textareaRef.current) {
         textareaRef.current.value = translation;
-        setText(translation);
-        setTranslation("");
+        setDirty(true);
       }
     });
   };
@@ -122,8 +130,10 @@ export const Composer: FC<ComposerProps> = (props) => {
   const handlePaste = async (): Promise<void> => {
     const text = await navigator.clipboard.readText();
 
-    setText(text);
-    setTranslation("");
+    if (textareaRef.current) {
+      textareaRef.current.value = text;
+    }
+    setDirty(true);
 
     mixpanel.track("Translator::paste", {
       text,
@@ -192,8 +202,9 @@ export const Composer: FC<ComposerProps> = (props) => {
         dialect: formData.get("dialect"),
       });
 
-      router.push(url.toString());
       submitted.current = true;
+      router.push(url.toString());
+      setDirty(false);
     });
   };
 
@@ -233,7 +244,7 @@ export const Composer: FC<ComposerProps> = (props) => {
               id="text"
               name="text"
               ref={textareaRef}
-              value={text}
+              defaultValue={defaultValues.text}
               className={clsx(
                 "w-full h-full text-2xl min-h-[3lh] resize-none",
                 "bg-white dark:bg-black",
@@ -247,10 +258,10 @@ export const Composer: FC<ComposerProps> = (props) => {
               onChange={handleChangeText}
             />
 
-            {translation && textTranscription && (
-              <p className="text-gray-600 dark:text-zinc-400">
+            {translation && textTranscription && !dirty && (
+              <Transcription className="mt-1">
                 {textTranscription.text}
-              </p>
+              </Transcription>
             )}
           </div>
 
@@ -265,16 +276,14 @@ export const Composer: FC<ComposerProps> = (props) => {
                   <FiMic className="size-5" aria-hidden />
                 </IconButton>
 
-                {dirty && (
-                  <IconButton aria-label={t("play")} onClick={handlePlayInput}>
-                    <FiVolume2 className="size-5" aria-hidden />
-                  </IconButton>
-                )}
+                <IconButton aria-label={t("play")} onClick={handlePlayInput}>
+                  <FiVolume2 className="size-5" aria-hidden />
+                </IconButton>
               </>
             }
             end={
               <>
-                <CharCount count={text.length} limit={200} />
+                <CharCount count={count} limit={200} />
 
                 <IconButton aria-label={t("paste")} onClick={handlePaste}>
                   <FiClipboard className="size-5" aria-hidden />
@@ -290,11 +299,11 @@ export const Composer: FC<ComposerProps> = (props) => {
           name="target"
           value={target}
           legend={t("target")}
-          className="border-gray-200 [&&&]:dark:border-zinc-800"
+          className="border-gray-200"
           onChange={handleChangeTarget}
         />
 
-        <div className="divide-y-2 divide-gray-200 dark:divide-zinc-800">
+        <div className="divide-y-2 divide-gray-200 dark:divide-zinc-600">
           <div className="p-4">
             <h3 id="translation" tabIndex={-1} className="sr-only">
               {t("translationResult")}
@@ -302,27 +311,32 @@ export const Composer: FC<ComposerProps> = (props) => {
 
             <div>
               <p className="text-2xl min-h-[3lh]">
-                <Translation value={translation} pending={pending} />
+                <Translation
+                  value={dirty ? "" : translation}
+                  pending={pending}
+                />
               </p>
 
-              {translation && translationTranscription && (
-                <p className="mt-1 text-gray-600 dark:text-zinc-400">
+              {translation && translationTranscription && !dirty && (
+                <Transcription className="mt-1">
                   {translationTranscription.text}
-                </p>
+                </Transcription>
               )}
             </div>
 
             <IconButtonGroup
               className="-mx-4 -mb-4 p-2"
               start={
-                translation && (
+                translation &&
+                !dirty && (
                   <IconButton aria-label={t("play")} onClick={handlePlayOutput}>
                     <FiVolume2 className="size-5" aria-hidden />
                   </IconButton>
                 )
               }
               end={
-                translation && (
+                translation &&
+                !dirty && (
                   <>
                     <IconButton aria-label={t("share")} onClick={handleShare}>
                       <FiShare className="size-5" aria-hidden />
@@ -337,17 +351,17 @@ export const Composer: FC<ComposerProps> = (props) => {
             />
           </div>
 
-          {translation && (
+          {translation && !dirty && (
+            <ExampleSentences
+              exampleSentencesPromise={props.exampleSentencesPromise}
+            />
+          )}
+
+          {translation && !dirty && (
             <AlternativeTranslations
               alternativeTranslationsPromise={
                 props.alternativeTranslationsPromise
               }
-            />
-          )}
-
-          {translation && (
-            <ExampleSentences
-              exampleSentencesPromise={props.exampleSentencesPromise}
             />
           )}
         </div>

@@ -17,7 +17,7 @@ export const Banner: FC = async () => {
         "bg-white/80",
         "dark:bg-black/80",
         "shadow-sm",
-        "dark:shadow-none dark:border-b dark:border-zinc-700",
+        "dark:shadow-none dark:border-b dark:border-zinc-600",
         "z-50",
       )}
     >
