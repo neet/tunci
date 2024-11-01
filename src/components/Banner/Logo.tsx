@@ -16,6 +16,7 @@ export const Logo: FC<LogoProps> = (props) => {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
+      <title>tunci</title>
       <path
         d="M0 122C0 54.6214 54.6212 0 122 0H254.391C321.77 0 376.391 54.6212 376.391 122V254.391C376.391 321.77 321.77 376.391 254.391 376.391H122C54.6214 376.391 0 321.77 0 254.391V122Z"
         fill="white"
