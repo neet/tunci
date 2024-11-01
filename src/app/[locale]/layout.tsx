@@ -5,7 +5,7 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
@@ -59,7 +59,7 @@ export default async function RootLayout(props: RootLayoutProps) {
     params: { locale },
   } = props;
 
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (

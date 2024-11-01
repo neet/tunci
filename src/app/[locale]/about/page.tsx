@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Metadata } from "next";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export type AboutPageProps = {
   params: { locale: string };
@@ -20,7 +20,7 @@ export async function generateMetadata(
 }
 
 export default async function AboutPage({ params }: AboutPageProps) {
-  unstable_setRequestLocale(params.locale);
+  setRequestLocale(params.locale);
 
   const t = await getTranslations("app.AboutPage");
   const Content = (await import(`./${params.locale}.mdx`)).default;

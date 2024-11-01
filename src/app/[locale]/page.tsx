@@ -1,6 +1,6 @@
 import { SearchResponse } from "algoliasearch";
 import { Metadata } from "next";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { searchClient } from "@/api/search";
 import { Composer } from "@/components/Composer";
@@ -35,7 +35,7 @@ export const revalidate = 86_400;
 export default async function Home(props: HomeProps) {
   const { params, searchParams } = props;
 
-  unstable_setRequestLocale(params.locale);
+  setRequestLocale(params.locale);
 
   const text = searchParams?.text;
   const direction =
