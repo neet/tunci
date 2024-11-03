@@ -14,7 +14,7 @@ export const AlternativeTranslationsWrapper: FC<
   const t = useTranslations("components.Composer");
 
   return (
-    <Disclosure open={true} summary={<h3>{t("alternativeTranslations")}</h3>}>
+    <Disclosure open={true} summary={<h4>{t("alternativeTranslations")}</h4>}>
       {children}
     </Disclosure>
   );

@@ -14,7 +14,7 @@ export const ExampleSentencesWrapper: FC<ExampleSentencesWrapperProps> = (
   const t = useTranslations("components.ExampleSentences");
 
   return (
-    <Disclosure open={true} summary={<h3>{t("exampleSentences")}</h3>}>
+    <Disclosure open={true} summary={<h4>{t("exampleSentences")}</h4>}>
       {children}
     </Disclosure>
   );
