@@ -129,6 +129,71 @@ export async function translate(
 
 /*---------------------------------*/
 
+const MANUAL_ALTERNATIVE_TRANSLATIONS = [
+  {
+    source: "tanpe moyuk ne.",
+    translations: [
+      "これはタヌキだ。",
+      "これはタヌキだよ。",
+      "これはタヌキです。",
+    ],
+  },
+  {
+    source: "tan cikap eyami ne.",
+    translations: [
+      "この鳥はカケスです。",
+      "この鳥はカケスだ。",
+      "この鳥はカケスだよ。",
+    ],
+  },
+  {
+    source: "toan poro cikuni anak ranko ne.",
+    translations: [
+      "あの大きな木はカツラだ。",
+      "あの大きな木はカツラだよ。",
+      "あの大きな木はカツラです。",
+    ],
+  },
+  {
+    source: "terkeype ne yakka kamuy somo ne.",
+    translations: [
+      "カエルもカムイではない。",
+      "カエルもカムイではないよ。",
+      "カエルもカムイではありません。",
+    ],
+  },
+  {
+    source: "ネズミはイモを食べる。",
+    translations: [
+      "ermu emo e.",
+      "ermu emo e ruwe ne.",
+      "ermu anak emo e.",
+      "ermu anak emo e ruwe ne.",
+    ],
+  },
+  {
+    source: "犬が走って逃げた。",
+    translations: ["seta hoyupu wa kira.", "seta hoyupu wa kira ruwe ne."],
+  },
+  {
+    source: "これは普通のカムイだ。",
+    translations: ["tanpe yayan kamuy ne.", "tanpe yayan kamuy ne ruwe ne."],
+  },
+  {
+    source: "濁り水をすてるな！",
+    translations: ["iteki nupki kuta!", "iteki nupki kuta yan!"],
+  },
+  {
+    source: "クジラは魚ではない。",
+    translations: [
+      "humpe cep somo ne.",
+      "humpe cep somo ne ruwe ne.",
+      "humpe anak cep somo ne.",
+      "humpe anak cep somo ne ruwe ne.",
+    ],
+  },
+];
+
 export async function fetchAlternativeTranslations(
   text: string,
   result: Result,
@@ -140,6 +205,10 @@ export async function fetchAlternativeTranslations(
     return [];
   }
 
+  const manualAlternativeTranslation = MANUAL_ALTERNATIVE_TRANSLATIONS.find(
+    (alternative) => alternative.source === text,
+  );
+
   const genMax = 20;
   const max = 3;
 
@@ -148,12 +217,18 @@ export async function fetchAlternativeTranslations(
       ? result.transcriptions.text.text
       : text;
 
-  const translations = await api.translate(text, {
+  let translations = await api.translate(text, {
     direction,
     dialect,
     pronoun,
     numReturnSequences: genMax,
   });
+
+  if (manualAlternativeTranslation) {
+    translations = translations.concat(
+      manualAlternativeTranslation.translations,
+    );
+  }
 
   return translations
     .filter((translation) => translation !== result.translation)
