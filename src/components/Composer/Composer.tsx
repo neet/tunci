@@ -370,7 +370,7 @@ export const Composer: FC<ComposerProps> = (props) => {
 
       <div className="col-span-full flex mx-4 mt-4 justify-between xl:mx-0 flex-wrap gap-4">
         <div>
-          <Hint>1単語で入力すると、その単語を含む例文も一緒に表示されます</Hint>
+          <Hint>{t("hint.examples")}</Hint>
         </div>
 
         <div className="flex gap-2 flex-wrap">

@@ -7,11 +7,10 @@ export type HintProps = {
 };
 
 export const Hint: FC<HintProps> = (props) => {
-  const t = useTranslations();
+  const t = useTranslations("components.Composer");
   return (
     <div className="flex gap-1 items-center text-sm text-gray-600 dark:text-zinc-400">
-      <MdLightbulbOutline className="size-4" aria-label={t("hint")} />
-
+      <MdLightbulbOutline className="size-4" aria-label={t("hint.title")} />
       <p className="leading-none">{props.children}</p>
     </div>
   );

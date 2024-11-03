@@ -55,7 +55,11 @@
       "char_max": "{max}文字中、{current}文字を入力中。",
       "translateForm": "翻訳フォーム",
       "translationResult": "翻訳結果",
-      "wip": "この機能は現在準備中です。"
+      "wip": "この機能は現在準備中です。",
+      "hint": {
+        "title": "ヒント",
+        "examples": "単語を入力すると、その単語を含む例文を見ることができます。"
+      }
     },
     "ExampleSentences": {
       "exampleSentences": "用例",
@@ -66,6 +70,5 @@
       "ainu": "アイヌ語",
       "japanese": "日本語"
     }
-  },
-  "hint": "ヒント"
+  }
 }
