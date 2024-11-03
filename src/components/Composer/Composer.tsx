@@ -369,7 +369,9 @@ export const Composer: FC<ComposerProps> = (props) => {
       </div>
 
       <div className="col-span-full flex mx-4 mt-4 justify-between xl:mx-0 flex-wrap gap-4">
-        <Hint>１単語で入力すると、その単語を含む例文も一緒に表示されます</Hint>
+        <div>
+          <Hint>1単語で入力すると、その単語を含む例文も一緒に表示されます</Hint>
+        </div>
 
         <div className="flex gap-2 flex-wrap">
           <PronounSelector defaultValue={defaultValues.pronoun} />
