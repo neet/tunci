@@ -27,6 +27,7 @@ import { AlternativeTranslations } from "./AlternativeTranslations";
 import { CharCount } from "./CharCount";
 import { DialectSelector } from "./DialectSelector";
 import { ExampleSentences } from "./ExampleSentences";
+import { Hint } from "./Hint";
 import { IconButton } from "./IconButton";
 import { IconButtonGroup } from "./IconButtonGroup";
 import { LanguageSelector } from "./LanguageSelector";
@@ -367,14 +368,16 @@ export const Composer: FC<ComposerProps> = (props) => {
         </div>
       </div>
 
-      <div className="col-span-full flex mx-4 justify-end mt-4 gap-2 xl:mx-0">
-        <PronounSelector defaultValue={defaultValues.pronoun} />
+      <div className="col-span-full flex mx-4 mt-4 justify-between xl:mx-0 flex-wrap gap-4">
+        <Hint>１単語で入力すると、その単語を含む例文も一緒に表示されます</Hint>
 
-        <DialectSelector defaultValue={defaultValues.dialect} />
-
-        <Button type="submit" disabled={pending}>
-          {t("translate")}
-        </Button>
+        <div className="flex gap-2 flex-wrap">
+          <PronounSelector defaultValue={defaultValues.pronoun} />
+          <DialectSelector defaultValue={defaultValues.dialect} />
+          <Button type="submit" disabled={pending}>
+            {t("translate")}
+          </Button>
+        </div>
       </div>
     </form>
   );
