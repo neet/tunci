@@ -40,16 +40,16 @@
       "advanced_settings": "iporse & itakpo",
       "PronounSelector": {
         "title": "itakpo",
-        "description": "aynu itak anakne, yayan oruspe a=ye hi ta a=eywanke itak, yukar a=ye hi ta a=eywanke itak sinna ruwe ne. inan itak a=eywanke yak pirka ya ka a=numke easkay ruwe ne.",
+        "description": "aynu itak or ta tu sinna itak a=eywanke ruwe ne: yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
         "first": "yayan itakpo",
-        "first_description": "yayan oruspe or ta a=eywanke itak ku=kar ruwe ne.",
+        "first_description": "yayan hi ta a=ye itak",
         "fourth": "yukar itakpo",
-        "fourth_description": "yukar or ta a=eywanke itak ku=kar ruwe ne."
+        "fourth_description": "yukar or ta a=ye itak"
       },
       "close": "asi",
       "DialectSelector": {
         "title": "iporse",
-        "description": "aynu itak or ta hyôzyungo sak kusu, usa mosir or ta sinna iporse a=eywanke wa oka ruwe ne. mosir a=numke wa ne mosir or ta a=eywanke wa oka oruspe ku=kar easkay ruwe ne.",
+        "description": "aynu itak or ta hyôzyungo sak kusu, usa mosir or ta sinna itak a=eywanke wa oka ruwe ne. mosir e=numke wa ne mosir or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
         "saru": "sar",
         "chitose": "sikot",
         "mukawa": "muka",
@@ -70,6 +70,9 @@
     "LanguageSelector": {
       "ainu": "aynu itak",
       "japanese": "sisam itak"
+    },
+    "AlternativeTranslations": {
+      "description": "mosma anakne, ene itakpo ka oka hi:"
     },
     "ContentInfo": {
       "title": "tan sait kar kur oruspe"

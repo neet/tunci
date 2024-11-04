@@ -73,6 +73,9 @@
     "LanguageSelector": {
       "ainu": "アイヌ語",
       "japanese": "日本語"
+    },
+    "AlternativeTranslations": {
+      "description": "この他にも、次のような言い換えができます："
     }
   }
 }
