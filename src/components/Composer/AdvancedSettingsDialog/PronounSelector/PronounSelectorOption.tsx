@@ -34,7 +34,7 @@ export const PronounSelectorOption: FC<PronounSelectorOptionProps> = (
       />
 
       <div className="peer-checked:text-indigo-600 dark:peer-checked:text-indigo-400">
-        <h4 className="font-bold">{title}</h4>
+        <span className="font-bold">{title}</span>
         <p className="text-gray-600 dark:text-zinc-400">{description}</p>
       </div>
     </label>
