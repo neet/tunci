@@ -14,13 +14,7 @@ export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
   const { value, checked, children, onChange } = props;
 
   return (
-    <label
-      className={clsx(
-        "flex items-center p-2",
-        "has-[input:checked]:border-indigo-600 has-[input:checked]:bg-indigo-50",
-        "dark:has-[input:checked]:border-indigo-400 dark:has-[input:checked]:bg-indigo-950",
-      )}
-    >
+    <label className={clsx("flex items-center p-2")}>
       <input
         value={value}
         checked={checked}

@@ -18,11 +18,11 @@ export const LanguageSelectorOption: FC<LanguageSelectorOptionProps> = (
   return (
     <label
       className={clsx(
-        "py-1.5 px-3 rounded-lg",
-        "forced-colors:border forced-colors:border-[ButtonBorder] forced-colors:bg-[ButtonFace] forced-colors:text-[ButtonText]",
-        "bg-gray-100 text-gray-600 dark:bg-zinc-900 dark:text-zinc-400",
-        "has-[input:checked]:bg-indigo-100 has-[input:checked]:text-indigo-600 has-[input:checked]:dark:bg-indigo-950 has-[input:checked]:dark:text-indigo-400 has-[input:checked]:forced-colors:bg-[Highlight]",
+        "py-1.5 px-3 rounded-lg border",
+        "border-gray-300 has-[input:checked]:bg-indigo-50 has-[input:checked]:border-indigo-600",
+        "dark:border-zinc-600 dark:has-[input:checked]:bg-indigo-950 dark:has-[input:checked]:border-indigo-400",
         "outline-indigo-400 outline-2 focus-within:outline outline-offset-4",
+        "forced-colors:border-[ButtonBorder] forced-colors:bg-[ButtonFace] forced-colors:text-[ButtonText] forced-colors:has-[input:checked]:bg-[Highlight]",
       )}
     >
       <input
@@ -37,6 +37,8 @@ export const LanguageSelectorOption: FC<LanguageSelectorOptionProps> = (
 
       <span
         className={clsx(
+          "text-gray-600 dark:text-zinc-400",
+          "peer-checked:text-indigo-600 dark:peer-checked:text-indigo-400",
           "peer-checked:forced-colors:text-[HighlightText] peer-checked:forced-colors:bg-[Highlight]",
         )}
       >
