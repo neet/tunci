@@ -13,26 +13,6 @@
     "Banner": {
       "about": "このサイトについて"
     },
-    "DialectSelector": {
-      "dialect": "方言",
-      "southwestHokkaido": "道南西",
-      "northeastHokkaido": "道北東",
-      "saru": "沙流",
-      "chitose": "千歳",
-      "mukawa": "鵡川",
-      "horobetsu": "幌別",
-      "shizunai": "静内",
-      "tokachi": "十勝",
-      "kushiro": "釧路",
-      "samani": "様似",
-      "bihoro": "美幌",
-      "ishikari": "石狩"
-    },
-    "PronounSelector": {
-      "vocaburary": "語彙",
-      "conversation": "会話",
-      "story": "物語"
-    },
     "ContentInfo": {
       "title": "運営者情報"
     },
@@ -59,6 +39,30 @@
       "hint": {
         "title": "ヒント",
         "examples": "単語を入力すると、その単語を含む例文を見ることができます。"
+      },
+      "advanced_settings": "語彙と方言",
+      "PronounSelector": {
+        "title": "言葉づかい",
+        "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
+        "first": "普段の言葉づかい",
+        "first_description": "会話で使われる言葉で翻訳します。",
+        "fourth": "物語の言葉づかい",
+        "fourth_description": "物語で使われる言葉で翻訳します。"
+      },
+      "close": "閉じる",
+      "DialectSelector": {
+        "title": "方言",
+        "description": "アイヌ語には標準語がなく、各地域ごとに異なった表現を使っています。地域を選択して、その地域の方言で文章を作成することができます。",
+        "saru": "沙流",
+        "chitose": "千歳",
+        "mukawa": "鵡川",
+        "horobetsu": "幌別",
+        "shizunai": "静内",
+        "tokachi": "十勝",
+        "kushiro": "釧路",
+        "samani": "様似",
+        "bihoro": "美幌",
+        "ishikari": "石狩"
       }
     },
     "ExampleSentences": {

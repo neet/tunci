@@ -31,7 +31,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         <h2 className="block text-2xl font-bold text-center">{t("title")}</h2>
       </header>
 
-      <article className="bg-white dark:bg-black mx-auto p-4 prose prose-gray dark:prose-invert prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:font-normal overflow-clip">
+      <article className="bg-white dark:bg-black mx-auto p-4 prose prose-gray dark:prose-zinc dark:prose-invert prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:font-normal overflow-clip">
         <Content />
       </article>
     </main>
