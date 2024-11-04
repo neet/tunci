@@ -26,7 +26,7 @@
       "copy": "コピー",
       "translate": "翻訳",
       "copied": "コピーしました",
-      "alternativeTranslations": "その他の翻訳",
+      "alternativeTranslations": "言い換え表現",
       "translation": {
         "empty": "翻訳",
         "loading": "翻訳中..."
