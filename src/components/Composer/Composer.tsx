@@ -287,9 +287,11 @@ export const Composer: FC<ComposerProps> = (props) => {
                   <FiMic className="size-5" aria-hidden />
                 </IconButton>
 
-                <IconButton aria-label={t("play")} onClick={handlePlayInput}>
-                  <FiVolume2 className="size-5" aria-hidden />
-                </IconButton>
+                {count > 0 && (
+                  <IconButton aria-label={t("play")} onClick={handlePlayInput}>
+                    <FiVolume2 className="size-5" aria-hidden />
+                  </IconButton>
+                )}
               </>
             }
             end={
