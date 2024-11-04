@@ -38,7 +38,7 @@
       "wip": "この機能は現在準備中です。",
       "hint": {
         "title": "ヒント",
-        "examples": "単語を入力すると、その単語を含む例文を見ることができます。"
+        "examples": "単語や熟語を入力すると、その語が含まれる例文を検索できます。"
       },
       "advanced_settings": "語彙と方言",
       "PronounSelector": {

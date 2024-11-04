@@ -383,7 +383,7 @@ export const Composer: FC<ComposerProps> = (props) => {
           <Hint>{t("hint.examples")}</Hint>
         </div>
 
-        <div className="flex flex-1 gap-2 flex-wrap justify-end">
+        <div className="flex grow shrink-0 gap-2 flex-wrap justify-end">
           <Button type="button" variant="secondary" onClick={handleOpen}>
             {t("advanced_settings")}
           </Button>
