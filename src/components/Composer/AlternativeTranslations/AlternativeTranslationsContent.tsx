@@ -18,7 +18,7 @@ export const AlternativeTranslationsContent: FC<
 
   return (
     <AlternativeTranslationsWrapper>
-      <ul className="mt-1 space-y-1 text-gray-600 dark:text-zinc-400 list-disc list-outside pl-4">
+      <ul className="mt-2 space-y-1 text-gray-600 dark:text-zinc-400 list-disc list-outside pl-4 text-xl">
         {alternativeTranslations.map((alternativeTranslation, index) => (
           <li key={index}>{alternativeTranslation}</li>
         ))}
