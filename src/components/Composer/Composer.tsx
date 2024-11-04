@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   FC,
+  MouseEventHandler,
   useCallback,
   useEffect,
   useId,
@@ -23,15 +24,14 @@ import * as t from "@/models/transcription";
 
 import { Alert } from "../Alert";
 import { Button } from "../Button";
+import { AdvancedSettingsDialog } from "./AdvancedSettingsDialog";
 import { AlternativeTranslations } from "./AlternativeTranslations";
 import { CharCount } from "./CharCount";
-import { DialectSelector } from "./DialectSelector";
 import { ExampleSentences } from "./ExampleSentences";
 import { Hint } from "./Hint";
 import { IconButton } from "./IconButton";
 import { IconButtonGroup } from "./IconButtonGroup";
 import { LanguageSelector } from "./LanguageSelector";
-import { PronounSelector } from "./PronounSelector";
 import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
 
@@ -73,6 +73,7 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [pending, startTransition] = useTransition();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const submitted = useRef(false);
   const headingId = useId();
 
@@ -178,6 +179,15 @@ export const Composer: FC<ComposerProps> = (props) => {
     mixpanel.track("Translator::share", {
       text: translation,
     });
+  };
+
+  const handleOpen: MouseEventHandler = (e): void => {
+    e.stopPropagation();
+    dialogRef.current?.showModal();
+  };
+
+  const handleClose = (): void => {
+    dialogRef.current?.close();
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -374,13 +384,33 @@ export const Composer: FC<ComposerProps> = (props) => {
         </div>
 
         <div className="flex gap-2 flex-wrap">
-          <PronounSelector defaultValue={defaultValues.pronoun} />
-          <DialectSelector defaultValue={defaultValues.dialect} />
+          <Button type="button" variant="secondary" onClick={handleOpen}>
+            {t("advanced_settings")}
+          </Button>
+
           <Button type="submit" disabled={pending}>
             {t("translate")}
           </Button>
         </div>
       </div>
+
+      <dialog
+        className={clsx(
+          "w-full max-w-screen-sm backdrop:bg-black/70 backdrop:backdrop-blur rounded-lg",
+          "shadow-lg bg-white",
+          "dark:border dark:border-zinc-600 dark:bg-black",
+          "forced-colors:border forced-colors:border-[ButtonBorder]",
+        )}
+        ref={dialogRef}
+      >
+        <AdvancedSettingsDialog
+          defaultValues={{
+            pronoun: defaultValues.pronoun,
+            dialect: defaultValues.dialect,
+          }}
+          onClose={handleClose}
+        />
+      </dialog>
     </form>
   );
 };

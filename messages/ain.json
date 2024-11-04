@@ -13,26 +13,6 @@
     "Banner": {
       "about": "tanpe hemanta an?"
     },
-    "DialectSelector": {
-      "dialect": "iporse",
-      "southwestHokkaido": "sum",
-      "northeastHokkaido": "menas",
-      "saru": "sar",
-      "chitose": "sikot",
-      "mukawa": "muka",
-      "horobetsu": "poropet",
-      "shizunai": "sipicari",
-      "tokachi": "tokapci",
-      "kushiro": "kusir",
-      "samani": "samani",
-      "bihoro": "peporo",
-      "ishikari": "iskar"
-    },
-    "PronounSelector": {
-      "vocaburary": "itakpo",
-      "conversation": "ukoytak",
-      "story": "yukar"
-    },
     "Composer": {
       "source": "nuye itak",
       "recognize": "hawe ani nuye",
@@ -56,6 +36,30 @@
       "hint": {
         "title": "hinto",
         "examples": "sine itak a=nuye kor, ne itak an oruspe a=nukar easkay."
+      },
+      "advanced_settings": "iporse & itakpo",
+      "PronounSelector": {
+        "title": "itakpo",
+        "description": "aynu itak anakne, yayan oruspe a=ye hi ta a=eywanke itak, yukar a=ye hi ta a=eywanke itak sinna ruwe ne. inan itak a=eywanke yak pirka ya ka a=numke easkay ruwe ne.",
+        "first": "yayan itakpo",
+        "first_description": "yayan oruspe or ta a=eywanke itak ku=kar ruwe ne.",
+        "fourth": "yukar itakpo",
+        "fourth_description": "yukar or ta a=eywanke itak ku=kar ruwe ne."
+      },
+      "close": "asi",
+      "DialectSelector": {
+        "title": "iporse",
+        "description": "aynu itak or ta hyôzyungo sak kusu, usa mosir or ta sinna iporse a=eywanke wa oka ruwe ne. mosir a=numke wa ne mosir or ta a=eywanke wa oka oruspe ku=kar easkay ruwe ne.",
+        "saru": "sar",
+        "chitose": "sikot",
+        "mukawa": "muka",
+        "horobetsu": "poropet",
+        "shizunai": "sipicari",
+        "tokachi": "tokapci",
+        "kushiro": "kusir",
+        "samani": "samani",
+        "bihoro": "peporo",
+        "ishikari": "iskar"
       }
     },
     "ExampleSentences": {
