@@ -208,7 +208,8 @@ export const Composer: FC<ComposerProps> = (props) => {
 
       mixpanel.track("Translator::translate", {
         text: formData.get("text"),
-        direction: formData.get("direction"),
+        source: formData.get("source"),
+        target: formData.get("target"),
         pronoun: formData.get("pronoun"),
         dialect: formData.get("dialect"),
       });
