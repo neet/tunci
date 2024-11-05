@@ -14,7 +14,7 @@ export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
   const { value, checked, children, onChange } = props;
 
   return (
-    <label className={clsx("flex items-center p-2")}>
+    <label className={clsx("flex items-center px-2 py-2.5 md:p-2")}>
       <input
         value={value}
         checked={checked}
@@ -24,7 +24,7 @@ export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
         onChange={(e) => onChange?.(e.target.value)}
       />
 
-      <div className="ml-2 peer-checked:text-indigo-600 dark:peer-checked:text-indigo-400 text-sm">
+      <div className="ml-2 peer-checked:text-indigo-600 dark:peer-checked:text-indigo-400 md:text-sm">
         {children}
       </div>
     </label>

@@ -1,62 +1,43 @@
-"use client";
-
 import clsx from "clsx";
-import { useTranslations } from "next-intl";
-import { FC } from "react";
-import { FiX } from "react-icons/fi";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
-import { DialectSelector } from "./DialectSelector/DialectSelector";
-import { PronounSelector } from "./PronounSelector";
+import { AdvancedSettingsDialogContent } from "./AdvancedSettingsDialogContent";
 
-export interface AdvancedSettingsDialogProps {
+export type AdvancedSettingsDialogProps = {
   defaultValues?: {
     pronoun?: string;
     dialect?: string;
   };
   onClose(): void;
-}
+};
 
-export const AdvancedSettingsDialog: FC<AdvancedSettingsDialogProps> = (
-  props,
-) => {
-  const { defaultValues, onClose } = props;
-
-  const t = useTranslations("components.Composer");
+const AdvancedSettingsDialogRenderFn: ForwardRefRenderFunction<
+  HTMLDialogElement,
+  AdvancedSettingsDialogProps
+> = (props, ref) => {
+  const { defaultValues = {}, onClose } = props;
 
   return (
-    <div className="w-full relative text-black dark:text-white">
-      <header
-        className={clsx(
-          "sticky top-0 left-0",
-          "flex justify-between",
-          "p-4",
-          "shadow-sm bg-white/80 backdrop-blur",
-          "dark:border-b dark:border-zinc-600 dark:bg-black/80",
-        )}
-      >
-        <h2 className="font-bold text-lg">{t("advanced_settings")}</h2>
-
-        <button
-          type="button"
-          className={clsx(
-            "rounded-full",
-            "hover:bg-gray-200",
-            "dark:hover:bg-zinc-700",
-            "focus:outline outline-2 outline-indigo-500",
-          )}
-          onClick={onClose}
-        >
-          <FiX
-            aria-label={t("close")}
-            className="size-6 text-gray-400 dark:text-zinc-600"
-          />
-        </button>
-      </header>
-
-      <div className="space-y-8 p-4">
-        <PronounSelector defaultValue={defaultValues?.pronoun} />
-        <DialectSelector defaultValue={defaultValues?.dialect} />
-      </div>
-    </div>
+    <dialog
+      className={clsx(
+        "w-full max-w-screen-sm backdrop:bg-black/70 backdrop:backdrop-blur rounded-lg",
+        "shadow-lg bg-white",
+        "dark:border dark:border-zinc-600 dark:bg-black",
+        "forced-colors:border forced-colors:border-[ButtonBorder]",
+      )}
+      ref={ref}
+    >
+      <AdvancedSettingsDialogContent
+        defaultValues={{
+          pronoun: defaultValues.pronoun,
+          dialect: defaultValues.dialect,
+        }}
+        onClose={onClose}
+      />
+    </dialog>
   );
 };
+
+export const AdvancedSettingsDialog = forwardRef(
+  AdvancedSettingsDialogRenderFn,
+);

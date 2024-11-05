@@ -396,23 +396,14 @@ export const Composer: FC<ComposerProps> = (props) => {
         </div>
       </div>
 
-      <dialog
-        className={clsx(
-          "w-full max-w-screen-sm backdrop:bg-black/70 backdrop:backdrop-blur rounded-lg",
-          "shadow-lg bg-white",
-          "dark:border dark:border-zinc-600 dark:bg-black",
-          "forced-colors:border forced-colors:border-[ButtonBorder]",
-        )}
+      <AdvancedSettingsDialog
+        defaultValues={{
+          pronoun: defaultValues.pronoun,
+          dialect: defaultValues.dialect,
+        }}
+        onClose={handleClose}
         ref={dialogRef}
-      >
-        <AdvancedSettingsDialog
-          defaultValues={{
-            pronoun: defaultValues.pronoun,
-            dialect: defaultValues.dialect,
-          }}
-          onClose={handleClose}
-        />
-      </dialog>
+      />
     </form>
   );
 };
