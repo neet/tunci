@@ -187,9 +187,11 @@ const MANUAL_ALTERNATIVE_TRANSLATIONS = [
     source: "クジラは魚ではない。",
     translations: [
       "humpe cep somo ne.",
-      "humpe cep somo ne ruwe ne.",
-      "humpe anak cep somo ne.",
+      "aspepuyo cep somo ne.",
+      "aspepuyo cep somo ne ruwe ne.",
       "humpe anak cep somo ne ruwe ne.",
+      // "humpe anak cep somo ne.",
+      // "humpe anak cep somo ne ruwe ne.",
     ],
   },
 ];
