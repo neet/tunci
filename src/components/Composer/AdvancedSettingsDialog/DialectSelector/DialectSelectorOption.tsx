@@ -14,7 +14,12 @@ export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
   const { value, checked, children, onChange } = props;
 
   return (
-    <label className={clsx("flex items-center px-2 py-2.5 md:p-2")}>
+    <label
+      className={clsx(
+        "flex items-center px-2 py-2.5 md:p-2",
+        "hover:bg-gray-100 dark:hover:bg-zinc-900 transition",
+      )}
+    >
       <input
         value={value}
         checked={checked}

@@ -19,6 +19,7 @@ export const LanguageSelectorOption: FC<LanguageSelectorOptionProps> = (
     <label
       className={clsx(
         "py-1.5 px-3 rounded-lg border",
+        "hover:bg-gray-100 dark:hover:bg-zinc-900 transition",
         "border-gray-300 has-[input:checked]:bg-indigo-50 has-[input:checked]:border-indigo-600",
         "dark:border-zinc-600 dark:has-[input:checked]:bg-indigo-950 dark:has-[input:checked]:border-indigo-400",
         "outline-indigo-400 outline-2 focus-within:outline outline-offset-4",
