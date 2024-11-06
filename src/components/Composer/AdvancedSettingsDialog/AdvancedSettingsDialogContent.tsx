@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { FiX } from "react-icons/fi";
 
+import { Button } from "@/components/Button";
+
 import { DialectSelector } from "./DialectSelector";
 import { PronounSelector } from "./PronounSelector";
 
@@ -58,6 +60,12 @@ export const AdvancedSettingsDialogContent: FC<
       <div className="space-y-8 p-4">
         <PronounSelector defaultValue={defaultValues?.pronoun} />
         <DialectSelector defaultValue={defaultValues?.dialect} />
+
+        <footer className="flex justify-end">
+          <Button type="button" onClick={onClose}>
+            {t("close")}
+          </Button>
+        </footer>
       </div>
     </div>
   );

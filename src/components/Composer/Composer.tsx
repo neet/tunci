@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   FC,
-  MouseEventHandler,
   useCallback,
   useEffect,
   useId,
@@ -181,8 +180,7 @@ export const Composer: FC<ComposerProps> = (props) => {
     });
   };
 
-  const handleOpen: MouseEventHandler = (e): void => {
-    e.stopPropagation();
+  const handleOpen = (): void => {
     dialogRef.current?.showModal();
   };
 
