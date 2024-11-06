@@ -313,7 +313,6 @@ export const Composer: FC<ComposerProps> = (props) => {
           name="target"
           value={target}
           legend={t("target")}
-          className="border-gray-200"
           onChange={handleChangeTarget}
         />
 

@@ -20,7 +20,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
   return (
     <fieldset
       className={clsx(
-        "flex gap-2 p-4 border-b border-gray-100 dark:border-zinc-600",
+        "flex gap-2 p-4 border-b border-gray-300 dark:border-zinc-600",
         className,
       )}
     >
