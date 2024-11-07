@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { FC } from "react";
 import {
   ComposableMap,
@@ -8,83 +9,18 @@ import {
   Marker,
 } from "react-simple-maps";
 
-import { usePrefersColorScheme } from "./usePrefersColorScheme";
+import { Dialect } from "./model";
 
-const markers = [
-  {
-    markerOffset: -15,
-    name: "沙流",
-    coordinates: [142.0865, 42.6054],
-  },
-  {
-    markerOffset: -15,
-    name: "千歳",
-    coordinates: [141.6738, 42.8194],
-  },
-  {
-    markerOffset: -15,
-    name: "幌別",
-    coordinates: [141.1068, 42.4129],
-  },
-  {
-    markerOffset: -15,
-    name: "静内",
-    coordinates: [142.3647, 42.3321],
-  },
-  {
-    markerOffset: -15,
-    name: "様似",
-    coordinates: [142.9261, 42.1286],
-  },
-  {
-    markerOffset: -15,
-    name: "十勝",
-    coordinates: [143.1965, 42.9238],
-  },
-  {
-    markerOffset: -15,
-    name: "釧路",
-    coordinates: [144.3814, 42.9849],
-  },
-  {
-    markerOffset: -15,
-    name: "美幌",
-    coordinates: [144.1079, 43.8395],
-  },
-  {
-    markerOffset: -15,
-    name: "石狩",
-    coordinates: [142.3589, 43.7706],
-  },
-] satisfies Array<{
-  markerOffset: number;
-  name: string;
-  coordinates: [number, number];
-}>;
+const markerOffset = -15;
 
 export type DialectSelectorMapProps = {
   value?: string;
+  dialects: Dialect[];
   onChange?(value: string): void;
 };
 
-const ZINC_900 = "#18181b";
-const ZINC_600 = "#52525b";
-const ZINC_400 = "#a1a1aa";
-
-const GRAY_100 = "#f3f4f6";
-const GRAY_400 = "#9ca3af";
-const GRAY_600 = "#4b5563";
-
-const INDIGO_100 = "#e0e7ff";
-const INDIGO_400 = "#818cf8";
-const INDIGO_600 = "#4f46e5";
-const INDIGO_900 = "#312e81";
-
 export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
-  const { value, onChange } = props;
-
-  const { prefersColorScheme } = usePrefersColorScheme();
-  const light = prefersColorScheme === "light";
+  const { value, dialects, onChange } = props;
 
   return (
     <ComposableMap
@@ -102,9 +38,11 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
 
       <Geographies
         geography="/hokkaido.json"
-        fill={light ? "white" : "black"}
-        stroke={light ? GRAY_400 : ZINC_600}
-        strokeWidth="2px"
+        className={clsx(
+          "fill-white dark:fill-black",
+          "stroke-2",
+          "stroke-gray-400 dark:stroke-zinc-600",
+        )}
       >
         {({ geographies }) =>
           geographies.map((geo) => (
@@ -113,55 +51,50 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
         }
       </Geographies>
 
-      {markers.map(({ name, coordinates, markerOffset }) => (
+      {dialects.map((dialect) => (
         <Marker
-          key={name}
-          coordinates={coordinates}
+          key={dialect.value}
+          coordinates={dialect.coordinates}
           className="cursor-pointer"
           onClick={() => {
-            onChange?.(name);
+            onChange?.(dialect.value);
           }}
         >
-          {value === name ? (
+          {dialect.value === value ? (
             <circle
               r={15}
-              fill={light ? INDIGO_600 : INDIGO_400}
-              stroke={light ? INDIGO_100 : INDIGO_900}
-              strokeWidth={2}
+              className={clsx(
+                "fill-indigo-600 dark:fill-indigo-400",
+                "stroke-2",
+                "stroke-indigo-100 dark:stroke-indigo-900",
+              )}
             />
           ) : (
             <circle
               r={10}
-              fill={light ? GRAY_400 : ZINC_600}
-              stroke={light ? GRAY_100 : ZINC_900}
-              strokeWidth={2}
+              className={clsx(
+                "fill-gray-400 dark:fill-zinc-600",
+                "stroke-2",
+                "stroke-gray-100 dark:stroke-zinc-900",
+              )}
             />
           )}
 
-          {value === name ? (
+          {dialect.value === value ? (
             <text
               textAnchor="middle"
               y={markerOffset - 6}
-              style={{
-                fontFamily: "system-ui",
-                fill: light ? INDIGO_600 : INDIGO_400,
-                fontSize: "2em",
-                fontWeight: "bold",
-              }}
+              className="font-bold text-[2em] font-sans fill-indigo-600 dark:fill-indigo-400"
             >
-              {name}
+              {dialect.name}
             </text>
           ) : (
             <text
               textAnchor="middle"
               y={markerOffset}
-              style={{
-                fontFamily: "system-ui",
-                fill: light ? GRAY_600 : ZINC_400,
-                fontSize: "1.4em",
-              }}
+              className="text-base text-[1.4em] font-sans fill-gray-600 dark:fill-zinc-400"
             >
-              {name}
+              {dialect.name}
             </text>
           )}
         </Marker>

@@ -1,17 +1,22 @@
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { FC } from "react";
+import { IoFlask } from "react-icons/io5";
 
 type DialectSelectorOptionProps = {
   children: React.ReactNode;
   value: string;
   checked?: boolean;
+  experimental?: boolean;
   onChange?(value: string): void;
 };
 
 export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
   props,
 ) => {
-  const { value, checked, children, onChange } = props;
+  const { value, checked, children, experimental, onChange } = props;
+
+  const t = useTranslations("components.Composer.DialectSelector");
 
   return (
     <label
@@ -32,6 +37,13 @@ export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
       <div className="ml-2 peer-checked:text-indigo-600 dark:peer-checked:text-indigo-400 md:text-sm">
         {children}
       </div>
+
+      {experimental && (
+        <IoFlask
+          className="ml-auto size-4 text-gray-600 dark:text-gray-400"
+          title={t("experimental")}
+        />
+      )}
     </label>
   );
 };
