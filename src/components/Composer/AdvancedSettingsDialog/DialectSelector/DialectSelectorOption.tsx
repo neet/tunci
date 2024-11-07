@@ -40,7 +40,7 @@ export const DialectSelectorOption: FC<DialectSelectorOptionProps> = (
 
       {experimental && (
         <IoFlask
-          className="ml-auto size-4 text-gray-600 dark:text-gray-400"
+          className="ml-auto size-4 text-gray-400 dark:text-zinc-600"
           title={t("experimental")}
         />
       )}
