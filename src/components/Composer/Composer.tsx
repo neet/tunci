@@ -87,6 +87,12 @@ export const Composer: FC<ComposerProps> = (props) => {
     }
   }, [props.translation]);
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.value = defaultValues.text;
+    }
+  }, [defaultValues.text]);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setCountDebounced = useCallback(
     debounce((count: number) => setCount(count), 1000),
