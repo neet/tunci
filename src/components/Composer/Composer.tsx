@@ -26,6 +26,7 @@ import { Button } from "../Button";
 import { AdvancedSettingsDialog } from "./AdvancedSettingsDialog";
 import { AlternativeTranslations } from "./AlternativeTranslations";
 import { CharCount } from "./CharCount";
+import { Disclaimer } from "./Disclaimer";
 import { ExampleSentences } from "./ExampleSentences";
 import { Hint } from "./Hint";
 import { IconButton } from "./IconButton";
@@ -80,6 +81,8 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [count, setCount] = useState<number>(defaultValues.text.length);
   const [source, setSource] = useState(defaultValues.source);
   const [target, setTarget] = useState(defaultValues.target);
+
+  const ready = translation && !dirty;
 
   useEffect(() => {
     if (submitted.current) {
@@ -274,7 +277,7 @@ export const Composer: FC<ComposerProps> = (props) => {
               onChange={handleChangeText}
             />
 
-            {translation && textTranscription && !dirty && (
+            {ready && textTranscription && (
               <Transcription className="mt-1">
                 {textTranscription.text}
               </Transcription>
@@ -334,7 +337,7 @@ export const Composer: FC<ComposerProps> = (props) => {
                 />
               </p>
 
-              {translation && translationTranscription && !dirty && (
+              {ready && translationTranscription && (
                 <Transcription className="mt-1">
                   {translationTranscription.text}
                 </Transcription>
@@ -344,16 +347,14 @@ export const Composer: FC<ComposerProps> = (props) => {
             <IconButtonGroup
               className="-mx-4 -mb-4 p-2"
               start={
-                translation &&
-                !dirty && (
+                ready && (
                   <IconButton aria-label={t("play")} onClick={handlePlayOutput}>
                     <FiVolume2 className="size-5" aria-hidden />
                   </IconButton>
                 )
               }
               end={
-                translation &&
-                !dirty && (
+                ready && (
                   <>
                     <IconButton aria-label={t("share")} onClick={handleShare}>
                       <FiShare className="size-5" aria-hidden />
@@ -368,26 +369,26 @@ export const Composer: FC<ComposerProps> = (props) => {
             />
           </div>
 
-          {translation && !dirty && (
+          {ready && (
             <ExampleSentences
               exampleSentencesPromise={props.exampleSentencesPromise}
             />
           )}
 
-          {translation && !dirty && (
+          {ready && (
             <AlternativeTranslations
               alternativeTranslationsPromise={
                 props.alternativeTranslationsPromise
               }
             />
           )}
+
+          {ready && <Disclaimer />}
         </div>
       </div>
 
       <div className="col-span-full flex mx-4 mt-4 justify-between xl:mx-0 flex-wrap gap-4">
-        <div>
-          <Hint>{t("hint.examples")}</Hint>
-        </div>
+        <div>{!ready && <Hint>{t("hint.examples")}</Hint>}</div>
 
         <div className="flex grow shrink-0 gap-2 flex-wrap justify-end">
           <Button type="button" variant="secondary" onClick={handleOpen}>
