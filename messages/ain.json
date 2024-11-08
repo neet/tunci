@@ -33,10 +33,6 @@
       "translateForm": "itaktupte fomu",
       "translationResult": "a=tupte itak",
       "wip": "naa ci=kar kor oka=as hontom ne ruwe ne.",
-      "hint": {
-        "title": "hinto",
-        "examples": "sine itak a=nuye kor, ne itak an oruspe a=nukar easkay."
-      },
       "advanced_settings": "iporse & itakpo",
       "PronounSelector": {
         "title": "itakpo",

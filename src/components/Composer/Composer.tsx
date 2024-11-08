@@ -28,7 +28,6 @@ import { AlternativeTranslations } from "./AlternativeTranslations";
 import { CharCount } from "./CharCount";
 import { Disclaimer } from "./Disclaimer";
 import { ExampleSentences } from "./ExampleSentences";
-import { Hint } from "./Hint";
 import { IconButton } from "./IconButton";
 import { IconButtonGroup } from "./IconButtonGroup";
 import { LanguageSelector } from "./LanguageSelector";
@@ -82,7 +81,7 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [source, setSource] = useState(defaultValues.source);
   const [target, setTarget] = useState(defaultValues.target);
 
-  const ready = translation && !dirty;
+  const ready = translation != null && !dirty;
 
   useEffect(() => {
     if (submitted.current) {
@@ -245,7 +244,7 @@ export const Composer: FC<ComposerProps> = (props) => {
         </Alert>
       )}
 
-      <div className="bg-white dark:bg-black col-span-1">
+      <div className="col-span-1">
         <LanguageSelector
           name="source"
           value={source}
@@ -292,11 +291,13 @@ export const Composer: FC<ComposerProps> = (props) => {
                   <FiMic className="size-5" aria-hidden />
                 </IconButton>
 
-                {count > 0 && (
-                  <IconButton title={t("play")} onClick={handlePlayInput}>
-                    <FiVolume2 className="size-5" aria-hidden />
-                  </IconButton>
-                )}
+                <IconButton
+                  show={count > 0}
+                  title={t("play")}
+                  onClick={handlePlayInput}
+                >
+                  <FiVolume2 className="size-5" aria-hidden />
+                </IconButton>
               </>
             }
             end={
@@ -310,84 +311,8 @@ export const Composer: FC<ComposerProps> = (props) => {
             }
           />
         </div>
-      </div>
 
-      <div className="bg-gray-50 dark:bg-zinc-900 col-span-1">
-        <LanguageSelector
-          name="target"
-          value={target}
-          legend={t("target")}
-          onChange={handleChangeTarget}
-        />
-
-        <div className="divide-y-2 divide-gray-200 dark:divide-zinc-600">
-          <div className="p-4">
-            <h3 id="translation" tabIndex={-1} className="sr-only">
-              {t("translationResult")}
-            </h3>
-
-            <div>
-              <p className="text-2xl min-h-[3lh]">
-                <Translation
-                  value={dirty ? "" : translation}
-                  pending={pending}
-                />
-              </p>
-
-              {ready && translationTranscription && (
-                <Transcription className="mt-1">
-                  {translationTranscription.text}
-                </Transcription>
-              )}
-            </div>
-
-            <IconButtonGroup
-              className="-mx-4 -mb-4 p-2"
-              start={
-                ready && (
-                  <IconButton title={t("play")} onClick={handlePlayOutput}>
-                    <FiVolume2 className="size-5" aria-hidden />
-                  </IconButton>
-                )
-              }
-              end={
-                ready && (
-                  <>
-                    <IconButton title={t("share")} onClick={handleShare}>
-                      <FiShare className="size-5" aria-hidden />
-                    </IconButton>
-
-                    <IconButton title={t("copy")} onClick={handleCopy}>
-                      <FiCopy className="size-5" aria-hidden />
-                    </IconButton>
-                  </>
-                )
-              }
-            />
-          </div>
-
-          {ready && (
-            <ExampleSentences
-              exampleSentencesPromise={props.exampleSentencesPromise}
-            />
-          )}
-
-          {ready && (
-            <AlternativeTranslations
-              alternativeTranslationsPromise={
-                props.alternativeTranslationsPromise
-              }
-            />
-          )}
-
-          {ready && <Disclaimer />}
-        </div>
-      </div>
-
-      <div className="col-span-full flex mx-4 mt-4 justify-between xl:mx-0 flex-wrap gap-4">
-        <div>{!ready && <Hint>{t("hint.examples")}</Hint>}</div>
-
-        <div className="flex grow shrink-0 gap-2 flex-wrap justify-end">
+        <div className="flex gap-2 flex-wrap justify-end p-4">
           <Button type="button" variant="secondary" onClick={handleOpen}>
             {t("advanced_settings")}
           </Button>
@@ -395,6 +320,88 @@ export const Composer: FC<ComposerProps> = (props) => {
           <Button type="submit" disabled={pending}>
             {t("translate")}
           </Button>
+        </div>
+      </div>
+
+      <div className="col-span-1">
+        <div className="bg-gray-50 dark:bg-zinc-900">
+          <LanguageSelector
+            name="target"
+            value={target}
+            legend={t("target")}
+            onChange={handleChangeTarget}
+          />
+
+          <div className="divide-y-2 divide-gray-200 dark:divide-zinc-600">
+            <div className="p-4">
+              <h3 id="translation" tabIndex={-1} className="sr-only">
+                {t("translationResult")}
+              </h3>
+
+              <div>
+                <p className="text-2xl min-h-[3lh]">
+                  <Translation
+                    value={dirty ? "" : translation}
+                    pending={pending}
+                  />
+                </p>
+
+                {ready && translationTranscription && (
+                  <Transcription className="mt-1">
+                    {translationTranscription.text}
+                  </Transcription>
+                )}
+              </div>
+
+              <IconButtonGroup
+                className="-mx-4 -mb-4 p-2"
+                start={
+                  <IconButton
+                    show={ready}
+                    title={t("play")}
+                    onClick={handlePlayOutput}
+                  >
+                    <FiVolume2 className="size-5" aria-hidden />
+                  </IconButton>
+                }
+                end={
+                  <>
+                    <IconButton
+                      show={ready}
+                      title={t("share")}
+                      onClick={handleShare}
+                    >
+                      <FiShare className="size-5" aria-hidden />
+                    </IconButton>
+
+                    <IconButton
+                      show={ready}
+                      title={t("copy")}
+                      onClick={handleCopy}
+                    >
+                      <FiCopy className="size-5" aria-hidden />
+                    </IconButton>
+                  </>
+                }
+              />
+            </div>
+
+            {ready && (
+              <ExampleSentences
+                exampleSentencesPromise={props.exampleSentencesPromise}
+              />
+            )}
+
+            {ready && (
+              <AlternativeTranslations
+                alternativeTranslationsPromise={
+                  props.alternativeTranslationsPromise
+                }
+              />
+            )}
+
+            {ready && <Disclaimer />}
+          </div>
         </div>
       </div>
 

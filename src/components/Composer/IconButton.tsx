@@ -4,12 +4,13 @@ import { FC, ReactNode } from "react";
 export type IconButtonProps = {
   children: ReactNode;
   title: string;
+  show?: boolean;
   className?: string;
   onClick: () => void | Promise<void>;
 };
 
 export const IconButton: FC<IconButtonProps> = (props) => {
-  const { children, className, title, onClick } = props;
+  const { children, className, title, show = true, onClick } = props;
 
   return (
     <button
@@ -19,6 +20,7 @@ export const IconButton: FC<IconButtonProps> = (props) => {
         "hover:bg-gray-200 dark:hover:bg-zinc-800",
         "outline-indigo-400 outline-2 focus:outline",
         "transition",
+        !show && "invisible",
         className,
       )}
       type="button"
