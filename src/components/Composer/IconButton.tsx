@@ -3,12 +3,13 @@ import { FC, ReactNode } from "react";
 
 export type IconButtonProps = {
   children: ReactNode;
-  "aria-label": string;
+  title: string;
+  className?: string;
   onClick: () => void | Promise<void>;
 };
 
 export const IconButton: FC<IconButtonProps> = (props) => {
-  const { children, "aria-label": ariaLabel, onClick } = props;
+  const { children, className, title, onClick } = props;
 
   return (
     <button
@@ -18,9 +19,10 @@ export const IconButton: FC<IconButtonProps> = (props) => {
         "hover:bg-gray-200 dark:hover:bg-zinc-800",
         "outline-indigo-400 outline-2 focus:outline",
         "transition",
+        className,
       )}
       type="button"
-      aria-label={ariaLabel}
+      title={title}
       onClick={onClick}
     >
       {children}

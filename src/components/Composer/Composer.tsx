@@ -288,15 +288,12 @@ export const Composer: FC<ComposerProps> = (props) => {
             className="-mx-4 -mb-4 p-2"
             start={
               <>
-                <IconButton
-                  aria-label={t("recognize")}
-                  onClick={handleRecognize}
-                >
+                <IconButton title={t("recognize")} onClick={handleRecognize}>
                   <FiMic className="size-5" aria-hidden />
                 </IconButton>
 
                 {count > 0 && (
-                  <IconButton aria-label={t("play")} onClick={handlePlayInput}>
+                  <IconButton title={t("play")} onClick={handlePlayInput}>
                     <FiVolume2 className="size-5" aria-hidden />
                   </IconButton>
                 )}
@@ -306,7 +303,7 @@ export const Composer: FC<ComposerProps> = (props) => {
               <>
                 <CharCount count={count} limit={200} />
 
-                <IconButton aria-label={t("paste")} onClick={handlePaste}>
+                <IconButton title={t("paste")} onClick={handlePaste}>
                   <FiClipboard className="size-5" aria-hidden />
                 </IconButton>
               </>
@@ -348,7 +345,7 @@ export const Composer: FC<ComposerProps> = (props) => {
               className="-mx-4 -mb-4 p-2"
               start={
                 ready && (
-                  <IconButton aria-label={t("play")} onClick={handlePlayOutput}>
+                  <IconButton title={t("play")} onClick={handlePlayOutput}>
                     <FiVolume2 className="size-5" aria-hidden />
                   </IconButton>
                 )
@@ -356,11 +353,11 @@ export const Composer: FC<ComposerProps> = (props) => {
               end={
                 ready && (
                   <>
-                    <IconButton aria-label={t("share")} onClick={handleShare}>
+                    <IconButton title={t("share")} onClick={handleShare}>
                       <FiShare className="size-5" aria-hidden />
                     </IconButton>
 
-                    <IconButton aria-label={t("copy")} onClick={handleCopy}>
+                    <IconButton title={t("copy")} onClick={handleCopy}>
                       <FiCopy className="size-5" aria-hidden />
                     </IconButton>
                   </>
