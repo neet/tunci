@@ -1,3 +1,4 @@
+import { tokenize } from "ainu-utils";
 import { SearchResponse } from "algoliasearch";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -55,7 +56,7 @@ export default async function Home(props: HomeProps) {
   }
 
   let alternativeTranslationsPromise: Promise<string[]> | undefined;
-  if (text && result) {
+  if (text && result && result.type === "ok") {
     alternativeTranslationsPromise = fetchAlternativeTranslations(
       text,
       result,
@@ -67,19 +68,24 @@ export default async function Home(props: HomeProps) {
 
   let exampleSentences: Promise<SearchResponse<SearchEntry>> | undefined;
   if (text && result?.type === "ok") {
-    exampleSentences = searchClient.searchSingleIndex<SearchEntry>({
-      indexName: "entries",
-      searchParams: {
-        query: `${result.translation} ${text}`,
-        hitsPerPage: 3,
-        attributesToHighlight: ["text", "translation"],
-        facetFilters: [
-          "book:-ニューエクスプレスプラス アイヌ語",
-          "book:-アイヌ語鵡川方言日本語‐アイヌ語辞典",
-          "book:-アイヌ語會話字典",
-        ],
-      },
-    });
+    const words = tokenize(
+      direction === "ain2ja" ? text : result.translation,
+      false,
+    );
+    if (words.length < 4) {
+      exampleSentences = searchClient.searchSingleIndex<SearchEntry>({
+        indexName: "entries",
+        searchParams: {
+          query: `${result.translation} ${text}`,
+          hitsPerPage: 3,
+          attributesToHighlight: ["text", "translation"],
+          facetFilters: [
+            "book:-アイヌ語鵡川方言日本語‐アイヌ語辞典",
+            "book:-アイヌ語會話字典",
+          ],
+        },
+      });
+    }
   }
 
   return (

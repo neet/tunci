@@ -386,6 +386,8 @@ export const Composer: FC<ComposerProps> = (props) => {
               />
             </div>
 
+            {ready && <Disclaimer />}
+
             {ready && (
               <ExampleSentences
                 exampleSentencesPromise={props.exampleSentencesPromise}
@@ -399,8 +401,6 @@ export const Composer: FC<ComposerProps> = (props) => {
                 }
               />
             )}
-
-            {ready && <Disclaimer />}
           </div>
         </div>
       </div>
