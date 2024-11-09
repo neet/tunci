@@ -92,7 +92,7 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
             <text
               textAnchor="middle"
               y={markerOffset}
-              className="text-base text-[1.4em] font-sans fill-gray-600 dark:fill-zinc-400"
+              className="text-base text-[1.5em] font-sans fill-gray-600 dark:fill-zinc-400"
             >
               {dialect.name}
             </text>
