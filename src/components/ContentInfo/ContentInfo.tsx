@@ -16,11 +16,11 @@ export const ContentInfo: FC = async () => {
         <li>
           <Link
             rel="alternate"
-            href="/ain"
-            hrefLang="ain"
+            href="/ain-Latn"
+            hrefLang="ain-Latn"
             className="text-indigo-600 dark:text-indigo-400 underline "
           >
-            aynu itak
+            Aynuitak
           </Link>
         </li>
 

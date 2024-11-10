@@ -1,12 +1,12 @@
 {
   "app": {
     "Home": {
-      "title": "tunci - aynu itak or un tupte easkay aeywankep",
-      "description": "tan sait anakne aynu itak or wa sisam itak a=nuye easkay aeywankep ne ruwe ne."
+      "title": "tunci - Aynuitak or un tupte easkay aeywankep",
+      "description": "tan sait anakne Aynuitak or wa Sisam’itak a=nuye easkay aeywankep ne ruwe ne."
     },
     "AboutPage": {
       "title": "tanpe hemanta an?",
-      "description": "tan sait anakne aynu itak or wa sisam itak a=nuye easkay aeywankep ne ruwe ne."
+      "description": "tan sait anakne Aynuitak or wa Sisam’itak a=nuye easkay aeywankep ne ruwe ne."
     }
   },
   "components": {
@@ -14,11 +14,11 @@
       "about": "tanpe hemanta an?"
     },
     "Composer": {
-      "source": "nuye itak",
-      "recognize": "hawe ani nuye",
+      "source": "inuye itak",
+      "recognize": "hawe ani inuye",
       "play": "nu",
       "paste": "kotukka",
-      "target": "nukar itak",
+      "target": "inkar itak",
       "share": "ukokor",
       "copy": "KOPI",
       "translate": "tupte",
@@ -36,7 +36,7 @@
       "advanced_settings": "iporse & itakpo",
       "PronounSelector": {
         "title": "itakpo",
-        "description": "aynu itak or ta tu sinna itak a=eywanke ruwe ne: yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
+        "description": "Aynuitak or ta tu sinna itak a=eywanke ruwe ne: yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
         "first": "yayan itakpo",
         "first_description": "yayan hi ta a=ye itak",
         "fourth": "yukar itakpo",
@@ -45,22 +45,22 @@
       "close": "asi",
       "DialectSelector": {
         "title": "iporse",
-        "description": "aynu itak or ta hyôzyungo sak kusu, usa mosir or ta sinna itak a=eywanke wa oka ruwe ne. mosir e=numke wa ne mosir or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
+        "description": "Aynuitak or ta hyôzyungo sak kusu, usa mosir or ta sinna itak a=eywanke wa oka ruwe ne. mosir e=numke wa ne mosir or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
         "experimental": "naa ci=kar wa oka=as.",
-        "saru": "sar",
-        "chitose": "sikot",
-        "mukawa": "muka",
-        "horobetsu": "poropet",
-        "shizunai": "sipicari",
-        "tokachi": "tokapci",
-        "kushiro": "kusir",
-        "samani": "samani",
-        "bihoro": "peporo",
-        "ishikari": "iskar"
+        "saru": "Sar",
+        "chitose": "Sikot",
+        "mukawa": "Muka",
+        "horobetsu": "Poropet",
+        "shizunai": "Sipicari",
+        "tokachi": "Tokapci",
+        "kushiro": "Kusir",
+        "samani": "Samani",
+        "bihoro": "Peporo",
+        "ishikari": "Iskar"
       },
       "Disclaimer": {
         "title": "yaytupare yan",
-        "disclaimer": "sinna itak, wen itak a=kar hi ka oka=an nankor. kusu, tane oka aynu itak erampewtek utar anakne iteki opitta eysokor yan. aynu itak pirkano ye kur eci=kopisi yak pirka nankor."
+        "disclaimer": "sinna itak, wen itak a=kar hi ka oka=an nankor. kusu, tane oka Aynuitak erampewtek utar anakne iteki opitta eysokor yan. Aynuitak pirkano ye kur eci=kopisi yak pirka nankor."
       }
     },
     "ExampleSentences": {
@@ -69,8 +69,8 @@
       "dialect": "iporse"
     },
     "LanguageSelector": {
-      "ainu": "aynu itak",
-      "japanese": "sisam itak"
+      "ainu": "Aynuitak",
+      "japanese": "Sisam’itak"
     },
     "AlternativeTranslations": {
       "description": "mosma anakne, ene itakpo ka oka hi:"
