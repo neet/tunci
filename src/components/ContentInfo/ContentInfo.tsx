@@ -27,6 +27,17 @@ export const ContentInfo: FC = async () => {
         <li>
           <Link
             rel="alternate"
+            href="/ain-Kana"
+            hrefLang="ain-Kana"
+            className="text-indigo-600 dark:text-indigo-400 underline "
+          >
+            アイヌイタㇰ
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            rel="alternate"
             href="/ja"
             hrefLang="ja"
             className="text-indigo-600 dark:text-indigo-400 underline"

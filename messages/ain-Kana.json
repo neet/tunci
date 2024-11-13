@@ -1,0 +1,82 @@
+{
+  "app": {
+    "Home": {
+      "title": "トゥンチ　　アイヌイタㇰ　オㇿ　ウン　トゥㇷ゚テ　エアㇱカイ　アエイワンケㇷ゚",
+      "description": "タン　サイッ　アナㇰネ　アイヌイタㇰ　オㇿ　ワ　シサㇺイタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
+    },
+    "AboutPage": {
+      "title": "タンペ　ヘマンタ　アン？",
+      "description": "タン　サイッ　アナㇰネ　アイヌイタㇰ　オㇿ　ワ　シサㇺイタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
+    }
+  },
+  "components": {
+    "Banner": {
+      "about": "タンペ　ヘマンタ　アン？"
+    },
+    "Composer": {
+      "source": "イヌイェ　イタㇰ",
+      "recognize": "ハウェ　アニ　イヌイェ",
+      "play": "ヌ",
+      "paste": "コトゥッカ",
+      "target": "インカㇻ　イタㇰ",
+      "share": "ウココㇿ",
+      "copy": "コピ",
+      "translate": "トゥㇷ゚テ",
+      "copied": "コピ　エキ　ワ　オケレ",
+      "alternativeTranslations": "モㇱマ　イタㇰ",
+      "translation": {
+        "empty": "チトゥㇷ゚テㇷ゚",
+        "loading": "アトゥㇷ゚テ　コㇿ　アナン…"
+      },
+      "text": "エトゥㇷ゚テ　ルスイ　イタㇰ",
+      "char_max": "{current}　モンチ　オㇿ　タ　{current}　モンチ　エエイワンケ　ワ　エアン。",
+      "translateForm": "イタㇰトゥㇷ゚テ　フォム",
+      "translationResult": "アトゥㇷ゚テ　イタㇰ",
+      "wip": "ナア　チカㇻ　コㇿ　オカアㇱ　ホントㇺ　ネ　ルウェ　ネ。",
+      "advanced_settings": "イポㇿセ　&　イタㇰポ",
+      "PronounSelector": {
+        "title": "イタㇰポ",
+        "description": "アイヌイタㇰ　オㇿ　タ　トゥ　シンナ　イタㇰ　アエイワンケ　ルウェ　ネ:　ユカㇻ　オㇿ　タ　アエイワンケ　イタㇰ、　ヤヤン　ヒ　タ　アエイワンケ　イタㇰ。　ヒ　クス、　イナン　イタㇰ　ピㇼカ　ヤ　カ　エヌㇺケ　エアㇱカイ　ルウェ　ネ。",
+        "first": "ヤヤン　イタㇰポ",
+        "first_description": "ヤヤン　ヒ　タ　アイェ　イタㇰ",
+        "fourth": "ユカㇻ　イタㇰポ",
+        "fourth_description": "ユカㇻ　オㇿ　タ　アイェ　イタㇰ"
+      },
+      "close": "アシ",
+      "DialectSelector": {
+        "title": "イポㇿセ",
+        "description": "アイヌイタㇰ　オㇿ　タ　ヒヨチュンコ　サㇰ　クス、　ウサ　モシㇼ　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　モシㇼ　エヌㇺケ　ワ　ネ　モシㇼ　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
+        "experimental": "ナア　チカㇻ　ワ　オカアㇱ。",
+        "saru": "サㇻ",
+        "chitose": "シコッ",
+        "mukawa": "ムカ",
+        "horobetsu": "ポロペッ",
+        "shizunai": "シピチャリ",
+        "tokachi": "トカㇷ゚チ",
+        "kushiro": "クシㇼ",
+        "samani": "サマニ",
+        "bihoro": "ペポロ",
+        "ishikari": "イㇱカㇻ"
+      },
+      "Disclaimer": {
+        "title": "ヤイトゥパレ　ヤン",
+        "disclaimer": "シンナ　イタㇰ、　ウェン　イタㇰ　アカㇻ　ヒ　カ　オカアン　ナンコㇿ。　クス、　タネ　オカ　アイヌイタㇰ　エランペウテㇰ　ウタㇻ　アナㇰネ　イテキ　オピッタ　エイソコㇿ　ヤン。　アイヌイタㇰ　ピㇼカノ　イェ　クㇽ　エチコピシ　ヤㇰ　ピㇼカ　ナンコㇿ。"
+      }
+    },
+    "ExampleSentences": {
+      "exampleSentences": "ネ　イタㇰ　エイワンケ　ワ　オカ　オルㇱペ",
+      "source": "モトホ:",
+      "dialect": "イポㇿセ"
+    },
+    "LanguageSelector": {
+      "ainu": "アイヌイタㇰ",
+      "japanese": "シサㇺイタㇰ"
+    },
+    "AlternativeTranslations": {
+      "description": "モㇱマ　アナㇰネ、　エネ　イタㇰポ　カ　オカ　ヒ:"
+    },
+    "ContentInfo": {
+      "title": "タン　サイッ　カㇻ　クㇽ　オルㇱペ"
+    }
+  }
+}
