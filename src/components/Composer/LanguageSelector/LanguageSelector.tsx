@@ -18,12 +18,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
   const t = useTranslations("components.LanguageSelector");
 
   return (
-    <fieldset
-      className={clsx(
-        "flex gap-2 p-4 border-b border-gray-300 dark:border-zinc-600",
-        className,
-      )}
-    >
+    <fieldset className={clsx("flex gap-2", className)}>
       <legend className="sr-only">{legend}</legend>
 
       <LanguageSelectorOption

@@ -19,7 +19,6 @@ export const PronounSelectorOption: FC<PronounSelectorOptionProps> = (
       className={clsx(
         "flex gap-3 items-center",
         "border rounded py-2 px-3",
-        "text-sm",
         "hover:bg-gray-100 dark:hover:bg-zinc-900 transition",
         "border-gray-300 has-[input:checked]:bg-indigo-50 has-[input:checked]:border-indigo-600",
         "dark:border-zinc-600 dark:has-[input:checked]:bg-indigo-950 dark:has-[input:checked]:border-indigo-400",

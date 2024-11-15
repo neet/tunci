@@ -10,7 +10,7 @@ export const Disclaimer: FC = () => {
         aria-label={t("title")}
         className="shrink-0 inline-block size-6 mt-1 text-gray-400 dark:text-zinc-600"
       />
-      <p className="leading-relaxed text-sm text-gray-600 dark:text-zinc-400">
+      <p className="leading-relaxed text-gray-600 dark:text-zinc-400">
         {t("disclaimer")}
       </p>
     </div>

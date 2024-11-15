@@ -43,16 +43,18 @@ export const AdvancedSettingsDialogContent: FC<
         <button
           type="button"
           className={clsx(
+            "size-8",
             "rounded-full",
             "hover:bg-gray-200",
             "dark:hover:bg-zinc-700",
             "focus:outline outline-2 outline-indigo-500",
+            "transition-colors",
           )}
           onClick={onClose}
         >
           <FiX
             aria-label={t("close")}
-            className="size-6 text-gray-400 dark:text-zinc-600"
+            className="m-auto size-6 text-gray-400 dark:text-zinc-600"
           />
         </button>
       </header>

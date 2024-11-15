@@ -29,7 +29,7 @@
       "alternativeTranslations": "言い換え表現",
       "translation": {
         "empty": "翻訳",
-        "loading": "翻訳中..."
+        "loading": "翻訳中…"
       },
       "text": "翻訳したい文章",
       "char_max": "{max}文字中、{current}文字を入力中。",
@@ -41,9 +41,9 @@
         "title": "言葉づかい",
         "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
         "first": "普段の言葉づかい",
-        "first_description": "会話で使われる言葉で翻訳します。",
+        "first_description": "会話の言葉で翻訳します。",
         "fourth": "物語の言葉づかい",
-        "fourth_description": "物語で使われる言葉で翻訳します。"
+        "fourth_description": "物語の言葉で翻訳します。"
       },
       "close": "閉じる",
       "DialectSelector": {
@@ -63,8 +63,9 @@
       },
       "Disclaimer": {
         "title": "注意事項",
-        "disclaimer": "機械翻訳を利用しているため、誤った文章を生成することがあります。アイヌ語初学者の方は、結果を鵜呑みにせず、かならず講師や上級者に確認してください。"
-      }
+        "disclaimer": "機械翻訳を利用しているため、誤った文章を生成することがあります。初学者の方は、かならず講師や上級者に確認してください。"
+      },
+      "not_translated": "まだ翻訳していません"
     },
     "ExampleSentences": {
       "exampleSentences": "用例",
@@ -76,7 +77,7 @@
       "japanese": "日本語"
     },
     "AlternativeTranslations": {
-      "description": "この他にも、次のような言い換えができます："
+      "description": "この他にも、次のような言い換えができます"
     }
   }
 }
