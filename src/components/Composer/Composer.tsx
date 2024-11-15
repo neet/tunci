@@ -81,7 +81,7 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [source, setSource] = useState(defaultValues.source);
   const [target, setTarget] = useState(defaultValues.target);
 
-  const ready = translation != null && !dirty;
+  const ready = translation != null;
 
   useEffect(() => {
     if (submitted.current) {
@@ -340,10 +340,7 @@ export const Composer: FC<ComposerProps> = (props) => {
 
               <div>
                 <p className="text-2xl min-h-[3lh]">
-                  <Translation
-                    value={dirty ? "" : translation}
-                    pending={pending}
-                  />
+                  <Translation value={translation} pending={pending} />
                 </p>
 
                 {ready && translationTranscription && (
