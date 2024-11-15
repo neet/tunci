@@ -28,6 +28,7 @@ import { AlternativeTranslations } from "./AlternativeTranslations";
 import { CharCount } from "./CharCount";
 import { Disclaimer } from "./Disclaimer";
 import { ExampleSentences } from "./ExampleSentences";
+import { HeaderGroup } from "./HeaderGroup";
 import { IconButton } from "./IconButton";
 import { IconButtonGroup } from "./IconButtonGroup";
 import { LanguageSelector } from "./LanguageSelector";
@@ -245,12 +246,14 @@ export const Composer: FC<ComposerProps> = (props) => {
       )}
 
       <div className="col-span-1">
-        <LanguageSelector
-          name="source"
-          value={source}
-          legend={t("source")}
-          onChange={handleChangeSource}
-        />
+        <HeaderGroup>
+          <LanguageSelector
+            name="source"
+            value={source}
+            legend={t("source")}
+            onChange={handleChangeSource}
+          />
+        </HeaderGroup>
 
         <div className="p-4">
           <div>
@@ -325,12 +328,22 @@ export const Composer: FC<ComposerProps> = (props) => {
 
       <div className="col-span-1">
         <div className="bg-gray-50 dark:bg-zinc-900">
-          <LanguageSelector
-            name="target"
-            value={target}
-            legend={t("target")}
-            onChange={handleChangeTarget}
-          />
+          <HeaderGroup>
+            <LanguageSelector
+              className="shrink-0"
+              name="target"
+              value={target}
+              legend={t("target")}
+              onChange={handleChangeTarget}
+            />
+            {dirty && (
+              <div className="min-w-0">
+                <p className="text-gray-600 dark:text-gray-400 truncate">
+                  {t("not_translated")}
+                </p>
+              </div>
+            )}
+          </HeaderGroup>
 
           <div className="divide-y-2 divide-gray-200 dark:divide-zinc-600">
             <div className="p-4">
