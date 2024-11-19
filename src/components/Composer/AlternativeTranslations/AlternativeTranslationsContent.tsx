@@ -25,7 +25,7 @@ export const AlternativeTranslationsContent: FC<
         {t("description")}
       </p>
 
-      <ul className="mt-2 space-y-1 list-disc list-outside pl-5 text-xl">
+      <ul className="mt-2 space-y-1 list-disc list-outside marker:text-zinc-400 dark:marker:text-zinc-600 pl-5 text-xl">
         {alternativeTranslations.map((alternativeTranslation, index) => (
           <li key={index}>{alternativeTranslation}</li>
         ))}
