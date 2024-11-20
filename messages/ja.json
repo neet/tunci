@@ -40,9 +40,9 @@
       "PronounSelector": {
         "title": "言葉づかい",
         "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
-        "first": "普段の言葉づかい",
+        "first": "日常語",
         "first_description": "会話の言葉で翻訳します。",
-        "fourth": "物語の言葉づかい",
+        "fourth": "雅語",
         "fourth_description": "物語の言葉で翻訳します。"
       },
       "close": "閉じる",
