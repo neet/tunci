@@ -13,7 +13,7 @@ export const Translation: FC<TranslationProps> = (props) => {
 
   if (pending) {
     return (
-      <span className="text-gray-400 dark:text-zinc-600">
+      <span className="text-gray-600 dark:text-zinc-400">
         {t("translation.loading")}
       </span>
     );
@@ -21,7 +21,7 @@ export const Translation: FC<TranslationProps> = (props) => {
 
   if (!value) {
     return (
-      <span className="text-gray-400 dark:text-zinc-600">
+      <span className="text-gray-600 dark:text-zinc-400">
         {t("translation.empty")}
       </span>
     );
