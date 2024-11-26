@@ -146,14 +146,18 @@ export async function fetchAlternativeTranslations(
       ? result.transcriptions.text.text
       : text;
 
-  const translations = await api.translate(text, {
-    direction,
-    dialect,
-    pronoun,
-    numReturnSequences: genMax,
-  });
+  try {
+    const translations = await api.translate(text, {
+      direction,
+      dialect,
+      pronoun,
+      numReturnSequences: genMax,
+    });
 
-  return translations
-    .filter((translation) => translation !== result.translation)
-    .splice(0, max);
+    return translations
+      .filter((translation) => translation !== result.translation)
+      .splice(0, max);
+  } catch {
+    return [];
+  }
 }
