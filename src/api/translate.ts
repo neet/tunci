@@ -68,6 +68,7 @@ export async function translate(
       inputs: [prompt],
       parameters,
     }),
+    signal: AbortSignal.timeout(5000),
   });
 
   if (!response.ok) {

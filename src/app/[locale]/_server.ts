@@ -107,11 +107,7 @@ export async function translate(
 
     return result;
   } catch (error) {
-    if (
-      error instanceof Error &&
-      error.cause instanceof Response &&
-      error.cause.status === 503
-    ) {
+    if (error instanceof DOMException && error.name === "TimeoutError") {
       return {
         type: "error",
         message:
