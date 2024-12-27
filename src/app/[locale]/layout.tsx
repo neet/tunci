@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     default: "tunci",
   },
   robots: {
-    index: true,
+    index: false,
     follow: true,
   },
   openGraph: {
