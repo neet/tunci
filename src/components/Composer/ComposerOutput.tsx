@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   IconButton,
+  Spinner,
   Text,
   Tooltip,
   VisuallyHidden,
@@ -16,16 +17,19 @@ import { FC } from "react";
 import { FiCopy, FiShare, FiVolume2 } from "react-icons/fi";
 
 import { SearchEntry } from "@/models/entry";
+import { ProgressInfo } from "@/models/progress";
 
 import * as t from "../../models/transcription";
 import { AlternativeTranslations } from "./AlternativeTranslations";
 import { Disclaimer } from "./Disclaimer";
 import { ExampleSentences } from "./ExampleSentences";
 import { LanguageSelector } from "./LanguageSelector";
+import { ProgressMessage } from "./Progress";
 import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
 
 export type ComposerOutputProps = {
+  progressInfo?: ProgressInfo;
   ready: boolean;
   dirty: boolean;
   target: string;
@@ -47,6 +51,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
     dirty,
     pending,
     target,
+    progressInfo,
     translationTranscription,
     translation,
     errorMessage,
@@ -66,6 +71,18 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             <ExclamationTriangleIcon />
           </Callout.Icon>
           <Callout.Text>{errorMessage}</Callout.Text>
+        </Callout.Root>
+      )}
+
+      {progressInfo && (
+        <Callout.Root>
+          <Callout.Icon>
+            <Spinner />
+          </Callout.Icon>
+
+          <Callout.Text>
+            <ProgressMessage info={progressInfo} />
+          </Callout.Text>
         </Callout.Root>
       )}
 

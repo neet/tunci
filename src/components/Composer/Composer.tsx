@@ -6,7 +6,6 @@ import { Grid, Heading, VisuallyHidden } from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
 import debounce from "lodash-es/debounce";
 import mixpanel from "mixpanel-browser";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   FC,
@@ -19,6 +18,7 @@ import {
 } from "react";
 
 import { SearchEntry } from "@/models/entry";
+import { ProgressInfo } from "@/models/progress";
 import * as t from "@/models/transcription";
 
 import { ComposerInput } from "./ComposerInput";
@@ -36,7 +36,7 @@ export type ComposerProps = {
     dialect: string;
   };
 
-  translation?: string;
+  // translation?: string;
   textTranscription?: t.Transcription;
   translationTranscription?: t.Transcription;
 
@@ -51,19 +51,23 @@ export const Composer: FC<ComposerProps> = (props) => {
     method,
     action,
     defaultValues,
-    translation,
+    // translation,
     textTranscription,
     translationTranscription,
     errorMessage,
   } = props;
 
   const t = useTranslations("components.Composer");
-  const router = useRouter();
+  // const router = useRouter();
   const [pending, startTransition] = useTransition();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const submitted = useRef(false);
   const headingId = useId();
+  const worker = useRef<Worker | null>(null);
+
+  const [translation, setTranslation] = useState<string | null>(null);
+  const [progressInfo, setProgressInfo] = useState<ProgressInfo | null>(null);
 
   const [dirty, setDirty] = useState(false);
   const [count, setCount] = useState<number>(defaultValues.text.length);
@@ -76,13 +80,34 @@ export const Composer: FC<ComposerProps> = (props) => {
     if (submitted.current) {
       document.getElementById("translation")?.focus();
     }
-  }, [props.translation]);
+  }, [translation]);
 
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.value = defaultValues.text;
     }
   }, [defaultValues.text]);
+
+  useEffect(() => {
+    if (!worker.current) {
+      worker.current = new Worker(new URL("./worker.js", import.meta.url));
+    }
+
+    const handleMessage = (event: MessageEvent): void => {
+      setProgressInfo(event.data);
+
+      if (event.data.status === "complete") {
+        setProgressInfo(null);
+        setTranslation(event.data.output[0].generated_text);
+      }
+    };
+
+    worker.current.addEventListener("message", handleMessage);
+
+    return () => {
+      worker.current?.removeEventListener("message", handleMessage);
+    };
+  });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setCountDebounced = useCallback(
@@ -177,7 +202,6 @@ export const Composer: FC<ComposerProps> = (props) => {
 
       const form = event.currentTarget;
       const formData = new FormData(form);
-      const url = new URL(form.action);
       const searchParams = new URLSearchParams();
 
       for (const [key, value] of Array.from(formData)) {
@@ -185,7 +209,6 @@ export const Composer: FC<ComposerProps> = (props) => {
           searchParams.append(key, value as string);
         }
       }
-      url.search = searchParams.toString();
 
       mixpanel.track("Translator::translate", {
         text: formData.get("text"),
@@ -196,8 +219,15 @@ export const Composer: FC<ComposerProps> = (props) => {
       });
 
       submitted.current = true;
-      router.push(url.toString());
       setDirty(false);
+
+      worker.current?.postMessage({
+        text: formData.get("text"),
+        source: formData.get("source"),
+        target: formData.get("target"),
+        pron: formData.get("pronoun"),
+        dialect: formData.get("dialect"),
+      });
     });
   };
 
@@ -232,7 +262,8 @@ export const Composer: FC<ComposerProps> = (props) => {
         />
 
         <ComposerOutput
-          translation={translation}
+          progressInfo={progressInfo ?? undefined}
+          translation={translation ?? undefined}
           translationTranscription={translationTranscription}
           dirty={dirty}
           pending={pending}

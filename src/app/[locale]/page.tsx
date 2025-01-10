@@ -102,7 +102,6 @@ export default async function Home(props: HomeProps) {
             dialect,
             pronoun,
           }}
-          translation={result?.type === "ok" ? result.translation : undefined}
           textTranscription={
             result?.type === "ok" ? result.transcriptions.text : undefined
           }
