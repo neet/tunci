@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Box, Reset, Separator } from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
 import { FC, use } from "react";
 
+import { Entry } from "@/components/Entry";
 import { SearchEntry } from "@/models/entry";
 
-import { ExampleSentencesEntry } from "./ExampleSentencesEntry";
 import { ExampleSentencesWrapper } from "./ExampleSentencesWrapper";
 
 export type ExampleSentencesContentProps = {
@@ -23,22 +25,35 @@ export const ExampleSentencesContent: FC<ExampleSentencesContentProps> = (
 
   return (
     <ExampleSentencesWrapper>
-      <ul className="divide-y divide-gray-200 dark:divide-zinc-600">
-        {exampleSentences.hits.map((hit) => (
-          <li key={hit.objectID} className="py-3">
-            <ExampleSentencesEntry
-              /* eslint-disable @typescript-eslint/no-explicit-any */
-              textHTML={(hit._highlightResult?.text as any).value}
-              translationHTML={(hit._highlightResult?.translation as any).value}
-              /* eslint-enable @typescript-eslint/no-explicit-any */
-              book={hit.book}
-              title={hit.title}
-              url={hit.url}
-              dialect={hit.dialect}
-            />
-          </li>
-        ))}
-      </ul>
+      <Reset>
+        <ul>
+          {exampleSentences.hits.map((hit, i) => (
+            <Box asChild key={hit.objectID}>
+              <Reset>
+                <li>
+                  <Entry.Root
+                    text={hit.text}
+                    textHTML={(hit._highlightResult as any).text.value}
+                    translation={hit.translation}
+                    translationHTML={
+                      (hit._highlightResult as any).translation.value
+                    }
+                    book={hit.book}
+                    title={hit.title}
+                    url={hit.url}
+                    author={hit.author}
+                    dialect={hit.dialect}
+                  />
+
+                  {i !== exampleSentences.hits.length - 1 && (
+                    <Separator size="4" my="3" />
+                  )}
+                </li>
+              </Reset>
+            </Box>
+          ))}
+        </ul>
+      </Reset>
     </ExampleSentencesWrapper>
   );
 };

@@ -1,3 +1,5 @@
+import { Table } from "@radix-ui/themes";
+
 tunciは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。
 
 当然ながら、誤った翻訳を生成することがあります。アイヌ語初学者の方は、**結果を鵜呑みにせず、かならず講師や上級者に確認**してください。
@@ -10,30 +12,30 @@ tunciは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです
 
 2024年7月時点で、アイヌ語↔日本語の翻訳において以下のBLEUスコアを達成しています。
 
-<table>
-  <thead>
-    <tr>
-      <th>翻訳元</th>
-      <th>翻訳先</th>
-      <th>BLEUスコア</th>
-    </tr>
-  </thead>
+<Table.Root>
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>翻訳元</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>翻訳先</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>BLEUスコア</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
 
   <tbody>
-    <tr>
-      <td>日本語</td>
-      <td>アイヌ語</td>
-      <td>39.06</td>
-    </tr>
+    <Table.Row>
+      <Table.RowHeaderCell>日本語</Table.RowHeaderCell>
+      <Table.Cell>アイヌ語</Table.Cell>
+      <Table.Cell>39.06</Table.Cell>
+    </Table.Row>
 
-    <tr>
-      <td>アイヌ語</td>
-      <td>日本語</td>
-      <td>31.83</td>
-    </tr>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ語</Table.RowHeaderCell>
+      <Table.Cell>日本語</Table.Cell>
+      <Table.Cell>31.83</Table.Cell>
+    </Table.Row>
 
   </tbody>
-</table>
+</Table.Root>
 
 ### AI活用について
 
@@ -53,102 +55,112 @@ tunciの翻訳は機械学習によって実現されており、アイヌ語お
 
 tunciの翻訳モデルは、以下のデータを利用して訓練されています。
 
-<table>
-  <thead>
-    <tr>
-      <th>データ名</th>
-      <th>形式</th>
-      <th>単語数</th>
-      <th>文字数</th>
-    </tr>
-  </thead>
+<Table.Root my="4">
+  <Table.Header>
+    <Table.Row>
+      <Table.ColumnHeaderCell>データ名</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>形式</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>単語数</Table.ColumnHeaderCell>
+      <Table.ColumnHeaderCell>文字数</Table.ColumnHeaderCell>
+    </Table.Row>
+  </Table.Header>
   <tbody>
-    <tr>
-      <td>アイヌ語アーカイブ</td>
-      <td>Web</td>
-      <td>600,770</td>
-      <td>2,107,984</td>
-    </tr>
-    <tr>
-      <td>アイヌタイムズ</td>
-      <td>書籍</td>
-      <td>148,843</td>
-      <td>519,040</td>
-    </tr>
-    <tr>
-      <td>アイヌ語口承文芸コーパス</td>
-      <td>PDF</td>
-      <td>135,649</td>
-      <td>492,484</td>
-    </tr>
-    <tr>
-      <td>AA研アイヌ語資料公開プロジェクト</td>
-      <td>Web</td>
-      <td>95,379</td>
-      <td>299,630</td>
-    </tr>
-    <tr>
-      <td>アイヌ語口承文芸コーパス</td>
-      <td>Web</td>
-      <td>76,550</td>
-      <td>243,696</td>
-    </tr>
-    <tr>
-      <td>アイヌ語鵡川方言 日本語-アイヌ語辞典</td>
-      <td>Web</td>
-      <td>66,386</td>
-      <td>247,637</td>
-    </tr>
-    <tr>
-      <td>アイヌ語テキスト</td>
-      <td>PDF</td>
-      <td>25,067</td>
-      <td>84,905</td>
-    </tr>
-    <tr>
-      <td>北海道立アイヌ文化研究センター研究紀要</td>
-      <td>PDF</td>
-      <td>14,724</td>
-      <td>48,092</td>
-    </tr>
-    <tr>
-      <td>アイヌ語会話辞典</td>
-      <td>Web</td>
-      <td>13,831</td>
-      <td>49,776</td>
-    </tr>
-    <tr>
-      <td>アイヌ神謡集</td>
-      <td>書籍</td>
-      <td>10,364</td>
-      <td>38,153</td>
-    </tr>
-    <tr>
-      <td>ニューエクスプレスプラス アイヌ語</td>
-      <td>書籍</td>
-      <td>4,418</td>
-      <td>14,812</td>
-    </tr>
-    <tr>
-      <td>カムイユカㇻを聞いてアイヌ語を学ぶ</td>
-      <td>書籍</td>
-      <td>3,028</td>
-      <td>11,177</td>
-    </tr>
-    <tr>
-      <td>アコㇿイタㇰ</td>
-      <td>書籍</td>
-      <td>2,005</td>
-      <td>5,903</td>
-    </tr>
-    <tr>
-      <td>その他論文など</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ語アーカイブ</Table.RowHeaderCell>
+      <Table.Cell>Web</Table.Cell>
+      <Table.Cell>600,770</Table.Cell>
+      <Table.Cell>2,107,984</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌタイムズ</Table.RowHeaderCell>
+      <Table.Cell>書籍</Table.Cell>
+      <Table.Cell>148,843</Table.Cell>
+      <Table.Cell>519,040</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ語口承文芸コーパス</Table.RowHeaderCell>
+      <Table.Cell>PDF</Table.Cell>
+      <Table.Cell>135,649</Table.Cell>
+      <Table.Cell>492,484</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        AA研アイヌ語資料公開プロジェクト
+      </Table.RowHeaderCell>
+      <Table.Cell>Web</Table.Cell>
+      <Table.Cell>95,379</Table.Cell>
+      <Table.Cell>299,630</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ語口承文芸コーパス</Table.RowHeaderCell>
+      <Table.Cell>Web</Table.Cell>
+      <Table.Cell>76,550</Table.Cell>
+      <Table.Cell>243,696</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        アイヌ語鵡川方言 日本語-アイヌ語辞典
+      </Table.RowHeaderCell>
+      <Table.Cell>Web</Table.Cell>
+      <Table.Cell>66,386</Table.Cell>
+      <Table.Cell>247,637</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ語テキスト</Table.RowHeaderCell>
+      <Table.Cell>PDF</Table.Cell>
+      <Table.Cell>25,067</Table.Cell>
+      <Table.Cell>84,905</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        北海道立アイヌ文化研究センター研究紀要
+      </Table.RowHeaderCell>
+      <Table.Cell>PDF</Table.Cell>
+      <Table.Cell>14,724</Table.Cell>
+      <Table.Cell>48,092</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ語会話辞典</Table.RowHeaderCell>
+      <Table.Cell>Web</Table.Cell>
+      <Table.Cell>13,831</Table.Cell>
+      <Table.Cell>49,776</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アイヌ神謡集</Table.RowHeaderCell>
+      <Table.Cell>書籍</Table.Cell>
+      <Table.Cell>10,364</Table.Cell>
+      <Table.Cell>38,153</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        ニューエクスプレスプラス アイヌ語
+      </Table.RowHeaderCell>
+      <Table.Cell>書籍</Table.Cell>
+      <Table.Cell>4,418</Table.Cell>
+      <Table.Cell>14,812</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>
+        カムイユカㇻを聞いてアイヌ語を学ぶ
+      </Table.RowHeaderCell>
+      <Table.Cell>書籍</Table.Cell>
+      <Table.Cell>3,028</Table.Cell>
+      <Table.Cell>11,177</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>アコㇿイタㇰ</Table.RowHeaderCell>
+      <Table.Cell>書籍</Table.Cell>
+      <Table.Cell>2,005</Table.Cell>
+      <Table.Cell>5,903</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.RowHeaderCell>その他論文など</Table.RowHeaderCell>
+      <Table.Cell>-</Table.Cell>
+      <Table.Cell>-</Table.Cell>
+      <Table.Cell>-</Table.Cell>
+    </Table.Row>
   </tbody>
-</table>
+</Table.Root>
 
 ### 関連プロジェクト
 

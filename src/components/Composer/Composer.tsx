@@ -1,7 +1,9 @@
 "use client";
 
+import "./Composer.css";
+
+import { Grid, Heading, VisuallyHidden } from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
-import clsx from "clsx";
 import debounce from "lodash-es/debounce";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/navigation";
@@ -15,25 +17,12 @@ import {
   useState,
   useTransition,
 } from "react";
-import { FiClipboard, FiCopy, FiMic, FiShare, FiVolume2 } from "react-icons/fi";
-import TextareaAutosize from "react-textarea-autosize";
 
 import { SearchEntry } from "@/models/entry";
 import * as t from "@/models/transcription";
 
-import { Alert } from "../Alert";
-import { Button } from "../Button";
-import { AdvancedSettingsDialog } from "./AdvancedSettingsDialog";
-import { AlternativeTranslations } from "./AlternativeTranslations";
-import { CharCount } from "./CharCount";
-import { Disclaimer } from "./Disclaimer";
-import { ExampleSentences } from "./ExampleSentences";
-import { HeaderGroup } from "./HeaderGroup";
-import { IconButton } from "./IconButton";
-import { IconButtonGroup } from "./IconButtonGroup";
-import { LanguageSelector } from "./LanguageSelector";
-import { Transcription } from "./Transcription";
-import { Translation } from "./Translation";
+import { ComposerInput } from "./ComposerInput";
+import { ComposerOutput } from "./ComposerOutput";
 
 export type ComposerProps = {
   method: string;
@@ -73,7 +62,6 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [pending, startTransition] = useTransition();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const submitted = useRef(false);
   const headingId = useId();
 
@@ -102,19 +90,15 @@ export const Composer: FC<ComposerProps> = (props) => {
     [],
   );
 
-  const handleChangeText = (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
-  ): void => {
+  const handleChangeText = (text: string): void => {
     setDirty(true);
-    setCountDebounced(e.target.value.length);
+    setCountDebounced(text.length);
   };
 
-  const handleChangeSource = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
+  const handleChangeSource = (source: string): void => {
     startTransition(() => {
-      setSource(event.target.value);
-      setTarget(event.target.value === "ja" ? "ain" : "ja");
+      setSource(source);
+      setTarget(source === "ja" ? "ain" : "ja");
 
       if (translation && textareaRef.current && !dirty) {
         textareaRef.current.value = translation;
@@ -123,12 +107,10 @@ export const Composer: FC<ComposerProps> = (props) => {
     });
   };
 
-  const handleChangeTarget = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
+  const handleChangeTarget = (target: string): void => {
     startTransition(() => {
-      setTarget(event.target.value);
-      setSource(event.target.value === "ja" ? "ain" : "ja");
+      setTarget(target);
+      setSource(target === "ja" ? "ain" : "ja");
 
       if (translation && textareaRef.current && !dirty) {
         textareaRef.current.value = translation;
@@ -189,14 +171,6 @@ export const Composer: FC<ComposerProps> = (props) => {
     });
   };
 
-  const handleOpen = (): void => {
-    dialogRef.current?.showModal();
-  };
-
-  const handleClose = (): void => {
-    dialogRef.current?.close();
-  };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     startTransition(() => {
       event.preventDefault();
@@ -231,198 +205,48 @@ export const Composer: FC<ComposerProps> = (props) => {
     <form
       method={method}
       action={action}
-      className="grid w-full grid-cols-1 md:grid-cols-2"
       aria-labelledby={headingId}
       onSubmit={handleSubmit}
     >
-      <h2 id={headingId} className="sr-only">
-        {t("translateForm")}
-      </h2>
+      <VisuallyHidden>
+        <Heading as="h2" id={headingId}>
+          {t("translateForm")}
+        </Heading>
+      </VisuallyHidden>
 
-      {errorMessage && (
-        <Alert role="alert" className="col-span-full m-4 xl:mx-0">
-          {errorMessage}
-        </Alert>
-      )}
+      <Grid columns={{ initial: "1", md: "2" }} gap="5">
+        <ComposerInput
+          defaultValues={defaultValues}
+          textTranscription={textTranscription}
+          count={count}
+          pending={pending}
+          source={source}
+          ready={ready}
+          dirty={dirty}
+          textareaRef={textareaRef}
+          onChangeSource={handleChangeSource}
+          onChangeText={handleChangeText}
+          onRecognize={handleRecognize}
+          onPlayInput={handlePlayInput}
+          onPaste={handlePaste}
+        />
 
-      <div className="col-span-1">
-        <HeaderGroup>
-          <LanguageSelector
-            name="source"
-            value={source}
-            legend={t("source")}
-            onChange={handleChangeSource}
-          />
-        </HeaderGroup>
-
-        <div className="p-4">
-          <div>
-            <label htmlFor="text" className="sr-only">
-              {t("text")}
-            </label>
-
-            <TextareaAutosize
-              id="text"
-              name="text"
-              ref={textareaRef}
-              defaultValue={defaultValues.text}
-              className={clsx(
-                "w-full h-full text-2xl min-h-[3lh] resize-none",
-                "bg-white dark:bg-black",
-                "focus:outline-none",
-              )}
-              required
-              spellCheck={false}
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              onChange={handleChangeText}
-            />
-
-            {ready && textTranscription && (
-              <Transcription className="mt-1">
-                {textTranscription.text}
-              </Transcription>
-            )}
-          </div>
-
-          <IconButtonGroup
-            className="-mx-4 -mb-4 p-2"
-            start={
-              <>
-                <IconButton title={t("recognize")} onClick={handleRecognize}>
-                  <FiMic className="size-5" aria-hidden />
-                </IconButton>
-
-                <IconButton
-                  show={count > 0}
-                  title={t("play")}
-                  onClick={handlePlayInput}
-                >
-                  <FiVolume2 className="size-5" aria-hidden />
-                </IconButton>
-              </>
-            }
-            end={
-              <>
-                <CharCount count={count} limit={200} />
-
-                <IconButton title={t("paste")} onClick={handlePaste}>
-                  <FiClipboard className="size-5" aria-hidden />
-                </IconButton>
-              </>
-            }
-          />
-        </div>
-
-        <div className="flex gap-2 flex-wrap justify-end p-4">
-          <Button type="button" variant="secondary" onClick={handleOpen}>
-            {t("advanced_settings")}
-          </Button>
-
-          <Button type="submit" disabled={pending}>
-            {t("translate")}
-          </Button>
-        </div>
-      </div>
-
-      <div className="col-span-1">
-        <div className="bg-gray-50 dark:bg-zinc-900">
-          <HeaderGroup>
-            <LanguageSelector
-              className="shrink-0"
-              name="target"
-              value={target}
-              legend={t("target")}
-              onChange={handleChangeTarget}
-            />
-            {dirty && (
-              <div className="min-w-0">
-                <p className="text-gray-600 dark:text-gray-400 truncate">
-                  {t("not_translated")}
-                </p>
-              </div>
-            )}
-          </HeaderGroup>
-
-          <div className="divide-y-2 divide-gray-200 dark:divide-zinc-600">
-            <div className="p-4">
-              <h3 id="translation" tabIndex={-1} className="sr-only">
-                {t("translationResult")}
-              </h3>
-
-              <div>
-                <p className="text-2xl min-h-[3lh]">
-                  <Translation value={translation} pending={pending} />
-                </p>
-
-                {ready && translationTranscription && (
-                  <Transcription className="mt-1">
-                    {translationTranscription.text}
-                  </Transcription>
-                )}
-              </div>
-
-              <IconButtonGroup
-                className="-mx-4 -mb-4 p-2"
-                start={
-                  <IconButton
-                    show={ready}
-                    title={t("play")}
-                    onClick={handlePlayOutput}
-                  >
-                    <FiVolume2 className="size-5" aria-hidden />
-                  </IconButton>
-                }
-                end={
-                  <>
-                    <IconButton
-                      show={ready}
-                      title={t("share")}
-                      onClick={handleShare}
-                    >
-                      <FiShare className="size-5" aria-hidden />
-                    </IconButton>
-
-                    <IconButton
-                      show={ready}
-                      title={t("copy")}
-                      onClick={handleCopy}
-                    >
-                      <FiCopy className="size-5" aria-hidden />
-                    </IconButton>
-                  </>
-                }
-              />
-            </div>
-
-            {ready && <Disclaimer />}
-
-            {ready && (
-              <ExampleSentences
-                exampleSentencesPromise={props.exampleSentencesPromise}
-              />
-            )}
-
-            {ready && (
-              <AlternativeTranslations
-                alternativeTranslationsPromise={
-                  props.alternativeTranslationsPromise
-                }
-              />
-            )}
-          </div>
-        </div>
-      </div>
-
-      <AdvancedSettingsDialog
-        defaultValues={{
-          pronoun: defaultValues.pronoun,
-          dialect: defaultValues.dialect,
-        }}
-        onClose={handleClose}
-        ref={dialogRef}
-      />
+        <ComposerOutput
+          translation={translation}
+          translationTranscription={translationTranscription}
+          dirty={dirty}
+          pending={pending}
+          ready={ready}
+          target={target}
+          onChangeTarget={handleChangeTarget}
+          onPlayOutput={handlePlayOutput}
+          onCopy={handleCopy}
+          onShare={handleShare}
+          errorMessage={errorMessage}
+          exampleSentencesPromise={props.exampleSentencesPromise}
+          alternativeTranslationsPromise={props.alternativeTranslationsPromise}
+        />
+      </Grid>
     </form>
   );
 };

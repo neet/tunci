@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { Box, Text, VisuallyHidden } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
@@ -10,23 +10,19 @@ export type CharCountProps = {
 export const CharCount: FC<CharCountProps> = (props) => {
   const { count, limit } = props;
 
-  const t = useTranslations("components.Composer");
+  const t = useTranslations("components.Composer.CharCount");
 
   return (
-    <div
-      className={clsx(
-        "tabular-nums text-sm leading-none",
-        count > limit
-          ? "text-red-600 dark:text-red-400"
-          : "text-gray-600 dark:text-zinc-400",
-      )}
-    >
-      <span aria-hidden>
-        {count}/{limit}
-      </span>
-      <span className="sr-only">
-        {t("char_max", { current: count, max: 200 })}
-      </span>
-    </div>
+    <Box px="2">
+      <VisuallyHidden>
+        {t("charMax", { current: count, max: 200 })}
+      </VisuallyHidden>
+
+      <Text asChild size="2" color={count > limit ? "red" : "gray"}>
+        <span aria-hidden>
+          {count}/{limit}
+        </span>
+      </Text>
+    </Box>
   );
 };

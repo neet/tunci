@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { FC, ReactNode } from "react";
 
-import { Disclosure } from "../Disclosure";
+import { ComposerCollapsible } from "../ComposerCollapsible";
 
 export type AlternativeTranslationsWrapperProps = {
   children: ReactNode;
@@ -10,12 +10,13 @@ export type AlternativeTranslationsWrapperProps = {
 export const AlternativeTranslationsWrapper: FC<
   AlternativeTranslationsWrapperProps
 > = (props) => {
-  const { children } = props;
-  const t = useTranslations("components.Composer");
+  const t = useTranslations(
+    "components.Composer.AlternativeTranslations.AlternativeTranslationsWrapper",
+  );
 
   return (
-    <Disclosure open={true} summary={<h4>{t("alternativeTranslations")}</h4>}>
-      {children}
-    </Disclosure>
+    <ComposerCollapsible title={t("title")}>
+      {props.children}
+    </ComposerCollapsible>
   );
 };

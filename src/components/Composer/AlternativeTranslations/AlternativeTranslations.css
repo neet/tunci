@@ -1,0 +1,5 @@
+.AlternativeTranslationsContent {
+  li::marker {
+    color: var(--gray-6);
+  }
+}

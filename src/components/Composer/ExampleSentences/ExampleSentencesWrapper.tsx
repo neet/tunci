@@ -1,21 +1,22 @@
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
-import { Disclosure } from "../Disclosure";
+import { ComposerCollapsible } from "../ComposerCollapsible";
 
 export type ExampleSentencesWrapperProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const ExampleSentencesWrapper: FC<ExampleSentencesWrapperProps> = (
   props,
 ) => {
   const { children } = props;
-  const t = useTranslations("components.ExampleSentences");
+
+  const t = useTranslations(
+    "components.Composer.ExampleSentences.ExampleSentencesWrapper",
+  );
 
   return (
-    <Disclosure open={true} summary={<h4>{t("exampleSentences")}</h4>}>
-      {children}
-    </Disclosure>
+    <ComposerCollapsible title={t("title")}>{children}</ComposerCollapsible>
   );
 };

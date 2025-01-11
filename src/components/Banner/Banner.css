@@ -1,0 +1,16 @@
+.Banner {
+  .logo-link {
+    color: var(--gray-12);
+    text-decoration: none;
+  }
+
+  .title {
+    font-family: var(--font-yeseva-one);
+    text-decoration: none;
+  }
+
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+}

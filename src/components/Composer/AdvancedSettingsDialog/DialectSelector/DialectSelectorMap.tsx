@@ -1,4 +1,4 @@
-"use client";
+import "./DialectSelectorMap.css";
 
 import clsx from "clsx";
 import { FC } from "react";
@@ -24,6 +24,7 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
 
   return (
     <ComposableMap
+      id="DialectSelectorMap"
       width={800}
       height={620}
       projection="geoAzimuthalEqualArea"
@@ -36,14 +37,7 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
         北海道の方言の地図。マウスを使うと、各地をクリックすることで方言を選べます。
       </title>
 
-      <Geographies
-        geography="/hokkaido.json"
-        className={clsx(
-          "fill-white dark:fill-black",
-          "stroke-2",
-          "stroke-gray-400 dark:stroke-zinc-600",
-        )}
-      >
+      <Geographies geography="/hokkaido.json" className="geographies">
         {({ geographies }) =>
           geographies.map((geo) => (
             <Geography key={geo.rsmKey} geography={geo} />
@@ -55,48 +49,26 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
         <Marker
           key={dialect.value}
           coordinates={dialect.coordinates}
-          className="cursor-pointer"
           onClick={() => {
             onChange?.(dialect.value);
           }}
         >
-          {dialect.value === value ? (
-            <circle
-              r={15}
-              className={clsx(
-                "fill-indigo-600 dark:fill-indigo-400",
-                "stroke-2",
-                "stroke-indigo-100 dark:stroke-indigo-900",
-              )}
-            />
-          ) : (
-            <circle
-              r={10}
-              className={clsx(
-                "fill-gray-400 dark:fill-zinc-600",
-                "stroke-2",
-                "stroke-gray-100 dark:stroke-zinc-900",
-              )}
-            />
-          )}
+          <circle
+            r={dialect.value === value ? 15 : 10}
+            className={clsx("circle", {
+              "circle--selected": dialect.value === value,
+            })}
+          />
 
-          {dialect.value === value ? (
-            <text
-              textAnchor="middle"
-              y={markerOffset - 6}
-              className="font-bold text-[2em] font-sans fill-indigo-600 dark:fill-indigo-400"
-            >
-              {dialect.name}
-            </text>
-          ) : (
-            <text
-              textAnchor="middle"
-              y={markerOffset}
-              className="text-base text-[1.5em] font-sans fill-gray-600 dark:fill-zinc-400"
-            >
-              {dialect.name}
-            </text>
-          )}
+          <text
+            textAnchor="middle"
+            y={markerOffset - 6}
+            className={clsx("caption", {
+              "caption--selected": dialect.value === value,
+            })}
+          >
+            {dialect.name}
+          </text>
         </Marker>
       ))}
     </ComposableMap>

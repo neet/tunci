@@ -1,17 +1,16 @@
-import clsx from "clsx";
+import { Text } from "@radix-ui/themes";
 import { ReactNode } from "react";
 
 export type TranscriptionProps = {
-  children: ReactNode;
-  className?: string;
+  children?: ReactNode;
 };
 
 export const Transcription = (props: TranscriptionProps) => {
-  const { children, className } = props;
+  const { children } = props;
 
   return (
-    <p className={clsx("text-gray-600 dark:text-zinc-400", className)}>
-      {children}
-    </p>
+    <Text size="2" color="gray" aria-hidden={!children}>
+      {children ?? "\u00A0"}
+    </Text>
   );
 };

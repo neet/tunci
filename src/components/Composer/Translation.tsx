@@ -1,3 +1,4 @@
+import { Text } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
@@ -9,22 +10,14 @@ export type TranslationProps = {
 export const Translation: FC<TranslationProps> = (props) => {
   const { value, pending } = props;
 
-  const t = useTranslations("components.Composer");
+  const t = useTranslations("components.Composer.Translation");
 
   if (pending) {
-    return (
-      <span className="text-gray-600 dark:text-zinc-400">
-        {t("translation.loading")}
-      </span>
-    );
+    return <Text color="gray">{t("loading")}</Text>;
   }
 
   if (!value) {
-    return (
-      <span className="text-gray-600 dark:text-zinc-400">
-        {t("translation.empty")}
-      </span>
-    );
+    return <Text color="gray">{t("empty")}</Text>;
   }
 
   return value;
