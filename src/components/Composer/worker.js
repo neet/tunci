@@ -9,6 +9,7 @@ let instance;
 async function getInstance(progressCallback) {
   if (instance == null) {
     instance = pipeline("text2text-generation", MODEL_NAME, {
+      revision: "b6cc98f634063743e4d911e21047b67b2c04fff7",
       progress_callback: progressCallback,
     });
   }
@@ -18,7 +19,7 @@ async function getInstance(progressCallback) {
 
 self.addEventListener("message", async (event) => {
   const translator = await getInstance((x) => {
-    console.log(x);
+    if (x.status === "progress") return;
     self.postMessage(x);
   });
 

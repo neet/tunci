@@ -28,7 +28,7 @@ export const ProgressMessage: FC<ProgressMessageProps> = (props) => {
         <Text>
           {/* <Code>{info.name}</Code>から
           <Code>{info.file}</Code>をダウンロード中 */}
-          ダウンロードを開始しました
+          ダウンロードしています
         </Text>
       </Box>
     );
@@ -37,7 +37,7 @@ export const ProgressMessage: FC<ProgressMessageProps> = (props) => {
   if (info.status === "progress") {
     return (
       <Box>
-        <Text>ダウンロード中</Text>
+        <Text>ダウンロードを進行しています</Text>
         {/* <Text>
           <Code>{info.name}</Code>から
           <Code>{info.file}</Code>をダウンロード中
