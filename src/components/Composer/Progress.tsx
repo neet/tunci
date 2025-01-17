@@ -1,4 +1,4 @@
-import { Box, Code, Progress, Text } from "@radix-ui/themes";
+import { Box, Text } from "@radix-ui/themes";
 import { FC } from "react";
 
 import { ProgressInfo } from "@/models/progress";
@@ -14,8 +14,9 @@ export const ProgressMessage: FC<ProgressMessageProps> = (props) => {
     return (
       <Box>
         <Text>
-          <Code>{info.name}</Code>から
-          <Code>{info.file}</Code>を初期化中
+          {/* <Code>{info.name}</Code>から
+          <Code>{info.file}</Code>を初期化中 */}
+          初期化しています
         </Text>
       </Box>
     );
@@ -25,8 +26,9 @@ export const ProgressMessage: FC<ProgressMessageProps> = (props) => {
     return (
       <Box>
         <Text>
-          <Code>{info.name}</Code>から
-          <Code>{info.file}</Code>をダウンロード中
+          {/* <Code>{info.name}</Code>から
+          <Code>{info.file}</Code>をダウンロード中 */}
+          ダウンロードを開始しました
         </Text>
       </Box>
     );
@@ -35,14 +37,15 @@ export const ProgressMessage: FC<ProgressMessageProps> = (props) => {
   if (info.status === "progress") {
     return (
       <Box>
-        <Text>
+        <Text>ダウンロード中</Text>
+        {/* <Text>
           <Code>{info.name}</Code>から
           <Code>{info.file}</Code>をダウンロード中
         </Text>
 
         <Box mt="1">
           <Progress value={info.progress} max={100} />
-        </Box>
+        </Box> */}
       </Box>
     );
   }
@@ -51,8 +54,9 @@ export const ProgressMessage: FC<ProgressMessageProps> = (props) => {
     return (
       <Box>
         <Text>
-          <Code>{info.name}</Code>から
-          <Code>{info.file}</Code>をダウンロード完了
+          ダウンロードが完了しました
+          {/* <Code>{info.name}</Code>から
+          <Code>{info.file}</Code>をダウンロード完了 */}
         </Text>
       </Box>
     );
