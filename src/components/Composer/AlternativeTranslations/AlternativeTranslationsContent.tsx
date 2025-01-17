@@ -1,3 +1,4 @@
+import { Box, Text } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC, use } from "react";
 
@@ -13,7 +14,9 @@ export const AlternativeTranslationsContent: FC<
   const { alternativeTranslationsPromise } = props;
 
   const alternativeTranslations = use(alternativeTranslationsPromise);
-  const t = useTranslations("components.AlternativeTranslations");
+  const t = useTranslations(
+    "components.Composer.AlternativeTranslations.AlternativeTranslationsContent",
+  );
 
   if (alternativeTranslations.length <= 0) {
     return null;
@@ -21,15 +24,17 @@ export const AlternativeTranslationsContent: FC<
 
   return (
     <AlternativeTranslationsWrapper>
-      <p className="mt-1 text-gray-600 dark:text-zinc-400">
+      <Text as="p" color="gray">
         {t("description")}
-      </p>
+      </Text>
 
-      <ul className="mt-2 space-y-1 list-disc list-outside marker:text-zinc-400 dark:marker:text-zinc-600 pl-5 text-xl">
-        {alternativeTranslations.map((alternativeTranslation, index) => (
-          <li key={index}>{alternativeTranslation}</li>
-        ))}
-      </ul>
+      <Box asChild my="2" className="AlternativeTranslationsContent">
+        <ul>
+          {alternativeTranslations.map((alternativeTranslation, index) => (
+            <li key={index}>{alternativeTranslation}</li>
+          ))}
+        </ul>
+      </Box>
     </AlternativeTranslationsWrapper>
   );
 };

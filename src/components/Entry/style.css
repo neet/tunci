@@ -1,0 +1,9 @@
+.entry em {
+  font-style: normal;
+  color: var(--accent-11);
+  background-color: var(--accent-4);
+}
+
+.entry cite {
+  font-style: normal;
+}

@@ -1,0 +1,25 @@
+#DialectSelectorMap {
+  .geographies {
+    fill: var(--gray-surface);
+    stroke: var(--gray-track);
+    stroke-width: 1px;
+  }
+
+  .circle {
+    fill: var(--gray-9);
+  }
+
+  .circle--selected {
+    fill: var(--accent-9);
+  }
+
+  .caption {
+    font-weight: bold;
+    font-size: 1.3em;
+    fill: var(--gray-11);
+  }
+
+  .caption--selected {
+    fill: var(--accent-11);
+  }
+}

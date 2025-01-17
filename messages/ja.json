@@ -17,67 +17,107 @@
       "title": "運営者情報"
     },
     "Composer": {
-      "source": "入力する言語",
-      "recognize": "音声入力",
-      "play": "読み上げる",
-      "paste": "貼り付け",
-      "target": "翻訳する言語",
-      "share": "共有",
-      "copy": "コピー",
-      "translate": "翻訳",
+      "wip": "この機能は現在準備中です。",
       "copied": "コピーしました",
-      "alternativeTranslations": "言い換え表現",
-      "translation": {
+      "translateForm": "翻訳フォーム",
+      "ComposerInput": {
+        "source": "入力する言語",
+        "text": "翻訳したい文章",
+        "recognize": "音声入力",
+        "play": "読み上げる",
+        "paste": "貼り付け",
+        "translate": "翻訳",
+        "advancedSettings": "語彙と方言",
+        "placeholder": "文章を入力"
+      },
+      "ComposerOutput": {
+        "target": "翻訳する言語",
+        "share": "共有",
+        "copy": "コピー",
+        "play": "読み上げる",
+        "translationResult": "翻訳結果",
+        "untranslated": "まだ翻訳していません"
+      },
+      "CharCount": {
+        "charMax": "{max}文字中、{current}文字を入力中。"
+      },
+      "Translation": {
         "empty": "翻訳",
         "loading": "翻訳中…"
-      },
-      "text": "翻訳したい文章",
-      "char_max": "{max}文字中、{current}文字を入力中。",
-      "translateForm": "翻訳フォーム",
-      "translationResult": "翻訳結果",
-      "wip": "この機能は現在準備中です。",
-      "advanced_settings": "語彙と方言",
-      "PronounSelector": {
-        "title": "言葉づかい",
-        "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
-        "first": "日常語",
-        "first_description": "会話の言葉で翻訳します。",
-        "fourth": "雅語",
-        "fourth_description": "物語の言葉で翻訳します。"
-      },
-      "close": "閉じる",
-      "DialectSelector": {
-        "title": "方言",
-        "description": "アイヌ語には標準語がなく、各地域ごとに異なった表現を使っています。地域を選択して、その地域の方言で文章を作成することができます。",
-        "experimental": "これは実験的な機能です。",
-        "saru": "沙流",
-        "chitose": "千歳",
-        "mukawa": "鵡川",
-        "horobetsu": "幌別",
-        "shizunai": "静内",
-        "tokachi": "十勝",
-        "kushiro": "釧路",
-        "samani": "様似",
-        "bihoro": "美幌",
-        "ishikari": "石狩"
       },
       "Disclaimer": {
         "title": "注意事項",
         "disclaimer": "機械翻訳を利用しているため、誤った文章を生成することがあります。初学者の方は、かならず講師や上級者に確認してください。"
       },
-      "not_translated": "まだ翻訳していません"
+      "AdvancedSettingsDialog": {
+        "PronounSelector": {
+          "title": "言葉づかい",
+          "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
+          "first": "日常語",
+          "firstDescription": "会話の言葉で翻訳します。",
+          "fourth": "雅語",
+          "fourthDescription": "物語の言葉で翻訳します。"
+        },
+        "AdvancedSettingsDialogContent": {
+          "title": "語彙と方言",
+          "description": "語彙や文法の設定を変更して、より自然な文章を生成できます。",
+          "close": "閉じる"
+        },
+        "DialectSelector": {
+          "title": "方言",
+          "description": "アイヌ語には標準語がなく、各地域ごとに異なった表現を使っています。地域を選択して、その地域の方言で文章を作成することができます。",
+          "experimental": "これは実験的な機能です。",
+          "saru": "沙流",
+          "chitose": "千歳",
+          "mukawa": "鵡川",
+          "horobetsu": "幌別",
+          "shizunai": "静内",
+          "tokachi": "十勝",
+          "kushiro": "釧路",
+          "samani": "様似",
+          "bihoro": "美幌",
+          "ishikari": "石狩"
+        }
+      },
+      "ExampleSentences": {
+        "ExampleSentencesWrapper": {
+          "title": "用例"
+        },
+        "ExampleSentencesError": {
+          "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
+        }
+      },
+      "LanguageSelector": {
+        "ainu": "アイヌ語",
+        "japanese": "日本語"
+      },
+      "AlternativeTranslations": {
+        "AlternativeTranslationsWrapper": {
+          "title": "言い換え表現"
+        },
+        "AlternativeTranslationsError": {
+          "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
+        },
+        "AlternativeTranslationsContent": {
+          "description": "この他にも、次のような言い換えができます"
+        }
+      }
     },
-    "ExampleSentences": {
-      "exampleSentences": "用例",
-      "source": "出典：",
-      "dialect": "方言"
-    },
-    "LanguageSelector": {
-      "ainu": "アイヌ語",
-      "japanese": "日本語"
-    },
-    "AlternativeTranslations": {
-      "description": "この他にも、次のような言い換えができます"
+    "Entry": {
+      "Entry": {
+        "source": "出典：",
+        "author": "著者：",
+        "dialect": "方言："
+      },
+      "EntryDetailsDialog": {
+        "title": "詳細",
+        "description": "この資料の詳細情報です。一部不正確な情報が含まれる可能性があります。",
+        "book": "資料",
+        "entryTitle": "タイトル",
+        "author": "著者",
+        "dialect": "方言",
+        "url": "URL"
+      }
     }
   }
 }

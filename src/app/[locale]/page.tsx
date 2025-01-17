@@ -1,3 +1,4 @@
+import { Container } from "@radix-ui/themes";
 import { tokenize } from "ainu-utils";
 import { SearchResponse } from "algoliasearch";
 import { Metadata } from "next";
@@ -89,28 +90,32 @@ export default async function Home(props: HomeProps) {
   }
 
   return (
-    <main className="w-full max-w-screen-xl mx-auto">
-      <Composer
-        method="GET"
-        action={`/${params.locale}`}
-        defaultValues={{
-          text: text ?? "",
-          source: searchParams?.source ?? "ja",
-          target: searchParams?.target ?? "ain",
-          dialect,
-          pronoun,
-        }}
-        translation={result?.type === "ok" ? result.translation : undefined}
-        textTranscription={
-          result?.type === "ok" ? result.transcriptions.text : undefined
-        }
-        translationTranscription={
-          result?.type === "ok" ? result.transcriptions.translation : undefined
-        }
-        alternativeTranslationsPromise={alternativeTranslationsPromise}
-        exampleSentencesPromise={exampleSentences}
-        errorMessage={result?.type === "error" ? result.message : undefined}
-      />
-    </main>
+    <Container asChild size="4" p="4">
+      <main>
+        <Composer
+          method="GET"
+          action={`/${params.locale}`}
+          defaultValues={{
+            text: text ?? "",
+            source: searchParams?.source ?? "ja",
+            target: searchParams?.target ?? "ain",
+            dialect,
+            pronoun,
+          }}
+          translation={result?.type === "ok" ? result.translation : undefined}
+          textTranscription={
+            result?.type === "ok" ? result.transcriptions.text : undefined
+          }
+          translationTranscription={
+            result?.type === "ok"
+              ? result.transcriptions.translation
+              : undefined
+          }
+          alternativeTranslationsPromise={alternativeTranslationsPromise}
+          exampleSentencesPromise={exampleSentences}
+          errorMessage={result?.type === "error" ? result.message : undefined}
+        />
+      </main>
+    </Container>
   );
 }

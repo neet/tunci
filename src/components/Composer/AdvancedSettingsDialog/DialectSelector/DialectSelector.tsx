@@ -1,10 +1,9 @@
-import clsx from "clsx";
+import { Box, Flex, Grid, RadioGroup, Text } from "@radix-ui/themes";
+import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
-import { useTranslations } from "use-intl";
+import { IoFlask } from "react-icons/io5";
 
-import { AdvancedSettingsSection } from "../AdvancedSettingsSection";
 import { DialectSelectorMap } from "./DialectSelectorMap";
-import { DialectSelectorOption } from "./DialectSelectorOption";
 import { Dialect } from "./model";
 
 export type DialectSelectorProps = {
@@ -14,7 +13,9 @@ export type DialectSelectorProps = {
 export const DialectSelector: FC<DialectSelectorProps> = (props) => {
   const [value, setValue] = useState<string | undefined>(props.defaultValue);
 
-  const t = useTranslations("components.Composer.DialectSelector");
+  const t = useTranslations(
+    "components.Composer.AdvancedSettingsDialog.DialectSelector",
+  );
 
   const dialects: Dialect[] = [
     {
@@ -70,49 +71,63 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
   ];
 
   return (
-    <AdvancedSettingsSection legend={t("title")} description={t("description")}>
-      <div
-        className={clsx(
-          "grid grid-cols-1 md:grid-cols-4",
-          "border rounded overflow-clip divide-y md:divide-y-0 md:divide-x",
-          "divide-gray-300 border-gray-300",
-          "dark:divide-zinc-600 dark:border-zinc-600",
-        )}
-      >
-        <div
-          className={clsx(
-            "col-span-1 md:col-span-3",
-            "heropattern-banknote-gray-100 bg-gray-50",
-            "dark:heropattern-banknote-zinc-950 dark:bg-zinc-900",
-          )}
-        >
-          <DialectSelectorMap
-            value={value}
-            dialects={dialects}
-            onChange={setValue}
-          />
-        </div>
+    <fieldset>
+      <Text weight="bold" asChild>
+        <legend>{t("title")}</legend>
+      </Text>
 
-        <div
-          className={clsx(
-            "col-span-1 divide-y",
-            "divide-gray-300 border-gray-300",
-            "dark:divide-zinc-600 dark:border-zinc-600",
-          )}
+      <Text as="p" mt="1" size="2" color="gray">
+        {t("description")}
+      </Text>
+
+      <Grid
+        columns={{ initial: "1", md: "4" }}
+        mt="2"
+        // justify={{ initial: "start", md: "end" }}
+        asChild
+      >
+        <Box
+          style={{
+            borderRadius: "var(--radius-4)",
+            backgroundColor: "var(--gray-1)",
+            border: "1px solid var(--gray-5)",
+          }}
         >
-          {dialects.map((dialect) => (
-            <DialectSelectorOption
-              key={dialect.value}
-              value={dialect.value}
-              checked={dialect.value === value}
-              experimental={dialect.experimental}
+          <Box gridColumn={{ initial: "span 1", md: "span 3" }}>
+            <DialectSelectorMap
+              value={value}
+              dialects={dialects}
               onChange={setValue}
+            />
+          </Box>
+
+          <Flex
+            m={{ initial: "4", md: "5" }}
+            justify={{ initial: "start", md: "end" }}
+            gridColumn={{ initial: "span 1", md: "span 1" }}
+          >
+            <RadioGroup.Root
+              name="dialect"
+              value={value}
+              onValueChange={setValue}
             >
-              {dialect.name}
-            </DialectSelectorOption>
-          ))}
-        </div>
-      </div>
-    </AdvancedSettingsSection>
+              {dialects.map((dialect) => (
+                <RadioGroup.Item key={dialect.value} value={dialect.value}>
+                  <Flex justify="between" gap="2">
+                    <Text>{dialect.name}</Text>
+
+                    {dialect.experimental && (
+                      <Text size="2" color="gray">
+                        <IoFlask title={t("experimental")} />
+                      </Text>
+                    )}
+                  </Flex>
+                </RadioGroup.Item>
+              ))}
+            </RadioGroup.Root>
+          </Flex>
+        </Box>
+      </Grid>
+    </fieldset>
   );
 };

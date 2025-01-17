@@ -1,0 +1,15 @@
+textarea#text {
+  display: block;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  padding: 0;
+  min-height: 4lh;
+  font-family: var(--default-font-family);
+  resize: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--gray-11);
+  }
+}

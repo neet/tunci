@@ -1,83 +1,123 @@
 {
   "app": {
     "Home": {
-      "title": "トゥンチ　　アイヌイタㇰ　オㇿ　ウン　トゥㇷ゚テ　エアㇱカイ　アエイワンケㇷ゚",
-      "description": "タン　サイッ　アナㇰネ　アイヌイタㇰ　オㇿ　ワ　シサㇺイタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
+      "title": "トゥンチ　　アイヌ　イタㇰ　オㇿ　ウン　トゥㇷ゚テ　エアㇱカイ　アエイワンケㇷ゚",
+      "description": "タン　サイッ　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
     },
     "AboutPage": {
       "title": "タンペ　ヘマンタ　アン？",
-      "description": "タン　サイッ　アナㇰネ　アイヌイタㇰ　オㇿ　ワ　シサㇺイタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
+      "description": "タン　サイッ　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
     }
   },
   "components": {
     "Banner": {
       "about": "タンペ　ヘマンタ　アン？"
     },
+    "ContentInfo": {
+      "title": "タン　サイッ　カㇻ　クㇽ　オルㇱペ"
+    },
     "Composer": {
-      "source": "イヌイェ　イタㇰ",
-      "recognize": "ハウェ　アニ　イヌイェ",
-      "play": "ヌ",
-      "paste": "コトゥッカ",
-      "target": "インカㇻ　イタㇰ",
-      "share": "ウココㇿ",
-      "copy": "コピ",
-      "translate": "トゥㇷ゚テ",
+      "wip": "ナア　チカㇻ　コㇿ　オカアㇱ　ホントㇺ　ネ　ルウェ　ネ。",
       "copied": "コピ　エキ　ワ　オケレ",
-      "alternativeTranslations": "モㇱマ　イタㇰ",
-      "translation": {
+      "translateForm": "イタㇰトゥㇷ゚テ　フォム",
+      "ComposerInput": {
+        "source": "アニ　エイヌイェ　イタㇰ",
+        "text": "エトゥㇷ゚テ　ルスイ　イタㇰ",
+        "recognize": "ハウェ　アニ　イヌイェ",
+        "play": "ヌ",
+        "paste": "コトゥッカ",
+        "translate": "トゥㇷ゚テ",
+        "advancedSettings": "イポㇿセ　&　イタㇰポ",
+        "placeholder": "イタㇰ　ヌイェ　ヤン"
+      },
+      "ComposerOutput": {
+        "target": "アニ　エインカㇻ　イタㇰ",
+        "share": "ウココㇿ",
+        "copy": "コピ",
+        "play": "ヌ",
+        "translationResult": "アトゥㇷ゚テ　イタㇰ",
+        "untranslated": "イタㇰ　ナア　ソモ　アトゥㇷ゚テ"
+      },
+      "CharCount": {
+        "charMax": "{current}　モンチ　オㇿ　タ　{current}　モンチ　エエイワンケ　ワ　エアン。"
+      },
+      "Translation": {
         "empty": "チトゥㇷ゚テㇷ゚",
         "loading": "アトゥㇷ゚テ　コㇿ　アナン…"
       },
-      "text": "エトゥㇷ゚テ　ルスイ　イタㇰ",
-      "char_max": "{current}　モンチ　オㇿ　タ　{current}　モンチ　エエイワンケ　ワ　エアン。",
-      "translateForm": "イタㇰトゥㇷ゚テ　フォム",
-      "translationResult": "アトゥㇷ゚テ　イタㇰ",
-      "wip": "ナア　チカㇻ　コㇿ　オカアㇱ　ホントㇺ　ネ　ルウェ　ネ。",
-      "advanced_settings": "イポㇿセ　&　イタㇰポ",
-      "PronounSelector": {
-        "title": "イタㇰポ",
-        "description": "アイヌイタㇰ　オㇿ　タ　トゥ　シンナ　イタㇰ　アエイワンケ　ルウェ　ネ:　ユカㇻ　オㇿ　タ　アエイワンケ　イタㇰ、　ヤヤン　ヒ　タ　アエイワンケ　イタㇰ。　ヒ　クス、　イナン　イタㇰ　ピㇼカ　ヤ　カ　エヌㇺケ　エアㇱカイ　ルウェ　ネ。",
-        "first": "ヤヤン　イタㇰ",
-        "first_description": "ヤヤン　ヒ　タ　アイェ　イタㇰ",
-        "fourth": "アトㇺテ　イタㇰ",
-        "fourth_description": "ユカㇻ　オㇿ　タ　アイェ　イタㇰ"
-      },
-      "close": "アシ",
-      "DialectSelector": {
-        "title": "イポㇿセ",
-        "description": "アイヌイタㇰ　オㇿ　タ　ヒヨチュンコ　サㇰ　クス、　ウサ　モシㇼ　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　モシㇼ　エヌㇺケ　ワ　ネ　モシㇼ　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
-        "experimental": "ナア　チカㇻ　ワ　オカアㇱ。",
-        "saru": "サㇻ",
-        "chitose": "シコッ",
-        "mukawa": "ムカ",
-        "horobetsu": "ポロペッ",
-        "shizunai": "シピチャリ",
-        "tokachi": "トカㇷ゚チ",
-        "kushiro": "クシㇼ",
-        "samani": "サマニ",
-        "bihoro": "ペポロ",
-        "ishikari": "イㇱカㇻ"
-      },
       "Disclaimer": {
         "title": "ヤイトゥパレ　ヤン",
-        "disclaimer": "シンナ　イタㇰ、　ウェン　イタㇰ　アカㇻ　ヒ　カ　オカアン　ナンコㇿ。　クス、　タネ　オカ　アイヌイタㇰ　エランペウテㇰ　ウタㇻ　アナㇰネ　イテキ　オピッタ　エイソコㇿ　ヤン。　アイヌイタㇰ　ピㇼカノ　イェ　クㇽ　エチコピシ　ヤㇰ　ピㇼカ　ナンコㇿ。"
+        "disclaimer": "シンナ　イタㇰ、　ウェン　イタㇰ　アカㇻ　ヒ　カ　オカアン　ナンコㇿ。　クス、　タネ　オカ　アイヌ　イタㇰ　エランペウテㇰ　ウタㇻ　アナㇰネ　イテキ　オピッタ　エイソコㇿ　ヤン。　アイヌ　イタㇰ　ピㇼカノ　イェ　クㇽ　エチコピシ　ヤㇰ　ピㇼカ　ナンコㇿ。"
       },
-      "not_translated": "ナア　イタㇰ　ソモ　アトゥㇷ゚テ"
+      "AdvancedSettingsDialog": {
+        "PronounSelector": {
+          "title": "イタㇰポ",
+          "description": "アイヌ　イタㇰ　オㇿ　タ　トゥ　シンナ　イタㇰ　アエイワンケ　ルウェ　ネ:　ユカㇻ　オㇿ　タ　アエイワンケ　イタㇰ、　ヤヤン　ヒ　タ　アエイワンケ　イタㇰ。　ヒ　クス、　イナン　イタㇰ　ピㇼカ　ヤ　カ　エヌㇺケ　エアㇱカイ　ルウェ　ネ。",
+          "first": "ヤヤン　イタㇰ",
+          "firstDescription": "ヤヤン　ヒ　タ　アイェ　イタㇰ",
+          "fourth": "アトㇺテ　イタㇰ",
+          "fourthDescription": "ユカㇻ　オㇿ　タ　アイェ　イタㇰ"
+        },
+        "AdvancedSettingsDialogContent": {
+          "title": "イポㇿセ　&　イタㇰポ",
+          "description": "イポㇿセ　ネワ　イタㇰポ　ウン　セッテイ　エヌㇺケ　ワ、　ナア　ピㇼカ　イタㇰ　エヌイェ　エアㇱカイ。",
+          "close": "アシ"
+        },
+        "DialectSelector": {
+          "title": "イポㇿセ",
+          "description": "アイヌ　イタㇰ　オㇿ　タ　ヒヨチュンコ　サㇰ　クス、　ウサ　モシㇼ　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　モシㇼ　エヌㇺケ　ワ　ネ　モシㇼ　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
+          "experimental": "ナア　チカㇻ　ワ　オカアㇱ。",
+          "saru": "サㇻ",
+          "chitose": "シコッ",
+          "mukawa": "ムカ",
+          "horobetsu": "ポロペッ",
+          "shizunai": "シピチャリ",
+          "tokachi": "トカㇷ゚チ",
+          "kushiro": "クシㇼ",
+          "samani": "サマニ",
+          "bihoro": "ペポロ",
+          "ishikari": "イㇱカㇻ"
+        }
+      },
+      "ExampleSentences": {
+        "ExampleSentencesWrapper": {
+          "title": "ネ　イタㇰ　エイワンケ　ワ　オカ　オルㇱペ"
+        },
+        "ExampleSentencesError": {
+          "description": "テータ取得中にエラーか発生しました。時間をおいて再度お試しくたさい。"
+        }
+      },
+      "LanguageSelector": {
+        "ainu": "アイヌ　イタㇰ",
+        "japanese": "シサㇺ　イタㇰ"
+      },
+      "AlternativeTranslations": {
+        "AlternativeTranslationsWrapper": {
+          "title": "モㇱマ　イタㇰ"
+        },
+        "AlternativeTranslationsError": {
+          "description": "テータ取得中にエラーか発生しました。時間をおいて再度お試しくたさい。"
+        },
+        "AlternativeTranslationsContent": {
+          "description": "モㇱマ　アナㇰネ、　エネ　イタㇰポ　カ　オカ　ヒ:"
+        }
+      }
     },
-    "ExampleSentences": {
-      "exampleSentences": "ネ　イタㇰ　エイワンケ　ワ　オカ　オルㇱペ",
-      "source": "モトホ:",
-      "dialect": "イポㇿセ"
-    },
-    "LanguageSelector": {
-      "ainu": "アイヌイタㇰ",
-      "japanese": "シサㇺイタㇰ"
-    },
-    "AlternativeTranslations": {
-      "description": "モㇱマ　アナㇰネ、　エネ　イタㇰポ　カ　オカ　ヒ:"
-    },
-    "ContentInfo": {
-      "title": "タン　サイッ　カㇻ　クㇽ　オルㇱペ"
+    "Entry": {
+      "Entry": {
+        "source": "モトホ:　",
+        "author": "ヌイェ　クㇽ:　",
+        "dialect": "イポㇿセ:　"
+      },
+      "EntryDetailsDialog": {
+        "title": "ナア　カンピㇱ　オルㇱペ",
+        "description": "この資料の詳細情報てす。一部不正確な情報か含まれる可能性かあります。",
+        "book": "モトホ　レ",
+        "entryTitle": "カンピ　レ",
+        "author": "ヌイェ　クㇽ",
+        "dialect": "イポㇿセ",
+        "url": "ウㇽl"
+      }
     }
   }
 }

@@ -1,4 +1,13 @@
-import Link from "next/link";
+import {
+  Flex,
+  Link,
+  Reset,
+  Section,
+  Separator,
+  Text,
+  VisuallyHidden,
+} from "@radix-ui/themes";
+import NextLink from "next/link";
 import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 
@@ -7,53 +16,62 @@ export const ContentInfo: FC = async () => {
   const titleId = "contentinfo-title";
 
   return (
-    <footer aria-labelledby={titleId} className="py-8">
-      <h2 id={titleId} className="sr-only">
-        {t("title")}
-      </h2>
+    <Section size="1" asChild>
+      <footer aria-labelledby={titleId}>
+        <VisuallyHidden>
+          <h2 id={titleId}>{t("title")}</h2>
+        </VisuallyHidden>
 
-      <ul className="mx-auto flex gap-4 flex-wrap justify-center">
-        <li>
-          <Link
-            rel="alternate"
-            href="/ain-Latn"
-            hrefLang="ain-Latn"
-            className="text-indigo-600 dark:text-indigo-400 underline "
-          >
-            Aynuitak
-          </Link>
-        </li>
+        <Reset>
+          <Flex asChild justify="center" align="center" gap="3">
+            <ul>
+              <li>
+                <Link size="2" asChild>
+                  <NextLink
+                    rel="alternate"
+                    href="/ain-Latn"
+                    hrefLang="ain-Latn"
+                  >
+                    Aynu itak
+                  </NextLink>
+                </Link>
+              </li>
 
-        <li>
-          <Link
-            rel="alternate"
-            href="/ain-Kana"
-            hrefLang="ain-Kana"
-            className="text-indigo-600 dark:text-indigo-400 underline "
-          >
-            アイヌイタㇰ
-          </Link>
-        </li>
+              <Separator orientation="vertical" aria-hidden />
 
-        <li>
-          <Link
-            rel="alternate"
-            href="/ja"
-            hrefLang="ja"
-            className="text-indigo-600 dark:text-indigo-400 underline"
-          >
-            日本語
-          </Link>
-        </li>
-      </ul>
+              <li>
+                <Link size="2" asChild>
+                  <NextLink
+                    rel="alternate"
+                    href="/ain-Kana"
+                    hrefLang="ain-Kana"
+                  >
+                    アイヌイタㇰ
+                  </NextLink>
+                </Link>
+              </li>
 
-      <p className="mt-4 text-gray-600 dark:text-zinc-400 text-center text-sm">
-        Copyright
-        <span className="mx-1.5" aria-hidden>
-          ©
-        </span>
-        2024 Ryō Igarashi, All rights reserved.
-      </p>
-    </footer>
+              <Separator orientation="vertical" aria-hidden />
+
+              <li>
+                <Link size="2" asChild>
+                  <NextLink rel="alternate" href="/ja" hrefLang="ja">
+                    日本語
+                  </NextLink>
+                </Link>
+              </li>
+            </ul>
+          </Flex>
+        </Reset>
+
+        <Text as="p" size="2" align="center" mt="2" color="gray">
+          Copyright
+          <Text mx="1" aria-hidden>
+            ©
+          </Text>
+          2025 Ryō Igarashi, All rights reserved.
+        </Text>
+      </footer>
+    </Section>
   );
 };

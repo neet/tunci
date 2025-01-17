@@ -1,43 +1,50 @@
-import clsx from "clsx";
-import { forwardRef, ForwardRefRenderFunction } from "react";
+import { Dialog } from "@radix-ui/themes";
+import { FC, ReactNode, useRef } from "react";
 
 import { AdvancedSettingsDialogContent } from "./AdvancedSettingsDialogContent";
+import { AdvancedSettings } from "./models";
 
 export type AdvancedSettingsDialogProps = {
-  defaultValues?: {
-    pronoun?: string;
-    dialect?: string;
-  };
-  onClose(): void;
+  opener: ReactNode;
+  defaultValues: AdvancedSettings;
+  onClose?: (values: Partial<AdvancedSettings>) => void;
 };
 
-const AdvancedSettingsDialogRenderFn: ForwardRefRenderFunction<
-  HTMLDialogElement,
-  AdvancedSettingsDialogProps
-> = (props, ref) => {
-  const { defaultValues = {}, onClose } = props;
+export const AdvancedSettingsDialog: FC<AdvancedSettingsDialogProps> = (
+  props,
+) => {
+  const { defaultValues, onClose } = props;
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleOpenChange = (open: boolean) => {
+    if (open) {
+      return;
+    }
+
+    const form = ref.current?.querySelector("form");
+
+    if (!(form instanceof HTMLFormElement)) {
+      return;
+    }
+
+    const fd = new FormData(form);
+
+    onClose?.({
+      pronoun: fd.get("pronoun") as string,
+      dialect: fd.get("dialect") as string,
+    });
+  };
 
   return (
-    <dialog
-      className={clsx(
-        "w-full max-w-screen-sm backdrop:bg-black/70 backdrop:backdrop-blur rounded-lg",
-        "shadow-lg bg-white",
-        "dark:border dark:border-zinc-600 dark:bg-black",
-        "forced-colors:border forced-colors:border-[ButtonBorder]",
-      )}
-      ref={ref}
-    >
-      <AdvancedSettingsDialogContent
-        defaultValues={{
-          pronoun: defaultValues.pronoun,
-          dialect: defaultValues.dialect,
-        }}
-        onClose={onClose}
-      />
-    </dialog>
+    <Dialog.Root onOpenChange={handleOpenChange}>
+      <Dialog.Trigger>{props.opener}</Dialog.Trigger>
+
+      <Dialog.Content ref={ref}>
+        <form>
+          <AdvancedSettingsDialogContent defaultValues={defaultValues} />
+        </form>
+      </Dialog.Content>
+    </Dialog.Root>
   );
 };
-
-export const AdvancedSettingsDialog = forwardRef(
-  AdvancedSettingsDialogRenderFn,
-);

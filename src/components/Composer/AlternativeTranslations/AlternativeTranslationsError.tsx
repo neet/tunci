@@ -1,13 +1,17 @@
+import { Text } from "@radix-ui/themes";
+import { useTranslations } from "next-intl";
 import { FC } from "react";
 
 import { AlternativeTranslationsWrapper } from "./AlternativeTranslationsWrapper";
 
 export const AlternativeTranslationsError: FC = () => {
+  const t = useTranslations(
+    "components.Composer.AlternativeTranslations.AlternativeTranslationsError",
+  );
+
   return (
     <AlternativeTranslationsWrapper>
-      <p className="text-red-600 dark:text-red-400">
-        データ取得中にエラーが発生しました。時間をおいて再度お試しください。
-      </p>
+      <Text as="p">{t("description")}</Text>
     </AlternativeTranslationsWrapper>
   );
 };
