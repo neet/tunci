@@ -69,6 +69,9 @@ export async function translate(
       inputs: [prompt],
       parameters,
     }),
+    next: {
+      revalidate: 60 * 60 * 24 * 7,
+    },
     signal: AbortSignal.timeout(5000),
   });
 

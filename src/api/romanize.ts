@@ -17,6 +17,10 @@ export async function romanize(input: string): Promise<string> {
         early_stopping: true,
       },
     }),
+    next: {
+      revalidate: 60 * 60 * 24 * 7,
+    },
+    signal: AbortSignal.timeout(5000),
   });
 
   if (!response.ok) {
