@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   robots: {
     index: false,
-    follow: true,
+    follow: false,
   },
   openGraph: {
     images: "/cover.png",
