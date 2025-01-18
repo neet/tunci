@@ -6,15 +6,28 @@ import { isKana, normalize } from "@/utils";
 
 const MAX_LENGTH = 200;
 
+const isServiceUnavailableError = (error: unknown): boolean => {
+  return (
+    error instanceof Error &&
+    error.cause instanceof Response &&
+    error.cause.status === 503
+  );
+};
+
 export type TranslationParams = {
   direction?: string;
   dialect?: string;
   pronoun?: string;
 };
 
+export type ErrorType =
+  | "ROMANIZE_SERVICE_UNAVAILABLE"
+  | "TRANSLATOR_SERVICE_UNAVAILABLE";
+
 type ResultError = {
   type: "error";
-  message: string;
+  error?: ErrorType;
+  message?: string;
 };
 
 type ResultOk = {
@@ -28,7 +41,7 @@ type ResultOk = {
 
 export type Result = ResultError | ResultOk;
 
-export async function translate(
+export async function fetchTranslation(
   text: string,
   params: TranslationParams,
 ): Promise<Result> {
@@ -70,13 +83,47 @@ export async function translate(
   }
 
   try {
-    const translationSource = await normalize(text, direction);
+    let translationSource: string;
+    try {
+      translationSource = await normalize(text, direction);
+    } catch (error) {
+      if (isServiceUnavailableError(error)) {
+        return {
+          type: "error",
+          error: "ROMANIZE_SERVICE_UNAVAILABLE",
+        };
+      } else {
+        console.error(error);
+        return {
+          type: "error",
+          message:
+            "エラーが発生しました。しばらく待ってから再度お試しください。",
+        };
+      }
+    }
 
-    const translation = await api.translate(translationSource, {
-      direction,
-      dialect,
-      pronoun,
-    });
+    let translation: string;
+    try {
+      translation = await api.translate(translationSource, {
+        direction,
+        dialect,
+        pronoun,
+      });
+    } catch (error) {
+      if (isServiceUnavailableError(error)) {
+        return {
+          type: "error",
+          error: "TRANSLATOR_SERVICE_UNAVAILABLE",
+        };
+      } else {
+        console.error(error);
+        return {
+          type: "error",
+          message:
+            "エラーが発生しました。しばらく待ってから再度お試しください。",
+        };
+      }
+    }
 
     const result: Result = {
       type: "ok",
@@ -108,24 +155,10 @@ export async function translate(
     return result;
   } catch (error) {
     console.log(error);
-    if (
-      (error instanceof Error &&
-        error.cause instanceof Response &&
-        error.cause.status === 503) ||
-      (error instanceof DOMException && error.name === "TimeoutError")
-    ) {
-      return {
-        type: "error",
-        message:
-          "サーバーを起動していますので、1〜2分ほど待ってから再度お試しください。\n費用を削減するため、15分以上アクセスが無かった場合には自動的に停止しています。",
-      };
-    } else {
-      console.error(error);
-      return {
-        type: "error",
-        message: "エラーが発生しました。しばらく待ってから再度お試しください。",
-      };
-    }
+    return {
+      type: "error",
+      message: "エラーが発生しました。しばらく待ってから再度お試しください。",
+    };
   }
 }
 

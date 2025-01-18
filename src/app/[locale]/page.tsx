@@ -8,22 +8,28 @@ import { searchClient } from "@/api/search";
 import { Composer } from "@/components/Composer";
 import { SearchEntry } from "@/models/entry";
 
-import { fetchAlternativeTranslations, Result, translate } from "./_server";
+import {
+  fetchAlternativeTranslations,
+  fetchTranslation,
+  Result,
+} from "./_server";
 
 type HomeProps = {
-  params: { locale: string };
-  searchParams?: {
+  params: Promise<{ locale: string }>;
+  searchParams?: Promise<{
     text?: string;
     source?: string;
     target?: string;
     dialect?: string;
     pronoun?: string;
-  };
+  }>;
 };
 
 export async function generateMetadata(props: HomeProps): Promise<Metadata> {
+  const params = await props.params;
+
   const t = await getTranslations({
-    locale: props.params.locale,
+    locale: params.locale,
   });
 
   return {
@@ -35,7 +41,8 @@ export async function generateMetadata(props: HomeProps): Promise<Metadata> {
 export const revalidate = 86_400;
 
 export default async function Home(props: HomeProps) {
-  const { params, searchParams } = props;
+  const params = await props.params;
+  const searchParams = await props.searchParams;
 
   setRequestLocale(params.locale);
 
@@ -49,7 +56,7 @@ export default async function Home(props: HomeProps) {
 
   let result: Result | undefined;
   if (text) {
-    result = await translate(text, {
+    result = await fetchTranslation(text, {
       direction,
       dialect,
       pronoun,
@@ -113,6 +120,7 @@ export default async function Home(props: HomeProps) {
           }
           alternativeTranslationsPromise={alternativeTranslationsPromise}
           exampleSentencesPromise={exampleSentences}
+          error={result?.type === "error" ? result.error : undefined}
           errorMessage={result?.type === "error" ? result.message : undefined}
         />
       </main>

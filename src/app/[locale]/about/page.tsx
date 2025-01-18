@@ -3,14 +3,15 @@ import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export type AboutPageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
   props: AboutPageProps,
 ): Promise<Metadata> {
+  const params = await props.params;
   const t = await getTranslations({
-    locale: props.params.locale,
+    locale: params.locale,
   });
 
   return {
@@ -19,7 +20,8 @@ export async function generateMetadata(
   };
 }
 
-export default async function AboutPage({ params }: AboutPageProps) {
+export default async function AboutPage(props: AboutPageProps) {
+  const params = await props.params;
   setRequestLocale(params.locale);
 
   const t = await getTranslations("app.AboutPage");
