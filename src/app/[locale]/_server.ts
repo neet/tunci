@@ -21,12 +21,14 @@ export type TranslationParams = {
 };
 
 export type ErrorType =
+  | "INVALID_ARGUMENT"
   | "ROMANIZE_SERVICE_UNAVAILABLE"
-  | "TRANSLATOR_SERVICE_UNAVAILABLE";
+  | "TRANSLATOR_SERVICE_UNAVAILABLE"
+  | "UNKNOWN";
 
 type ResultError = {
   type: "error";
-  error?: ErrorType;
+  error: ErrorType;
   message?: string;
 };
 
@@ -50,6 +52,7 @@ export async function fetchTranslation(
   if (typeof text !== "string" || text.length === 0) {
     return {
       type: "error",
+      error: "INVALID_ARGUMENT",
       message: "テキストが入力されていません。",
     };
   }
@@ -57,6 +60,7 @@ export async function fetchTranslation(
   if (typeof direction !== "string") {
     return {
       type: "error",
+      error: "INVALID_ARGUMENT",
       message: "翻訳方向が不正です。",
     };
   }
@@ -64,6 +68,7 @@ export async function fetchTranslation(
   if (typeof dialect !== "string") {
     return {
       type: "error",
+      error: "INVALID_ARGUMENT",
       message: "方言が不正です。",
     };
   }
@@ -71,6 +76,7 @@ export async function fetchTranslation(
   if (typeof pronoun !== "string") {
     return {
       type: "error",
+      error: "INVALID_ARGUMENT",
       message: "人称が不正です。",
     };
   }
@@ -78,6 +84,7 @@ export async function fetchTranslation(
   if (text.length > MAX_LENGTH) {
     return {
       type: "error",
+      error: "INVALID_ARGUMENT",
       message: `テキストの長さが制限を超えています。${MAX_LENGTH}文字以内にしてください。`,
     };
   }
@@ -96,6 +103,7 @@ export async function fetchTranslation(
         console.error(error);
         return {
           type: "error",
+          error: "UNKNOWN",
           message:
             "エラーが発生しました。しばらく待ってから再度お試しください。",
         };
@@ -119,6 +127,7 @@ export async function fetchTranslation(
         console.error(error);
         return {
           type: "error",
+          error: "UNKNOWN",
           message:
             "エラーが発生しました。しばらく待ってから再度お試しください。",
         };
@@ -157,6 +166,7 @@ export async function fetchTranslation(
     console.log(error);
     return {
       type: "error",
+      error: "UNKNOWN",
       message: "エラーが発生しました。しばらく待ってから再度お試しください。",
     };
   }
