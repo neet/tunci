@@ -31,7 +31,7 @@ export type ComposerInputProps = {
     dialect?: string;
   };
   pending: boolean;
-  ready: boolean;
+  hasTranslation: boolean;
   dirty: boolean;
   textTranscription?: t.Transcription;
   count: number;
@@ -47,7 +47,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
   const {
     source,
     defaultValues,
-    ready,
+    hasTranslation,
     dirty,
     pending,
     textTranscription,
@@ -124,7 +124,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
           </Text>
 
           <Transcription>
-            {!dirty && ready && textTranscription
+            {!dirty && hasTranslation && textTranscription
               ? textTranscription.text
               : undefined}
           </Transcription>
@@ -147,11 +147,13 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
             <Tooltip content={t("play")}>
               <IconButton
                 variant="soft"
-                hidden={count <= 0}
                 size="2"
                 onClick={onPlayInput}
                 type="button"
                 title={t("play")}
+                style={{
+                  visibility: count > 0 ? "visible" : "hidden",
+                }}
               >
                 <FiVolume2 aria-hidden />
               </IconButton>

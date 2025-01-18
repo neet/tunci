@@ -28,7 +28,7 @@ import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
 
 export type ComposerOutputProps = {
-  ready: boolean;
+  hasTranslation: boolean;
   dirty: boolean;
   target: string;
   pending: boolean;
@@ -47,7 +47,7 @@ export type ComposerOutputProps = {
 
 export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
   const {
-    ready,
+    hasTranslation,
     dirty,
     pending,
     target,
@@ -104,7 +104,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             </Text>
 
             <Transcription>
-              {ready && translationTranscription
+              {hasTranslation && translationTranscription
                 ? translationTranscription.text
                 : undefined}
             </Transcription>
@@ -113,12 +113,14 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
           <Flex justify="between" mt="2">
             <Tooltip content={t("play")}>
               <IconButton
-                hidden={!ready}
                 type="button"
                 variant="soft"
                 size="2"
                 aria-label={t("play")}
                 onClick={onPlayOutput}
+                style={{
+                  visibility: hasTranslation ? "visible" : "hidden",
+                }}
               >
                 <FiVolume2 aria-hidden />
               </IconButton>
@@ -127,12 +129,14 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             <Flex justify="end" gap="1">
               <Tooltip content={t("share")}>
                 <IconButton
-                  hidden={!ready}
                   type="button"
                   variant="soft"
                   size="2"
                   aria-label={t("share")}
                   onClick={onShare}
+                  style={{
+                    visibility: hasTranslation ? "visible" : "hidden",
+                  }}
                 >
                   <FiShare aria-hidden />
                 </IconButton>
@@ -140,12 +144,14 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
 
               <Tooltip content={t("copy")}>
                 <IconButton
-                  hidden={!ready}
                   type="button"
                   variant="soft"
                   size="2"
                   aria-label={t("copy")}
                   onClick={onCopy}
+                  style={{
+                    visibility: hasTranslation ? "visible" : "hidden",
+                  }}
                 >
                   <FiCopy aria-hidden />
                 </IconButton>
@@ -184,20 +190,20 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
           </Callout.Root>
         )}
 
-        {ready && (
+        {hasTranslation && (
           <Box>
             <Disclaimer />
           </Box>
         )}
       </Flex>
 
-      {ready && (
+      {hasTranslation && (
         <ExampleSentences
           exampleSentencesPromise={props.exampleSentencesPromise}
         />
       )}
 
-      {ready && (
+      {hasTranslation && (
         <AlternativeTranslations
           alternativeTranslationsPromise={props.alternativeTranslationsPromise}
         />

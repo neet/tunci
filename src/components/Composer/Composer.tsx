@@ -224,8 +224,8 @@ export const Composer: FC<ComposerProps> = (props) => {
           count={count}
           pending={pending}
           source={source}
-          ready={ready}
           dirty={dirty}
+          hasTranslation={ready}
           textareaRef={textareaRef}
           onChangeSource={handleChangeSource}
           onChangeText={handleChangeText}
@@ -239,8 +239,8 @@ export const Composer: FC<ComposerProps> = (props) => {
           translationTranscription={translationTranscription}
           dirty={dirty}
           pending={pending}
-          ready={ready}
           target={target}
+          hasTranslation={ready}
           onChangeTarget={handleChangeTarget}
           onPlayOutput={handlePlayOutput}
           onCopy={handleCopy}
