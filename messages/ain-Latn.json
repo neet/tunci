@@ -65,7 +65,7 @@
         },
         "DialectSelector": {
           "title": "iporse",
-          "description": "Aynu itak or ta hiyocunko sak kusu, usa mosir or ta sinna itak a=eywanke wa oka ruwe ne. mosir e=numke wa ne mosir or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
+          "description": "Aynu itak or ta HIYOCUNKO sak kusu, usa mosir or ta sinna itak a=eywanke wa oka ruwe ne. mosir e=numke wa ne mosir or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
           "experimental": "naa ci=kar wa oka=as.",
           "saru": "Sar",
           "chitose": "Sikot",
@@ -84,7 +84,7 @@
           "title": "ne itak eywanke wa oka oruspe"
         },
         "ExampleSentencesError": {
-          "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
+          "description": "DETA k=uk ka eaykap. ponno tere wa suy ek yan."
         }
       },
       "LanguageSelector": {
@@ -96,11 +96,18 @@
           "title": "mosma itak"
         },
         "AlternativeTranslationsError": {
-          "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
+          "description": "DETA k=uk ka eaykap. ponno tere wa suy ek yan."
         },
         "AlternativeTranslationsContent": {
           "description": "mosma anakne, ene itakpo ka oka hi:"
         }
+      },
+      "EndpointStatus": {
+        "initializing": "SABA ku=mososo kor k=an kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata mokor ruwe ne.",
+        "scaledToZero": "SABA un INSUTANSU anak sinep ka isam",
+        "running": "SABA makanak an pe k=uk kor k=an.",
+        "paused": "tane anakne SABA e=eywanke ka eaykap. tan saito kor kur kopisi yan.",
+        "pending": "SABA ku=mososo kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata mokor ruwe ne."
       }
     },
     "Entry": {
@@ -110,8 +117,8 @@
         "dialect": "iporse: "
       },
       "EntryDetailsDialog": {
-        "title": "naa kampis oruspe",
-        "description": "この資料の詳細情報です。一部不正確な情報が含まれる可能性があります。",
+        "title": "ne kampisos oruspe",
+        "description": "ne kampisos un naa pirka oruspe ne. sinna itak, wen itak ka oka an nankor.",
         "book": "motoho re",
         "entryTitle": "kampi re",
         "author": "nuye kur",
