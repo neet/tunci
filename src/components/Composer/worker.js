@@ -10,6 +10,7 @@ async function getInstance(progressCallback) {
   if (instance == null) {
     instance = pipeline("text2text-generation", MODEL_NAME, {
       revision: "b6cc98f634063743e4d911e21047b67b2c04fff7",
+      dtype: "q4",
       progress_callback: progressCallback,
     });
   }
