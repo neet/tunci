@@ -18,6 +18,7 @@ import {
   useTransition,
 } from "react";
 
+import { type ErrorType } from "@/app/[locale]/_server";
 import { SearchEntry } from "@/models/entry";
 import * as t from "@/models/transcription";
 
@@ -43,6 +44,7 @@ export type ComposerProps = {
   alternativeTranslationsPromise?: Promise<string[]>;
   exampleSentencesPromise?: Promise<SearchResponse<SearchEntry>>;
 
+  error?: ErrorType;
   errorMessage?: string;
 };
 
@@ -54,6 +56,7 @@ export const Composer: FC<ComposerProps> = (props) => {
     translation,
     textTranscription,
     translationTranscription,
+    error,
     errorMessage,
   } = props;
 
@@ -242,6 +245,8 @@ export const Composer: FC<ComposerProps> = (props) => {
           onPlayOutput={handlePlayOutput}
           onCopy={handleCopy}
           onShare={handleShare}
+          onRefresh={() => router.refresh()}
+          error={error}
           errorMessage={errorMessage}
           exampleSentencesPromise={props.exampleSentencesPromise}
           alternativeTranslationsPromise={props.alternativeTranslationsPromise}

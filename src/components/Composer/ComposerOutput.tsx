@@ -15,11 +15,13 @@ import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { FiCopy, FiShare, FiVolume2 } from "react-icons/fi";
 
+import { ErrorType } from "@/app/[locale]/_server";
 import { SearchEntry } from "@/models/entry";
 
 import * as t from "../../models/transcription";
 import { AlternativeTranslations } from "./AlternativeTranslations";
 import { Disclaimer } from "./Disclaimer";
+import { EndpointStatus } from "./EndpointStatus";
 import { ExampleSentences } from "./ExampleSentences";
 import { LanguageSelector } from "./LanguageSelector";
 import { Transcription } from "./Transcription";
@@ -32,11 +34,13 @@ export type ComposerOutputProps = {
   pending: boolean;
   translation?: string;
   translationTranscription?: t.Transcription;
+  error?: ErrorType;
   errorMessage?: string;
   onChangeTarget: (target: string) => void;
   onPlayOutput: () => void;
   onShare: () => void;
   onCopy: () => void;
+  onRefresh: () => void;
   exampleSentencesPromise?: Promise<SearchResponse<SearchEntry>>;
   alternativeTranslationsPromise?: Promise<string[]>;
 };
@@ -49,26 +53,19 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
     target,
     translationTranscription,
     translation,
+    error,
     errorMessage,
     onChangeTarget,
     onPlayOutput,
     onShare,
     onCopy,
+    onRefresh,
   } = props;
 
   const t = useTranslations("components.Composer.ComposerOutput");
 
   return (
     <Flex direction="column" gap="4">
-      {errorMessage && (
-        <Callout.Root color="red">
-          <Callout.Icon>
-            <ExclamationTriangleIcon />
-          </Callout.Icon>
-          <Callout.Text>{errorMessage}</Callout.Text>
-        </Callout.Root>
-      )}
-
       <Flex
         role="region"
         aria-labelledby="translation"
@@ -100,7 +97,10 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             </VisuallyHidden>
 
             <Text lang={target} as="p" size="6" style={{ minHeight: "4lh" }}>
-              <Translation value={translation} pending={pending} />
+              <Translation
+                value={translation}
+                pending={pending || error != null}
+              />
             </Text>
 
             <Transcription>
@@ -153,6 +153,36 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             </Flex>
           </Flex>
         </Card>
+
+        {error === "TRANSLATOR_SERVICE_UNAVAILABLE" && (
+          <EndpointStatus
+            namespace="rigarashi"
+            endpoint="mt5-base-ainu-jey"
+            onReady={onRefresh}
+          />
+        )}
+
+        {error === "ROMANIZE_SERVICE_UNAVAILABLE" && (
+          <EndpointStatus
+            namespace="rigarashi"
+            endpoint="mt5-base-ainu-kana-atp"
+            onReady={onRefresh}
+          />
+        )}
+
+        {errorMessage && (
+          <Callout.Root color="red">
+            <Callout.Icon>
+              <ExclamationTriangleIcon />
+            </Callout.Icon>
+
+            <Callout.Text>
+              <Text as="p" size="2">
+                {errorMessage}
+              </Text>
+            </Callout.Text>
+          </Callout.Root>
+        )}
 
         {ready && (
           <Box>
