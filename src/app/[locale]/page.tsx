@@ -47,17 +47,16 @@ export default async function Home(props: HomeProps) {
   setRequestLocale(params.locale);
 
   const text = searchParams?.text;
-  const direction =
-    searchParams?.source && searchParams?.target
-      ? `${searchParams.source}2${searchParams.target}`
-      : "ja2ain";
+  const source = searchParams?.source ?? "ja";
+  const target = searchParams?.target ?? "ain";
   const dialect = searchParams?.dialect ?? "沙流";
   const pronoun = searchParams?.pronoun ?? "first";
 
   let result: Result | undefined;
   if (text) {
     result = await fetchTranslation(text, {
-      direction,
+      source,
+      target,
       dialect,
       pronoun,
     });
@@ -68,7 +67,8 @@ export default async function Home(props: HomeProps) {
     alternativeTranslationsPromise = fetchAlternativeTranslations(
       text,
       result,
-      direction,
+      source,
+      target,
       dialect,
       pronoun,
     );
@@ -76,10 +76,8 @@ export default async function Home(props: HomeProps) {
 
   let exampleSentences: Promise<SearchResponse<SearchEntry>> | undefined;
   if (text && result?.type === "ok") {
-    const words = tokenize(
-      direction === "ain2ja" ? text : result.translation,
-      false,
-    );
+    const words = tokenize(source === "ain" ? text : result.translation, false);
+
     if (words.length < 4) {
       exampleSentences = searchClient.searchSingleIndex<SearchEntry>({
         indexName: "entries",

@@ -15,7 +15,8 @@ const isServiceUnavailableError = (error: unknown): boolean => {
 };
 
 export type TranslationParams = {
-  direction?: string;
+  source?: string;
+  target?: string;
   dialect?: string;
   pronoun?: string;
 };
@@ -47,7 +48,7 @@ export async function fetchTranslation(
   text: string,
   params: TranslationParams,
 ): Promise<Result> {
-  const { direction, dialect, pronoun } = params;
+  const { source, target, dialect, pronoun } = params;
 
   if (typeof text !== "string" || text.length === 0) {
     return {
@@ -57,7 +58,7 @@ export async function fetchTranslation(
     };
   }
 
-  if (typeof direction !== "string") {
+  if (typeof source !== "string" || typeof target !== "string") {
     return {
       type: "error",
       error: "INVALID_ARGUMENT",
@@ -92,7 +93,7 @@ export async function fetchTranslation(
   try {
     let translationSource: string;
     try {
-      translationSource = await normalize(text, direction);
+      translationSource = await normalize(text, source);
     } catch (error) {
       if (isServiceUnavailableError(error)) {
         return {
@@ -113,7 +114,8 @@ export async function fetchTranslation(
     let translation: string;
     try {
       translation = await api.translate(translationSource, {
-        direction,
+        source,
+        target,
         dialect,
         pronoun,
       });
@@ -140,14 +142,14 @@ export async function fetchTranslation(
       transcriptions: {},
     };
 
-    if (direction === "ja2ain") {
+    if (source === "ja") {
       result.transcriptions.translation = {
         type: "kana",
         text: to_kana(translation),
       };
     }
 
-    if (direction === "ain2ja") {
+    if (source === "ain") {
       if (isKana(text)) {
         result.transcriptions.text = {
           type: "latin",
@@ -175,7 +177,8 @@ export async function fetchTranslation(
 export async function fetchAlternativeTranslations(
   text: string,
   result: Result,
-  direction: string,
+  source: string,
+  target: string,
   dialect: string,
   pronoun: string,
 ): Promise<string[]> {
@@ -193,7 +196,8 @@ export async function fetchAlternativeTranslations(
 
   try {
     const translations = await api.translate(text, {
-      direction,
+      source,
+      target,
       dialect,
       pronoun,
       numReturnSequences: genMax,

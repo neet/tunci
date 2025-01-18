@@ -5,7 +5,8 @@ const dedupe = <T>(arr: T[]): T[] => Array.from(new Set(arr));
 const normalize = (text: string): string => text.toLowerCase();
 
 export type BaseTranslateParams = {
-  readonly direction: string; // "ja2ain" | "ain2ja";
+  readonly source: string;
+  readonly target: string;
   readonly dialect: string;
   readonly pronoun: string;
 };
@@ -36,10 +37,10 @@ export async function translate(
   input: string,
   params: TranslateParams,
 ): Promise<string | string[]> {
-  const { direction, dialect, pronoun, numReturnSequences = 1 } = params;
+  const { source, target, dialect, pronoun, numReturnSequences = 1 } = params;
 
   let prompt: string = "";
-  if (direction === "ja2ain") {
+  if (source === "ja" && target === "ain") {
     prompt = `translate Japanese to Ainu (${dialect}, ${pronoun}): ${input}`;
   } else {
     prompt = `translate Ainu (${dialect}, ${pronoun}) to Japanese: ${input}`;

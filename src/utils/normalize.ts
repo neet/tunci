@@ -3,9 +3,9 @@ import { isKana } from "./is_kana";
 
 export const normalize = async (
   text: string,
-  direction: string,
+  source: string,
 ): Promise<string> => {
-  if (direction === "ain2ja" && isKana(text)) {
+  if (source === "ain" && isKana(text)) {
     text = await api.romanize(text);
   }
 
