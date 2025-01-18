@@ -23,7 +23,7 @@ _tunci_ (トゥンチ) is a neural machine translator for the Ainu language — 
   - Hugging Face Transformers: A library for state-of-the-art NLP models
 - Frontend
   - React + Next.js (/w Server Components): A frontend framework for building web applications
-  - Tailwind CSS: A utility-first CSS framework
+  - Radix UI: A design system for building accessible and responsive web applications
   - Vercel: A cloud platform for static sites and serverless functions
 
 ## License
