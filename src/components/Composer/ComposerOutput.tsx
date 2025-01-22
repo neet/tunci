@@ -104,7 +104,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             </Text>
 
             <Transcription>
-              {hasTranslation && translationTranscription
+              {!pending && hasTranslation && translationTranscription
                 ? translationTranscription.text
                 : undefined}
             </Transcription>
