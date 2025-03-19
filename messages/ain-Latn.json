@@ -52,7 +52,7 @@
       "AdvancedSettingsDialog": {
         "PronounSelector": {
           "title": "itakpo",
-          "description": "Aynu itak or ta tu sinna itak a=eywanke ruwe ne: yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
+          "description": "Aynu itak or ta tu sinna itak a=eywanke ruwe ne: yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak oka ruwe ne. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
           "first": "yayan itak",
           "firstDescription": "yayan hi ta a=ye itak",
           "fourth": "a=tomte itak",
@@ -61,11 +61,11 @@
         "AdvancedSettingsDialogContent": {
           "title": "iporse & itakpo",
           "description": "iporse newa itakpo un SETTEY e=numke wa, naa pirka itak e=nuye easkay.",
-          "close": "asi"
+          "close": "pirka"
         },
         "DialectSelector": {
           "title": "iporse",
-          "description": "Aynu itak or ta HIYOCUNKO sak kusu, usa mosir or ta sinna itak a=eywanke wa oka ruwe ne. mosir e=numke wa ne mosir or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
+          "description": "Aynu itak or ta HIYOCUNKO sak kusu, usa oka kotan or ta sinna itak a=eywanke wa oka ruwe ne. kotan e=numke wa ne kotan or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
           "experimental": "naa ci=kar wa oka=as.",
           "saru": "Sar",
           "chitose": "Sikot",
