@@ -64,7 +64,7 @@ export const Composer: FC<ComposerProps> = (props) => {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const submitted = useRef(false);
   const headingId = useId();
 

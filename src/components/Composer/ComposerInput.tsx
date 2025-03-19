@@ -35,7 +35,7 @@ export type ComposerInputProps = {
   dirty: boolean;
   textTranscription?: t.Transcription;
   count: number;
-  textareaRef: RefObject<HTMLTextAreaElement>;
+  textareaRef: RefObject<HTMLTextAreaElement | null>;
   onChangeSource: (source: string) => void;
   onChangeText: (text: string) => void;
   onRecognize: () => void;
