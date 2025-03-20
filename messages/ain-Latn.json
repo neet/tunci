@@ -1,12 +1,12 @@
 {
   "app": {
     "Home": {
-      "title": "tunci - Aynu itak or un tupte easkay aeywankep",
-      "description": "tan sait anakne Aynu itak or wa Sisam itak a=nuye easkay aeywankep ne ruwe ne."
+      "title": "tunci - Aynu itak or un itaktupte easkay aeywankep",
+      "description": "tan SAYTO anakne Aynu itak or wa Sisam itak a=nuye easkay aeywankep ne ruwe ne."
     },
     "AboutPage": {
       "title": "tanpe hemanta an?",
-      "description": "tan sait anakne Aynu itak or wa Sisam itak a=nuye easkay aeywankep ne ruwe ne."
+      "description": "tan SAYTO anakne Aynu itak or wa Sisam itak a=nuye easkay aeywankep ne ruwe ne."
     }
   },
   "components": {
@@ -14,7 +14,7 @@
       "about": "tanpe hemanta an?"
     },
     "ContentInfo": {
-      "title": "tan sait kar kur oruspe"
+      "title": "tan SAYTO kar kur oruspe"
     },
     "Composer": {
       "wip": "naa ci=kar kor oka=as hontom ne ruwe ne.",
@@ -43,7 +43,7 @@
       },
       "Translation": {
         "empty": "cituptep",
-        "loading": "a=tupte kor an=an..."
+        "loading": "a=tupte kor an=an…"
       },
       "Disclaimer": {
         "title": "yaytupare yan",
@@ -52,7 +52,7 @@
       "AdvancedSettingsDialog": {
         "PronounSelector": {
           "title": "itakpo",
-          "description": "Aynu itak or ta tu sinna itak a=eywanke ruwe ne: yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak oka ruwe ne. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
+          "description": "Aynu itak or ta tu sinna itak oka ruwe ne; yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak oka ruwe ne. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
           "first": "yayan itak",
           "firstDescription": "yayan hi ta a=ye itak",
           "fourth": "a=tomte itak",
@@ -106,7 +106,7 @@
         "initializing": "SABA ku=mososo kor k=an kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
         "scaledToZero": "SABA un INSUTANSU anak sinep ka isam",
         "running": "SABA makanak an pe k=uk kor k=an.",
-        "paused": "tane anakne SABA e=eywanke ka eaykap. tan saito kor kur kopisi yan.",
+        "paused": "tane anakne SABA e=eywanke ka eaykap. tan SAYTO kor kur kopisi yan.",
         "pending": "SABA ku=mososo kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne."
       }
     },
