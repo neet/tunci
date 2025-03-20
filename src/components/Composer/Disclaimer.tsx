@@ -10,7 +10,12 @@ export const Disclaimer: FC = () => {
       <Callout.Icon>
         <ExclamationTriangleIcon aria-label={t("title")} />
       </Callout.Icon>
-      <Callout.Text>{t("disclaimer")}</Callout.Text>
+
+      <Callout.Text>
+        {t.rich("disclaimer", {
+          strong: (chunk) => <strong>{chunk}</strong>,
+        })}
+      </Callout.Text>
     </Callout.Root>
   );
 };
