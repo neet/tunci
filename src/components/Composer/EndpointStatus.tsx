@@ -73,7 +73,7 @@ export const EndpointStatus: FC<EndpointStatusProps> = (props) => {
   };
 
   return (
-    <Callout.Root>
+    <Callout.Root role="status" aria-live="polite">
       <Callout.Icon>
         <Spinner />
       </Callout.Icon>
