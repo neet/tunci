@@ -114,6 +114,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             <Tooltip content={t("play")}>
               <IconButton
                 type="button"
+                color="gray"
                 variant="soft"
                 size="2"
                 aria-label={t("play")}
@@ -131,6 +132,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                 <IconButton
                   type="button"
                   variant="soft"
+                  color="gray"
                   size="2"
                   aria-label={t("share")}
                   onClick={onShare}
@@ -146,6 +148,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                 <IconButton
                   type="button"
                   variant="soft"
+                  color="gray"
                   size="2"
                   aria-label={t("copy")}
                   onClick={onCopy}

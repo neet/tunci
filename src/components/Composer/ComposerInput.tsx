@@ -135,6 +135,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
             <Tooltip content={t("recognize")}>
               <IconButton
                 variant="soft"
+                color="gray"
                 size="2"
                 title={t("recognize")}
                 type="button"
@@ -147,6 +148,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
             <Tooltip content={t("play")}>
               <IconButton
                 variant="soft"
+                color="gray"
                 size="2"
                 onClick={onPlayInput}
                 type="button"
@@ -166,6 +168,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
             <Tooltip content={t("paste")}>
               <IconButton
                 variant="soft"
+                color="gray"
                 size="2"
                 onClick={onPaste}
                 type="button"
