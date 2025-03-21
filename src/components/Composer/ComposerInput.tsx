@@ -181,7 +181,11 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
       <Flex gap="2" justify="end" p="1" wrap="wrap">
         <AdvancedSettingsDialog
           defaultValues={advancedSettings}
-          opener={<Button type="button">{t("advancedSettings")}</Button>}
+          opener={
+            <Button type="button" variant="soft" color="gray">
+              {t("advancedSettings")}
+            </Button>
+          }
           onClose={handleCloseDialog}
         />
 
