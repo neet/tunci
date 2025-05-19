@@ -21,7 +21,7 @@ export const ComposerCollapsible: FC<ComposerCollapsibleProps> = (props) => {
             <Flex justify="between" align="center" width="100%" asChild>
               <Reset>
                 <button style={{ width: "100%" }}>
-                  <Heading as="h4" size="3" id={id}>
+                  <Heading as="h3" size="3" id={id}>
                     {title}
                   </Heading>
 
