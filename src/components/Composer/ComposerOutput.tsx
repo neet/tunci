@@ -28,6 +28,7 @@ import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
 
 export type ComposerOutputProps = {
+  form: string;
   hasTranslation: boolean;
   dirty: boolean;
   target: string;
@@ -47,6 +48,7 @@ export type ComposerOutputProps = {
 
 export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
   const {
+    form,
     hasTranslation,
     dirty,
     pending,
@@ -74,6 +76,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
       >
         <Flex justify="between" align="center">
           <LanguageSelector
+            form={form}
             name="target"
             value={target}
             legend={t("target")}
@@ -91,7 +94,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
         <Card size="2">
           <Box>
             <VisuallyHidden asChild>
-              <Heading as="h3" id="translation" tabIndex={-1}>
+              <Heading as="h2" id="translation" tabIndex={-1}>
                 {t("translationResult")}
               </Heading>
             </VisuallyHidden>

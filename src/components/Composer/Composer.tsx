@@ -205,19 +205,20 @@ export const Composer: FC<ComposerProps> = (props) => {
   };
 
   return (
-    <form
-      method={method}
-      action={action}
-      aria-labelledby={headingId}
-      onSubmit={handleSubmit}
-    >
-      <VisuallyHidden>
-        <Heading as="h2" id={headingId}>
-          {t("translateForm")}
-        </Heading>
-      </VisuallyHidden>
+    <Grid columns={{ initial: "1", md: "2" }} gap="5">
+      <form
+        id="composer"
+        method={method}
+        action={action}
+        aria-labelledby={headingId}
+        onSubmit={handleSubmit}
+      >
+        <VisuallyHidden>
+          <Heading as="h2" id={headingId}>
+            {t("translateForm")}
+          </Heading>
+        </VisuallyHidden>
 
-      <Grid columns={{ initial: "1", md: "2" }} gap="5">
         <ComposerInput
           defaultValues={defaultValues}
           textTranscription={textTranscription}
@@ -233,25 +234,26 @@ export const Composer: FC<ComposerProps> = (props) => {
           onPlayInput={handlePlayInput}
           onPaste={handlePaste}
         />
+      </form>
 
-        <ComposerOutput
-          translation={translation}
-          translationTranscription={translationTranscription}
-          dirty={dirty}
-          pending={pending}
-          target={target}
-          hasTranslation={ready}
-          onChangeTarget={handleChangeTarget}
-          onPlayOutput={handlePlayOutput}
-          onCopy={handleCopy}
-          onShare={handleShare}
-          onRefresh={() => router.refresh()}
-          error={error}
-          errorMessage={errorMessage}
-          exampleSentencesPromise={props.exampleSentencesPromise}
-          alternativeTranslationsPromise={props.alternativeTranslationsPromise}
-        />
-      </Grid>
-    </form>
+      <ComposerOutput
+        form="composer"
+        translation={translation}
+        translationTranscription={translationTranscription}
+        dirty={dirty}
+        pending={pending}
+        target={target}
+        hasTranslation={ready}
+        onChangeTarget={handleChangeTarget}
+        onPlayOutput={handlePlayOutput}
+        onCopy={handleCopy}
+        onShare={handleShare}
+        onRefresh={() => router.refresh()}
+        error={error}
+        errorMessage={errorMessage}
+        exampleSentencesPromise={props.exampleSentencesPromise}
+        alternativeTranslationsPromise={props.alternativeTranslationsPromise}
+      />
+    </Grid>
   );
 };

@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { FC, ReactNode } from "react";
 
 type LanguageSelectorProps = {
+  form?: string;
   name: string;
   value: string;
   legend: ReactNode;
@@ -11,7 +12,7 @@ type LanguageSelectorProps = {
 };
 
 export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
-  const { name, value, onChange } = props;
+  const { form, name, value, onChange } = props;
 
   const t = useTranslations("components.Composer.LanguageSelector");
 
@@ -24,7 +25,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
         <SegmentedControl.Item value="ain">{t("ainu")}</SegmentedControl.Item>
       </SegmentedControl.Root>
 
-      <input type="hidden" name={name} value={value} />
+      <input type="hidden" form={form} name={name} value={value} />
     </>
   );
 };
