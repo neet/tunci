@@ -31,7 +31,7 @@
         "placeholder": "文章を入力"
       },
       "ComposerOutput": {
-        "target": "翻訳する言語",
+        "target": "出力する言語",
         "share": "共有",
         "copy": "コピー",
         "play": "読み上げる",
