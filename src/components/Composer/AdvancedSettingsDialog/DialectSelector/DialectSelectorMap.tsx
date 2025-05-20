@@ -55,7 +55,7 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
             }}
           >
             <circle
-              r={dialect.value === value ? 15 : 10}
+              r={10}
               className={clsx("circle", {
                 "circle--selected": dialect.value === value,
               })}
