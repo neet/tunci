@@ -61,7 +61,7 @@
         "AdvancedSettingsDialogContent": {
           "title": "iporse & itakpo",
           "description": "iporse newa itakpo un SETTEY e=numke wa, naa pirka itak e=nuye easkay.",
-          "close": "pirka"
+          "close": "seske"
         },
         "DialectSelector": {
           "title": "iporse",
@@ -108,6 +108,10 @@
         "running": "SABA makanak an pe k=uk kor k=an.",
         "paused": "tane anakne SABA e=eywanke ka eaykap. tan SAYTO kor kur kopisi yan.",
         "pending": "SABA ku=mososo kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne."
+      },
+      "ComposerCollapsible": {
+        "collapse": "seske",
+        "expand": "maka"
       }
     },
     "Entry": {

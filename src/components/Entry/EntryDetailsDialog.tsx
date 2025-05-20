@@ -6,6 +6,7 @@ import {
   IconButton,
   Link,
   Text,
+  Tooltip,
   VisuallyHidden,
 } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
@@ -26,12 +27,14 @@ export const EntryDetailsDialog: FC<EntryDetailsDialogProps> = (props) => {
 
   return (
     <Dialog.Root>
-      <Dialog.Trigger>
-        <IconButton variant="ghost" color="gray">
-          <DotsHorizontalIcon />
-          <VisuallyHidden>{t("title")}</VisuallyHidden>
-        </IconButton>
-      </Dialog.Trigger>
+      <Tooltip content={t("title")}>
+        <Dialog.Trigger>
+          <IconButton variant="ghost" color="gray">
+            <DotsHorizontalIcon />
+            <VisuallyHidden>{t("title")}</VisuallyHidden>
+          </IconButton>
+        </Dialog.Trigger>
+      </Tooltip>
 
       <Dialog.Content>
         <Dialog.Title>{t("title")}</Dialog.Title>

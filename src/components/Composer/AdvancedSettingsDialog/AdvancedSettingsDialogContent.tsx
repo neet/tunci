@@ -20,7 +20,7 @@ export const AdvancedSettingsDialogContent: FC<
   );
 
   return (
-    <Flex direction="column" gap="4">
+    <Flex direction="column" gap="5">
       <Box>
         <Dialog.Title>{t("title")}</Dialog.Title>
         <Dialog.Description>
@@ -28,7 +28,7 @@ export const AdvancedSettingsDialogContent: FC<
         </Dialog.Description>
       </Box>
 
-      <Flex direction="column" gap="3">
+      <Flex direction="column" gap="4">
         <PronounSelector defaultValue={defaultValues.pronoun} />
         <DialectSelector defaultValue={defaultValues.dialect} />
       </Flex>
