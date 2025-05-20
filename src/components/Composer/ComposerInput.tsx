@@ -104,7 +104,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
         />
       </Box>
 
-      <Card size="2">
+      <Card size="2" className="composer-input__card">
         <Box>
           <VisuallyHidden asChild>
             <label htmlFor="text">{t("text")}</label>
