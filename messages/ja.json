@@ -108,6 +108,10 @@
         "initializing": "サーバーを起動しているため、1分ほどお待ち下さい。費用を節約するため、{scaleToZeroTimeout}分以上アクセスがなければ自動的に停止しています。",
         "paused": "サーバーが一時停止しています。管理者にお問い合わせください。",
         "running": "サーバーの状態を取得しています。"
+      },
+      "ComposerCollapsible": {
+        "collapse": "閉じる",
+        "expand": "開く"
       }
     },
     "Entry": {
