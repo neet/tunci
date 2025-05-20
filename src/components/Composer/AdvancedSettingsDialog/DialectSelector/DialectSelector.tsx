@@ -76,7 +76,7 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
         <legend>{t("title")}</legend>
       </Text>
 
-      <Text as="p" mt="1" size="2" color="gray">
+      <Text as="p" mt="1" color="gray">
         {t("description")}
       </Text>
 

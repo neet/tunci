@@ -45,32 +45,34 @@ export const DialectSelectorMap: FC<DialectSelectorMapProps> = (props) => {
         }
       </Geographies>
 
-      {dialects.map((dialect) => (
-        <Marker
-          key={dialect.value}
-          coordinates={dialect.coordinates}
-          onClick={() => {
-            onChange?.(dialect.value);
-          }}
-        >
-          <circle
-            r={dialect.value === value ? 15 : 10}
-            className={clsx("circle", {
-              "circle--selected": dialect.value === value,
-            })}
-          />
-
-          <text
-            textAnchor="middle"
-            y={markerOffset - 6}
-            className={clsx("caption", {
-              "caption--selected": dialect.value === value,
-            })}
+      <g aria-hidden>
+        {dialects.map((dialect) => (
+          <Marker
+            key={dialect.value}
+            coordinates={dialect.coordinates}
+            onClick={() => {
+              onChange?.(dialect.value);
+            }}
           >
-            {dialect.name}
-          </text>
-        </Marker>
-      ))}
+            <circle
+              r={dialect.value === value ? 15 : 10}
+              className={clsx("circle", {
+                "circle--selected": dialect.value === value,
+              })}
+            />
+
+            <text
+              textAnchor="middle"
+              y={markerOffset - 6}
+              className={clsx("caption", {
+                "caption--selected": dialect.value === value,
+              })}
+            >
+              {dialect.name}
+            </text>
+          </Marker>
+        ))}
+      </g>
     </ComposableMap>
   );
 };

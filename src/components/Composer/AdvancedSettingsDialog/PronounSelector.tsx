@@ -17,7 +17,7 @@ export const PronounSelector: FC<PronounSelectorProps> = (props) => {
         <legend>{t("title")}</legend>
       </Text>
 
-      <Text as="p" color="gray" size="2" mt="1">
+      <Text as="p" color="gray" mt="1">
         {t("description")}
       </Text>
 
