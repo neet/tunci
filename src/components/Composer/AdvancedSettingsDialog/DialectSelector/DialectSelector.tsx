@@ -118,7 +118,7 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
 
                     {dialect.experimental && (
                       <Tooltip content={t("experimental")}>
-                        <Text size="2" color="gray">
+                        <Text size="2" color="gray" tabIndex={0}>
                           <IoFlask title={t("experimental")} />
                         </Text>
                       </Tooltip>
