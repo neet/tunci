@@ -1,14 +1,12 @@
 import { Table } from "@radix-ui/themes";
 
-### 概要
-
 tunciは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。
 
 このWebサイトのソースコードは、[GitHub](https://github.com/neet/tunci)で公開されています。自然言語処理のためのモデルは[Hugging Face Hub](https://huggingface.co/aynumosir)に公開しています。
 
 作者に連絡したい場合は、Xを使ってください。[@TheGodOfNeet](https://x.com/TheGodOfNeet)
 
-### 注意事項
+#### 注意事項
 
 本サイトのアイヌ語翻訳は、学習用・研究用に提供されています。
 
@@ -18,11 +16,15 @@ tunciは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです
 
 本翻訳結果の利用によるトラブルについて、当方は責任を負いかねますので、あらかじめご了承ください
 
-### スコア
+### 論文
+
+- Ryo Igarashi and So Miyagawa. 2024. [Enhancing Neural Machine Translation for Ainu-Japanese: A Comprehensive Study on the Impact of Domain and Dialect Integration](https://aclanthology.org/2024.nlp4dh-1.40/). In Proceedings of the 4th International Conference on Natural Language Processing for Digital Humanities, pages 413–422, Miami, USA. Association for Computational Linguistics.
+
+### 品質
 
 2024年7月時点で、アイヌ語↔日本語の翻訳において以下のBLEUスコアを達成しています。
 
-<Table.Root>
+<Table.Root my="4">
   <Table.Header>
     <Table.Row>
       <Table.ColumnHeaderCell>翻訳元</Table.ColumnHeaderCell>
@@ -46,20 +48,6 @@ tunciは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです
 
   </tbody>
 </Table.Root>
-
-### AI活用について
-
-tunciの翻訳は機械学習によって実現されており、アイヌ語および日本語の教師データを利用して訓練されています。
-
-教師データに関しては、著作権法第30条の4、および文化庁『[AIと著作権に関するチェックリスト＆ガイダンス](https://www.bunka.go.jp/seisaku/bunkashingikai/chosakuken/seisaku/r06_02/pdf/94089701_05.pdf)』に基づいて利用しています。
-
-著作者の意図に反する利用を行わないよう細心の注意を払っておりますが、万が一問題がある場合はご連絡ください。
-
-### 用例機能について
-
-著作権法４７条の５に基づき、元資料のうちキーワードに一致した部分のみを表示しています。（参考：[情報検索サービス提供に関する注意点 | IT法務.COM](https://www.it-houmu.com/archives/1741)）
-
-著作者の意図に反する利用を行わないよう細心の注意を払っておりますが、万が一問題がある場合はご連絡ください。
 
 ### データ出典
 
@@ -171,6 +159,20 @@ tunciの翻訳モデルは、以下のデータを利用して訓練されてい
     </Table.Row>
   </tbody>
 </Table.Root>
+
+#### AI活用について
+
+tunciの翻訳は機械学習によって実現されており、アイヌ語および日本語の教師データを利用して訓練されています。
+
+教師データに関しては、著作権法第30条の4、および文化庁『[AIと著作権に関するチェックリスト＆ガイダンス](https://www.bunka.go.jp/seisaku/bunkashingikai/chosakuken/seisaku/r06_02/pdf/94089701_05.pdf)』に基づいて利用しています。
+
+著作者の意図に反する利用を行わないよう細心の注意を払っておりますが、万が一問題がある場合はご連絡ください。
+
+#### 用例機能について
+
+著作権法４７条の５に基づき、元資料のうちキーワードに一致した部分のみを表示しています。（参考：[情報検索サービス提供に関する注意点 | IT法務.COM](https://www.it-houmu.com/archives/1741)）
+
+著作者の意図に反する利用を行わないよう細心の注意を払っておりますが、万が一問題がある場合はご連絡ください。
 
 ### 関連プロジェクト
 
