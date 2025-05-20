@@ -15,14 +15,16 @@ export const Banner: FC = async () => {
     <Container asChild size="4" p="4" className="Banner">
       <header>
         <Flex justify="between" align="center">
-          <NextLink href="/" className="logo-link">
-            <Flex gap="2" align="center">
-              <Logo className="logo" />
-              <Heading as="h1" size="6" className="title" weight="regular">
-                tunci
-              </Heading>
-            </Flex>
-          </NextLink>
+          <Link asChild>
+            <NextLink href="/" className="logo-link">
+              <Flex gap="2" align="center">
+                <Logo className="logo" />
+                <Heading as="h1" size="6" className="title" weight="regular">
+                  tunci
+                </Heading>
+              </Flex>
+            </NextLink>
+          </Link>
 
           <Link asChild>
             <NextLink href="/about">{t("about")}</NextLink>
