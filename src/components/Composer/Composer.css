@@ -13,3 +13,8 @@ textarea#text {
     color: var(--gray-11);
   }
 }
+
+.composer-input__card:has(textarea:focus-visible) {
+  outline-offset: -1px;
+  outline: 2px solid var(--focus-8);
+}
