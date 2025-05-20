@@ -61,7 +61,7 @@
         "AdvancedSettingsDialogContent": {
           "title": "イポㇿセ　&　イタㇰポ",
           "description": "イポㇿセ　ネワ　イタㇰポ　ウン　セッテイ　エヌㇺケ　ワ、　ナア　ピㇼカ　イタㇰ　エヌイェ　エアㇱカイ。",
-          "close": "ピㇼカ"
+          "close": "セㇱケ"
         },
         "DialectSelector": {
           "title": "イポㇿセ",
@@ -108,6 +108,10 @@
         "running": "サバ　マカナㇰ　アン　ペ　クㇰ　コㇿ　カン。",
         "paused": "タネ　アナㇰネ　サバ　エエイワンケ　カ　エアイカㇷ゚。　タン　サイト　コㇿ　クㇽ　コピシ　ヤン。",
         "pending": "サバ　クモソソ　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　15　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。"
+      },
+      "ComposerCollapsible": {
+        "collapse": "セㇱケ",
+        "expand": "マカ"
       }
     },
     "Entry": {
