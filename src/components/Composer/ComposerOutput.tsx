@@ -1,7 +1,5 @@
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import {
   Box,
-  Callout,
   Card,
   Flex,
   Heading,
@@ -22,6 +20,7 @@ import * as t from "../../models/transcription";
 import { AlternativeTranslations } from "./AlternativeTranslations";
 import { Disclaimer } from "./Disclaimer";
 import { EndpointStatus } from "./EndpointStatus";
+import { ErrorMessage } from "./ErrorMessage";
 import { ExampleSentences } from "./ExampleSentences";
 import { LanguageSelector } from "./LanguageSelector";
 import { Transcription } from "./Transcription";
@@ -182,25 +181,9 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
           />
         )}
 
-        {errorMessage && (
-          <Callout.Root color="red">
-            <Callout.Icon>
-              <ExclamationTriangleIcon />
-            </Callout.Icon>
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
-            <Callout.Text>
-              <Text as="p" size="2">
-                {errorMessage}
-              </Text>
-            </Callout.Text>
-          </Callout.Root>
-        )}
-
-        {hasTranslation && (
-          <Box>
-            <Disclaimer />
-          </Box>
-        )}
+        {hasTranslation && <Disclaimer />}
       </Flex>
 
       {hasTranslation && (

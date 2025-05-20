@@ -1,4 +1,4 @@
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Callout } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
@@ -8,7 +8,7 @@ export const Disclaimer: FC = () => {
   return (
     <Callout.Root>
       <Callout.Icon>
-        <ExclamationTriangleIcon aria-label={t("title")} />
+        <InfoCircledIcon aria-label={t("title")} />
       </Callout.Icon>
 
       <Callout.Text>
