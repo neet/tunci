@@ -1,6 +1,6 @@
-import { SegmentedControl } from "@radix-ui/themes";
+import { SegmentedControl, VisuallyHidden } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useId } from "react";
 
 type LanguageSelectorProps = {
   form?: string;
@@ -12,13 +12,22 @@ type LanguageSelectorProps = {
 };
 
 export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
-  const { form, name, value, onChange } = props;
+  const { form, name, value, legend, onChange } = props;
 
+  const id = useId();
   const t = useTranslations("components.Composer.LanguageSelector");
 
   return (
     <>
-      <SegmentedControl.Root value={value} onValueChange={onChange}>
+      <VisuallyHidden>
+        <div id={id}>{legend}</div>
+      </VisuallyHidden>
+
+      <SegmentedControl.Root
+        value={value}
+        aria-describedby={id}
+        onValueChange={onChange}
+      >
         <SegmentedControl.Item value="ja">
           {t("japanese")}
         </SegmentedControl.Item>
