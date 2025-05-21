@@ -12,7 +12,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = (props) => {
   return (
     <Callout.Root color="red" role="alert">
       <Callout.Icon>
-        <ExclamationTriangleIcon />
+        <ExclamationTriangleIcon aria-hidden="true" />
       </Callout.Icon>
 
       <Callout.Text>
