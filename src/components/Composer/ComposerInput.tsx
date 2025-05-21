@@ -181,7 +181,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
         </Flex>
       </Card>
 
-      <Flex gap="2" justify="end" p="1" wrap="wrap">
+      <Flex gap="2" justify="end" wrap="wrap">
         <AdvancedSettingsDialog
           defaultValues={advancedSettings}
           opener={
