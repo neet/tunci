@@ -107,6 +107,7 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
             gridColumn={{ initial: "span 1", md: "span 1" }}
           >
             <RadioGroup.Root
+              role="generic"
               name="dialect"
               value={value}
               onValueChange={setValue}
