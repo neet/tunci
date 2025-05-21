@@ -25,7 +25,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
 
       <SegmentedControl.Root
         value={value}
-        aria-describedby={id}
+        aria-labelledby={id}
         onValueChange={onChange}
       >
         <SegmentedControl.Item value="ja">

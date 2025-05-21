@@ -21,7 +21,12 @@ export const PronounSelector: FC<PronounSelectorProps> = (props) => {
         {t("description")}
       </Text>
 
-      <RadioCards.Root mt="2" name="pronoun" defaultValue={props.defaultValue}>
+      <RadioCards.Root
+        role="generic"
+        mt="2"
+        name="pronoun"
+        defaultValue={props.defaultValue}
+      >
         <RadioCards.Item value="first">
           <Flex direction="column" width="100%">
             <Text weight="bold">{t("first")}</Text>
