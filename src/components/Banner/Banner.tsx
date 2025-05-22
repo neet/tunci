@@ -16,7 +16,7 @@ export const Banner: FC = async () => {
     <Container asChild size="4" p="4" className="Banner">
       <header>
         <Flex justify="between" align="center">
-          <Flex gap="4" align="center">
+          <Flex gap="3" align="center">
             <Link asChild>
               <NextLink href="/" className="logo-link">
                 <Flex gap="2" align="center">
