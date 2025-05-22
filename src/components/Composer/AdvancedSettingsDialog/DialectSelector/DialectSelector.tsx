@@ -1,4 +1,4 @@
-import { Box, Text } from "@radix-ui/themes";
+import { Box, Flex, Grid, RadioGroup, Text } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
 
@@ -79,20 +79,49 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
         {t("description")}
       </Text>
 
-      <Box
+      <Grid
+        columns={{ initial: "1", md: "4" }}
         mt="2"
-        style={{
-          borderRadius: "var(--radius-4)",
-          backgroundColor: "var(--gray-1)",
-          border: "1px solid var(--gray-5)",
-        }}
+        // justify={{ initial: "start", md: "end" }}
+        asChild
       >
-        <DialectSelectorMap
-          value={value}
-          dialects={dialects}
-          onChange={setValue}
-        />
-      </Box>
+        <Box
+          style={{
+            borderRadius: "var(--radius-4)",
+            backgroundColor: "var(--gray-1)",
+            border: "1px solid var(--gray-5)",
+          }}
+        >
+          <Box gridColumn={{ initial: "span 1", md: "span 3" }}>
+            <DialectSelectorMap
+              value={value}
+              dialects={dialects}
+              onChange={setValue}
+            />
+          </Box>
+
+          <Flex
+            m={{ initial: "4", md: "5" }}
+            justify={{ initial: "start", md: "end" }}
+            gridColumn={{ initial: "span 1", md: "span 1" }}
+          >
+            <RadioGroup.Root
+              role="generic"
+              name="dialect"
+              value={value}
+              onValueChange={setValue}
+            >
+              {dialects.map((dialect) => (
+                <RadioGroup.Item key={dialect.value} value={dialect.value}>
+                  <Flex justify="between" gap="2">
+                    <Text>{dialect.name}</Text>
+                  </Flex>
+                </RadioGroup.Item>
+              ))}
+            </RadioGroup.Root>
+          </Flex>
+        </Box>
+      </Grid>
     </fieldset>
   );
 };
