@@ -1,7 +1,6 @@
-import { Box, Flex, Grid, RadioGroup, Text, Tooltip } from "@radix-ui/themes";
+import { Box, Flex, Grid, RadioGroup, Text } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
-import { IoFlask } from "react-icons/io5";
 
 import { DialectSelectorMap } from "./DialectSelectorMap";
 import { Dialect } from "./model";
@@ -116,14 +115,6 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
                 <RadioGroup.Item key={dialect.value} value={dialect.value}>
                   <Flex justify="between" gap="2">
                     <Text>{dialect.name}</Text>
-
-                    {dialect.experimental && (
-                      <Tooltip content={t("experimental")}>
-                        <Text size="2" color="gray" tabIndex={0}>
-                          <IoFlask title={t("experimental")} />
-                        </Text>
-                      </Tooltip>
-                    )}
                   </Flex>
                 </RadioGroup.Item>
               ))}

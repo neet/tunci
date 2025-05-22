@@ -33,9 +33,9 @@
         "recognize": "音声入力",
         "play": "読み上げる",
         "paste": "貼り付け",
-        "translate": "翻訳",
+        "placeholder": "文章を入力",
         "advancedSettings": "表現の設定",
-        "placeholder": "文章を入力"
+        "translate": "翻訳"
       },
       "ComposerOutput": {
         "target": "出力する言語",

@@ -51,10 +51,10 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
     defaultValues,
     hasTranslation,
     dirty,
-    pending,
     textTranscription,
     textareaRef,
     count,
+    pending,
     errorMessage,
     onChangeSource,
     onChangeText,
@@ -197,10 +197,20 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
           onClose={handleCloseDialog}
         />
 
-        <input type="hidden" name="pronoun" value={advancedSettings.pronoun} />
-        <input type="hidden" name="dialect" value={advancedSettings.dialect} />
+        <input
+          type="hidden"
+          name="pronoun"
+          form="composer"
+          value={advancedSettings.pronoun}
+        />
+        <input
+          type="hidden"
+          name="dialect"
+          form="composer"
+          value={advancedSettings.dialect}
+        />
 
-        <Button type="submit" disabled={pending}>
+        <Button type="submit" disabled={pending} form="composer">
           {pending && <Spinner />}
           {t("translate")}
         </Button>
