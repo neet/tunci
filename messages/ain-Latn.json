@@ -11,14 +11,7 @@
   },
   "components": {
     "Banner": {
-      "about": "tanpe hemanta an?",
-      "EndpointStatus": {
-        "scaledToZero": "mokor=an",
-        "pending": "yaymososo=an…",
-        "running": "a=an",
-        "failed": "somo moymoyke=an",
-        "loading": "a=nukar wa an=an…"
-      }
+      "about": "tanpe hemanta an?"
     },
     "ContentInfo": {
       "title": "tan SAYTO kar kur oruspe"

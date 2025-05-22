@@ -11,14 +11,7 @@
   },
   "components": {
     "Banner": {
-      "about": "タンペ　ヘマンタ　アン？",
-      "EndpointStatus": {
-        "scaledToZero": "モコラン",
-        "pending": "ヤイモソソアン…",
-        "running": "アアン",
-        "failed": "ソモ　モイモイケアン",
-        "loading": "アヌカㇻ　ワ　アナン…"
-      }
+      "about": "タンペ　ヘマンタ　アン？"
     },
     "ContentInfo": {
       "title": "タン　サイト　カㇻ　クㇽ　オルㇱペ"
