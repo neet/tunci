@@ -18,7 +18,7 @@ textarea#text::placeholder {
   border-radius: var(--radius-4);
 }
 
-.composer-input-card-container:focus-within {
+.composer-input-card-container:has(textarea:focus-visible) {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
