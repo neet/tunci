@@ -35,11 +35,14 @@
         "share": "共有",
         "copy": "コピー",
         "play": "読み上げる",
-        "translationResult": "翻訳結果",
+        "translationResult": "翻訳結果"
+      },
+      "Dirty": {
         "untranslated": "まだ翻訳していません"
       },
       "CharCount": {
-        "charMax": "{max}文字中、{current}文字を入力しています。"
+        "charLeft": "残り{remaining}文字",
+        "charOver": "{excess}文字超過"
       },
       "Translation": {
         "empty": "翻訳",

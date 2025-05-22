@@ -228,6 +228,7 @@ export const Composer: FC<ComposerProps> = (props) => {
           dirty={dirty}
           hasTranslation={ready}
           textareaRef={textareaRef}
+          errorMessage={errorMessage}
           onChangeSource={handleChangeSource}
           onChangeText={handleChangeText}
           onRecognize={handleRecognize}
@@ -250,7 +251,6 @@ export const Composer: FC<ComposerProps> = (props) => {
         onShare={handleShare}
         onRefresh={() => router.refresh()}
         error={error}
-        errorMessage={errorMessage}
         exampleSentencesPromise={props.exampleSentencesPromise}
         alternativeTranslationsPromise={props.alternativeTranslationsPromise}
       />

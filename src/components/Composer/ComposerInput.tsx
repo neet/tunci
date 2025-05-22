@@ -20,6 +20,7 @@ import {
   AdvancedSettingsDialog,
 } from "./AdvancedSettingsDialog";
 import { CharCount } from "./CharCount";
+import { ErrorMessage } from "./ErrorMessage";
 import { LanguageSelector } from "./LanguageSelector";
 import { Transcription } from "./Transcription";
 
@@ -36,6 +37,7 @@ export type ComposerInputProps = {
   textTranscription?: t.Transcription;
   count: number;
   textareaRef: RefObject<HTMLTextAreaElement | null>;
+  errorMessage?: string;
   onChangeSource: (source: string) => void;
   onChangeText: (text: string) => void;
   onRecognize: () => void;
@@ -53,6 +55,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
     textTranscription,
     textareaRef,
     count,
+    errorMessage,
     onChangeSource,
     onChangeText,
     onRecognize,
@@ -200,6 +203,8 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
           {t("translate")}
         </Button>
       </Flex>
+
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Flex>
   );
 };

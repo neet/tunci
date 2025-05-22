@@ -35,11 +35,14 @@
         "share": "ukokor",
         "copy": "KOPI",
         "play": "nu",
-        "translationResult": "a=tupte itak",
+        "translationResult": "a=tupte itak"
+      },
+      "Dirty": {
         "untranslated": "itak naa somo a=tupte"
       },
       "CharCount": {
-        "charMax": "{max} monci or ta {current} monci e=eywanke wa e=an."
+        "charLeft": "{remaining} monci ikasma",
+        "charOver": "{excess} monci a=kaspa"
       },
       "Translation": {
         "empty": "cituptep",

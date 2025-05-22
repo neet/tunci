@@ -18,9 +18,9 @@ import { SearchEntry } from "@/models/entry";
 
 import * as t from "../../models/transcription";
 import { AlternativeTranslations } from "./AlternativeTranslations";
+import { Dirty } from "./Dirty";
 import { Disclaimer } from "./Disclaimer";
 import { EndpointStatus } from "./EndpointStatus";
-import { ErrorMessage } from "./ErrorMessage";
 import { ExampleSentences } from "./ExampleSentences";
 import { LanguageSelector } from "./LanguageSelector";
 import { Transcription } from "./Transcription";
@@ -35,7 +35,6 @@ export type ComposerOutputProps = {
   translation?: string;
   translationTranscription?: t.Transcription;
   error?: ErrorType;
-  errorMessage?: string;
   onChangeTarget: (target: string) => void;
   onPlayOutput: () => void;
   onShare: () => void;
@@ -55,7 +54,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
     translationTranscription,
     translation,
     error,
-    errorMessage,
     onChangeTarget,
     onPlayOutput,
     onShare,
@@ -81,13 +79,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             legend={t("target")}
             onChange={(target) => onChangeTarget(target)}
           />
-          {dirty && (
-            <div style={{ minWidth: "0px" }}>
-              <Text color="gray" as="p" size="2" truncate>
-                {t("untranslated")}
-              </Text>
-            </div>
-          )}
+          {dirty && <Dirty />}
         </Flex>
 
         <Card size="2">
@@ -99,10 +91,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             </VisuallyHidden>
 
             <Text lang={target} as="p" size="6" style={{ minHeight: "4lh" }}>
-              <Translation
-                value={translation}
-                pending={pending || error != null}
-              />
+              <Translation value={translation} pending={pending} />
             </Text>
 
             <Transcription>
@@ -180,8 +169,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             onReady={onRefresh}
           />
         )}
-
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
         {hasTranslation && <Disclaimer />}
       </Flex>
