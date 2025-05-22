@@ -1,18 +1,24 @@
 import {
   Box,
+  Button,
   Card,
   Flex,
   IconButton,
+  Spinner,
   Text,
   Tooltip,
   VisuallyHidden,
 } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
-import { ComponentProps, FC, RefObject, useMemo } from "react";
+import { ComponentProps, FC, RefObject, useMemo, useState } from "react";
 import { FiClipboard, FiMic, FiVolume2 } from "react-icons/fi";
 import TextareaAutosize from "react-textarea-autosize";
 
 import * as t from "../../models/transcription";
+import {
+  AdvancedSettings,
+  AdvancedSettingsDialog,
+} from "./AdvancedSettingsDialog";
 import { CharCount } from "./CharCount";
 import { ErrorMessage } from "./ErrorMessage";
 import { LanguageSelector } from "./LanguageSelector";
@@ -48,6 +54,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
     textTranscription,
     textareaRef,
     count,
+    pending,
     errorMessage,
     onChangeSource,
     onChangeText,
@@ -57,6 +64,11 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
   } = props;
 
   const t = useTranslations("components.Composer.ComposerInput");
+
+  const [advancedSettings, setAdvancedSettings] = useState<AdvancedSettings>({
+    pronoun: defaultValues.pronoun ?? "first",
+    dialect: defaultValues.dialect ?? "沙流",
+  });
 
   const textareaLanguageRelatedAttributes: ComponentProps<
     typeof TextareaAutosize
@@ -79,6 +91,10 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
 
     return {};
   }, [source]);
+
+  const handleCloseDialog = (advancedSettings: Partial<AdvancedSettings>) => {
+    setAdvancedSettings((prev) => ({ ...prev, ...advancedSettings }));
+  };
 
   return (
     <Flex direction="column" gap="3">
@@ -169,6 +185,36 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
           </Flex>
         </Card>
       </div>
+
+      <Flex gap="2" justify="end" wrap="wrap">
+        <AdvancedSettingsDialog
+          defaultValues={advancedSettings}
+          opener={
+            <Button type="button" variant="soft" color="gray">
+              {t("advancedSettings")}
+            </Button>
+          }
+          onClose={handleCloseDialog}
+        />
+
+        <input
+          type="hidden"
+          name="pronoun"
+          form="composer"
+          value={advancedSettings.pronoun}
+        />
+        <input
+          type="hidden"
+          name="dialect"
+          form="composer"
+          value={advancedSettings.dialect}
+        />
+
+        <Button type="submit" disabled={pending} form="composer">
+          {pending && <Spinner />}
+          {t("translate")}
+        </Button>
+      </Flex>
 
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Flex>
