@@ -11,14 +11,7 @@
   },
   "components": {
     "Banner": {
-      "about": "このサイトについて",
-      "EndpointStatus": {
-        "scaledToZero": "スリープ中",
-        "pending": "起動中…",
-        "running": "オンライン",
-        "failed": "停止中",
-        "loading": "読込中…"
-      }
+      "about": "このサイトについて"
     },
     "ContentInfo": {
       "title": "運営者情報"

@@ -1,12 +1,11 @@
 import "./Banner.css";
 
-import { Container, Flex, Heading, Link, Separator } from "@radix-ui/themes";
+import { Container, Flex, Heading, Link } from "@radix-ui/themes";
 import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 
 import { Link as NextLink } from "@/i18n/routing";
 
-import { EndpointStatus } from "./EndpointStatus";
 import { Logo } from "./Logo";
 
 export const Banner: FC = async () => {
@@ -27,10 +26,6 @@ export const Banner: FC = async () => {
                 </Flex>
               </NextLink>
             </Link>
-
-            <Separator orientation="vertical" aria-hidden />
-
-            <EndpointStatus />
           </Flex>
 
           <Link asChild>
