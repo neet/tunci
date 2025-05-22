@@ -1,8 +1,8 @@
 import { Callout, Spinner } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
-import { FC, useCallback, useEffect, useRef, useState } from "react";
+import { FC } from "react";
 
-import { Endpoint, State } from "@/models/endpoint";
+import { useEndpointStatus } from "@/hooks/useEndpointStatus";
 
 export type EndpointStatusProps = {
   namespace: string;
@@ -11,43 +11,13 @@ export type EndpointStatusProps = {
 };
 
 export const EndpointStatus: FC<EndpointStatusProps> = (props) => {
-  const { onReady } = props;
-
-  const eventSourceRef = useRef<EventSource | null>(null);
-  const [endpoint, setEndpoint] = useState<Endpoint | null>(null);
-  const prevState = useRef<State | null>(null);
   const t = useTranslations("components.Composer.EndpointStatus");
 
-  const handleMessage = useCallback((event: MessageEvent) => {
-    const data = JSON.parse(event.data);
-    setEndpoint(data);
-  }, []);
-
-  useEffect(() => {
-    eventSourceRef.current = new EventSource(
-      `/api/endpoint/${props.namespace}/${props.endpoint}/sse`,
-    );
-    eventSourceRef.current.addEventListener("endpoint", handleMessage);
-
-    return () => {
-      eventSourceRef.current?.close();
-    };
-  }, [props, handleMessage]);
-
-  useEffect(() => {
-    if (!endpoint) {
-      return;
-    }
-
-    const { state } = endpoint.status;
-
-    if (prevState.current !== "running" && state === "running") {
-      onReady?.();
-      prevState.current = state;
-    } else {
-      prevState.current = state;
-    }
-  }, [endpoint, onReady]);
+  const endpoint = useEndpointStatus({
+    namespace: props.namespace,
+    endpoint: props.endpoint,
+    onReady: props.onReady,
+  });
 
   const getMessage = () => {
     switch (endpoint?.status.state) {

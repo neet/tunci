@@ -91,7 +91,11 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
             </VisuallyHidden>
 
             <Text lang={target} as="p" size="6" style={{ minHeight: "4lh" }}>
-              <Translation value={translation} pending={pending} />
+              <Translation
+                value={translation}
+                pending={pending}
+                error={error}
+              />
             </Text>
 
             <Transcription>
