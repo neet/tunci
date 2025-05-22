@@ -2,7 +2,15 @@
 
 import "./Composer.css";
 
-import { Grid, Heading, VisuallyHidden } from "@radix-ui/themes";
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  Spinner,
+  VisuallyHidden,
+} from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
 import debounce from "lodash-es/debounce";
 import mixpanel from "mixpanel-browser";
@@ -22,6 +30,10 @@ import { type ErrorType } from "@/app/[locale]/_server";
 import { SearchEntry } from "@/models/entry";
 import * as t from "@/models/transcription";
 
+import {
+  AdvancedSettings,
+  AdvancedSettingsDialog,
+} from "./AdvancedSettingsDialog";
 import { ComposerInput } from "./ComposerInput";
 import { ComposerOutput } from "./ComposerOutput";
 
@@ -72,6 +84,11 @@ export const Composer: FC<ComposerProps> = (props) => {
   const [count, setCount] = useState<number>(defaultValues.text.length);
   const [source, setSource] = useState(defaultValues.source);
   const [target, setTarget] = useState(defaultValues.target);
+
+  const [advancedSettings, setAdvancedSettings] = useState<AdvancedSettings>({
+    pronoun: defaultValues.pronoun ?? "first",
+    dialect: defaultValues.dialect ?? "沙流",
+  });
 
   const ready = translation != null;
 
@@ -204,6 +221,10 @@ export const Composer: FC<ComposerProps> = (props) => {
     });
   };
 
+  const handleCloseDialog = (advancedSettings: Partial<AdvancedSettings>) => {
+    setAdvancedSettings((prev) => ({ ...prev, ...advancedSettings }));
+  };
+
   return (
     <Grid columns={{ initial: "1", md: "2" }} gap="5">
       <form
@@ -254,6 +275,38 @@ export const Composer: FC<ComposerProps> = (props) => {
         exampleSentencesPromise={props.exampleSentencesPromise}
         alternativeTranslationsPromise={props.alternativeTranslationsPromise}
       />
+
+      <Box gridColumn="span 2">
+        <Flex gap="2" justify="end" wrap="wrap">
+          <AdvancedSettingsDialog
+            defaultValues={advancedSettings}
+            opener={
+              <Button type="button" variant="soft" color="gray">
+                {t("advancedSettings")}
+              </Button>
+            }
+            onClose={handleCloseDialog}
+          />
+
+          <input
+            type="hidden"
+            name="pronoun"
+            form="composer"
+            value={advancedSettings.pronoun}
+          />
+          <input
+            type="hidden"
+            name="dialect"
+            form="composer"
+            value={advancedSettings.dialect}
+          />
+
+          <Button type="submit" disabled={pending} form="composer">
+            {pending && <Spinner />}
+            {t("translate")}
+          </Button>
+        </Flex>
+      </Box>
     </Grid>
   );
 };
