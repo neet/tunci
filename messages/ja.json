@@ -20,15 +20,15 @@
       "wip": "この機能は現在準備中です。",
       "copied": "コピーしました",
       "translateForm": "翻訳フォーム",
-      "advancedSettings": "表現の設定",
-      "translate": "翻訳",
       "ComposerInput": {
         "source": "入力する言語",
         "text": "翻訳したい文章",
         "recognize": "音声入力",
         "play": "読み上げる",
         "paste": "貼り付け",
-        "placeholder": "文章を入力"
+        "placeholder": "文章を入力",
+        "advancedSettings": "表現の設定",
+        "translate": "翻訳"
       },
       "ComposerOutput": {
         "target": "出力する言語",
