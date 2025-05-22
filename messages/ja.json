@@ -11,7 +11,14 @@
   },
   "components": {
     "Banner": {
-      "about": "このサイトについて"
+      "about": "このサイトについて",
+      "EndpointStatus": {
+        "scaledToZero": "スリープ中",
+        "pending": "起動中…",
+        "running": "オンライン",
+        "failed": "停止中",
+        "loading": "読込中…"
+      }
     },
     "ContentInfo": {
       "title": "運営者情報"
@@ -27,7 +34,7 @@
         "play": "読み上げる",
         "paste": "貼り付け",
         "translate": "翻訳",
-        "advancedSettings": "語彙と方言",
+        "advancedSettings": "表現の設定",
         "placeholder": "文章を入力"
       },
       "ComposerOutput": {
@@ -35,11 +42,14 @@
         "share": "共有",
         "copy": "コピー",
         "play": "読み上げる",
-        "translationResult": "翻訳結果",
+        "translationResult": "翻訳結果"
+      },
+      "Dirty": {
         "untranslated": "まだ翻訳していません"
       },
       "CharCount": {
-        "charMax": "{max}文字中、{current}文字を入力しています。"
+        "charLeft": "残り{remaining}文字",
+        "charOver": "{excess}文字超過"
       },
       "Translation": {
         "empty": "翻訳",
@@ -51,7 +61,7 @@
       },
       "AdvancedSettingsDialog": {
         "PronounSelector": {
-          "title": "言葉づかい",
+          "title": "日常語と雅語",
           "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
           "first": "日常語",
           "firstDescription": "会話の言葉で翻訳します。",
@@ -59,12 +69,12 @@
           "fourthDescription": "物語の言葉で翻訳します。"
         },
         "AdvancedSettingsDialogContent": {
-          "title": "語彙と方言",
+          "title": "表現の設定",
           "description": "語彙や文法の設定を変更して、より自然な文章を生成できます。",
           "close": "閉じる"
         },
         "DialectSelector": {
-          "title": "方言",
+          "title": "地域の設定",
           "description": "アイヌ語には標準語がなく、各地域ごとに異なった表現を使っています。地域を選択して、その地域の方言で文章を作成することができます。",
           "experimental": "これは実験的な機能です。",
           "saru": "沙流",

@@ -1,4 +1,4 @@
-import { Box, Text, VisuallyHidden } from "@radix-ui/themes";
+import { Box, Text } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
@@ -11,18 +11,19 @@ export const CharCount: FC<CharCountProps> = (props) => {
   const { count, limit } = props;
 
   const t = useTranslations("components.Composer.CharCount");
+  const remaining = limit - count;
 
   return (
     <Box px="2">
-      <VisuallyHidden>
-        {t("charMax", { current: count, max: 200 })}
-      </VisuallyHidden>
-
-      <Text asChild size="2" color={count > limit ? "red" : "gray"}>
-        <span aria-hidden>
-          {count}/{limit}
-        </span>
-      </Text>
+      {remaining >= 0 ? (
+        <Text size="2" color="gray">
+          {t("charLeft", { remaining })}
+        </Text>
+      ) : (
+        <Text size="2" color="red">
+          {t("charOver", { excess: Math.abs(remaining) })}
+        </Text>
+      )}
     </Box>
   );
 };

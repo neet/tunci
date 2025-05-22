@@ -11,7 +11,14 @@
   },
   "components": {
     "Banner": {
-      "about": "タンペ　ヘマンタ　アン？"
+      "about": "タンペ　ヘマンタ　アン？",
+      "EndpointStatus": {
+        "scaledToZero": "モコラン",
+        "pending": "ヤイモソソアン…",
+        "running": "アアン",
+        "failed": "ソモ　モイモイケアン",
+        "loading": "アヌカㇻ　ワ　アナン…"
+      }
     },
     "ContentInfo": {
       "title": "タン　サイト　カㇻ　クㇽ　オルㇱペ"
@@ -35,11 +42,14 @@
         "share": "ウココㇿ",
         "copy": "コピ",
         "play": "ヌ",
-        "translationResult": "アトゥㇷ゚テ　イタㇰ",
+        "translationResult": "アトゥㇷ゚テ　イタㇰ"
+      },
+      "Dirty": {
         "untranslated": "イタㇰ　ナア　ソモ　アトゥㇷ゚テ"
       },
       "CharCount": {
-        "charMax": "{current}　モンチ　オㇿ　タ　{current}　モンチ　エエイワンケ　ワ　エアン。"
+        "charLeft": "{remaining}　モンチ　イカㇱマ",
+        "charOver": "{excess}　モンチ　アカㇱパ"
       },
       "Translation": {
         "empty": "チトゥㇷ゚テㇷ゚",

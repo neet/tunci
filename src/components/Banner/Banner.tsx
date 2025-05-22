@@ -1,11 +1,12 @@
 import "./Banner.css";
 
-import { Container, Flex, Heading, Link } from "@radix-ui/themes";
+import { Container, Flex, Heading, Link, Separator } from "@radix-ui/themes";
 import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 
 import { Link as NextLink } from "@/i18n/routing";
 
+import { EndpointStatus } from "./EndpointStatus";
 import { Logo } from "./Logo";
 
 export const Banner: FC = async () => {
@@ -15,16 +16,22 @@ export const Banner: FC = async () => {
     <Container asChild size="4" p="4" className="Banner">
       <header>
         <Flex justify="between" align="center">
-          <Link asChild>
-            <NextLink href="/" className="logo-link">
-              <Flex gap="2" align="center">
-                <Logo className="logo" />
-                <Heading as="h1" size="6" className="title" weight="regular">
-                  tunci
-                </Heading>
-              </Flex>
-            </NextLink>
-          </Link>
+          <Flex gap="4" align="center">
+            <Link asChild>
+              <NextLink href="/" className="logo-link">
+                <Flex gap="2" align="center">
+                  <Logo className="logo" />
+                  <Heading as="h1" size="6" className="title" weight="regular">
+                    tunci
+                  </Heading>
+                </Flex>
+              </NextLink>
+            </Link>
+
+            <Separator orientation="vertical" aria-hidden />
+
+            <EndpointStatus />
+          </Flex>
 
           <Link asChild>
             <NextLink href="/about">{t("about")}</NextLink>

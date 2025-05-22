@@ -20,6 +20,7 @@ import {
   AdvancedSettingsDialog,
 } from "./AdvancedSettingsDialog";
 import { CharCount } from "./CharCount";
+import { ErrorMessage } from "./ErrorMessage";
 import { LanguageSelector } from "./LanguageSelector";
 import { Transcription } from "./Transcription";
 
@@ -36,6 +37,7 @@ export type ComposerInputProps = {
   textTranscription?: t.Transcription;
   count: number;
   textareaRef: RefObject<HTMLTextAreaElement | null>;
+  errorMessage?: string;
   onChangeSource: (source: string) => void;
   onChangeText: (text: string) => void;
   onRecognize: () => void;
@@ -53,6 +55,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
     textTranscription,
     textareaRef,
     count,
+    errorMessage,
     onChangeSource,
     onChangeText,
     onRecognize,
@@ -104,82 +107,84 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
         />
       </Box>
 
-      <Card size="2" className="composer-input__card">
-        <Box>
-          <VisuallyHidden asChild>
-            <label htmlFor="text">{t("text")}</label>
-          </VisuallyHidden>
+      <div className="composer-input-card-container">
+        <Card size="2">
+          <Box>
+            <VisuallyHidden asChild>
+              <label htmlFor="text">{t("text")}</label>
+            </VisuallyHidden>
 
-          <Text size="6" asChild>
-            <TextareaAutosize
-              id="text"
-              name="text"
-              ref={textareaRef}
-              defaultValue={defaultValues.text}
-              required
-              placeholder={t("placeholder")}
-              onChange={(e) => onChangeText(e.target.value)}
-              {...textareaLanguageRelatedAttributes}
-            />
-          </Text>
+            <Text size="6" asChild>
+              <TextareaAutosize
+                id="text"
+                name="text"
+                ref={textareaRef}
+                defaultValue={defaultValues.text}
+                required
+                placeholder={t("placeholder")}
+                onChange={(e) => onChangeText(e.target.value)}
+                {...textareaLanguageRelatedAttributes}
+              />
+            </Text>
 
-          <Transcription>
-            {!dirty && hasTranslation && textTranscription
-              ? textTranscription.text
-              : undefined}
-          </Transcription>
-        </Box>
+            <Transcription>
+              {!dirty && hasTranslation && textTranscription
+                ? textTranscription.text
+                : undefined}
+            </Transcription>
+          </Box>
 
-        <Flex justify="between" mt="2">
-          <Flex justify="start" gap="1">
-            <Tooltip content={t("recognize")}>
-              <IconButton
-                variant="soft"
-                color="gray"
-                size="2"
-                title={t("recognize")}
-                type="button"
-                onClick={onRecognize}
-              >
-                <FiMic aria-hidden />
-              </IconButton>
-            </Tooltip>
+          <Flex justify="between" mt="2">
+            <Flex justify="start" gap="1">
+              <Tooltip content={t("recognize")}>
+                <IconButton
+                  variant="soft"
+                  color="gray"
+                  size="2"
+                  title={t("recognize")}
+                  type="button"
+                  onClick={onRecognize}
+                >
+                  <FiMic aria-hidden />
+                </IconButton>
+              </Tooltip>
 
-            <Tooltip content={t("play")}>
-              <IconButton
-                variant="soft"
-                color="gray"
-                size="2"
-                onClick={onPlayInput}
-                type="button"
-                title={t("play")}
-                style={{
-                  visibility: count > 0 ? "visible" : "hidden",
-                }}
-              >
-                <FiVolume2 aria-hidden />
-              </IconButton>
-            </Tooltip>
+              <Tooltip content={t("play")}>
+                <IconButton
+                  variant="soft"
+                  color="gray"
+                  size="2"
+                  onClick={onPlayInput}
+                  type="button"
+                  title={t("play")}
+                  style={{
+                    visibility: count > 0 ? "visible" : "hidden",
+                  }}
+                >
+                  <FiVolume2 aria-hidden />
+                </IconButton>
+              </Tooltip>
+            </Flex>
+
+            <Flex justify="end" gap="1" align="center">
+              <CharCount count={count} limit={200} />
+
+              <Tooltip content={t("paste")}>
+                <IconButton
+                  variant="soft"
+                  color="gray"
+                  size="2"
+                  onClick={onPaste}
+                  type="button"
+                  title={t("paste")}
+                >
+                  <FiClipboard aria-hidden />
+                </IconButton>
+              </Tooltip>
+            </Flex>
           </Flex>
-
-          <Flex justify="end" gap="1" align="center">
-            <CharCount count={count} limit={200} />
-
-            <Tooltip content={t("paste")}>
-              <IconButton
-                variant="soft"
-                color="gray"
-                size="2"
-                onClick={onPaste}
-                type="button"
-                title={t("paste")}
-              >
-                <FiClipboard aria-hidden />
-              </IconButton>
-            </Tooltip>
-          </Flex>
-        </Flex>
-      </Card>
+        </Card>
+      </div>
 
       <Flex gap="2" justify="end" wrap="wrap">
         <AdvancedSettingsDialog
@@ -200,6 +205,8 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
           {t("translate")}
         </Button>
       </Flex>
+
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Flex>
   );
 };
