@@ -1,7 +1,6 @@
-import { Box, Flex, Grid, RadioGroup, Text, Tooltip } from "@radix-ui/themes";
+import { Box, Text } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
-import { IoFlask } from "react-icons/io5";
 
 import { DialectSelectorMap } from "./DialectSelectorMap";
 import { Dialect } from "./model";
@@ -80,57 +79,20 @@ export const DialectSelector: FC<DialectSelectorProps> = (props) => {
         {t("description")}
       </Text>
 
-      <Grid
-        columns={{ initial: "1", md: "4" }}
+      <Box
         mt="2"
-        // justify={{ initial: "start", md: "end" }}
-        asChild
+        style={{
+          borderRadius: "var(--radius-4)",
+          backgroundColor: "var(--gray-1)",
+          border: "1px solid var(--gray-5)",
+        }}
       >
-        <Box
-          style={{
-            borderRadius: "var(--radius-4)",
-            backgroundColor: "var(--gray-1)",
-            border: "1px solid var(--gray-5)",
-          }}
-        >
-          <Box gridColumn={{ initial: "span 1", md: "span 3" }}>
-            <DialectSelectorMap
-              value={value}
-              dialects={dialects}
-              onChange={setValue}
-            />
-          </Box>
-
-          <Flex
-            m={{ initial: "4", md: "5" }}
-            justify={{ initial: "start", md: "end" }}
-            gridColumn={{ initial: "span 1", md: "span 1" }}
-          >
-            <RadioGroup.Root
-              role="generic"
-              name="dialect"
-              value={value}
-              onValueChange={setValue}
-            >
-              {dialects.map((dialect) => (
-                <RadioGroup.Item key={dialect.value} value={dialect.value}>
-                  <Flex justify="between" gap="2">
-                    <Text>{dialect.name}</Text>
-
-                    {dialect.experimental && (
-                      <Tooltip content={t("experimental")}>
-                        <Text size="2" color="gray" tabIndex={0}>
-                          <IoFlask title={t("experimental")} />
-                        </Text>
-                      </Tooltip>
-                    )}
-                  </Flex>
-                </RadioGroup.Item>
-              ))}
-            </RadioGroup.Root>
-          </Flex>
-        </Box>
-      </Grid>
+        <DialectSelectorMap
+          value={value}
+          dialects={dialects}
+          onChange={setValue}
+        />
+      </Box>
     </fieldset>
   );
 };
