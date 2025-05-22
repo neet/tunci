@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 export type LogoProps = {
+  "aria-hidden"?: boolean;
   className?: string;
 };
 
@@ -15,6 +16,7 @@ export const Logo: FC<LogoProps> = (props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      aria-hidden={props["aria-hidden"]}
     >
       <title>tunci</title>
       <path

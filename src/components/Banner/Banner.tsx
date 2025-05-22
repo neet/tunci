@@ -20,7 +20,7 @@ export const Banner: FC = async () => {
             <Link asChild>
               <NextLink href="/" className="logo-link">
                 <Flex gap="2" align="center">
-                  <Logo className="logo" />
+                  <Logo className="logo" aria-hidden />
                   <Heading as="h1" size="6" className="title" weight="regular">
                     tunci
                   </Heading>
