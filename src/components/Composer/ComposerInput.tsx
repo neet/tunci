@@ -7,7 +7,6 @@ import {
   Spinner,
   Text,
   Tooltip,
-  VisuallyHidden,
 } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { ComponentProps, FC, RefObject, useMemo, useState } from "react";
@@ -110,10 +109,6 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
       <div className="composer-input-card-container">
         <Card size="2">
           <Box>
-            <VisuallyHidden asChild>
-              <label htmlFor="text">{t("text")}</label>
-            </VisuallyHidden>
-
             <Text size="6" asChild>
               <TextareaAutosize
                 id="text"
@@ -141,7 +136,6 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
                   variant="soft"
                   color="gray"
                   size="2"
-                  title={t("recognize")}
                   type="button"
                   onClick={onRecognize}
                 >
@@ -156,7 +150,6 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
                   size="2"
                   onClick={onPlayInput}
                   type="button"
-                  title={t("play")}
                   style={{
                     visibility: count > 0 ? "visible" : "hidden",
                   }}
@@ -176,7 +169,6 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
                   size="2"
                   onClick={onPaste}
                   type="button"
-                  title={t("paste")}
                 >
                   <FiClipboard aria-hidden />
                 </IconButton>
