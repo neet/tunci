@@ -1,13 +1,4 @@
-import {
-  Box,
-  Card,
-  Flex,
-  Heading,
-  IconButton,
-  Text,
-  Tooltip,
-  VisuallyHidden,
-} from "@radix-ui/themes";
+import { Box, Card, Flex, IconButton, Text, Tooltip } from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
@@ -84,12 +75,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
 
         <Card size="2">
           <Box>
-            <VisuallyHidden asChild>
-              <Heading as="h2" id="translation" tabIndex={-1}>
-                {t("translationResult")}
-              </Heading>
-            </VisuallyHidden>
-
             <Text lang={target} as="p" size="6" style={{ minHeight: "4lh" }}>
               <Translation
                 value={translation}
@@ -112,7 +97,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                 color="gray"
                 variant="soft"
                 size="2"
-                aria-label={t("play")}
                 onClick={onPlayOutput}
                 style={{
                   visibility: hasTranslation ? "visible" : "hidden",
@@ -129,7 +113,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                   variant="soft"
                   color="gray"
                   size="2"
-                  aria-label={t("share")}
                   onClick={onShare}
                   style={{
                     visibility: hasTranslation ? "visible" : "hidden",
@@ -145,7 +128,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                   variant="soft"
                   color="gray"
                   size="2"
-                  aria-label={t("copy")}
                   onClick={onCopy}
                   style={{
                     visibility: hasTranslation ? "visible" : "hidden",

@@ -1,27 +1,13 @@
-import {
-  Flex,
-  Link,
-  Reset,
-  Section,
-  Separator,
-  Text,
-  VisuallyHidden,
-} from "@radix-ui/themes";
+import { Flex, Link, Reset, Section, Separator, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
-import { getTranslations } from "next-intl/server";
 import { FC } from "react";
 
 export const ContentInfo: FC = async () => {
-  const t = await getTranslations("components.ContentInfo");
   const titleId = "contentinfo-title";
 
   return (
     <Section size="1" asChild>
       <footer aria-labelledby={titleId}>
-        <VisuallyHidden>
-          <h2 id={titleId}>{t("title")}</h2>
-        </VisuallyHidden>
-
         <Reset>
           <Flex asChild justify="center" align="center" gap="3">
             <ul>
