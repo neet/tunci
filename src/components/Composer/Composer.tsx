@@ -2,7 +2,7 @@
 
 import "./Composer.css";
 
-import { Grid } from "@radix-ui/themes";
+import { Grid, Heading, VisuallyHidden } from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
 import debounce from "lodash-es/debounce";
 import mixpanel from "mixpanel-browser";
@@ -213,6 +213,12 @@ export const Composer: FC<ComposerProps> = (props) => {
         aria-labelledby={headingId}
         onSubmit={handleSubmit}
       >
+        <VisuallyHidden>
+          <Heading as="h2" id={headingId}>
+            {t("translateForm")}
+          </Heading>
+        </VisuallyHidden>
+
         <ComposerInput
           defaultValues={defaultValues}
           textTranscription={textTranscription}

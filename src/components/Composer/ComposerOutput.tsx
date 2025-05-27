@@ -1,4 +1,13 @@
-import { Box, Card, Flex, IconButton, Text, Tooltip } from "@radix-ui/themes";
+import {
+  Box,
+  Card,
+  Flex,
+  Heading,
+  IconButton,
+  Text,
+  Tooltip,
+  VisuallyHidden,
+} from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
@@ -75,6 +84,12 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
 
         <Card size="2">
           <Box>
+            <VisuallyHidden asChild>
+              <Heading as="h2" id="translation" tabIndex={-1}>
+                {t("translationResult")}
+              </Heading>
+            </VisuallyHidden>
+
             <Text lang={target} as="p" size="6" style={{ minHeight: "4lh" }}>
               <Translation
                 value={translation}
