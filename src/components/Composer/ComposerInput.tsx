@@ -7,6 +7,7 @@ import {
   Spinner,
   Text,
   Tooltip,
+  VisuallyHidden,
 } from "@radix-ui/themes";
 import { useTranslations } from "next-intl";
 import { ComponentProps, FC, RefObject, useMemo, useState } from "react";
@@ -109,6 +110,10 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
       <div className="composer-input-card-container">
         <Card size="2">
           <Box>
+            <VisuallyHidden asChild>
+              <label htmlFor="text">{t("text")}</label>
+            </VisuallyHidden>
+
             <Text size="6" asChild>
               <TextareaAutosize
                 id="text"
