@@ -97,6 +97,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                 color="gray"
                 variant="soft"
                 size="2"
+                aria-label={t("play")}
                 onClick={onPlayOutput}
                 style={{
                   visibility: hasTranslation ? "visible" : "hidden",
@@ -113,6 +114,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                   variant="soft"
                   color="gray"
                   size="2"
+                  aria-label={t("share")}
                   onClick={onShare}
                   style={{
                     visibility: hasTranslation ? "visible" : "hidden",
@@ -128,6 +130,7 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
                   variant="soft"
                   color="gray"
                   size="2"
+                  aria-label={t("copy")}
                   onClick={onCopy}
                   style={{
                     visibility: hasTranslation ? "visible" : "hidden",

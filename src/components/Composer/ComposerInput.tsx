@@ -136,6 +136,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
                   variant="soft"
                   color="gray"
                   size="2"
+                  title={t("recognize")}
                   type="button"
                   onClick={onRecognize}
                 >
@@ -150,6 +151,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
                   size="2"
                   onClick={onPlayInput}
                   type="button"
+                  title={t("play")}
                   style={{
                     visibility: count > 0 ? "visible" : "hidden",
                   }}
@@ -169,6 +171,7 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
                   size="2"
                   onClick={onPaste}
                   type="button"
+                  title={t("paste")}
                 >
                   <FiClipboard aria-hidden />
                 </IconButton>
