@@ -4,19 +4,10 @@ import "./Composer.css";
 
 import { Grid, Heading, VisuallyHidden } from "@radix-ui/themes";
 import { SearchResponse } from "algoliasearch";
-import debounce from "lodash-es/debounce";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import {
-  FC,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  useTransition,
-} from "react";
+import { FC, useEffect, useId, useRef, useState, useTransition } from "react";
 
 import { type ErrorType } from "@/app/[locale]/_server";
 import { SearchEntry } from "@/models/entry";
@@ -87,39 +78,29 @@ export const Composer: FC<ComposerProps> = (props) => {
     }
   }, [defaultValues.text]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const setCountDebounced = useCallback(
-    debounce((count: number) => setCount(count), 1000),
-    [],
-  );
-
   const handleChangeText = (text: string): void => {
     setDirty(true);
-    setCountDebounced(text.length);
+    setCount(text.length);
   };
 
   const handleChangeSource = (source: string): void => {
-    startTransition(() => {
-      setSource(source);
-      setTarget(source === "ja" ? "ain" : "ja");
+    setSource(source);
+    setTarget(source === "ja" ? "ain" : "ja");
 
-      if (translation && textareaRef.current && !dirty) {
-        textareaRef.current.value = translation;
-        setDirty(true);
-      }
-    });
+    if (translation && textareaRef.current && !dirty) {
+      textareaRef.current.value = translation;
+      setDirty(true);
+    }
   };
 
   const handleChangeTarget = (target: string): void => {
-    startTransition(() => {
-      setTarget(target);
-      setSource(target === "ja" ? "ain" : "ja");
+    setTarget(target);
+    setSource(target === "ja" ? "ain" : "ja");
 
-      if (translation && textareaRef.current && !dirty) {
-        textareaRef.current.value = translation;
-        setDirty(true);
-      }
-    });
+    if (translation && textareaRef.current && !dirty) {
+      textareaRef.current.value = translation;
+      setDirty(true);
+    }
   };
 
   const handlePaste = async (): Promise<void> => {
