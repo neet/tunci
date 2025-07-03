@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://tunci.aynu.io/ja",
+      url: "https://tunci.aynu.io/jpn",
       lastModified: new Date(),
       alternates: {
         languages: {
@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: "https://tunci.aynu.io/ja/about",
+      url: "https://tunci.aynu.io/jpn/about",
       lastModified: new Date(),
       alternates: {
         languages: {

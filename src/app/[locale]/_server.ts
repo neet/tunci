@@ -142,7 +142,7 @@ export async function fetchTranslation(
       transcriptions: {},
     };
 
-    if (source === "ja") {
+    if (source === "jpn") {
       result.transcriptions.translation = {
         type: "kana",
         text: to_kana(translation),

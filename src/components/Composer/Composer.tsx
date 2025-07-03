@@ -85,7 +85,7 @@ export const Composer: FC<ComposerProps> = (props) => {
 
   const handleChangeSource = (source: string): void => {
     setSource(source);
-    setTarget(source === "ja" ? "ain" : "ja");
+    setTarget(source === "jpn" ? "ain" : "jpn");
 
     if (translation && textareaRef.current && !dirty) {
       textareaRef.current.value = translation;
@@ -95,7 +95,7 @@ export const Composer: FC<ComposerProps> = (props) => {
 
   const handleChangeTarget = (target: string): void => {
     setTarget(target);
-    setSource(target === "ja" ? "ain" : "ja");
+    setSource(target === "jpn" ? "ain" : "jpn");
 
     if (translation && textareaRef.current && !dirty) {
       textareaRef.current.value = translation;

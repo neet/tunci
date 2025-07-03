@@ -3,7 +3,7 @@ import { getRequestConfig } from "next-intl/server";
 import { routing } from "./i18n/routing";
 
 // Can be imported from a shared config
-export const locales = ["ain-Latn", "ain-Kana", "ja"];
+export const locales = ["ain-Latn", "ain-Kana", "jpn"];
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;

@@ -46,7 +46,7 @@ const EntryRoot: React.FC<EntryRootProps> = (props) => {
           <blockquote lang="ain">{parse(textHTML)}</blockquote>
         </Text>
         <Text asChild>
-          <blockquote lang="ja">{parse(translationHTML)}</blockquote>
+          <blockquote lang="jpn">{parse(translationHTML)}</blockquote>
         </Text>
       </Flex>
 

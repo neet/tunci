@@ -28,7 +28,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
         aria-labelledby={id}
         onValueChange={onChange}
       >
-        <SegmentedControl.Item value="ja">
+        <SegmentedControl.Item value="jpn">
           {t("japanese")}
         </SegmentedControl.Item>
         <SegmentedControl.Item value="ain">{t("ainu")}</SegmentedControl.Item>

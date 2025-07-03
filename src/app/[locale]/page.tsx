@@ -47,7 +47,7 @@ export default async function Home(props: HomeProps) {
   setRequestLocale(params.locale);
 
   const text = searchParams?.text;
-  const source = searchParams?.source ?? "ja";
+  const source = searchParams?.source ?? "jpn";
   const target = searchParams?.target ?? "ain";
   const dialect = searchParams?.dialect ?? "沙流";
   const pronoun = searchParams?.pronoun ?? "first";
@@ -102,7 +102,7 @@ export default async function Home(props: HomeProps) {
           action={`/${params.locale}`}
           defaultValues={{
             text: text ?? "",
-            source: searchParams?.source ?? "ja",
+            source: searchParams?.source ?? "jpn",
             target: searchParams?.target ?? "ain",
             dialect,
             pronoun,

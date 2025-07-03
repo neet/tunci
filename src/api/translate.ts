@@ -40,7 +40,7 @@ export async function translate(
   const { source, target, dialect, pronoun, numReturnSequences = 1 } = params;
 
   let prompt: string = "";
-  if (source === "ja" && target === "ain") {
+  if (source === "jpn" && target === "ain") {
     prompt = `translate Japanese to Ainu (${dialect}, ${pronoun}): ${input}`;
   } else {
     prompt = `translate Ainu (${dialect}, ${pronoun}) to Japanese: ${input}`;

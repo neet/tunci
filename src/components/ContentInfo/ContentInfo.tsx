@@ -27,13 +27,7 @@ export const ContentInfo: FC = async () => {
             <ul>
               <li>
                 <Link size="2" asChild>
-                  <NextLink
-                    rel="alternate"
-                    href="/ain-Latn"
-                    hrefLang="ain-Latn"
-                  >
-                    Aynu itak
-                  </NextLink>
+                  <NextLink href="/ain-Latn">Aynu itak</NextLink>
                 </Link>
               </li>
 
@@ -41,13 +35,7 @@ export const ContentInfo: FC = async () => {
 
               <li>
                 <Link size="2" asChild>
-                  <NextLink
-                    rel="alternate"
-                    href="/ain-Kana"
-                    hrefLang="ain-Kana"
-                  >
-                    アイヌイタㇰ
-                  </NextLink>
+                  <NextLink href="/ain-Kana">アイヌイタㇰ</NextLink>
                 </Link>
               </li>
 
@@ -55,9 +43,7 @@ export const ContentInfo: FC = async () => {
 
               <li>
                 <Link size="2" asChild>
-                  <NextLink rel="alternate" href="/ja" hrefLang="ja">
-                    日本語
-                  </NextLink>
+                  <NextLink href="/jpn">日本語</NextLink>
                 </Link>
               </li>
             </ul>

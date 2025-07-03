@@ -73,9 +73,9 @@ export const ComposerInput: FC<ComposerInputProps> = (props) => {
   const textareaLanguageRelatedAttributes: ComponentProps<
     typeof TextareaAutosize
   > = useMemo(() => {
-    if (source === "ja") {
+    if (source === "jpn") {
       return {
-        lang: "ja",
+        lang: "jpn",
       };
     }
 
