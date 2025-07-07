@@ -1,135 +1,135 @@
 {
   "app": {
-    "Home": {
-      "title": "トゥンチ　　アイヌ　イタㇰ　オㇿ　ウン　イタㇰトゥㇷ゚テ　エアㇱカイ　アエイワンケㇷ゚",
-      "description": "タン　サイト　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
-    },
     "AboutPage": {
-      "title": "タンペ　ヘマンタ　アン？",
-      "description": "タン　サイト　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。"
+      "description": "タン　サイト　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。",
+      "title": "タンペ　ヘマンタ　アン？"
+    },
+    "Home": {
+      "description": "タン　サイト　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。",
+      "title": "トゥンチ　　アイヌ　イタㇰ　オㇿ　ウン　イタㇰトゥㇷ゚テ　エアㇱカイ　アエイワンケㇷ゚"
     }
   },
   "components": {
     "Banner": {
       "about": "タンペ　ヘマンタ　アン？"
     },
-    "ContentInfo": {
-      "title": "タン　サイト　カㇻ　クㇽ　オルㇱペ"
-    },
     "Composer": {
-      "wip": "ナア　チカㇻ　コㇿ　オカアㇱ　ホントㇺ　ネ　ルウェ　ネ。",
-      "copied": "コピ　エキ　ワ　オケレ",
-      "translateForm": "イタㇰトゥㇷ゚テ　フォム",
-      "ComposerInput": {
-        "source": "アニ　エイヌイェ　イタㇰ",
-        "text": "エトゥㇷ゚テ　ルスイ　イタㇰ",
-        "recognize": "ハウェ　アニ　イヌイェ",
-        "play": "ヌ",
-        "paste": "コトゥッカ",
-        "translate": "トゥㇷ゚テ",
-        "advancedSettings": "イポㇿセ　&　イタㇰポ",
-        "placeholder": "イタㇰ　ヌイェ　ヤン"
+      "AdvancedSettingsDialog": {
+        "AdvancedSettingsDialogContent": {
+          "close": "セㇱケ",
+          "description": "イポㇿセ　ネワ　イタㇰポ　ウン　セッテイ　エヌㇺケ　ワ、　ナア　ピㇼカ　イタㇰ　エヌイェ　エアㇱカイ。",
+          "title": "イポㇿセ　&　イタㇰポ"
+        },
+        "DialectSelector": {
+          "bihoro": "ペポロ",
+          "chitose": "シコッ",
+          "description": "アイヌ　イタㇰ　オㇿ　タ　ヒヨチュンコ　サㇰ　クス、　ウサ　オカ　コタン　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　コタン　エヌㇺケ　ワ　ネ　コタン　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
+          "experimental": "ナア　チカㇻ　ワ　オカアㇱ。",
+          "horobetsu": "ポロペッ",
+          "ishikari": "イㇱカㇻ",
+          "kushiro": "クシㇼ",
+          "mukawa": "ムカ",
+          "samani": "サマニ",
+          "saru": "サㇻ",
+          "shizunai": "シピチャリ",
+          "title": "イポㇿセ",
+          "tokachi": "トカㇷ゚チ"
+        },
+        "PronounSelector": {
+          "description": "アイヌ　イタㇰ　オㇿ　タ　トゥ　シンナ　イタㇰ　オカ　ルウェ　ネ;　ユカㇻ　オㇿ　タ　アエイワンケ　イタㇰ、　ヤヤン　ヒ　タ　アエイワンケ　イタㇰ　オカ　ルウェ　ネ。　ヒ　クス、　イナン　イタㇰ　ピㇼカ　ヤ　カ　エヌㇺケ　エアㇱカイ　ルウェ　ネ。",
+          "first": "ヤヤン　イタㇰ",
+          "firstDescription": "ヤヤン　ヒ　タ　アイェ　イタㇰ",
+          "fourth": "アトㇺテ　イタㇰ",
+          "fourthDescription": "ユカㇻ　オㇿ　タ　アイェ　イタㇰ",
+          "title": "イタㇰポ"
+        }
       },
-      "ComposerOutput": {
-        "target": "アニ　エインカㇻ　イタㇰ",
-        "share": "ウココㇿ",
-        "copy": "コピ",
-        "play": "ヌ",
-        "translationResult": "アトゥㇷ゚テ　イタㇰ"
-      },
-      "Dirty": {
-        "untranslated": "イタㇰ　ナア　ソモ　アトゥㇷ゚テ"
+      "AlternativeTranslations": {
+        "AlternativeTranslationsContent": {
+          "description": "モㇱマ　アナㇰネ、　エネ　イタㇰポ　カ　オカ　ヒ:"
+        },
+        "AlternativeTranslationsError": {
+          "description": "デタ　クㇰ　カ　エアイカㇷ゚。　ポンノ　テレ　ワ　スイ　エㇰ　ヤン。"
+        },
+        "AlternativeTranslationsWrapper": {
+          "title": "モㇱマ　イタㇰ"
+        }
       },
       "CharCount": {
         "charLeft": "{remaining}　モンチ　イカㇱマ",
         "charOver": "{excess}　モンチ　アカㇱパ"
       },
-      "Translation": {
-        "empty": "チトゥㇷ゚テㇷ゚",
-        "loading": "アトゥㇷ゚テ　コㇿ　アナン…"
+      "ComposerCollapsible": {
+        "collapse": "セㇱケ",
+        "expand": "マカ"
+      },
+      "ComposerInput": {
+        "advancedSettings": "イポㇿセ　&　イタㇰポ",
+        "paste": "コトゥッカ",
+        "placeholder": "イタㇰ　ヌイェ　ヤン",
+        "play": "ヌ",
+        "recognize": "ハウェ　アニ　イヌイェ",
+        "source": "アニ　エイヌイェ　イタㇰ",
+        "text": "エトゥㇷ゚テ　ルスイ　イタㇰ",
+        "translate": "トゥㇷ゚テ"
+      },
+      "ComposerOutput": {
+        "copy": "コピ",
+        "play": "ヌ",
+        "share": "ウココㇿ",
+        "target": "アニ　エインカㇻ　イタㇰ",
+        "translationResult": "アトゥㇷ゚テ　イタㇰ"
+      },
+      "copied": "コピ　エキ　ワ　オケレ",
+      "Dirty": {
+        "untranslated": "イタㇰ　ナア　ソモ　アトゥㇷ゚テ"
       },
       "Disclaimer": {
-        "title": "ヤイトゥパレ　ヤン",
-        "disclaimer": "シンナ　イタㇰ、　ウェン　イタㇰ　アカㇻ　ヒ　カ　オカアン　ナンコㇿ。　クス、　タネ　オカ　アイヌ　イタㇰ　エランペウテㇰ　ウタㇻ　アナㇰネ　イテキ　オピッタ　エイソコㇿ　ヤン。　アイヌ　イタㇰ　ピㇼカノ　イェ　クㇽ　エチコピシ　ヤㇰ　ピㇼカ　ナンコㇿ。"
+        "disclaimer": "シンナ　イタㇰ、　ウェン　イタㇰ　アカㇻ　ヒ　カ　オカアン　ナンコㇿ。　クス、　タネ　オカ　アイヌ　イタㇰ　エランペウテㇰ　ウタㇻ　アナㇰネ　イテキ　オピッタ　エイソコㇿ　ヤン。　アイヌ　イタㇰ　ピㇼカノ　イェ　クㇽ　エチコピシ　ヤㇰ　ピㇼカ　ナンコㇿ。",
+        "title": "ヤイトゥパレ　ヤン"
       },
-      "AdvancedSettingsDialog": {
-        "PronounSelector": {
-          "title": "イタㇰポ",
-          "description": "アイヌ　イタㇰ　オㇿ　タ　トゥ　シンナ　イタㇰ　オカ　ルウェ　ネ;　ユカㇻ　オㇿ　タ　アエイワンケ　イタㇰ、　ヤヤン　ヒ　タ　アエイワンケ　イタㇰ　オカ　ルウェ　ネ。　ヒ　クス、　イナン　イタㇰ　ピㇼカ　ヤ　カ　エヌㇺケ　エアㇱカイ　ルウェ　ネ。",
-          "first": "ヤヤン　イタㇰ",
-          "firstDescription": "ヤヤン　ヒ　タ　アイェ　イタㇰ",
-          "fourth": "アトㇺテ　イタㇰ",
-          "fourthDescription": "ユカㇻ　オㇿ　タ　アイェ　イタㇰ"
-        },
-        "AdvancedSettingsDialogContent": {
-          "title": "イポㇿセ　&　イタㇰポ",
-          "description": "イポㇿセ　ネワ　イタㇰポ　ウン　セッテイ　エヌㇺケ　ワ、　ナア　ピㇼカ　イタㇰ　エヌイェ　エアㇱカイ。",
-          "close": "セㇱケ"
-        },
-        "DialectSelector": {
-          "title": "イポㇿセ",
-          "description": "アイヌ　イタㇰ　オㇿ　タ　ヒヨチュンコ　サㇰ　クス、　ウサ　オカ　コタン　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　コタン　エヌㇺケ　ワ　ネ　コタン　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
-          "experimental": "ナア　チカㇻ　ワ　オカアㇱ。",
-          "saru": "サㇻ",
-          "chitose": "シコッ",
-          "mukawa": "ムカ",
-          "horobetsu": "ポロペッ",
-          "shizunai": "シピチャリ",
-          "tokachi": "トカㇷ゚チ",
-          "kushiro": "クシㇼ",
-          "samani": "サマニ",
-          "bihoro": "ペポロ",
-          "ishikari": "イㇱカㇻ"
-        }
+      "EndpointStatus": {
+        "initializing": "サバ　クモソソ　コㇿ　カン　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　15　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。",
+        "paused": "タネ　アナㇰネ　サバ　エエイワンケ　カ　エアイカㇷ゚。　タン　サイト　コㇿ　クㇽ　コピシ　ヤン。",
+        "pending": "サバ　クモソソ　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　15　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。",
+        "running": "サバ　マカナㇰ　アン　ペ　クㇰ　コㇿ　カン。",
+        "scaledToZero": "サバ　ウン　インスタンス　アナㇰ　シネㇷ゚　カ　イサㇺ"
       },
       "ExampleSentences": {
-        "ExampleSentencesWrapper": {
-          "title": "ネ　イタㇰ　エイワンケ　ワ　オカ　オルㇱペ"
-        },
         "ExampleSentencesError": {
           "description": "デタ　クㇰ　カ　エアイカㇷ゚。　ポンノ　テレ　ワ　スイ　エㇰ　ヤン。"
+        },
+        "ExampleSentencesWrapper": {
+          "title": "ネ　イタㇰ　エイワンケ　ワ　オカ　オルㇱペ"
         }
       },
       "LanguageSelector": {
         "ainu": "アイヌ　イタㇰ",
         "japanese": "シサㇺ　イタㇰ"
       },
-      "AlternativeTranslations": {
-        "AlternativeTranslationsWrapper": {
-          "title": "モㇱマ　イタㇰ"
-        },
-        "AlternativeTranslationsError": {
-          "description": "デタ　クㇰ　カ　エアイカㇷ゚。　ポンノ　テレ　ワ　スイ　エㇰ　ヤン。"
-        },
-        "AlternativeTranslationsContent": {
-          "description": "モㇱマ　アナㇰネ、　エネ　イタㇰポ　カ　オカ　ヒ:"
-        }
+      "translateForm": "イタㇰトゥㇷ゚テ　フォム",
+      "Translation": {
+        "empty": "チトゥㇷ゚テㇷ゚",
+        "loading": "アトゥㇷ゚テ　コㇿ　アナン…"
       },
-      "EndpointStatus": {
-        "initializing": "サバ　クモソソ　コㇿ　カン　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　15　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。",
-        "scaledToZero": "サバ　ウン　インスタンス　アナㇰ　シネㇷ゚　カ　イサㇺ",
-        "running": "サバ　マカナㇰ　アン　ペ　クㇰ　コㇿ　カン。",
-        "paused": "タネ　アナㇰネ　サバ　エエイワンケ　カ　エアイカㇷ゚。　タン　サイト　コㇿ　クㇽ　コピシ　ヤン。",
-        "pending": "サバ　クモソソ　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　15　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。"
-      },
-      "ComposerCollapsible": {
-        "collapse": "セㇱケ",
-        "expand": "マカ"
-      }
+      "wip": "ナア　チカㇻ　コㇿ　オカアㇱ　ホントㇺ　ネ　ルウェ　ネ。"
+    },
+    "ContentInfo": {
+      "title": "タン　サイト　カㇻ　クㇽ　オルㇱペ"
     },
     "Entry": {
       "Entry": {
-        "source": "モトホ:　",
         "author": "ヌイェ　クㇽ:　",
-        "dialect": "イポㇿセ:　"
+        "dialect": "イポㇿセ:　",
+        "source": "モトホ:　"
       },
       "EntryDetailsDialog": {
-        "title": "ネ　カンピソㇱ　オルㇱペ",
-        "description": "ネ　カンピソㇱ　ウン　ナア　ピㇼカ　オルㇱペ　ネ。　シンナ　イタㇰ、　ウェン　イタㇰ　カ　オカ　アン　ナンコㇿ。",
-        "book": "モトホ　レ",
-        "entryTitle": "カンピ　レ",
         "author": "ヌイェ　クㇽ",
+        "book": "モトホ　レ",
+        "description": "ネ　カンピソㇱ　ウン　ナア　ピㇼカ　オルㇱペ　ネ。　シンナ　イタㇰ、　ウェン　イタㇰ　カ　オカ　アン　ナンコㇿ。",
         "dialect": "イポㇿセ",
+        "entryTitle": "カンピ　レ",
+        "title": "ネ　カンピソㇱ　オルㇱペ",
         "url": "ウㇽl"
       }
     }

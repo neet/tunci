@@ -1,135 +1,135 @@
 {
   "app": {
     "AboutPage": {
-      "title": "このサイトについて",
-      "description": "このサイトは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。"
+      "description": "このサイトは、アイヌ語↔日本語の双方向翻訳を行うWebアプリです。現在、アイヌ語学習者に向けて試験的に公開しています。",
+      "title": "このサイトについて"
     },
     "Home": {
-      "title": "tunci - アイヌ語と日本語を翻訳",
-      "description": "tunciは、アイヌ語と日本語を翻訳するWebアプリです。アイヌ語学習者に向けて試験的に公開しています。"
+      "description": "tunciは、アイヌ語と日本語を翻訳するWebアプリです。アイヌ語学習者に向けて試験的に公開しています。",
+      "title": "tunci - アイヌ語と日本語を翻訳"
     }
   },
   "components": {
     "Banner": {
       "about": "このサイトについて"
     },
-    "ContentInfo": {
-      "title": "運営者情報"
-    },
     "Composer": {
-      "wip": "この機能は現在準備中です。",
-      "copied": "コピーしました",
-      "translateForm": "翻訳フォーム",
-      "ComposerInput": {
-        "source": "入力する言語",
-        "text": "翻訳したい文章",
-        "recognize": "音声入力",
-        "play": "読み上げる",
-        "paste": "貼り付け",
-        "translate": "翻訳",
-        "advancedSettings": "表現の設定",
-        "placeholder": "文章を入力"
+      "AdvancedSettingsDialog": {
+        "AdvancedSettingsDialogContent": {
+          "close": "閉じる",
+          "description": "語彙や文法の設定を変更して、より自然な文章を生成できます。",
+          "title": "表現の設定"
+        },
+        "DialectSelector": {
+          "bihoro": "美幌",
+          "chitose": "千歳",
+          "description": "アイヌ語には標準語がなく、各地域ごとに異なった表現を使っています。地域を選択して、その地域の方言で文章を作成することができます。",
+          "experimental": "これは実験的な機能です。",
+          "horobetsu": "幌別",
+          "ishikari": "石狩",
+          "kushiro": "釧路",
+          "mukawa": "鵡川",
+          "samani": "様似",
+          "saru": "沙流",
+          "shizunai": "静内",
+          "title": "地域の設定",
+          "tokachi": "十勝"
+        },
+        "PronounSelector": {
+          "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
+          "first": "日常語",
+          "firstDescription": "会話の言葉で翻訳します。",
+          "fourth": "雅語",
+          "fourthDescription": "物語の言葉で翻訳します。",
+          "title": "日常語と雅語"
+        }
       },
-      "ComposerOutput": {
-        "target": "出力する言語",
-        "share": "共有",
-        "copy": "コピー",
-        "play": "読み上げる",
-        "translationResult": "翻訳結果"
-      },
-      "Dirty": {
-        "untranslated": "まだ翻訳していません"
+      "AlternativeTranslations": {
+        "AlternativeTranslationsContent": {
+          "description": "この他にも、次のような言い換えができます"
+        },
+        "AlternativeTranslationsError": {
+          "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
+        },
+        "AlternativeTranslationsWrapper": {
+          "title": "言い換え表現"
+        }
       },
       "CharCount": {
         "charLeft": "残り{remaining}文字",
         "charOver": "{excess}文字超過"
       },
-      "Translation": {
-        "empty": "翻訳",
-        "loading": "翻訳中…"
+      "ComposerCollapsible": {
+        "collapse": "閉じる",
+        "expand": "開く"
+      },
+      "ComposerInput": {
+        "advancedSettings": "表現の設定",
+        "paste": "貼り付け",
+        "placeholder": "文章を入力",
+        "play": "読み上げる",
+        "recognize": "音声入力",
+        "source": "入力する言語",
+        "text": "翻訳したい文章",
+        "translate": "翻訳"
+      },
+      "ComposerOutput": {
+        "copy": "コピー",
+        "play": "読み上げる",
+        "share": "共有",
+        "target": "出力する言語",
+        "translationResult": "翻訳結果"
+      },
+      "copied": "コピーしました",
+      "Dirty": {
+        "untranslated": "まだ翻訳していません"
       },
       "Disclaimer": {
-        "title": "注意事項",
-        "disclaimer": "情報は不正確な場合があります。誤ったアイヌ語の表現が広まるおそれがあるため、翻訳結果をそのまま使用することはお控えください。"
+        "disclaimer": "情報は不正確な場合があります。誤ったアイヌ語の表現が広まるおそれがあるため、翻訳結果をそのまま使用することはお控えください。",
+        "title": "注意事項"
       },
-      "AdvancedSettingsDialog": {
-        "PronounSelector": {
-          "title": "日常語と雅語",
-          "description": "アイヌ語は、普段の会話をするときと、物語を語るときで使う言葉が異なります。どちらの言葉を使うかを選択することができます。",
-          "first": "日常語",
-          "firstDescription": "会話の言葉で翻訳します。",
-          "fourth": "雅語",
-          "fourthDescription": "物語の言葉で翻訳します。"
-        },
-        "AdvancedSettingsDialogContent": {
-          "title": "表現の設定",
-          "description": "語彙や文法の設定を変更して、より自然な文章を生成できます。",
-          "close": "閉じる"
-        },
-        "DialectSelector": {
-          "title": "地域の設定",
-          "description": "アイヌ語には標準語がなく、各地域ごとに異なった表現を使っています。地域を選択して、その地域の方言で文章を作成することができます。",
-          "experimental": "これは実験的な機能です。",
-          "saru": "沙流",
-          "chitose": "千歳",
-          "mukawa": "鵡川",
-          "horobetsu": "幌別",
-          "shizunai": "静内",
-          "tokachi": "十勝",
-          "kushiro": "釧路",
-          "samani": "様似",
-          "bihoro": "美幌",
-          "ishikari": "石狩"
-        }
+      "EndpointStatus": {
+        "initializing": "サーバーを起動しているため、1分ほどお待ち下さい。費用を節約するため、{scaleToZeroTimeout}分以上アクセスがなければ自動的に停止しています。",
+        "paused": "サーバーが一時停止しています。管理者にお問い合わせください。",
+        "pending": "サーバーの起動を準備しているため、1分ほどお待ち下さい。費用を節約するため、{scaleToZeroTimeout}分以上アクセスがなければ自動的に停止しています。",
+        "running": "サーバーの状態を取得しています。",
+        "scaledToZero": "サーバーのインスタンスは現在ゼロです。"
       },
       "ExampleSentences": {
-        "ExampleSentencesWrapper": {
-          "title": "用例"
-        },
         "ExampleSentencesError": {
           "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
+        },
+        "ExampleSentencesWrapper": {
+          "title": "用例"
         }
       },
       "LanguageSelector": {
         "ainu": "アイヌ語",
         "japanese": "日本語"
       },
-      "AlternativeTranslations": {
-        "AlternativeTranslationsWrapper": {
-          "title": "言い換え表現"
-        },
-        "AlternativeTranslationsError": {
-          "description": "データ取得中にエラーが発生しました。時間をおいて再度お試しください。"
-        },
-        "AlternativeTranslationsContent": {
-          "description": "この他にも、次のような言い換えができます"
-        }
+      "translateForm": "翻訳フォーム",
+      "Translation": {
+        "empty": "翻訳",
+        "loading": "翻訳中…"
       },
-      "EndpointStatus": {
-        "scaledToZero": "サーバーのインスタンスは現在ゼロです。",
-        "pending": "サーバーの起動を準備しているため、1分ほどお待ち下さい。費用を節約するため、{scaleToZeroTimeout}分以上アクセスがなければ自動的に停止しています。",
-        "initializing": "サーバーを起動しているため、1分ほどお待ち下さい。費用を節約するため、{scaleToZeroTimeout}分以上アクセスがなければ自動的に停止しています。",
-        "paused": "サーバーが一時停止しています。管理者にお問い合わせください。",
-        "running": "サーバーの状態を取得しています。"
-      },
-      "ComposerCollapsible": {
-        "collapse": "閉じる",
-        "expand": "開く"
-      }
+      "wip": "この機能は現在準備中です。"
+    },
+    "ContentInfo": {
+      "title": "運営者情報"
     },
     "Entry": {
       "Entry": {
-        "source": "出典：",
         "author": "著者：",
-        "dialect": "方言："
+        "dialect": "方言：",
+        "source": "出典："
       },
       "EntryDetailsDialog": {
-        "title": "詳細",
-        "description": "この資料の詳細情報です。一部不正確な情報が含まれる可能性があります。",
-        "book": "資料",
-        "entryTitle": "タイトル",
         "author": "著者",
+        "book": "資料",
+        "description": "この資料の詳細情報です。一部不正確な情報が含まれる可能性があります。",
         "dialect": "方言",
+        "entryTitle": "タイトル",
+        "title": "詳細",
         "url": "URL"
       }
     }
