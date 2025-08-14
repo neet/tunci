@@ -72,7 +72,7 @@ export async function translate(
     next: {
       revalidate: 60 * 60 * 24 * 7,
     },
-    signal: AbortSignal.timeout(5000),
+    signal: AbortSignal.timeout(1000 * 10),
   });
 
   if (!response.ok) {

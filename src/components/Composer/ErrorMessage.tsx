@@ -1,5 +1,5 @@
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import { Callout, Text } from "@radix-ui/themes";
+import { Callout } from "@radix-ui/themes";
 import { FC, ReactNode } from "react";
 
 export type ErrorMessageProps = {
@@ -15,11 +15,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = (props) => {
         <ExclamationTriangleIcon aria-hidden />
       </Callout.Icon>
 
-      <Callout.Text>
-        <Text as="p" size="2">
-          {children}
-        </Text>
-      </Callout.Text>
+      <Callout.Text size="2">{children}</Callout.Text>
     </Callout.Root>
   );
 };
