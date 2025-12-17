@@ -74,7 +74,12 @@ export default async function RootLayout(props: RootLayoutProps) {
         <ThemeProvider attribute="class">
           <Theme accentColor="iris">
             <NextIntlClientProvider messages={messages}>
-              <Grid columns="100%" rows="auto 1fr auto" minHeight="100vh">
+              <Grid
+                columns="100%"
+                rows="auto 1fr auto"
+                minHeight="100vh"
+                className="gradient"
+              >
                 <Banner />
                 {children}
                 <ContentInfo />

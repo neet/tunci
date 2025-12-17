@@ -14,7 +14,7 @@ body {
   margin: 0;
 }
 
-body > div:first-of-type {
+.gradient {
   background-size: 100% 1000px;
   background-repeat: no-repeat;
   background-image: linear-gradient(
