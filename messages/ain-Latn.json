@@ -38,9 +38,9 @@
         "PronounSelector": {
           "description": "Aynu itak or ta tu sinna itak oka ruwe ne; yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak oka ruwe ne. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
           "first": "yayan itak",
-          "firstDescription": "yayan hi ta a=ye itak",
+          "firstDescription": "yayan hi ta a=ye itak.",
           "fourth": "a=tomte itak",
-          "fourthDescription": "yukar or ta a=ye itak",
+          "fourthDescription": "yukar or ta a=ye itak.",
           "title": "itakpo"
         }
       },
