@@ -89,9 +89,9 @@
         "title": "yaytupare yan"
       },
       "EndpointStatus": {
-        "initializing": "SABA ku=mososo kor k=an kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
+        "initializing": "SABA ku=mososo kor k=an kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
         "paused": "tane anakne SABA e=eywanke ka eaykap. tan SAYTO kor kur kopisi yan.",
-        "pending": "SABA ku=mososo kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, 15 pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
+        "pending": "SABA ku=mososo kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
         "running": "SABA makanak an pe k=uk kor k=an.",
         "scaledToZero": "SABA un INSUTANSU anak sinep ka isam"
       },
@@ -119,9 +119,9 @@
     },
     "Entry": {
       "Entry": {
-        "author": "nuye kur: ",
-        "dialect": "iporse: ",
-        "source": "motoho: "
+        "author": "nuye kur:",
+        "dialect": "iporse:",
+        "source": "motoho:"
       },
       "EntryDetailsDialog": {
         "author": "nuye kur",
