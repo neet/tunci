@@ -21,7 +21,7 @@ export const Banner: FC = async () => {
                 <Flex gap="2" align="center">
                   <Logo className="logo" aria-hidden />
                   <Heading as="h1" size="6" className="title" weight="regular">
-                    tunci
+                    Tunci
                   </Heading>
                 </Flex>
               </NextLink>
