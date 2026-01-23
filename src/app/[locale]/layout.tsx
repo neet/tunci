@@ -3,7 +3,7 @@ import "@radix-ui/themes/styles.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Grid, Theme } from "@radix-ui/themes";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import type { Metadata } from "next";
 import { Roboto, Yeseva_One } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
@@ -37,8 +37,8 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL("https://tunci.aynu.io"),
   title: {
-    template: "%s | tunci",
-    default: "tunci",
+    template: "%s | Tunci",
+    default: "Tunci",
   },
   robots: {
     index: false,

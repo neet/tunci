@@ -1,8 +1,8 @@
-# tunci
+# Tunci
 
 [![Crowdin](https://badges.crowdin.net/tunci/localized.svg)](https://crowdin.com/project/tunci)
 
-_tunci_ (トゥンチ) is a neural machine translator for the Ainu language — an indigenous language that originated in Northern Japan. It is designed to help Ainu learners easily look up words or check if their sentences are correct, thus contributing to the revitalization of the Ainu language.
+_Tunci_ (トゥンチ) is a neural machine translator for the Ainu language — an indigenous language that originated in Northern Japan. It is designed to help Ainu learners easily look up words or check if their sentences are correct, thus contributing to the revitalization of the Ainu language.
 
 ## Papers
 
