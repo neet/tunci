@@ -6,7 +6,7 @@
     },
     "Home": {
       "description": "Tunci anakne, ani Aynu itak or wa Sisam itak or un itak a=tupte easkay WEB APURI ne ruwe ne. ani Aynu itak eyaypakasnu wa oka utar kasuy kusu, a=kar wa inkar=an pe ne ruwe ne.",
-      "title": "Tunci - Aynu itak newa SIsam itak tupte"
+      "title": "Tunci - Aynu itak newa Sisam itak tupte"
     }
   },
   "components": {
@@ -23,7 +23,7 @@
         "DialectSelector": {
           "bihoro": "Peporo",
           "chitose": "Sikot",
-          "description": "Aynu itak or ta HIYOCUNKO sak kusu, usa oka kotan or ta sinna itak a=eywanke wa oka ruwe ne. kotan e=numke wa ne kotan or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
+          "description": "Aynu itak HIYOCUNKO sak kusu, usa oka kotan or ta sinna itak a=eywanke wa oka ruwe ne. kotan e=numke wa ne kotan or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
           "experimental": "naa ci=kar wa oka=as.",
           "horobetsu": "Poropet",
           "ishikari": "Iskar",
