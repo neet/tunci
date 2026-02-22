@@ -6,7 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { searchClient } from "@/api/search";
 import { Composer } from "@/components/Composer";
-import { SearchEntry } from "@/models/entry";
+import { Entry } from "@/models/entry";
 
 import {
   fetchAlternativeTranslations,
@@ -74,20 +74,20 @@ export default async function Home(props: HomeProps) {
     );
   }
 
-  let exampleSentences: Promise<SearchResponse<SearchEntry>> | undefined;
+  let exampleSentences: Promise<SearchResponse<Entry>> | undefined;
   if (text && result?.type === "ok") {
     const words = tokenize(source === "ain" ? text : result.translation, false);
 
     if (words.length < 4) {
-      exampleSentences = searchClient.searchSingleIndex<SearchEntry>({
+      exampleSentences = searchClient.searchSingleIndex<Entry>({
         indexName: "entries",
         searchParams: {
           query: `${result.translation} ${text}`,
           hitsPerPage: 3,
           attributesToHighlight: ["text", "translation"],
           facetFilters: [
-            "book:-アイヌ語鵡川方言日本語‐アイヌ語辞典",
-            "book:-アイヌ語會話字典",
+            "collection_lv1:-アイヌ語鵡川方言日本語‐アイヌ語辞典",
+            "collection_lv1:-トピック別 アイヌ語会話辞典",
           ],
         },
       });

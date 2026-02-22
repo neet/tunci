@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 import { FC, useEffect, useId, useRef, useState, useTransition } from "react";
 
 import { type ErrorType } from "@/app/[locale]/_server";
-import { SearchEntry } from "@/models/entry";
+import { Entry } from "@/models/entry";
 import * as t from "@/models/transcription";
 
 import { ComposerInput } from "./ComposerInput";
@@ -33,7 +33,7 @@ export type ComposerProps = {
   translationTranscription?: t.Transcription;
 
   alternativeTranslationsPromise?: Promise<string[]>;
-  exampleSentencesPromise?: Promise<SearchResponse<SearchEntry>>;
+  exampleSentencesPromise?: Promise<SearchResponse<Entry>>;
 
   error?: ErrorType;
   errorMessage?: string;

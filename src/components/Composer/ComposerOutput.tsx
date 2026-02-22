@@ -14,7 +14,7 @@ import { FC } from "react";
 import { FiCopy, FiShare, FiVolume2 } from "react-icons/fi";
 
 import { ErrorType } from "@/app/[locale]/_server";
-import { SearchEntry } from "@/models/entry";
+import { Entry } from "@/models/entry";
 
 import * as t from "../../models/transcription";
 import { AlternativeTranslations } from "./AlternativeTranslations";
@@ -40,7 +40,7 @@ export type ComposerOutputProps = {
   onShare: () => void;
   onCopy: () => void;
   onRefresh: () => void;
-  exampleSentencesPromise?: Promise<SearchResponse<SearchEntry>>;
+  exampleSentencesPromise?: Promise<SearchResponse<Entry>>;
   alternativeTranslationsPromise?: Promise<string[]>;
 };
 

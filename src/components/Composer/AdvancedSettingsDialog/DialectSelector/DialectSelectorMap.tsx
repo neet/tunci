@@ -1,6 +1,6 @@
 import "./DialectSelectorMap.css";
 
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { FC } from "react";
 import {
   ComposableMap,
