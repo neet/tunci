@@ -1,76 +1,140 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
   Badge,
+  Code,
   DataList,
   Dialog,
   IconButton,
   Link,
   Text,
-  Tooltip,
   VisuallyHidden,
 } from "@radix-ui/themes";
-import { useTranslations } from "next-intl";
 import { FC } from "react";
 
+import { toHref } from "@/utils/uri";
+
+import { Hierarchy } from "../Hierarchy/Hierarchy";
+import { Timestamp } from "../Timestamp";
+
+const NoData = () => <Text color="gray">データなし</Text>;
+
 export type EntryDetailsDialogProps = {
-  book: string;
-  title: string;
+  objectID: string;
+  document: string;
+  collectionLv1: string | null;
+  collectionLv2: string | null;
+  collectionLv3: string | null;
   author: string | null;
   dialect: string | null;
-  url: string;
+  dialectLv1: string[] | null;
+  dialectLv2: string[] | null;
+  dialectLv3: string[] | null;
+  uri: string | null;
+  recordedAt: string | null;
+  publishedAt: string | null;
 };
 
 export const EntryDetailsDialog: FC<EntryDetailsDialogProps> = (props) => {
-  const { book, title, author, dialect, url } = props;
+  const {
+    objectID,
+    collectionLv1,
+    collectionLv2,
+    collectionLv3,
+    document,
+    author,
+    dialect,
+    uri,
+    recordedAt,
+    publishedAt,
+  } = props;
 
-  const t = useTranslations("components.Entry.EntryDetailsDialog");
+  const href = uri ? toHref(uri) : null;
 
   return (
     <Dialog.Root>
-      <Tooltip content={t("title")}>
-        <Dialog.Trigger>
-          <IconButton variant="ghost" color="gray">
-            <DotsHorizontalIcon />
-            <VisuallyHidden>{t("title")}</VisuallyHidden>
-          </IconButton>
-        </Dialog.Trigger>
-      </Tooltip>
+      <Dialog.Trigger>
+        <IconButton variant="ghost" color="gray">
+          <DotsHorizontalIcon />
+          <VisuallyHidden>詳細</VisuallyHidden>
+        </IconButton>
+      </Dialog.Trigger>
 
       <Dialog.Content>
-        <Dialog.Title>{t("title")}</Dialog.Title>
+        <Dialog.Title>詳細</Dialog.Title>
         <Dialog.Description>
-          <Text color="gray">{t("description")}</Text>
+          <Text color="gray">
+            この資料の詳細情報です。一部不正確な情報が含まれる可能性があります。
+          </Text>
         </Dialog.Description>
 
         <DataList.Root mt="4">
           <DataList.Item>
-            <DataList.Label>{t("book")}</DataList.Label>
-            <DataList.Value>{book}</DataList.Value>
-          </DataList.Item>
-
-          <DataList.Item>
-            <DataList.Label>{t("entryTitle")}</DataList.Label>
-            <DataList.Value>{title}</DataList.Value>
-          </DataList.Item>
-
-          <DataList.Item>
-            <DataList.Label>{t("author")}</DataList.Label>
-            <DataList.Value>{author}</DataList.Value>
-          </DataList.Item>
-
-          <DataList.Item>
-            <DataList.Label>{t("dialect")}</DataList.Label>
+            <DataList.Label>ID</DataList.Label>
             <DataList.Value>
-              <Badge>{dialect}</Badge>
+              <Code>{objectID}</Code>
             </DataList.Value>
           </DataList.Item>
 
           <DataList.Item>
-            <DataList.Label>{t("url")}</DataList.Label>
+            <DataList.Label>出典</DataList.Label>
             <DataList.Value>
-              <Link href={url} target="_blank" rel="noreferrer">
-                {url}
-              </Link>
+              {collectionLv3 || collectionLv2 || collectionLv1 ? (
+                <Hierarchy>
+                  {collectionLv3 ?? collectionLv2 ?? collectionLv1}
+                </Hierarchy>
+              ) : (
+                <NoData />
+              )}
+            </DataList.Value>
+          </DataList.Item>
+
+          <DataList.Item>
+            <DataList.Label>タイトル</DataList.Label>
+            <DataList.Value>{document}</DataList.Value>
+          </DataList.Item>
+
+          <DataList.Item>
+            <DataList.Label>著者</DataList.Label>
+            <DataList.Value>{author ?? <NoData />}</DataList.Value>
+          </DataList.Item>
+
+          <DataList.Item>
+            <DataList.Label>方言</DataList.Label>
+            <DataList.Value>
+              {dialect ? <Badge>{dialect}</Badge> : <NoData />}
+            </DataList.Value>
+          </DataList.Item>
+
+          <DataList.Item>
+            <DataList.Label>記録日</DataList.Label>
+            <DataList.Value>
+              {recordedAt ? (
+                <Timestamp value={recordedAt} mode="full" />
+              ) : (
+                <NoData />
+              )}
+            </DataList.Value>
+          </DataList.Item>
+
+          <DataList.Item>
+            <DataList.Label>公開日</DataList.Label>
+            <DataList.Value>
+              {publishedAt ? (
+                <Timestamp value={publishedAt} mode="full" />
+              ) : (
+                <NoData />
+              )}
+            </DataList.Value>
+          </DataList.Item>
+
+          <DataList.Item>
+            <DataList.Label>URI</DataList.Label>
+            <DataList.Value>
+              {href && (
+                <Link href={href} target="_blank" rel="noreferrer">
+                  {uri}
+                </Link>
+              )}
             </DataList.Value>
           </DataList.Item>
         </DataList.Root>

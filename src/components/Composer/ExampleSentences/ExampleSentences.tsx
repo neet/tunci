@@ -3,14 +3,14 @@ import { useSearchParams } from "next/navigation";
 import { FC, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-import { SearchEntry } from "@/models/entry";
+import { Entry } from "@/models/entry";
 
 import { ExampleSentencesContent } from "./ExampleSentencesContent";
 import { ExampleSentencesError } from "./ExampleSentencesError";
 import { ExampleSentencesSkeleton } from "./ExampleSentencesSkeleton";
 
 export type ExampleSentencesProps = {
-  exampleSentencesPromise?: Promise<SearchResponse<SearchEntry>>;
+  exampleSentencesPromise?: Promise<SearchResponse<Entry>>;
 };
 
 export const ExampleSentences: FC<ExampleSentencesProps> = (props) => {

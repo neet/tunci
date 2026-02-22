@@ -1,10 +1,6 @@
 import "./style.css";
 
-import {
-  ExternalLinkIcon,
-  PersonIcon,
-  SewingPinIcon,
-} from "@radix-ui/react-icons";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import {
   Box,
   Flex,
@@ -13,82 +9,127 @@ import {
   Text,
   VisuallyHidden,
 } from "@radix-ui/themes";
-import { useTranslations } from "next-intl";
 import { FC } from "react";
 
 import { parse } from "@/utils/parse";
+import { toHref } from "@/utils/uri";
 
+import { Timestamp } from "../Timestamp";
+import { EntryAuthor } from "./EntryAuthor";
 import { EntryDetailsDialog } from "./EntryDetailsDialog";
-import { Tag } from "./Tag";
 
 export type EntryRootProps = {
+  objectID: string;
+  document: string;
   text: string;
   textHTML: string;
   translation: string;
   translationHTML: string;
-  book: string;
-  title: string;
-  url: string;
+  collectionLv1: string | null;
+  collectionLv2: string | null;
+  collectionLv3: string | null;
+  uri: string | null;
   author: string | null;
   dialect: string | null;
+  dialectLv1: string[] | null;
+  dialectLv2: string[] | null;
+  dialectLv3: string[] | null;
+  recordedAt: string | null;
+  publishedAt: string | null;
 };
 
 const EntryRoot: React.FC<EntryRootProps> = (props) => {
-  const { textHTML, translationHTML, book, title, url, author, dialect } =
-    props;
+  const {
+    objectID,
+    textHTML,
+    translationHTML,
+    collectionLv1,
+    collectionLv2,
+    collectionLv3,
+    document,
+    uri,
+    author,
+    dialect,
+    dialectLv1,
+    dialectLv2,
+    dialectLv3,
+    recordedAt,
+    publishedAt,
+  } = props;
 
-  const t = useTranslations("components.Entry.Entry");
+  const href = uri ? toHref(uri) : null;
 
   return (
     <div className="entry">
-      <Flex gap="1" direction="column">
-        <Text asChild>
-          <blockquote lang="ain">{parse(textHTML)}</blockquote>
-        </Text>
-        <Text asChild>
-          <blockquote lang="ja">{parse(translationHTML)}</blockquote>
-        </Text>
+      <Flex gap="2" direction={{ initial: "column", md: "row" }}>
+        <Box flexGrow="1" flexShrink="1" flexBasis="100%" asChild>
+          <Text asChild>
+            <blockquote lang="ain">{parse(textHTML)}</blockquote>
+          </Text>
+        </Box>
+        <Box flexGrow="1" flexShrink="1" flexBasis="100%" asChild>
+          <Text asChild>
+            <blockquote lang="ja">{parse(translationHTML)}</blockquote>
+          </Text>
+        </Box>
       </Flex>
 
-      <Flex gap="1" justify="between" align="center" mt="2">
-        <Box flexGrow="0" flexShrink="1" minWidth="0px" asChild>
-          <Link
-            href={url}
-            target="_blank"
-            rel="nofollow"
-            truncate
-            size="2"
-            color="gray"
-          >
-            <VisuallyHidden>{t("source")}</VisuallyHidden>
-            <cite>{book}</cite>
-            <Box display="inline-block" ml="1">
-              <ExternalLinkIcon aria-hidden />
-            </Box>
-          </Link>
-        </Box>
+      <Flex gap="2" justify="between" align="center" mt="1">
+        {href && (
+          <Box flexGrow="0" flexShrink="1" minWidth="0px" asChild>
+            <Flex align="center">
+              <Link
+                href={href}
+                target="_blank"
+                rel="nofollow"
+                truncate
+                size="2"
+                color="gray"
+              >
+                <VisuallyHidden>出典：</VisuallyHidden>
+                <cite>
+                  {collectionLv1 ?? document}
+                  {(recordedAt || publishedAt) && (
+                    <>
+                      {"（"}
+                      <Timestamp
+                        mode="year_only"
+                        value={recordedAt ?? publishedAt}
+                      />
+                      {"）"}
+                    </>
+                  )}
+                </cite>
+              </Link>
 
-        <Flex gap="2" flexGrow="1" flexShrink="0" justify="end" align="center">
-          {author && (
-            <Box flexGrow="1" flexShrink="0" asChild>
-              <Tag icon={<PersonIcon aria-label={t("author")} />}>{author}</Tag>
-            </Box>
-          )}
+              <Box flexShrink="0" flexGrow="0" asChild>
+                <ExternalLinkIcon aria-hidden color="gray" />
+              </Box>
+            </Flex>
+          </Box>
+        )}
 
-          {dialect && (
+        <Flex gap="1" flexGrow="1" flexShrink="0" justify="end" align="center">
+          {(author || dialect) && (
             <Box flexGrow="1" flexShrink="0" asChild>
-              <Tag icon={<SewingPinIcon aria-label={t("dialect")} />}>
-                {dialect}
-              </Tag>
+              <EntryAuthor author={author} dialect={dialect} />
             </Box>
           )}
 
           <EntryDetailsDialog
-            book={book}
-            title={title}
+            objectID={objectID}
+            collectionLv1={collectionLv1}
+            collectionLv2={collectionLv2}
+            collectionLv3={collectionLv3}
+            document={document}
             author={author}
             dialect={dialect}
-            url={url}
+            dialectLv1={dialectLv1}
+            dialectLv2={dialectLv2}
+            dialectLv3={dialectLv3}
+            uri={uri}
+            recordedAt={recordedAt}
+            publishedAt={publishedAt}
           />
         </Flex>
       </Flex>
@@ -99,7 +140,7 @@ const EntryRoot: React.FC<EntryRootProps> = (props) => {
 const EntrySkeleton: FC = () => {
   return (
     <div>
-      <Flex gap="2" direction="column">
+      <Flex gap="2" direction={{ initial: "column", md: "row" }}>
         <Box flexGrow="1" flexShrink="1" flexBasis="100%" asChild>
           <Skeleton>
             <Text>irankarapte tanto sirpirka wa!</Text>
