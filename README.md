@@ -1,3 +1,5 @@
+![](/public/cover.png)
+
 # Tunci
 
 [![Crowdin](https://badges.crowdin.net/tunci/localized.svg)](https://crowdin.com/project/tunci)
