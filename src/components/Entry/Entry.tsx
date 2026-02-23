@@ -11,7 +11,6 @@ import {
 } from "@radix-ui/themes";
 import { FC } from "react";
 
-import { parse } from "@/utils/parse";
 import { toHref } from "@/utils/uri";
 
 import { Timestamp } from "../Timestamp";
@@ -64,12 +63,18 @@ const EntryRoot: React.FC<EntryRootProps> = (props) => {
       <Flex gap="2" direction={{ initial: "column", md: "row" }}>
         <Box flexGrow="1" flexShrink="1" flexBasis="100%" asChild>
           <Text asChild>
-            <blockquote lang="ain">{parse(textHTML)}</blockquote>
+            <blockquote
+              lang="ain"
+              dangerouslySetInnerHTML={{ __html: textHTML }}
+            />
           </Text>
         </Box>
         <Box flexGrow="1" flexShrink="1" flexBasis="100%" asChild>
           <Text asChild>
-            <blockquote lang="ja">{parse(translationHTML)}</blockquote>
+            <blockquote
+              lang="ja"
+              dangerouslySetInnerHTML={{ __html: translationHTML }}
+            />
           </Text>
         </Box>
       </Flex>

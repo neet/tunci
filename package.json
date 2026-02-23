@@ -21,7 +21,6 @@
     "ainu-utils": "^0.3.3",
     "algoliasearch": "^5.46.1",
     "clsx": "^2.1.1",
-    "html-react-parser": "^5.2.10",
     "mixpanel-browser": "^2.72.0",
     "next": "^15.2.3",
     "next-intl": "^4.6.1",
