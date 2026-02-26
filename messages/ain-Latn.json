@@ -89,15 +89,15 @@
         "title": "yaytupare yan"
       },
       "EndpointStatus": {
-        "initializing": "SABA ku=mososo kor k=an kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
-        "paused": "tane anakne SABA e=eywanke ka eaykap. tan SAYTO kor kur kopisi yan.",
-        "pending": "SABA ku=mososo kusu, 1 pun pakno en=tere wa en=kore yan. icen k=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata ku=mokor ruwe ne.",
-        "running": "SABA makanak an pe k=uk kor k=an.",
+        "initializing": "SABA a=mososo kor an=an kusu, 1 pun pakno i=tere wa i=kore yan. icen a=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata a=mokor ruwe ne.",
+        "paused": "tane anakne SABA e=eywanke ka koyaykus. tan SAYTO kor kur kopisi yan.",
+        "pending": "SABA a=mososo kusu, 1 pun pakno i=tere wa i=kore yan. icen a=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata a=mokor ruwe ne.",
+        "running": "SABA makanak an pe a=uk kor an=an.",
         "scaledToZero": "SABA un INSUTANSU anak sinep ka isam"
       },
       "ExampleSentences": {
         "ExampleSentencesError": {
-          "description": "DETA k=uk ka eaykap. ponno tere wa suy ek yan."
+          "description": "DETA a=uk ka koyaykus. ponno tere wa suy nukar yan."
         },
         "ExampleSentencesWrapper": {
           "title": "ne itak eywanke wa oka oruspe"
@@ -124,7 +124,7 @@
         "source": "motoho:"
       },
       "EntryDetailsDialog": {
-        "author": "nuye kur",
+        "author": "inuye kur",
         "book": "motoho re",
         "description": "ne kampisos un naa pirka oruspe ne. sinna itak, wen itak ka oka an nankor.",
         "dialect": "iporse",
