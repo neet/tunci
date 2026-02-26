@@ -24,6 +24,7 @@ export const PronounSelector: FC<PronounSelectorProps> = (props) => {
       <RadioCards.Root
         role="generic"
         mt="2"
+        gap="1"
         name="pronoun"
         defaultValue={props.defaultValue}
       >
