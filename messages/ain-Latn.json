@@ -17,13 +17,13 @@
       "AdvancedSettingsDialog": {
         "AdvancedSettingsDialogContent": {
           "close": "seske",
-          "description": "iporse newa itakpo un SETTEY e=numke wa, naa pirka itak e=nuye easkay.",
-          "title": "iporse & itakpo"
+          "description": "iporse itakpo un SETTEY e=numke wa, naa pirka itak e=nuye easkay p ne ruwe ne.",
+          "title": "iporse itakpo"
         },
         "DialectSelector": {
           "bihoro": "Peporo",
           "chitose": "Sikot",
-          "description": "Aynu itak HIYOCUNKO sak kusu, usa oka kotan or ta sinna itak a=eywanke wa oka ruwe ne. kotan e=numke wa ne kotan or ta a=eywanke wa oka itak e=kar easkay ruwe ne.",
+          "description": "Aynu itak HIYOCUNKO sak kusu, usa oka kotan or ta sinna itak a=eywanke wa oka ruwe ne. kotan e=numke wa ne kotan or ta a=eywanke wa oka itak ani itak e=kar easkay ruwe ne.",
           "experimental": "naa ci=kar wa oka=as.",
           "horobetsu": "Poropet",
           "ishikari": "Iskar",
@@ -49,7 +49,7 @@
           "description": "mosma anakne, ene itakpo ka oka hi:"
         },
         "AlternativeTranslationsError": {
-          "description": "DETA k=uk ka eaykap. ponno tere wa suy ek yan."
+          "description": "DETA a=uk ka koyaykus. ponno tere wa suy nukar yan."
         },
         "AlternativeTranslationsWrapper": {
           "title": "mosma itak"
@@ -64,11 +64,11 @@
         "expand": "maka"
       },
       "ComposerInput": {
-        "advancedSettings": "iporse & itakpo",
+        "advancedSettings": "iporse itakpo",
         "paste": "kotukka",
-        "placeholder": "itak nuye yan",
+        "placeholder": "inuye yan",
         "play": "nu",
-        "recognize": "hawe ani inuye",
+        "recognize": "hawe ani nuye",
         "source": "ani e=inuye itak",
         "text": "e=tupte rusuy itak",
         "translate": "tupte"
