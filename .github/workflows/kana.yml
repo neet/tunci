@@ -1,0 +1,52 @@
+name: Sync ain-Kana from ain-Latn
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "messages/ain-Latn.json"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.10.0"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run kana conversion
+        run: npx tsx scripts/kana.ts
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create pull request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: Sync ain-Kana from ain-Latn"
+          branch: chore/sync-ain-kana
+          title: "chore: Sync ain-Kana from ain-Latn"
+          body: |
+            `messages/ain-Latn.json` の変更を `messages/ain-Kana.json` に自動反映します。
+          delete-branch: true

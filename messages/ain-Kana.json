@@ -5,8 +5,8 @@
       "title": "タンペ　ヘマンタ　アン？"
     },
     "Home": {
-      "description": "タン　サイト　アナㇰネ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　アヌイェ　エアㇱカイ　アエイワンケㇷ゚　ネ　ルウェ　ネ。",
-      "title": "トゥンチ　　アイヌ　イタㇰ　オㇿ　ウン　イタㇰトゥㇷ゚テ　エアㇱカイ　アエイワンケㇷ゚"
+      "description": "トゥンチ　アナㇰネ、　アニ　アイヌ　イタㇰ　オㇿ　ワ　シサㇺ　イタㇰ　オㇿ　ウン　イタㇰ　アトゥㇷ゚テ　エアㇱカイ　ウェb　アプリ　ネ　ルウェ　ネ。　アニ　アイヌ　イタㇰ　エヤイパカㇱヌ　ワ　オカ　ウタㇻ　カスイ　クス、　アカㇻ　ワ　インカラン　ペ　ネ　ルウェ　ネ。",
+      "title": "トゥンチ　　アイヌ　イタㇰ　ネワ　シサㇺ　イタㇰ　トゥㇷ゚テ"
     }
   },
   "components": {
@@ -17,13 +17,13 @@
       "AdvancedSettingsDialog": {
         "AdvancedSettingsDialogContent": {
           "close": "セㇱケ",
-          "description": "イポㇿセ　ネワ　イタㇰポ　ウン　セッテイ　エヌㇺケ　ワ、　ナア　ピㇼカ　イタㇰ　エヌイェ　エアㇱカイ。",
-          "title": "イポㇿセ　&　イタㇰポ"
+          "description": "イポㇿセ　イタㇰポ　ウン　セッテイ　エヌㇺケ　ワ、　ナア　ピㇼカ　イタㇰ　エヌイェ　エアㇱカイ　ㇷ゚　ネ　ルウェ　ネ。",
+          "title": "イポㇿセ　イタㇰポ"
         },
         "DialectSelector": {
           "bihoro": "ペポロ",
           "chitose": "シコッ",
-          "description": "アイヌ　イタㇰ　オㇿ　タ　ヒヨチュンコ　サㇰ　クス、　ウサ　オカ　コタン　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　コタン　エヌㇺケ　ワ　ネ　コタン　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
+          "description": "アイヌ　イタㇰ　ヒヨチュンコ　サㇰ　クス、　ウサ　オカ　コタン　オㇿ　タ　シンナ　イタㇰ　アエイワンケ　ワ　オカ　ルウェ　ネ。　コタン　エヌㇺケ　ワ　ネ　コタン　オㇿ　タ　アエイワンケ　ワ　オカ　イタㇰ　アニ　イタㇰ　エカㇻ　エアㇱカイ　ルウェ　ネ。",
           "experimental": "ナア　チカㇻ　ワ　オカアㇱ。",
           "horobetsu": "ポロペッ",
           "ishikari": "イㇱカㇻ",
@@ -49,7 +49,7 @@
           "description": "モㇱマ　アナㇰネ、　エネ　イタㇰポ　カ　オカ　ヒ:"
         },
         "AlternativeTranslationsError": {
-          "description": "デタ　クㇰ　カ　エアイカㇷ゚。　ポンノ　テレ　ワ　スイ　エㇰ　ヤン。"
+          "description": "デタ　アウㇰ　カ　コヤイクㇱ。　ポンノ　テレ　ワ　スイ　ヌカㇻ　ヤン。"
         },
         "AlternativeTranslationsWrapper": {
           "title": "モㇱマ　イタㇰ"
@@ -64,11 +64,11 @@
         "expand": "マカ"
       },
       "ComposerInput": {
-        "advancedSettings": "イポㇿセ　&　イタㇰポ",
+        "advancedSettings": "イポㇿセ　イタㇰポ",
         "paste": "コトゥッカ",
-        "placeholder": "イタㇰ　ヌイェ　ヤン",
+        "placeholder": "イヌイェ　ヤン",
         "play": "ヌ",
-        "recognize": "ハウェ　アニ　イヌイェ",
+        "recognize": "ハウェ　アニ　ヌイェ",
         "source": "アニ　エイヌイェ　イタㇰ",
         "text": "エトゥㇷ゚テ　ルスイ　イタㇰ",
         "translate": "トゥㇷ゚テ"
@@ -89,15 +89,15 @@
         "title": "ヤイトゥパレ　ヤン"
       },
       "EndpointStatus": {
-        "initializing": "サバ　クモソソ　コㇿ　カン　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　{scaleToZeroTimeout}　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。",
-        "paused": "タネ　アナㇰネ　サバ　エエイワンケ　カ　エアイカㇷ゚。　タン　サイト　コㇿ　クㇽ　コピシ　ヤン。",
-        "pending": "サバ　クモソソ　クス、　1　プン　パㇰノ　エンテレ　ワ　エンコレ　ヤン。　イチェン　ケハパㇷ゚　クニ、　{scaleToZeroTimeout}　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　クモコㇿ　ルウェ　ネ。",
-        "running": "サバ　マカナㇰ　アン　ペ　クㇰ　コㇿ　カン。",
+        "initializing": "サバ　アモソソ　コㇿ　アナン　クス、　1　プン　パㇰノ　イテレ　ワ　イコレ　ヤン。　イチェン　アエハパㇷ゚　クニ、　{scaleToZeroTimeout}　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　アモコㇿ　ルウェ　ネ。",
+        "paused": "タネ　アナㇰネ　サバ　エエイワンケ　カ　コヤイクㇱ。　タン　サイト　コㇿ　クㇽ　コピシ　ヤン。",
+        "pending": "サバ　アモソソ　クス、　1　プン　パㇰノ　イテレ　ワ　イコレ　ヤン。　イチェン　アエハパㇷ゚　クニ、　{scaleToZeroTimeout}　プン　ウトゥル　タ　ネン　カ　ソモ　アㇻキ　ヤクン、　ヤイカタ　アモコㇿ　ルウェ　ネ。",
+        "running": "サバ　マカナㇰ　アン　ペ　アウㇰ　コㇿ　アナン。",
         "scaledToZero": "サバ　ウン　インスタンス　アナㇰ　シネㇷ゚　カ　イサㇺ"
       },
       "ExampleSentences": {
         "ExampleSentencesError": {
-          "description": "デタ　クㇰ　カ　エアイカㇷ゚。　ポンノ　テレ　ワ　スイ　エㇰ　ヤン。"
+          "description": "デタ　アウㇰ　カ　コヤイクㇱ。　ポンノ　テレ　ワ　スイ　ヌカㇻ　ヤン。"
         },
         "ExampleSentencesWrapper": {
           "title": "ネ　イタㇰ　エイワンケ　ワ　オカ　オルㇱペ"
@@ -124,7 +124,7 @@
         "source": "モトホ:"
       },
       "EntryDetailsDialog": {
-        "author": "ヌイェ　クㇽ",
+        "author": "イヌイェ　クㇽ",
         "book": "モトホ　レ",
         "description": "ネ　カンピソㇱ　ウン　ナア　ピㇼカ　オルㇱペ　ネ。　シンナ　イタㇰ、　ウェン　イタㇰ　カ　オカ　アン　ナンコㇿ。",
         "dialect": "イポㇿセ",
