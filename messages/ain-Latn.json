@@ -1,8 +1,8 @@
 {
   "app": {
     "AboutPage": {
-      "description": "tan SAYTO anakne Aynu itak or wa Sisam itak a=nuye easkay aeywankep ne ruwe ne.",
-      "title": "tanpe hemanta an?"
+      "description": "Tan SAYTO anakne Aynu itak or wa Sisam itak a=nuye easkay aeywankep ne ruwe ne.",
+      "title": "Tanpe hemanta an?"
     },
     "Home": {
       "description": "Tunci anakne, ani Aynu itak or wa Sisam itak or un itak a=tupte easkay WEB APURI ne ruwe ne. ani Aynu itak eyaypakasnu wa oka utar kasuy kusu, a=kar wa inkar=an pe ne ruwe ne.",
@@ -11,20 +11,20 @@
   },
   "components": {
     "Banner": {
-      "about": "tanpe hemanta an?"
+      "about": "Tanpe hemanta an?"
     },
     "Composer": {
       "AdvancedSettingsDialog": {
         "AdvancedSettingsDialogContent": {
-          "close": "seske",
-          "description": "iporse itakpo un SETTEY e=numke wa, naa pirka itak e=nuye easkay p ne ruwe ne.",
-          "title": "iporse itakpo"
+          "close": "Seske",
+          "description": "Iporse itakpo un SETTEY e=numke wa, naa pirka itak e=nuye easkay p ne ruwe ne.",
+          "title": "Iporse itakpo"
         },
         "DialectSelector": {
           "bihoro": "Peporo",
           "chitose": "Sikot",
           "description": "Aynu itak HIYOCUNKO sak kusu, usa oka kotan or ta sinna itak a=eywanke wa oka ruwe ne. kotan e=numke wa ne kotan or ta a=eywanke wa oka itak ani itak e=kar easkay ruwe ne.",
-          "experimental": "naa ci=kar wa oka=as.",
+          "experimental": "Naa ci=kar wa oka=as.",
           "horobetsu": "Poropet",
           "ishikari": "Iskar",
           "kushiro": "Kusir",
@@ -36,23 +36,23 @@
           "tokachi": "Tokapci"
         },
         "PronounSelector": {
-          "description": "Aynu itak or ta tu sinna itak oka ruwe ne; yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak oka ruwe ne. hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
-          "first": "yayan itak",
-          "firstDescription": "yayan hi ta a=ye itak.",
-          "fourth": "a=tomte itak",
-          "fourthDescription": "yukar or ta a=ye itak.",
-          "title": "itakpo"
+          "description": "Aynu itak or ta tu sinna itak oka ruwe ne; yukar or ta a=eywanke itak, yayan hi ta a=eywanke itak oka ruwe ne. Hi kusu, inan itak pirka ya ka e=numke easkay ruwe ne.",
+          "first": "Yayan itak",
+          "firstDescription": "Yayan hi ta a=ye itak.",
+          "fourth": "A=tomte itak",
+          "fourthDescription": "Yukar or ta a=ye itak.",
+          "title": "Itakpo"
         }
       },
       "AlternativeTranslations": {
         "AlternativeTranslationsContent": {
-          "description": "mosma anakne, ene itakpo ka oka hi:"
+          "description": "Mosma anakne, ene itakpo ka oka hi:"
         },
         "AlternativeTranslationsError": {
           "description": "DETA a=uk ka koyaykus. ponno tere wa suy nukar yan."
         },
         "AlternativeTranslationsWrapper": {
-          "title": "mosma itak"
+          "title": "Mosma itak"
         }
       },
       "CharCount": {
@@ -60,37 +60,37 @@
         "charOver": "{excess} monci a=kaspa"
       },
       "ComposerCollapsible": {
-        "collapse": "seske",
-        "expand": "maka"
+        "collapse": "Seske",
+        "expand": "Maka"
       },
       "ComposerInput": {
-        "advancedSettings": "iporse itakpo",
-        "paste": "kotukka",
-        "placeholder": "inuye yan",
-        "play": "nu",
-        "recognize": "hawe ani nuye",
-        "source": "ani e=inuye itak",
-        "text": "e=tupte rusuy itak",
-        "translate": "tupte"
+        "advancedSettings": "Iporse itakpo",
+        "paste": "Kotukka",
+        "placeholder": "Inuye yan",
+        "play": "Nu",
+        "recognize": "Hawe ani nuye",
+        "source": "Ani e=inuye itak",
+        "text": "E=tupte rusuy itak",
+        "translate": "Tupte"
       },
       "ComposerOutput": {
         "copy": "KOPI",
-        "play": "nu",
-        "share": "ukokor",
-        "target": "ani e=inkar itak",
-        "translationResult": "a=tupte itak"
+        "play": "Nu",
+        "share": "Ukokor",
+        "target": "Ani e=inkar itak",
+        "translationResult": "A=tupte itak"
       },
       "copied": "KOPI e=ki wa okere",
       "Dirty": {
-        "untranslated": "itak naa somo a=tupte"
+        "untranslated": "Itak naa somo a=tupte"
       },
       "Disclaimer": {
-        "disclaimer": "sinna itak, wen itak a=kar hi ka oka=an nankor. kusu, tane oka Aynu itak erampewtek utar anakne iteki opitta eysokor yan. Aynu itak pirkano ye kur eci=kopisi yak pirka nankor.",
+        "disclaimer": "Sinna itak, wen itak a=kar hi ka oka=an nankor. Kusu, tane oka Aynu itak erampewtek utar anakne iteki opitta eysokor yan. Aynu itak pirkano ye kur eci=kopisi yak pirka nankor.",
         "title": "yaytupare yan"
       },
       "EndpointStatus": {
-        "initializing": "SABA a=mososo kor an=an kusu, 1 pun pakno i=tere wa i=kore yan. icen a=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata a=mokor ruwe ne.",
-        "paused": "tane anakne SABA e=eywanke ka koyaykus. tan SAYTO kor kur kopisi yan.",
+        "initializing": "SABA a=mososo kor an=an kusu, 1 pun pakno i=tere wa i=kore yan. Icen a=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata a=mokor ruwe ne.",
+        "paused": "Tane anakne SABA e=eywanke ka koyaykus. Tan SAYTO kor kur kopisi yan.",
         "pending": "SABA a=mososo kusu, 1 pun pakno i=tere wa i=kore yan. icen a=ehapap kuni, {scaleToZeroTimeout} pun uturu ta nen ka somo arki yakun, yaykata a=mokor ruwe ne.",
         "running": "SABA makanak an pe a=uk kor an=an.",
         "scaledToZero": "SABA un INSUTANSU anak sinep ka isam"
@@ -100,36 +100,36 @@
           "description": "DETA a=uk ka koyaykus. ponno tere wa suy nukar yan."
         },
         "ExampleSentencesWrapper": {
-          "title": "ne itak eywanke wa oka oruspe"
+          "title": "Ne itak eywanke wa oka oruspe"
         }
       },
       "LanguageSelector": {
         "ainu": "Aynu itak",
         "japanese": "Sisam itak"
       },
-      "translateForm": "itaktupte FOMU",
+      "translateForm": "Itaktupte FOMU",
       "Translation": {
-        "empty": "cituptep",
-        "loading": "a=tupte kor an=an…"
+        "empty": "Cituptep",
+        "loading": "A=tupte kor an=an…"
       },
-      "wip": "naa ci=kar kor oka=as hontom ne ruwe ne."
+      "wip": "Naa ci=kar kor oka=as hontom ne ruwe ne."
     },
     "ContentInfo": {
-      "title": "tan SAYTO kar kur oruspe"
+      "title": "Tan SAYTO kar kur oruspe"
     },
     "Entry": {
       "Entry": {
-        "author": "nuye kur:",
-        "dialect": "iporse:",
-        "source": "motoho:"
+        "author": "Inuyekur:",
+        "dialect": "Iporse:",
+        "source": "Motoho:"
       },
       "EntryDetailsDialog": {
-        "author": "inuye kur",
-        "book": "motoho re",
-        "description": "ne kampisos un naa pirka oruspe ne. sinna itak, wen itak ka oka an nankor.",
-        "dialect": "iporse",
-        "entryTitle": "kampi re",
-        "title": "ne kampisos oruspe",
+        "author": "Inuyekur:",
+        "book": "Motoho re",
+        "description": "Ne kampisos un naa pirka oruspe ne. sinna itak, wen itak ka oka an nankor.",
+        "dialect": "Iporse",
+        "entryTitle": "Kampi re",
+        "title": "Ne kampisos oruspe",
         "url": "URL"
       }
     }
