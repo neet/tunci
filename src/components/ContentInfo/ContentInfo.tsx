@@ -31,6 +31,7 @@ export const ContentInfo: FC = async () => {
                     rel="alternate"
                     href="/ain-Latn"
                     hrefLang="ain-Latn"
+                    prefetch={false}
                   >
                     Aynu itak
                   </NextLink>
@@ -45,6 +46,7 @@ export const ContentInfo: FC = async () => {
                     rel="alternate"
                     href="/ain-Kana"
                     hrefLang="ain-Kana"
+                    prefetch={false}
                   >
                     アイヌイタㇰ
                   </NextLink>
@@ -55,7 +57,12 @@ export const ContentInfo: FC = async () => {
 
               <li>
                 <Link size="2" asChild>
-                  <NextLink rel="alternate" href="/ja" hrefLang="ja">
+                  <NextLink
+                    rel="alternate"
+                    href="/ja"
+                    hrefLang="ja"
+                    prefetch={false}
+                  >
                     日本語
                   </NextLink>
                 </Link>
