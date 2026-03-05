@@ -19,34 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: aynumosir/ainu-kana-action@v1
         with:
-          node-version: "24.10.0"
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run kana conversion
-        run: npx tsx scripts/kana.ts
-
-      - name: Check for changes
-        id: changes
-        run: |
-          if git diff --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Create pull request
-        if: steps.changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v7
-        with:
+          source: messages/ain-Latn.json
+          target: messages/ain-Kana.json
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: Sync ain-Kana from ain-Latn"
-          branch: chore/sync-ain-kana
-          title: "chore: Sync ain-Kana from ain-Latn"
-          body: |
-            `messages/ain-Latn.json` の変更を `messages/ain-Kana.json` に自動反映します。
-          delete-branch: true
