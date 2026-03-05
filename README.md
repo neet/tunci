@@ -2,7 +2,7 @@
 
 # Tunci
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5c38990a-1ecf-4631-a90c-829c1953520e/deploy-status)](https://app.netlify.com/projects/aynumosir-tunci/deploys)
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/tunci)
 [![Crowdin](https://badges.crowdin.net/tunci/localized.svg)](https://crowdin.com/project/tunci)
 
 _Tunci_ (トゥンチ) is a neural machine translator for the Ainu language — an indigenous language that originated in Northern Japan. It is designed to help Ainu learners easily look up words or check if their sentences are correct, thus contributing to the revitalization of the Ainu language.
