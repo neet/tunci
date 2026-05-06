@@ -8,20 +8,17 @@ import {
   Tooltip,
   VisuallyHidden,
 } from "@radix-ui/themes";
-import { SearchResponse } from "algoliasearch";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { FiCopy, FiShare, FiVolume2 } from "react-icons/fi";
 
 import { ErrorType } from "@/app/[locale]/_server";
-import { Entry } from "@/models/entry";
 
 import * as t from "../../models/transcription";
 import { AlternativeTranslations } from "./AlternativeTranslations";
 import { Dirty } from "./Dirty";
 import { Disclaimer } from "./Disclaimer";
 import { EndpointStatus } from "./EndpointStatus";
-import { ExampleSentences } from "./ExampleSentences";
 import { LanguageSelector } from "./LanguageSelector";
 import { Transcription } from "./Transcription";
 import { Translation } from "./Translation";
@@ -40,7 +37,6 @@ export type ComposerOutputProps = {
   onShare: () => void;
   onCopy: () => void;
   onRefresh: () => void;
-  exampleSentencesPromise?: Promise<SearchResponse<Entry>>;
   alternativeTranslationsPromise?: Promise<string[]>;
 };
 
@@ -180,12 +176,6 @@ export const ComposerOutput: FC<ComposerOutputProps> = (props) => {
 
         {hasTranslation && <Disclaimer />}
       </Flex>
-
-      {hasTranslation && (
-        <ExampleSentences
-          exampleSentencesPromise={props.exampleSentencesPromise}
-        />
-      )}
 
       {hasTranslation && (
         <AlternativeTranslations
