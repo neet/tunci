@@ -3,14 +3,12 @@
 import "./Composer.css";
 
 import { Grid, Heading, VisuallyHidden } from "@radix-ui/themes";
-import { SearchResponse } from "algoliasearch";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FC, useEffect, useId, useRef, useState, useTransition } from "react";
 
 import { type ErrorType } from "@/app/[locale]/_server";
-import { Entry } from "@/models/entry";
 import * as t from "@/models/transcription";
 
 import { ComposerInput } from "./ComposerInput";
@@ -33,7 +31,6 @@ export type ComposerProps = {
   translationTranscription?: t.Transcription;
 
   alternativeTranslationsPromise?: Promise<string[]>;
-  exampleSentencesPromise?: Promise<SearchResponse<Entry>>;
 
   error?: ErrorType;
   errorMessage?: string;
@@ -232,7 +229,6 @@ export const Composer: FC<ComposerProps> = (props) => {
         onShare={handleShare}
         onRefresh={() => router.refresh()}
         error={error}
-        exampleSentencesPromise={props.exampleSentencesPromise}
         alternativeTranslationsPromise={props.alternativeTranslationsPromise}
       />
     </Grid>

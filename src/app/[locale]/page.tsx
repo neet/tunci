@@ -1,12 +1,8 @@
 import { Container } from "@radix-ui/themes";
-import { tokenize } from "ainu-utils";
-import { SearchResponse } from "algoliasearch";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { searchClient } from "@/api/search";
 import { Composer } from "@/components/Composer";
-import { Entry } from "@/models/entry";
 
 import {
   fetchAlternativeTranslations,
@@ -74,26 +70,6 @@ export default async function Home(props: HomeProps) {
     );
   }
 
-  let exampleSentences: Promise<SearchResponse<Entry>> | undefined;
-  if (text && result?.type === "ok") {
-    const words = tokenize(source === "ain" ? text : result.translation, false);
-
-    if (words.length < 4) {
-      exampleSentences = searchClient.searchSingleIndex<Entry>({
-        indexName: "entries",
-        searchParams: {
-          query: `${result.translation} ${text}`,
-          hitsPerPage: 3,
-          attributesToHighlight: ["text", "translation"],
-          facetFilters: [
-            "collection_lv1:-アイヌ語鵡川方言日本語‐アイヌ語辞典",
-            "collection_lv1:-トピック別 アイヌ語会話辞典",
-          ],
-        },
-      });
-    }
-  }
-
   return (
     <Container asChild size="4" p="4">
       <main>
@@ -117,7 +93,6 @@ export default async function Home(props: HomeProps) {
               : undefined
           }
           alternativeTranslationsPromise={alternativeTranslationsPromise}
-          exampleSentencesPromise={exampleSentences}
           error={result?.type === "error" ? result.error : undefined}
           errorMessage={result?.type === "error" ? result.message : undefined}
         />

@@ -3,13 +3,7 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": [
-    "algoliasearch",
-    "Autosize",
-    "clsx",
-    "nums",
-    "tunci"
-  ],
+  "words": ["Autosize", "clsx", "nums", "tunci"],
   "ignoreWords": [],
   "import": []
 }
